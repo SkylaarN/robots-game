@@ -9,6 +9,7 @@ public class Robot {
 
     private Position position;
     private Direction currentDirection;
+    public String name;
 
     enum Direction{
         UP, RIGHT, DOWN, LEFT
@@ -69,6 +70,13 @@ public class Robot {
         return this.position;
     }
 
+    public void setName(String name){
+        this.name = name;
+    }
+
+    public String getName(){
+        return this.name;
+    }
 
     public Position nextPosition(int xChange, int yChange){
         return new Position(this.position.getX() + xChange, this.position.getY() + yChange);

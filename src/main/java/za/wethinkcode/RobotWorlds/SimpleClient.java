@@ -10,6 +10,8 @@ public class SimpleClient {
 
     public static void main(String args[]) {
         String input = "";
+        String name = getInput("Please Enter your robots name.");
+        robot.setName(name);
         while(!input.equalsIgnoreCase("quit")){
         try (
                 Socket socket = new Socket("localhost", 5000);
@@ -17,7 +19,8 @@ public class SimpleClient {
                 BufferedReader in = new BufferedReader(new InputStreamReader(
                         socket.getInputStream()));
         ) {
-            input = getInput("Please Enter your Message.");
+
+            input = getInput(name + "> Please Enter your Message.");
             robot.handleCommand(input);
             out.println(input);
             out.flush();

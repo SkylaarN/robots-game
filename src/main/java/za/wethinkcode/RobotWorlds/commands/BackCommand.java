@@ -17,13 +17,16 @@ public class BackCommand extends Command {
 
         int nrSteps = Integer.parseInt(getArgument());
         if (target.updatePosition(-1 * nrSteps) == "UpdateResponse.SUCCESS"){
-            System.out.println("Moved back by "+nrSteps+" steps.");
+            String positionText = "[" + target.getPosition().getX() + "," + target.getPosition().getY() + "]";
+            System.out.println(target.getName() + "> " + positionText + " Moved back by "+nrSteps+" steps.");
         }
         else if (target.updatePosition(nrSteps) == "UpdateResponse.FAILED_OBSTRUCTED"){
-            System.out.println("Sorry, I have encountered an obstacle.");
+            String positionText = "[" + target.getPosition().getX() + "," + target.getPosition().getY() + "]";
+            System.out.println(target.getName() + "> " + positionText + " Sorry, I have encountered an obstacle.");
         }
         else {
-            System.out.println("Sorry, I cannot go outside my safe zone.");
+            String positionText = "[" + target.getPosition().getX() + "," + target.getPosition().getY() + "]";
+            System.out.println(target.getName() + "> " + positionText + " Sorry, I cannot go outside my safe zone.");
         }
 
         return true;

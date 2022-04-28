@@ -15,10 +15,9 @@ public abstract class Command {
         this.argument = "";
     }
 
-
-    public Command(String name, String argument) {
-        this(name);
-        this.argument = argument.trim();
+    public Command(String name, String arg){
+        this.name = name.trim().toLowerCase();
+        this.argument = arg;
     }
 
 

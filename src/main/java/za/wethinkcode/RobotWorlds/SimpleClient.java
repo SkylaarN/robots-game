@@ -22,7 +22,7 @@ public class SimpleClient {
             out.println(input);
             out.flush();
             String messageFromServer = in.readLine();
-            System.out.println("Response: " + messageFromServer);
+            //System.out.println("Response: " + messageFromServer);
 
 
         } catch (IOException e) {

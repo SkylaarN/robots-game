@@ -26,7 +26,7 @@ public class SimpleServer implements Runnable {
 
             while((messageFromClient = in.readLine()) != null){
 
-                System.out.println("Message \"" + messageFromClient + "\" from " + clientMachine);
+                //System.out.println("Message \"" + messageFromClient + "\" from " + clientMachine);
                 out.println("Thanks for this message: " + messageFromClient);
 
             }

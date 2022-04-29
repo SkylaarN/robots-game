@@ -16,9 +16,10 @@ public class Robot {
     }
 
 
-    public Robot(){
+    public Robot(String name){
         this.position = new Position(0, 0);
-        currentDirection = Direction.UP;
+        this.currentDirection = Direction.UP;
+        this.name = name;
         StdDraw.setPenRadius(0.001);
         StdDraw.setPenColor(StdDraw.MAGENTA);
         StdDraw.line(0.2, 0.2, 0.8, 0.2);

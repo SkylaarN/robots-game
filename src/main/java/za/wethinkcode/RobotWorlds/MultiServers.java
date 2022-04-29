@@ -14,7 +14,7 @@ public class MultiServers {
 
                 Runnable r = new SimpleServer(socket);
                 Thread task = new Thread(r);
-                task.start();
+                while (true){task.start();}
 
             } catch (IOException ex) {
                 ex.printStackTrace();

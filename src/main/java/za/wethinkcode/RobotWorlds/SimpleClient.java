@@ -6,12 +6,10 @@ import java.util.Scanner;
 
 public class SimpleClient {
 
-    private static Robot robot = new Robot();
 
     public static void main(String args[]) {
         String input = "";
         String name = getInput("Please Enter your robots name.");
-        robot.setName(name);
         while(!input.equalsIgnoreCase("quit")){
         try (
                 Socket socket = new Socket("localhost", 5000);
@@ -21,11 +19,11 @@ public class SimpleClient {
         ) {
 
             input = getInput(name + "> Please Enter your Message.");
-            robot.handleCommand(input);
-            out.println(input);
+            out.println(name + " " + input);
             out.flush();
-            String messageFromServer = in.readLine();
-            //System.out.println("Response: " + messageFromServer);
+
+//            String messageFromServer = in.readLine();
+//            System.out.println("Response: " + messageFromServer);
 
 
         } catch (IOException e) {

@@ -2,6 +2,7 @@ package za.wethinkcode.RobotWorlds;
 
 import java.io.*;
 import java.net.*;
+import java.util.HashMap;
 
 public class SimpleServer implements Runnable {
 
@@ -9,6 +10,7 @@ public class SimpleServer implements Runnable {
     private final BufferedReader in;
     private final PrintStream out;
     private final String clientMachine;
+    private HashMap<String, Robot> robots = new HashMap();
 
 
     public SimpleServer(Socket socket) throws IOException {
@@ -25,7 +27,9 @@ public class SimpleServer implements Runnable {
             String messageFromClient;
 
             while((messageFromClient = in.readLine()) != null){
-
+                String[] args = messageFromClient.trim().split(" ", 2);
+                checkRobot(args[0]);
+                doRobot(args[0], args[1]);
                 //System.out.println("Message \"" + messageFromClient + "\" from " + clientMachine);
                 out.println("Thanks for this message: " + messageFromClient);
 
@@ -40,5 +44,16 @@ public class SimpleServer implements Runnable {
     private void closeQuietly() {
         try { in.close(); out.close();
         } catch(IOException ex) {}
+    }
+
+    void checkRobot(String name){
+        if(!robots.containsKey(name)){
+            robots.put(name, new Robot(name));
+        }
+    }
+
+    void doRobot(String name, String instructions){
+        Robot userRobot = robots.get(name);
+        userRobot.handleCommand(instructions);
     }
 }

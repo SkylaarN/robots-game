@@ -141,19 +141,15 @@ public class Robot {
         int newY = this.position.getY();
 
         if (Direction.UP.equals(this.currentDirection)) {
-            System.out.println("up");
             newY = newY + nrSteps;
         }
         else if (Direction.DOWN.equals(this.currentDirection)){
-            System.out.println("down");
             newY = newY - nrSteps;
         }
         else if (Direction.RIGHT.equals(this.currentDirection)){
-            System.out.println("right");
             newX = newX + nrSteps;
         }
         else if (Direction.LEFT.equals(this.currentDirection)){
-            System.out.println("left");
             newX = newX - nrSteps;
         }
 

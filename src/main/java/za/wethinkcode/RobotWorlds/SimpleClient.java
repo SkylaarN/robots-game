@@ -18,7 +18,7 @@ public class SimpleClient {
                         socket.getInputStream()));
         ) {
 
-            input = getInput(name + "> Please Enter your Message.");
+            input = getInput(name + " > Please Enter your Message.");
             out.println(name + " " + input);
             out.flush();
 

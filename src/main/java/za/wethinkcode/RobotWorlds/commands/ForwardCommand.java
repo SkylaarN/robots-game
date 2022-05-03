@@ -18,15 +18,15 @@ public class ForwardCommand extends Command {
         int nrSteps = Integer.parseInt(getArgument());
         if (target.updatePosition(nrSteps) == "UpdateResponse.SUCCESS"){
             String positionText = "[" + target.getPosition().getX() + "," + target.getPosition().getY() + "]";
-            System.out.println(target.getName() + "> " + positionText + " Moved forward by "+nrSteps+" steps.");
+            System.out.println(target.getName() + " > " + positionText + " Moved forward by "+nrSteps+" steps.");
         }
         else if (target.updatePosition(nrSteps) == "UpdateResponse.FAILED_OBSTRUCTED"){
             String positionText = "[" + target.getPosition().getX() + "," + target.getPosition().getY() + "]";
-            System.out.println(target.getName() + "> " + positionText + " Sorry, I have encountered an obstacle.");
+            System.out.println(target.getName() + " > " + positionText + " Sorry, I have encountered an obstacle.");
         }
         else {
             String positionText = "[" + target.getPosition().getX() + "," + target.getPosition().getY() + "]";
-            System.out.println(target.getName() + "> " + positionText + " Sorry, I cannot go outside my safe zone.");
+            System.out.println(target.getName() + " > " + positionText + " Sorry, I cannot go outside my safe zone.");
         }
         return true;
     }

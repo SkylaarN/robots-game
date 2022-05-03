@@ -15,7 +15,7 @@ public class LeftCommand extends Command{
 
         target.updateDirection(false);
         String positionText = "[" + target.getPosition().getX() + "," + target.getPosition().getY() + "]";
-        System.out.println(target.getName() + "> " + positionText + " Turned left");
+        System.out.println(target.getName() + " > " + positionText + " Turned left");
         return true;
     }
 

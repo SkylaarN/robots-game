@@ -2,8 +2,9 @@ package za.wethinkcode.RobotWorlds;
 
 import java.net.*;
 import java.io.*;
+import java.util.Random;
 import java.util.Scanner;
-
+import edu.princeton.cs.introcs.StdDraw;
 public class SimpleClient {
 
 
@@ -17,7 +18,6 @@ public class SimpleClient {
                 BufferedReader in = new BufferedReader(new InputStreamReader(
                         socket.getInputStream()));
         ) {
-
             input = getInput(name + " > Please Enter your Message.");
             out.println(name + " " + input);
             out.flush();

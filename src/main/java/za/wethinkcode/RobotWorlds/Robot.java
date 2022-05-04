@@ -1,15 +1,19 @@
 package za.wethinkcode.RobotWorlds;
-
 import edu.princeton.cs.introcs.StdDraw;
 import za.wethinkcode.RobotWorlds.commands.*;
 
 import java.awt.*;
+import java.util.Random;
 
 public class Robot {
 
     private Position position;
     private Direction currentDirection;
     public String name;
+    Random random = new Random();
+    int color1 = random.nextInt(255);
+    int color2 = random.nextInt(255);
+    int color3 = random.nextInt(255);
 
     enum Direction{
         UP, RIGHT, DOWN, LEFT
@@ -20,17 +24,19 @@ public class Robot {
         this.position = new Position(0, 0);
         this.currentDirection = Direction.UP;
         this.name = name;
-        StdDraw.setPenRadius(0.001);
+        StdDraw.setPenRadius(0.003);
         StdDraw.setPenColor(StdDraw.MAGENTA);
         StdDraw.line(0.2, 0.2, 0.8, 0.2);
         StdDraw.line(0.2, 0.8, 0.8, 0.8);
         StdDraw.line(0.2, 0.2, 0.2, 0.8);
         StdDraw.line(0.8, 0.2, 0.8, 0.8);
 
+        //StdDraw.setPenColor(random.nextInt(255), random.nextInt(255), random.nextInt(255));
+
     }
 
     void handleCommand(String com){
-        StdDraw.setPenColor(StdDraw.BLUE);
+        StdDraw.setPenColor(color1, color2, color3);
         String[] args = com.toLowerCase().trim().split(" ");
         Position next;
         int num;

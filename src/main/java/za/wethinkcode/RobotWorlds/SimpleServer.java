@@ -25,7 +25,7 @@ public class SimpleServer implements Runnable {
     public void run() {
 
         try {
-            Obstacles.generateObstacles();
+
             while (true){
                 String messageFromClient = null;
 

@@ -7,7 +7,9 @@ public class Players {
 
     static void checkRobot(String name){
         if(!robots.containsKey(name)){
-            robots.put(name, new Robot(name));
+            Robot robot = new Robot(name);
+            robots.put(name, robot);
+            robot.drawObstacles();
         }
     }
 

@@ -3,6 +3,7 @@ import edu.princeton.cs.introcs.StdDraw;
 import za.wethinkcode.RobotWorlds.commands.*;
 
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Robot {
@@ -10,7 +11,8 @@ public class Robot {
     private Position position;
     private Direction currentDirection;
     public String name;
-    Random random = new Random();
+
+    public static Random random = new Random();
     int color1 = random.nextInt(255);
     int color2 = random.nextInt(255);
     int color3 = random.nextInt(255);
@@ -163,10 +165,10 @@ public class Robot {
 
         if (isNewPositionAllowed(newPosition)){
 
-            if (SquareObstacle.blocksPosition(newPosition)){
+            if (Obstacles.blocksPosition(newPosition)){
                 return "UpdateResponse.FAILED_OBSTRUCTED";
             }
-            else if (SquareObstacle.blocksPath(this.position, newPosition)){
+            else if (Obstacles.blocksPath(this.position, newPosition)){
                 return "UpdateResponse.FAILED_OBSTRUCTED";
             }
             else{
@@ -197,5 +199,21 @@ public class Robot {
 //            return false;
 //        }
         return true;
+    }
+
+    public void drawObstacles(){
+        ArrayList<SquareObstacle> obstacles = Obstacles.getObstacles();
+        StdDraw.setPenColor(Color.RED);
+        for (int i = 0; i < obstacles.size(); i++) {
+            SquareObstacle sqrObs = obstacles.get(i);
+            int x = sqrObs.getBottomLeftX();
+            int y = sqrObs.getBottomLeftY();
+            StdDraw.line(0.5 + x/512.0, 0.5 + y/512.0, 0.5 + (x + 4)/512.0, 0.5 + y/512.0);
+            StdDraw.line(0.5 + x/512.0, 0.5 + y/512.0, 0.5 + x/512.0, 0.5 + (y + 4)/512.0);
+            StdDraw.line(0.5 + x/512.0, 0.5 + (y + 4)/512.0, 0.5 + (x + 4)/512.0, 0.5 + (y + 4)/512.0);
+            StdDraw.line(0.5 + (x + 4)/512.0, 0.5 + y/512.0, 0.5 + (x + 4)/512.0, 0.5 + (y + 4)/512.0);
+
+        }
+
     }
 }

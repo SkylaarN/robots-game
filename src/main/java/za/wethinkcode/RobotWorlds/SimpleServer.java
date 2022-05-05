@@ -25,7 +25,7 @@ public class SimpleServer implements Runnable {
     public void run() {
 
         try {
-
+            Obstacles.generateObstacles();
             while (true){
                 String messageFromClient = null;
 
@@ -56,4 +56,6 @@ public class SimpleServer implements Runnable {
         Robot userRobot = Players.getRobot(name);
         userRobot.handleCommand(instructions);
     }
+
+
 }

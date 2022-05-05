@@ -2,8 +2,8 @@ package za.wethinkcode.RobotWorlds;
 
 public class SquareObstacle {
 
-    private int x = 5;
-    private int y = 5;
+    private int x;
+    private int y;
 
 
     public SquareObstacle(int x, int y){
@@ -38,15 +38,13 @@ public class SquareObstacle {
         return 5;
     }
 
-    public static boolean blocksPosition(Position position) {
+    public boolean blocksPosition(Position position) {
         /**Function checks to see if position is within the area of
          * the SquareObstacle
          *
          * @param position the Position value to check
          * @return boolean for if the Position is in the area
          */
-        int x = 5;
-        int y = 5;
         if(x <= position.getX() && position.getX() <= x + 4 &&
             y <= position.getY() && position.getY() <= y + 4){
             return true;
@@ -56,15 +54,13 @@ public class SquareObstacle {
         }
     }
 
-    public static boolean blocksPath(Position a, Position b) {
+    public boolean blocksPath(Position a, Position b) {
         /**Function check to see if there is a SquareObstacle between 2 Positions
          *
          * @param a the Position object that contains the start
          * @param b the Position object that contains the end
          * @return boolean if the path is blocked
          */
-        int x = 5;
-        int y = 5;
         if(passObstacle(a.getX(), b.getX(), x, x + 4) && a.getY() == b.getY() &&
                 a.getY() >= y && a.getY() <= y + 4) {
             return true;
@@ -78,7 +74,7 @@ public class SquareObstacle {
         }
     }
 
-    public static boolean passObstacle(int startPath, int endPath, int startObs, int endObs){
+    public boolean passObstacle(int startPath, int endPath, int startObs, int endObs){
         /**Function checks if one line passes another
          *
          * @param startPath Int containing the start of the first line

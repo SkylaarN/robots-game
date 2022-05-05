@@ -11,6 +11,7 @@ public class Robot {
     private Position position;
     private Direction currentDirection;
     public String name;
+    private String status;
 
     public static Random random = new Random();
     int color1 = random.nextInt(255);
@@ -26,15 +27,18 @@ public class Robot {
         this.position = new Position(0, 0);
         this.currentDirection = Direction.UP;
         this.name = name;
-        StdDraw.setPenRadius(0.003);
-        StdDraw.setPenColor(StdDraw.MAGENTA);
-        StdDraw.line(0.2, 0.2, 0.8, 0.2);
-        StdDraw.line(0.2, 0.8, 0.8, 0.8);
-        StdDraw.line(0.2, 0.2, 0.2, 0.8);
-        StdDraw.line(0.8, 0.2, 0.8, 0.8);
+
 
         //StdDraw.setPenColor(random.nextInt(255), random.nextInt(255), random.nextInt(255));
 
+    }
+
+    public void setStatus(String status){
+        this.status = status;
+    }
+
+    public String getStatus(){
+        return this.status;
     }
 
     void handleCommand(String com){
@@ -201,7 +205,16 @@ public class Robot {
         return true;
     }
 
-    public void drawObstacles(){
+    public static void drawBorder(){
+        StdDraw.setPenRadius(0.003);
+        StdDraw.setPenColor(StdDraw.MAGENTA);
+        StdDraw.line(0.2, 0.2, 0.8, 0.2);
+        StdDraw.line(0.2, 0.8, 0.8, 0.8);
+        StdDraw.line(0.2, 0.2, 0.2, 0.8);
+        StdDraw.line(0.8, 0.2, 0.8, 0.8);
+    }
+
+    public static void drawObstacles(){
         ArrayList<SquareObstacle> obstacles = Obstacles.getObstacles();
         StdDraw.setPenColor(Color.RED);
         for (int i = 0; i < obstacles.size(); i++) {

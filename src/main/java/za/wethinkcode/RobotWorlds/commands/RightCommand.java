@@ -15,7 +15,7 @@ public class RightCommand extends Command{
 
         target.updateDirection(true);
         String positionText = "[" + target.getPosition().getX() + "," + target.getPosition().getY() + "]";
-        System.out.println(target.getName() + " > " + positionText + " Turned right");
+        target.setStatus(target.getName() + " > " + positionText + " Turned right");
         return true;
     }
 

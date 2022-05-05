@@ -41,26 +41,26 @@ public abstract class Command {
     }
 
 
-    public static Command createCommand(String instruction, boolean save){
-        /**Function uses Parameter instruction to find and return the correct Command class
-         *
-         * @param instruction the String containing the user input command
-         * @param save the boolean that shows if a command must be saved
-         * @return Command containing the correct subclass
-         */
-
-        String[] args = instruction.toLowerCase().trim().split(" ", 2);
-        switch (args[0]){
-            case "shutdown":
-            case "off":
-            case "help":
-            case "forward":
-            case "back":
-            case "left":
-            case "right":
-            default:
-                throw new IllegalArgumentException("Unsupported command: " + instruction);
-        }
-    }
+//    public static Command createCommand(String instruction, boolean save){
+//        /**Function uses Parameter instruction to find and return the correct Command class
+//         *
+//         * @param instruction the String containing the user input command
+//         * @param save the boolean that shows if a command must be saved
+//         * @return Command containing the correct subclass
+//         */
+//
+//        String[] args = instruction.toLowerCase().trim().split(" ", 2);
+//        switch (args[0]){
+//            case "shutdown":
+//            case "off":
+//            case "help":
+//            case "forward":
+//            case "back":
+//            case "left":
+//            case "right":
+//            default:
+//                throw new IllegalArgumentException("Unsupported command: " + instruction);
+//        }
+//    }
 }
 

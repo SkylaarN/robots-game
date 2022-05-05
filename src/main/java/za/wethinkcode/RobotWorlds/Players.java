@@ -9,7 +9,6 @@ public class Players {
         if(!robots.containsKey(name)){
             Robot robot = new Robot(name);
             robots.put(name, robot);
-            robot.drawObstacles();
         }
     }
 

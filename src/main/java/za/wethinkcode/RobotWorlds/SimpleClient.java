@@ -22,14 +22,13 @@ public class SimpleClient {
             out.println(name + " " + input);
             out.flush();
 
-//            String messageFromServer = in.readLine();
-//            System.out.println("Response: " + messageFromServer);
+            String messageFromServer = in.readLine();
+            System.out.println(messageFromServer);
 
 
         } catch (IOException e) {
             e.printStackTrace();
         }
-            System.out.println(input);
         }
     }
 
@@ -44,7 +43,6 @@ public class SimpleClient {
         String input = scanner.nextLine();
 
         while (input.isBlank()) {
-            System.out.println(prompt);
             input = scanner.nextLine();
         }
         return input;

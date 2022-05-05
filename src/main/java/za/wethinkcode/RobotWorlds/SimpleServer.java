@@ -32,9 +32,9 @@ public class SimpleServer implements Runnable {
                 while((messageFromClient = in.readLine()) != null){
                     String[] args = messageFromClient.trim().split(" ", 2);
                     System.out.println(args[0] + " ---- " + args[1]);
-                    doRobot(args[0], args[1]);
                     //System.out.println("Message \"" + messageFromClient + "\" from " + clientMachine);
-                    out.println("Thanks for this message: " + messageFromClient);
+                    out.println(doRobot(args[0], args[1]));
+                    //out.println("Thanks for this message: " + messageFromClient);
                 }
 
             }
@@ -52,9 +52,10 @@ public class SimpleServer implements Runnable {
 
 
 
-    void doRobot(String name, String instructions){
+    String doRobot(String name, String instructions){
         Robot userRobot = Players.getRobot(name);
         userRobot.handleCommand(instructions);
+        return userRobot.getStatus();
     }
 
 

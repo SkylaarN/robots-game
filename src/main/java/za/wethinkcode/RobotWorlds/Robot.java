@@ -186,7 +186,7 @@ public class Robot {
                 this.position = newPosition;
                 return "UpdateResponse.SUCCESS";
             }
-        return "UpdateResponse.FAILED_OBSTRUCTED";
+        return "UpdateResponse.FAILED_BORDER";
     }
 
     public boolean isNewPositionAllowed(Position position) {
@@ -196,13 +196,12 @@ public class Robot {
          * @return boolean if the Position is in the area
          */
 
-//        if (position.isIn(TOP_LEFT,BOTTOM_RIGHT)) {
-//            return true;
-//        }
-//        else{
-//            return false;
-//        }
-        return true;
+        if (position.isIn(new Position(-150, 150),new Position(150, -150))) {
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     public static void drawBorder(){

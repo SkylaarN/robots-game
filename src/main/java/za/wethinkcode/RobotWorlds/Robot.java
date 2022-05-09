@@ -21,7 +21,7 @@ public class Robot {
     private int health = 5;
     private int bullets = 8;
 
-    enum Direction{
+    public enum Direction{
         UP, RIGHT, DOWN, LEFT
     }
 
@@ -84,6 +84,10 @@ public class Robot {
 
     public Position getPosition(){
         return this.position;
+    }
+
+    public Direction getCurrentDirection(){
+        return this.currentDirection;
     }
 
     public void setName(String name){

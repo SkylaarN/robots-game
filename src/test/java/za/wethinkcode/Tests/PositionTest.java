@@ -2,6 +2,10 @@ package za.wethinkcode.Tests;
 
 import org.junit.jupiter.api.Test;
 import za.wethinkcode.RobotWorlds.Position;
+import za.wethinkcode.RobotWorlds.Robot;
+import za.wethinkcode.RobotWorlds.commands.ForwardCommand;
+import za.wethinkcode.RobotWorlds.commands.LeftCommand;
+import za.wethinkcode.RobotWorlds.commands.RightCommand;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -29,5 +33,54 @@ class PositionTest {
         assertFalse((new Position(10,-30)).isIn(topLeft, bottomRight), "should be beyond bottom boundary");
         assertFalse((new Position(30,10)).isIn(topLeft, bottomRight), "should be beyond right boundary");
         assertFalse((new Position(-30,10)).isIn(topLeft, bottomRight), "should be beyond left boundary");
+    }
+
+    @Test
+    void testNorthDirection() {
+
+        Robot robot = new Robot("North");
+
+        new ForwardCommand("10").execute(robot);
+
+        assertEquals(0, robot.getPosition().getX());
+        assertEquals(10, robot.getPosition().getY());
+    }
+
+    @Test
+    void testEastDirection() {
+
+        Robot robot = new Robot("East");
+
+        new RightCommand().execute(robot);
+        new ForwardCommand("3").execute(robot);
+
+        assertEquals(3, robot.getPosition().getX());
+        assertEquals(0, robot.getPosition().getY());
+
+    }
+
+    @Test
+    void testSouthDirection() {
+
+        Robot robot = new Robot("South");
+
+        new RightCommand().execute(robot);
+        new RightCommand().execute(robot);
+        new ForwardCommand("5").execute(robot);
+
+        assertEquals(0, robot.getPosition().getX());
+        assertEquals(-5, robot.getPosition().getY());
+    }
+
+    @Test
+    void testWestDirection() {
+
+        Robot robot = new Robot("West");
+
+        new LeftCommand().execute(robot);
+        new ForwardCommand("10").execute(robot);
+
+        assertEquals(-10, robot.getPosition().getX());
+        assertEquals(0, robot.getPosition().getY());
     }
 }

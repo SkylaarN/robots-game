@@ -4,15 +4,24 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.example</groupId>
-    <artifactId>student_work</artifactId>
+    <repositories>
+        <repository>
+            <id>Kotlin-bintray</id>
+            <url>https://kotlin.bintray.com/kotlinx</url>
+        </repository>
+    </repositories>
+
+    <groupId>za.co.wethinkcode</groupId>
+    <artifactId>toyrobot</artifactId>
     <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <maven.compiler.target>11</maven.compiler.target>
+        <maven.compiler.source>11</maven.compiler.source>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
     <dependencies>
-        <dependency>
-            <groupId>com.googlecode.princeton-java-introduction</groupId>
-            <artifactId>stdlib</artifactId>
-            <version>1.0.1</version>
-        </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
@@ -30,11 +39,54 @@
             <version>5.7.0</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-junit-jupiter</artifactId>
+            <version>3.6.28</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.turtle</groupId>
+            <artifactId>java-turtle</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hexworks.zircon</groupId>
+            <artifactId>zircon.core-jvm</artifactId>
+            <version>2020.2.0-RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hexworks.zircon</groupId>
+            <artifactId>zircon.jvm.swing</artifactId>
+            <version>2020.2.0-RELEASE</version>
+        </dependency>
     </dependencies>
 
-    <properties>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
-    </properties>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-install-plugin</artifactId>
+                <version>2.5.1</version>
+                <configuration>
+                    <groupId>org.turtle</groupId>
+                    <artifactId>java-turtle</artifactId>
+                    <version>1.0</version>
+                    <packaging>jar</packaging>
+                    <file>${project.basedir}/libs/java-turtle-1.0-SNAPSHOT.jar</file>
+                    <generatePom>true</generatePom>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>install-jar-lib</id>
+                        <goals>
+                            <goal>install-file</goal>
+                        </goals>
+                        <phase>validate</phase>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

@@ -4,7 +4,7 @@ import java.net.*;
 import java.io.*;
 import java.util.Random;
 import java.util.Scanner;
-import edu.princeton.cs.introcs.StdDraw;
+import org.turtle.*;
 public class SimpleClient {
 
 

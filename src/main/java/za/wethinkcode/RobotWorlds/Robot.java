@@ -18,6 +18,9 @@ public class Robot {
     int color2 = random.nextInt(255);
     int color3 = random.nextInt(255);
 
+    private int health = 5;
+    private int bullets = 8;
+
     enum Direction{
         UP, RIGHT, DOWN, LEFT
     }
@@ -227,5 +230,29 @@ public class Robot {
 
         }
 
+    }
+
+    public void repair(){
+        this.health = 5;
+    }
+
+    public void damage(){
+        this.health = this.health - 1;
+    }
+
+    public int getHealth(){
+        return this.health;
+    }
+
+    public void reload(){
+        this.bullets = 8;
+    }
+
+    public void fire(){
+        this.bullets = this.bullets - 1;
+    }
+
+    public int getBullets(){
+        return this.bullets;
     }
 }

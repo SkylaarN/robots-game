@@ -219,7 +219,11 @@ public class Robot {
     }
 
     public void setHealth(int health){
+
         this.health = health;
+        if(health == 0){
+            System.exit(0);
+        }
     }
 
     public void fire(){

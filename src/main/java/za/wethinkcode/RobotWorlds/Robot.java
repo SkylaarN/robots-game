@@ -5,6 +5,7 @@ import za.wethinkcode.RobotWorlds.commands.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 public class Robot {
 
@@ -47,35 +48,8 @@ public class Robot {
     void handleCommand(String com){
         StdDraw.setPenColor(color1, color2, color3);
         String[] args = com.toLowerCase().trim().split(" ");
-        Position next;
-        int num;
-        Command command;
-        switch(args[0]){
-
-            case "forward":
-                command = new ForwardCommand(args[1]);
-                command.execute(this);
-                break;
-
-            case "back":
-                command = new BackCommand(args[1]);
-                command.execute(this);
-                break;
-
-            case "right":
-                command = new RightCommand();
-                command.execute(this);
-                break;
-
-            case "left":
-                command = new LeftCommand();
-                command.execute(this);
-                break;
-
-            default:
-                System.out.println("Unsupported command: " + com);
-                break;
-        }
+        Command command = Command.createCommand(com);
+        command.execute(this);
     }
 
     public void setPosition(Position pos){
@@ -236,10 +210,6 @@ public class Robot {
 
     }
 
-    public void repair(){
-        this.health = 5;
-    }
-
     public void damage(){
         this.health = this.health - 1;
     }
@@ -248,8 +218,8 @@ public class Robot {
         return this.health;
     }
 
-    public void reload(){
-        this.bullets = 8;
+    public void setHealth(int health){
+        this.health = health;
     }
 
     public void fire(){
@@ -258,5 +228,9 @@ public class Robot {
 
     public int getBullets(){
         return this.bullets;
+    }
+
+    public void setBullets(int bullets){
+        this.bullets = bullets;
     }
 }

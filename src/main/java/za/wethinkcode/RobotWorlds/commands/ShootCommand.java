@@ -12,7 +12,10 @@ public class ShootCommand extends Command{
     public boolean execute(Robot target){
         target.fire();
         if(hitPlayer(target.getPosition(), fireBullet(30, target), target)){
-            System.out.println("Player was shot");
+            target.setStatus("Player was shot");
+        }
+        else{
+            target.setStatus("Missed");
         }
         return true;
     }

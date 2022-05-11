@@ -10,12 +10,17 @@ import java.util.ArrayList;
 
 public class ShootCommand extends Command{
     public boolean execute(Robot target){
-        target.fire();
-        if(hitPlayer(target.getPosition(), fireBullet(30, target), target)){
-            target.setStatus("Player was shot");
+        if(target.getBullets() > 0){
+            target.fire();
+            if(hitPlayer(target.getPosition(), fireBullet(30, target), target)){
+                target.setStatus("Player was shot");
+            }
+            else{
+                target.setStatus("Missed");
+            }
         }
         else{
-            target.setStatus("Missed");
+            target.setStatus("No Bullets");
         }
         return true;
     }

@@ -57,19 +57,29 @@ public class ShootCommand extends Command{
 
     public boolean hitPlayer(Position a, Position b, Robot target){
         ArrayList<Robot> playerRobots = Players.getPlayers();
+        System.out.println(playerRobots);
         for (int i = 0; i < playerRobots.size(); i++) {
 
             int x = playerRobots.get(i).getPosition().getX();
             int y = playerRobots.get(i).getPosition().getY();
+            System.out.println("Checking Enemy:  - " + playerRobots.get(i).getName());
+            System.out.println("Target X: - " + target.getPosition().getX());
+            System.out.println("Target Y: - " + target.getPosition().getY());
+            System.out.println("Enemy X: - " + playerRobots.get(i).getPosition().getX());
+            System.out.println("Enemy Y: - " + playerRobots.get(i).getPosition().getY());
+//line from robot to target is not straight
 
             if(target != playerRobots.get(i)){
                 if(onPlayer(b, x, y) || throughPlayer(a, b, x, y)){
-                    if(!Obstacles.blocksPosition(playerRobots.get(i).getPosition()) &&
-                            !Obstacles.blocksPath(a, playerRobots.get(i).getPosition())){
+                    Position contact = pointContact(target.getPosition(), playerRobots.get(i).getPosition());
+                    System.out.println("Contact X: - " + contact.getX());
+                    System.out.println("Contact Y: - " + contact.getY());
+                    if(!Obstacles.blocksPosition(contact) && !Obstacles.blocksPath(a, contact)){
                         System.out.println(playerRobots.get(i).getName() + " - 1 damage.");
                         playerRobots.get(i).damage();
                         return true;
                     }
+
                 }
             }
         }
@@ -116,6 +126,17 @@ public class ShootCommand extends Command{
                 startObs <= startPath && startPath <= endObs ||
                 startObs <= endPath && endPath <= endObs ||
                 endPath <= endObs && startObs <= startPath);
+    }
+
+
+    public Position pointContact(Position robot, Position enemy){
+        if(robot.getY() >= enemy.getY() - 2 && robot.getY() <= enemy.getY() + 2){
+            return new Position(enemy.getX(), robot.getY());
+        }
+        else if(robot.getX() >= enemy.getX() - 2 && robot.getX() <= enemy.getX() + 2){
+            return new Position(robot.getX(), enemy.getY());
+        }
+        return null;
     }
 
 

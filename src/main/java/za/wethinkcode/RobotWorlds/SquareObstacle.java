@@ -87,6 +87,7 @@ public class SquareObstacle {
         return (startPath <= startObs && startObs <= endPath ||
                 startPath <= endObs && endObs <= endPath ||
                 startObs <= startPath && startPath <= endObs ||
-                startObs <= endPath && endPath <= endObs);
+                startObs <= endPath && endPath <= endObs ||
+                endPath <= endObs && startObs <= startPath);
     }
 }

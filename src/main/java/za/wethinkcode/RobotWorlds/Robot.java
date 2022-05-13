@@ -212,6 +212,9 @@ public class Robot {
 
     public void damage(){
         this.health = this.health - 1;
+//        if(this.health == 0){
+//            System.exit(0);
+//        }
     }
 
     public int getHealth(){
@@ -221,9 +224,9 @@ public class Robot {
     public void setHealth(int health){
 
         this.health = health;
-        if(health == 0){
-            System.exit(0);
-        }
+//        if(health == 0){
+//            System.exit(0);
+//        }
     }
 
     public void fire(){

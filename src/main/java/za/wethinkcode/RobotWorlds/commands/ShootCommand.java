@@ -43,6 +43,15 @@ public class ShootCommand extends Command{
         }
 
         Position newPosition = new Position(newX, newY);
+
+        if(Obstacles.blocksPosition(newPosition) ||
+                Obstacles.blocksPath(target.getPosition(), newPosition)){
+            System.out.println("Bullet blocked");
+        }
+        else{
+            System.out.println("Bullet not blocked");
+        }
+
         return newPosition;
     }
 
@@ -57,6 +66,7 @@ public class ShootCommand extends Command{
                 if(onPlayer(b, x, y) || throughPlayer(a, b, x, y)){
                     if(!Obstacles.blocksPosition(playerRobots.get(i).getPosition()) &&
                             !Obstacles.blocksPath(a, playerRobots.get(i).getPosition())){
+                        System.out.println(playerRobots.get(i).getName() + " - 1 damage.");
                         playerRobots.get(i).damage();
                         return true;
                     }
@@ -77,12 +87,15 @@ public class ShootCommand extends Command{
     }
 
     public boolean throughPlayer(Position a, Position b, int x, int y){
-        if(passPlayer(a.getX(), b.getX(), x - 2, x + 2) && a.getY() == b.getY() &&
+        if(passPlayer(a.getX(), b.getX(), x + 2, x - 2) && a.getY() == b.getY() &&
                 a.getY() >= y - 2 && a.getY() <= y + 2) {
+            System.out.println("Through x");
             return true;
+
         }
-        else if(passPlayer(a.getY(), b.getY(), y - 2, y + 2) && a.getX() == b.getX() &&
+        else if(passPlayer(a.getY(), b.getY(), y + 2, y - 2) && a.getX() == b.getX() &&
                 a.getX() >= x - 2 && a.getX() <= x + 2){
+            System.out.println("Through y");
             return true;
         }
         else{
@@ -91,10 +104,18 @@ public class ShootCommand extends Command{
     }
 
     public boolean passPlayer(int startPath, int endPath, int startObs, int endObs){
+        System.out.println("---PassPlayer---");
+        System.out.println(startPath <= startObs && startObs <= endPath);
+        System.out.println(startPath <= endObs && endObs <= endPath);
+        System.out.println(startObs <= startPath && startPath <= endObs);
+        System.out.println(startObs <= endPath && endPath <= endObs);
+        System.out.println(endPath <= endObs && startObs <= startPath);
+        System.out.println("----------------");
         return (startPath <= startObs && startObs <= endPath ||
                 startPath <= endObs && endObs <= endPath ||
                 startObs <= startPath && startPath <= endObs ||
-                startObs <= endPath && endPath <= endObs);
+                startObs <= endPath && endPath <= endObs ||
+                endPath <= endObs && startObs <= startPath);
     }
 
 

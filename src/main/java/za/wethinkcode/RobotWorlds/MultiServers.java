@@ -9,7 +9,7 @@ public class MultiServers {
         System.out.println("Server running & waiting for client connections.");
         Robot.drawBorder();
         Obstacles.generateObstacles();
-        Robot.drawObstacles();
+//        Robot.drawObstacles();
         while(true) {
             try {
                 Socket socket = s.accept();

@@ -1,8 +1,11 @@
 package za.wethinkcode.RobotWorlds.commands;
 
+import org.turtle.StdDraw;
 import za.wethinkcode.RobotWorlds.Obstacles;
 import za.wethinkcode.RobotWorlds.Robot;
 import za.wethinkcode.RobotWorlds.SquareObstacle;
+
+import java.awt.*;
 
 public class LookCommand extends Command{
 
@@ -28,10 +31,9 @@ public class LookCommand extends Command{
 
                     output.append((String.format("There's an obstacle at position %s,%s (to %s,%s), %s",
                             x, y, (x+4), (y+4), getAbsolutePosition(target, x, y))) + "\n");
+                    drawVisibleObstacle(x,y);
                 }
             }
-            System.out.println(String.format("-############ At position %s,%s (to %s,%s)",
-                    x, y, (x+4), (y+4)));
         }
         if(output.length() == 0){
             target.setStatus("No obstacles.");
@@ -57,6 +59,14 @@ public class LookCommand extends Command{
             return AbsolutePosition.WEST;
         }
 
+    }
+
+    public void drawVisibleObstacle(int x, int y){
+        StdDraw.setPenColor(Color.ORANGE);
+        StdDraw.line(0.5 + x/512.0, 0.5 + y/512.0, 0.5 + (x + 4)/512.0, 0.5 + y/512.0);
+        StdDraw.line(0.5 + x/512.0, 0.5 + y/512.0, 0.5 + x/512.0, 0.5 + (y + 4)/512.0);
+        StdDraw.line(0.5 + x/512.0, 0.5 + (y + 4)/512.0, 0.5 + (x + 4)/512.0, 0.5 + (y + 4)/512.0);
+        StdDraw.line(0.5 + (x + 4)/512.0, 0.5 + y/512.0, 0.5 + (x + 4)/512.0, 0.5 + (y + 4)/512.0);
     }
     public LookCommand(){
         super("look");

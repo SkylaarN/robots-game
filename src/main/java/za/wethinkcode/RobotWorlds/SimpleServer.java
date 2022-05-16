@@ -1,5 +1,8 @@
 package za.wethinkcode.RobotWorlds;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.io.*;
 import java.net.*;
 import java.util.HashMap;
@@ -28,12 +31,17 @@ public class SimpleServer implements Runnable {
 
             while (true){
                 String messageFromClient = null;
-
                 while((messageFromClient = in.readLine()) != null){
-                    String[] args = messageFromClient.trim().split(" ", 2);
-                    System.out.println(args[0] + " ---- " + args[1]);
+                    System.out.println(messageFromClient);
+
+                    JSONObject obj = new JSONObject(messageFromClient);
+
+                    //String[] args = messageFromClient.trim().split(" ", 2);
+                    System.out.println(obj.getString("name") + " ---- " + obj.getString("command") +
+                            " " + obj.get("arguments"));
+
                     //System.out.println("Message \"" + messageFromClient + "\" from " + clientMachine);
-                    out.println(doRobot(args[0], args[1]));
+                    out.println(doRobot(obj.getString("name"), obj.getString("command"), obj.getJSONArray("arguments")));
                     //out.println("Thanks for this message: " + messageFromClient);
                 }
 
@@ -52,9 +60,9 @@ public class SimpleServer implements Runnable {
 
 
 
-    String doRobot(String name, String instructions){
+    String doRobot(String name, String instructions, JSONArray arguments){
         Robot userRobot = Players.getRobot(name);
-        userRobot.handleCommand(instructions);
+        userRobot.handleCommand(instructions, arguments);
         return userRobot.getStatus();
     }
 

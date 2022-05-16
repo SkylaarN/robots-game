@@ -1,5 +1,6 @@
 package za.wethinkcode.RobotWorlds.commands;
 
+import org.json.JSONArray;
 import za.wethinkcode.RobotWorlds.Robot;;
 
 public abstract class Command {
@@ -41,7 +42,7 @@ public abstract class Command {
     }
 
 
-    public static Command createCommand(String instruction){
+    public static Command createCommand(String instruction, JSONArray args){
         /**Function uses Parameter instruction to find and return the correct Command class
          *
          * @param instruction the String containing the user input command
@@ -49,14 +50,14 @@ public abstract class Command {
          * @return Command containing the correct subclass
          */
 
-        String[] args = instruction.toLowerCase().trim().split(" ", 2);
-        switch (args[0]){
+
+        switch (instruction){
 
             case "forward":
-                return new ForwardCommand(args[1]);
+                return new ForwardCommand(args.getString(0));
 
             case "back":
-                return new BackCommand(args[1]);
+                return new BackCommand(args.getString(0));
 
             case "right":
                 return new RightCommand();

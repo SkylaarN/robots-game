@@ -1,4 +1,5 @@
 package za.wethinkcode.RobotWorlds;
+import org.json.JSONArray;
 import org.turtle.*;
 import za.wethinkcode.RobotWorlds.commands.*;
 
@@ -45,10 +46,9 @@ public class Robot {
         return this.status;
     }
 
-    void handleCommand(String com){
+    void handleCommand(String com, JSONArray args){
         StdDraw.setPenColor(color1, color2, color3);
-        String[] args = com.toLowerCase().trim().split(" ");
-        Command command = Command.createCommand(com);
+        Command command = Command.createCommand(com, args);
 
         if (command == null){
             setStatus("Sorry, I did not understand '" + com + "'.");

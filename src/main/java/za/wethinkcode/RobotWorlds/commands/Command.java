@@ -66,8 +66,12 @@ public abstract class Command {
 
             case "state":
                 return new StateCommand();
+                
             case "look":
                 return new LookCommand();
+
+            case "dump":
+                return new DumpCommand();
 
             case "shoot":
                 return new ShootCommand();

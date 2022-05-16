@@ -49,7 +49,13 @@ public class Robot {
         StdDraw.setPenColor(color1, color2, color3);
         String[] args = com.toLowerCase().trim().split(" ");
         Command command = Command.createCommand(com);
-        command.execute(this);
+
+        if (command == null){
+            setStatus("Sorry, I did not understand '" + com + "'.");
+        }
+        else{
+            command.execute(this);
+        }
     }
 
     public void setPosition(Position pos){

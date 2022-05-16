@@ -67,7 +67,7 @@ public abstract class Command {
             case "state":
                 return new StateCommand();
             case "look":
-                System.out.println("look");
+                return new LookCommand();
 
             case "shoot":
                 return new ShootCommand();
@@ -77,6 +77,9 @@ public abstract class Command {
 
             case "repair":
                 return new RepairCommand();
+
+            case "quit":
+                return new QuitCommand();
 
             default:
                 System.out.println("Unsupported command: " + instruction);

@@ -39,6 +39,7 @@ public class Robot {
         this.name = name;
 
 
+
         //StdDraw.setPenColor(random.nextInt(255), random.nextInt(255), random.nextInt(255));
 
     }
@@ -197,12 +198,13 @@ public class Robot {
     }
 
     public static void drawBorder(){
-        StdDraw.setPenRadius(0.003);
-        StdDraw.setPenColor(StdDraw.MAGENTA);
-        StdDraw.line(0.2, 0.2, 0.8, 0.2);
-        StdDraw.line(0.2, 0.8, 0.8, 0.8);
-        StdDraw.line(0.2, 0.2, 0.2, 0.8);
-        StdDraw.line(0.8, 0.2, 0.8, 0.8);
+//        StdDraw.setPenRadius(0.003);
+//        StdDraw.setPenColor(StdDraw.MAGENTA);
+//        StdDraw.line(0.2, 0.2, 0.8, 0.2);
+//        StdDraw.line(0.2, 0.8, 0.8, 0.8);
+//        StdDraw.line(0.2, 0.2, 0.2, 0.8);
+//        StdDraw.line(0.8, 0.2, 0.8, 0.8);
+        new TurtleRobot();
     }
 
     public static void drawObstacles(){
@@ -212,10 +214,11 @@ public class Robot {
             SquareObstacle sqrObs = obstacles.get(i);
             int x = sqrObs.getBottomLeftX();
             int y = sqrObs.getBottomLeftY();
-            StdDraw.line(0.5 + x/512.0, 0.5 + y/512.0, 0.5 + (x + 4)/512.0, 0.5 + y/512.0);
-            StdDraw.line(0.5 + x/512.0, 0.5 + y/512.0, 0.5 + x/512.0, 0.5 + (y + 4)/512.0);
-            StdDraw.line(0.5 + x/512.0, 0.5 + (y + 4)/512.0, 0.5 + (x + 4)/512.0, 0.5 + (y + 4)/512.0);
-            StdDraw.line(0.5 + (x + 4)/512.0, 0.5 + y/512.0, 0.5 + (x + 4)/512.0, 0.5 + (y + 4)/512.0);
+//            StdDraw.line(0.5 + x/512.0, 0.5 + y/512.0, 0.5 + (x + 4)/512.0, 0.5 + y/512.0);
+//            StdDraw.line(0.5 + x/512.0, 0.5 + y/512.0, 0.5 + x/512.0, 0.5 + (y + 4)/512.0);
+//            StdDraw.line(0.5 + x/512.0, 0.5 + (y + 4)/512.0, 0.5 + (x + 4)/512.0, 0.5 + (y + 4)/512.0);
+//            StdDraw.line(0.5 + (x + 4)/512.0, 0.5 + y/512.0, 0.5 + (x + 4)/512.0, 0.5 + (y + 4)/512.0);
+            StdDraw.filledSquare(x +2.5, y + 2.5, 2.5);
 
         }
 

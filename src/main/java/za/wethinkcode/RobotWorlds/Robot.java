@@ -1,5 +1,6 @@
 package za.wethinkcode.RobotWorlds;
 import org.json.JSONArray;
+import org.json.JSONObject;
 import org.turtle.*;
 import za.wethinkcode.RobotWorlds.commands.*;
 
@@ -254,4 +255,39 @@ public class Robot {
     public void setBullets(int bullets){
         this.bullets = bullets;
     }
+
+    public JSONArray getPositionState(){
+        JSONArray positionState = new JSONArray();
+        positionState.put(getPosition().getX());
+        positionState.put(getPosition().getY());
+        return positionState;
+    }
+
+    public String getDirectionString(){
+        switch(getCurrentDirection()){
+            case UP:
+                return "UP";
+            case DOWN:
+                return "DOWN";
+            case RIGHT:
+                return "RIGHT";
+            case LEFT:
+                return "LEFT";
+        }
+        return  null;
+    }
+
+    public JSONObject getReply(){
+        JSONObject reply = new JSONObject(getStatus());
+        JSONObject state = new JSONObject();
+
+        state.put("position", getPositionState());
+        state.put("direction", getDirectionString());
+        state.put("shields", getHealth());
+        state.put("shots", getBullets());
+
+        reply.put("state", state);
+        return null;
+    }
 }
+

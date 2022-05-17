@@ -16,11 +16,11 @@ public class ForwardCommand extends Command {
          */
 
         int nrSteps = Integer.parseInt(getArgument());
-        if (target.updatePosition(nrSteps) == "UpdateResponse.SUCCESS"){
+        if (target.updatePosition(nrSteps) == Robot.Conditions.SUCCESS){
             String positionText = "[" + target.getPosition().getX() + "," + target.getPosition().getY() + "]";
             target.setStatus(target.getName() + " > " + positionText + " Moved forward by "+nrSteps+" steps.");
         }
-        else if (target.updatePosition(nrSteps) == "UpdateResponse.FAILED_OBSTRUCTED"){
+        else if (target.updatePosition(nrSteps) == Robot.Conditions.FAILED_OBSTACLE_DETECTED){
             String positionText = "[" + target.getPosition().getX() + "," + target.getPosition().getY() + "]";
             target.setStatus(target.getName() + " > " + positionText + " Sorry, I have encountered an obstacle.");
         }

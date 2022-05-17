@@ -2,6 +2,7 @@ package za.wethinkcode.RobotWorlds;
 
 import java.net.*;
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 import org.turtle.*;
@@ -26,8 +27,19 @@ public class SimpleClient {
             input = getInput(name + " > Please Enter your Message.");
 
             String[] text = input.toLowerCase().trim().split(" ", 2);
-            obj.put("command", text[0]);
-            obj.put("arguments", text[1].split(" "));
+
+            if (text.length == 1) {
+                obj.put("command", text[0]);
+                obj.put("arguments",new ArrayList<>());
+
+            } else {
+
+                obj.put("command", text[0]);
+                obj.put("arguments", text[1].split(" "));
+
+
+            }
+
             System.out.println(obj);
             out.println(obj);
             out.flush();

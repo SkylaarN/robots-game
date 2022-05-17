@@ -51,6 +51,8 @@ public abstract class Command {
          */
 
 
+        System.out.println();
+
         switch (instruction){
 
             case "forward":

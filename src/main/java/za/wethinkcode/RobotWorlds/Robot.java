@@ -27,6 +27,11 @@ public class Robot {
         UP, RIGHT, DOWN, LEFT
     }
 
+    public enum Conditions {
+
+        SUCCESS, FAILED_OBSTACLE_DETECTED, FAILED_OUTSIDE_ROBOT_WORLD
+    }
+
 
     public Robot(String name){
         this.position = new Position(0, 0);
@@ -127,7 +132,7 @@ public class Robot {
     }
 
     //UpdateResponse
-    public String updatePosition(int nrSteps) {
+    public Conditions updatePosition(int nrSteps) {
         /**Function gets current direction to check if the new Position is in
          * an unblocked position and if it is, move to the new position and draw
          * a line to the next position with the robotTurtle
@@ -157,10 +162,10 @@ public class Robot {
         if (isNewPositionAllowed(newPosition)){
 
             if (Obstacles.blocksPosition(newPosition)){
-                return "UpdateResponse.FAILED_OBSTRUCTED";
+                return Conditions.FAILED_OBSTACLE_DETECTED;
             }
             else if (Obstacles.blocksPath(this.position, newPosition)){
-                return "UpdateResponse.FAILED_OBSTRUCTED";
+                return Conditions.FAILED_OBSTACLE_DETECTED;
             }
             else{
 
@@ -171,9 +176,9 @@ public class Robot {
 
                 }
                 this.position = newPosition;
-                return "UpdateResponse.SUCCESS";
+                return Conditions.SUCCESS;
             }
-        return "UpdateResponse.FAILED_BORDER";
+        return Conditions.FAILED_OUTSIDE_ROBOT_WORLD;
     }
 
     public boolean isNewPositionAllowed(Position position) {

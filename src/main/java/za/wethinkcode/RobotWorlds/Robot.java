@@ -3,11 +3,11 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.turtle.*;
 import za.wethinkcode.RobotWorlds.commands.*;
+import za.wethinkcode.RobotWorlds.configuration.Configuration;
 
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.concurrent.TimeUnit;
 
 public class Robot {
 
@@ -16,13 +16,13 @@ public class Robot {
     public String name;
     private String status;
     private String statusType = "NORMAL";
+    private Configuration configuration = new Configuration();
 
     public static Random random = new Random();
     int color1 = random.nextInt(255);
     int color2 = random.nextInt(255);
     int color3 = random.nextInt(255);
 
-    private int health = 5;
     private int bullets = 8;
 
     public enum Direction{
@@ -227,19 +227,22 @@ public class Robot {
     }
 
     public void damage(){
-        this.health = this.health - 1;
+
+        this.configuration.reduceHealth();
 //        if(this.health == 0){
 //            System.exit(0);
 //        }
     }
 
-    public int getHealth(){
-        return this.health;
+    public int getHealth() {
+
+        return this.configuration.getHealth();
     }
 
     public void setHealth(int health){
 
-        this.health = health;
+
+        this.configuration.setHealth(health);
 //        if(health == 0){
 //            System.exit(0);
 //        }

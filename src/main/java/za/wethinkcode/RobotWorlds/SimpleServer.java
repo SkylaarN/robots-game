@@ -41,8 +41,9 @@ public class SimpleServer implements Runnable {
                             " " + obj.get("arguments"));
 
                     //System.out.println("Message \"" + messageFromClient + "\" from " + clientMachine);
-                    out.println(doRobot(obj.getString("name"), obj.getString("command"), obj.getJSONArray("arguments")));
+                    String reply = doRobot(obj.getString("name"), obj.getString("command"), obj.getJSONArray("arguments"));
                     //out.println("Thanks for this message: " + messageFromClient);
+                    out.println(reply);
                 }
 
             }
@@ -63,7 +64,7 @@ public class SimpleServer implements Runnable {
     String doRobot(String name, String instructions, JSONArray arguments){
         Robot userRobot = Players.getRobot(name);
         userRobot.handleCommand(instructions, arguments);
-        return userRobot.getStatus();
+        return userRobot.getReply().toString();
     }
 
 

@@ -12,6 +12,7 @@ public class SimpleClient {
 
 
     public static void main(String args[]) {
+        TurtleRobot tRobot = new TurtleRobot();
         String input = "";
         String name = getInput("Please Enter your robots name.");
         while(!input.equalsIgnoreCase("quit")){
@@ -46,6 +47,9 @@ public class SimpleClient {
 
             String messageFromServer = in.readLine();
             System.out.println(messageFromServer);
+            tRobot.handleReply(new JSONObject(messageFromServer));
+
+
 
 
         } catch (IOException e) {

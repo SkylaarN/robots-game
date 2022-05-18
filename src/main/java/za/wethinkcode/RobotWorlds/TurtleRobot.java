@@ -35,7 +35,11 @@ public class TurtleRobot {
     }
 
     public void handleReply(JSONObject command){
-        handleStatus(command.getJSONObject("state"));
+        //if(command.getString("result") == "OK"){
+            handleStatus(command.getJSONObject("state"));
+            System.out.println(command.getJSONObject("data").getString("message"));
+        //}
+
 
 
 

@@ -19,9 +19,9 @@ public class Robot {
     private Configuration configuration = new Configuration();
 
     public static Random random = new Random();
-    int color1 = random.nextInt(255);
-    int color2 = random.nextInt(255);
-    int color3 = random.nextInt(255);
+//    int color1 = random.nextInt(255);
+//    int color2 = random.nextInt(255);
+//    int color3 = random.nextInt(255);
 
     private int bullets = 8;
 
@@ -55,7 +55,7 @@ public class Robot {
     }
 
     void handleCommand(String com, JSONArray args){
-        StdDraw.setPenColor(color1, color2, color3);
+        //StdDraw.setPenColor(color1, color2, color3);
         Command command = Command.createCommand(com, args);
 
         if (command == null){
@@ -172,10 +172,10 @@ public class Robot {
             }
             else{
 
-                StdDraw.line(0.5 + position.getX()/512.0,
-                0.5 + position.getY()/512.0,
-                0.5 + newPosition.getX()/512.0,
-                0.5 + newPosition.getY()/512.0);
+//                StdDraw.line(0.5 + position.getX()/512.0,
+//                0.5 + position.getY()/512.0,
+//                0.5 + newPosition.getX()/512.0,
+//                0.5 + newPosition.getY()/512.0);
 
                 }
                 this.position = newPosition;
@@ -206,12 +206,12 @@ public class Robot {
 //        StdDraw.line(0.2, 0.8, 0.8, 0.8);
 //        StdDraw.line(0.2, 0.2, 0.2, 0.8);
 //        StdDraw.line(0.8, 0.2, 0.8, 0.8);
-        new TurtleRobot();
+        //new TurtleRobot();
     }
 
     public static void drawObstacles(){
         ArrayList<SquareObstacle> obstacles = Obstacles.getObstacles();
-        StdDraw.setPenColor(Color.RED);
+        //StdDraw.setPenColor(Color.RED);
         for (int i = 0; i < obstacles.size(); i++) {
             SquareObstacle sqrObs = obstacles.get(i);
             int x = sqrObs.getBottomLeftX();
@@ -220,7 +220,7 @@ public class Robot {
 //            StdDraw.line(0.5 + x/512.0, 0.5 + y/512.0, 0.5 + x/512.0, 0.5 + (y + 4)/512.0);
 //            StdDraw.line(0.5 + x/512.0, 0.5 + (y + 4)/512.0, 0.5 + (x + 4)/512.0, 0.5 + (y + 4)/512.0);
 //            StdDraw.line(0.5 + (x + 4)/512.0, 0.5 + y/512.0, 0.5 + (x + 4)/512.0, 0.5 + (y + 4)/512.0);
-            StdDraw.filledSquare(x +2.5, y + 2.5, 2.5);
+            //StdDraw.filledSquare(x +2.5, y + 2.5, 2.5);
 
         }
 
@@ -289,9 +289,11 @@ public class Robot {
         state.put("direction", getDirectionString());
         state.put("shields", getHealth());
         state.put("shots", getBullets());
+        state.put("status", this.statusType);
 
         reply.put("state", state);
-        return null;
+        System.out.println(reply.toString());
+        return reply;
     }
 
     public void setStatusType(String statusType){

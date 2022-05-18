@@ -1,5 +1,6 @@
 package za.wethinkcode.RobotWorlds.commands;
 
+import org.json.JSONObject;
 import org.turtle.*;
 import za.wethinkcode.RobotWorlds.Obstacles;
 import za.wethinkcode.RobotWorlds.Players;
@@ -9,18 +10,31 @@ import za.wethinkcode.RobotWorlds.Robot;
 import java.util.ArrayList;
 
 public class ShootCommand extends Command{
+    private JSONObject reply = new JSONObject();
+    private JSONObject data = new JSONObject();
+
     public boolean execute(Robot target){
+
+        reply.put("result", "OK");
         if(target.getBullets() > 0){
             target.fire();
             if(hitPlayer(target.getPosition(), fireBullet(30, target), target)){
-                target.setStatus("Player was shot");
+                reply.put("data", data);
+                target.setStatus(reply.toString());
+                //target.setStatus("Player was shot");
             }
             else{
-                target.setStatus("Missed");
+                data.put("message", "Missed");
+                reply.put("data", data);
+                target.setStatus(reply.toString());
+                //target.setStatus("Missed");
             }
         }
         else{
-            target.setStatus("No Bullets");
+            data.put("message", "No Bullets");
+            reply.put("data", data);
+            target.setStatus(reply.toString());
+            //target.setStatus("No Bullets");
         }
         return true;
     }
@@ -44,13 +58,13 @@ public class ShootCommand extends Command{
 
         Position newPosition = new Position(newX, newY);
 
-        if(Obstacles.blocksPosition(newPosition) ||
-                Obstacles.blocksPath(target.getPosition(), newPosition)){
-            System.out.println("Bullet blocked");
-        }
-        else{
-            System.out.println("Bullet not blocked");
-        }
+//        if(Obstacles.blocksPosition(newPosition) ||
+//                Obstacles.blocksPath(target.getPosition(), newPosition)){
+//            System.out.println("Bullet blocked");
+//        }
+//        else{
+//            System.out.println("Bullet not blocked");
+//        }
 
         return newPosition;
     }
@@ -62,20 +76,25 @@ public class ShootCommand extends Command{
 
             int x = playerRobots.get(i).getPosition().getX();
             int y = playerRobots.get(i).getPosition().getY();
-            System.out.println("Checking Enemy:  - " + playerRobots.get(i).getName());
-            System.out.println("Target X: - " + target.getPosition().getX());
-            System.out.println("Target Y: - " + target.getPosition().getY());
-            System.out.println("Enemy X: - " + playerRobots.get(i).getPosition().getX());
-            System.out.println("Enemy Y: - " + playerRobots.get(i).getPosition().getY());
+
+//            System.out.println("Checking Enemy:  - " + playerRobots.get(i).getName());
+//            System.out.println("Target X: - " + target.getPosition().getX());
+//            System.out.println("Target Y: - " + target.getPosition().getY());
+//            System.out.println("Enemy X: - " + playerRobots.get(i).getPosition().getX());
+//            System.out.println("Enemy Y: - " + playerRobots.get(i).getPosition().getY());
 //line from robot to target is not straight
 
             if(target != playerRobots.get(i)){
                 if(onPlayer(b, x, y) || throughPlayer(a, b, x, y)){
                     Position contact = pointContact(target.getPosition(), playerRobots.get(i).getPosition());
-                    System.out.println("Contact X: - " + contact.getX());
-                    System.out.println("Contact Y: - " + contact.getY());
+//                    System.out.println("Contact X: - " + contact.getX());
+//                    System.out.println("Contact Y: - " + contact.getY());
                     if(!Obstacles.blocksPosition(contact) && !Obstacles.blocksPath(a, contact)){
-                        System.out.println(playerRobots.get(i).getName() + " - 1 damage.");
+//                        System.out.println(playerRobots.get(i).getName() + " - 1 damage.");
+                        data.put("message", playerRobots.get(i).getName() + " was Hit");
+                        data.put("robot", playerRobots.get(i).getName());
+                        data.put("distance", getDistance(target.getPosition(), contact));
+                        //data.put("state", playerRobots.get(i).getStatusType());
                         playerRobots.get(i).damage();
                         return true;
                     }
@@ -114,13 +133,13 @@ public class ShootCommand extends Command{
     }
 
     public boolean passPlayer(int startPath, int endPath, int startObs, int endObs){
-        System.out.println("---PassPlayer---");
-        System.out.println(startPath <= startObs && startObs <= endPath);
-        System.out.println(startPath <= endObs && endObs <= endPath);
-        System.out.println(startObs <= startPath && startPath <= endObs);
-        System.out.println(startObs <= endPath && endPath <= endObs);
-        System.out.println(endPath <= endObs && startObs <= startPath);
-        System.out.println("----------------");
+//        System.out.println("---PassPlayer---");
+//        System.out.println(startPath <= startObs && startObs <= endPath);
+//        System.out.println(startPath <= endObs && endObs <= endPath);
+//        System.out.println(startObs <= startPath && startPath <= endObs);
+//        System.out.println(startObs <= endPath && endPath <= endObs);
+//        System.out.println(endPath <= endObs && startObs <= startPath);
+//        System.out.println("----------------");
         return (startPath <= startObs && startObs <= endPath ||
                 startPath <= endObs && endObs <= endPath ||
                 startObs <= startPath && startPath <= endObs ||
@@ -137,6 +156,22 @@ public class ShootCommand extends Command{
             return new Position(robot.getX(), enemy.getY());
         }
         return null;
+    }
+
+    public int getDistance(Position player, Position contact){
+        if(player.getY() < contact.getY()){
+            return contact.getY() - player.getY();
+        }
+        else if(player.getY() > contact.getY()){
+            return player.getY() - contact.getY();
+        }
+        else if(player.getX() < contact.getX()){
+            return contact.getX() - player.getX();
+        }
+        else if(player.getX() > contact.getX()){
+            return player.getX() - contact.getX();
+        }
+        return 0;
     }
 
 

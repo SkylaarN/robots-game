@@ -11,7 +11,7 @@ import org.json.JSONObject;
 public class SimpleClient {
 
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         TurtleRobot tRobot = new TurtleRobot();
         String input = "";
         String name = getInput("Please Enter your robots name.");

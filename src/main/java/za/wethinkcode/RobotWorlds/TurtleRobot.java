@@ -5,6 +5,7 @@ import org.json.JSONObject;
 import org.turtle.*;
 import za.wethinkcode.RobotWorlds.configuration.Configuration;
 
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 public class TurtleRobot {
@@ -14,6 +15,9 @@ public class TurtleRobot {
     private int shots;
     private String status;
     private final Configuration configuration = new Configuration();
+    private int angle;
+
+    private int directionIndex = 0;
 
     public TurtleRobot(){
         //code for the turtle and the border
@@ -75,38 +79,38 @@ public class TurtleRobot {
         StdDraw.clear();
         StdDraw.enableDoubleBuffering();
 
-        // the angle needs to be updated 
+        // the angle needs to be updated
         terminator(position.getX(), position.getY(), 90);
 
 
 
     }
 
-    public void newDirection(Robot.Direction direction){
-        //code to make turtle face new direction
-        switch (direction) {
+    public void newDirection() {
 
-            case UP:
-                // set angle to 90
+        switch (this.directionIndex) {
+
+            case 0:
+
+                this.currentDirection = Robot.Direction.UP;
                 break;
 
-            case DOWN:
+            case 1:
 
-                // set angle to 270
+                this.currentDirection = Robot.Direction.RIGHT;
                 break;
 
-            case RIGHT:
+            case 2:
 
-                // set angle to 0
+                this.currentDirection = Robot.Direction.DOWN;
                 break;
 
-            case LEFT:
+            case 3:
 
-                // set angle to 180
+                this.currentDirection = Robot.Direction.LEFT;
                 break;
-
-
         }
+
     }
 
     public void drawLook(JSONArray objects){
@@ -115,7 +119,7 @@ public class TurtleRobot {
 
 
     public void checkStatus(){
-        if(this.status == "RELOAD"){
+        if(Objects.equals(this.status, "RELOAD")){
             System.out.println("Reloading...");
             try {
                 TimeUnit.SECONDS.sleep(5);
@@ -125,7 +129,7 @@ public class TurtleRobot {
             System.out.println("Reloaded");
             this.status = "NORMAL";
         }
-        else if(this.status == "REPAIR"){
+        else if(Objects.equals(this.status, "REPAIR")){
             System.out.println("Repairing...");
             try {
                 TimeUnit.SECONDS.sleep(5);
@@ -135,7 +139,7 @@ public class TurtleRobot {
             System.out.println("Repaired");
             this.status = "NORMAL";
         }
-        else if (this.status == "DEAD"){
+        else if (Objects.equals(this.status, "DEAD")){
             System.out.println("Sorry, You are already Dead");
         }
     }
@@ -154,6 +158,26 @@ public class TurtleRobot {
         robot.forward(5);
         robot.left(120);
         robot.forward(5);
+    }
+
+    public void rightTurn() {
+
+        this.directionIndex += 1;
+
+        if (directionIndex > 3) {
+
+            this.directionIndex = 0;
+        }
+    }
+
+    public void leftTurn() {
+
+        this.directionIndex -= 1;
+
+        if (this.directionIndex < 0) {
+
+            this.directionIndex = 3;
+        }
     }
 
 

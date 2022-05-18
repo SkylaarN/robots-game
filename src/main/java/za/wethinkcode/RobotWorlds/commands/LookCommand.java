@@ -4,10 +4,12 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.turtle.StdDraw;
 import za.wethinkcode.RobotWorlds.Obstacles;
+import za.wethinkcode.RobotWorlds.Players;
 import za.wethinkcode.RobotWorlds.Robot;
 import za.wethinkcode.RobotWorlds.SquareObstacle;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 public class LookCommand extends Command{
 
@@ -21,6 +23,9 @@ public class LookCommand extends Command{
 
     public boolean execute(Robot target){
         StringBuilder output = new StringBuilder();
+        //Array contains the robots
+        ArrayList<Robot> robots = Players.getPlayers();
+
         reply.put("result", "OK");
 
 

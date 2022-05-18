@@ -5,7 +5,6 @@ import org.json.JSONObject;
 import org.turtle.*;
 import za.wethinkcode.RobotWorlds.configuration.Configuration;
 
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class TurtleRobot {
@@ -18,18 +17,8 @@ public class TurtleRobot {
 
     public TurtleRobot(){
         //code for the turtle and the border
-        StdDraw.setScale(configuration.getWorldSize().getX(), configuration.getWorldSize().getY());
-        StdDraw.setPenColor(StdDraw.BLACK);
-        StdDraw.rectangle(0,0,256,256);
+        terminator(0,0,90);
 
-        Turtle robot = new Turtle(0, 0, 90);
-
-        robot.left(150);
-        robot.forward(5);
-        robot.left(120);
-        robot.forward(5);
-        robot.left(120);
-        robot.forward(5);
 
 
     }
@@ -83,6 +72,13 @@ public class TurtleRobot {
 
     public void newPosition(Position position){
         //code to move turtle to new position
+        StdDraw.clear();
+        StdDraw.enableDoubleBuffering();
+
+        // the angle needs to be updated 
+        terminator(position.getX(), position.getY(), 90);
+
+
 
     }
 
@@ -117,34 +113,6 @@ public class TurtleRobot {
         //code to draw the obstacles and enemy players
     }
 
-    public static void robot(int x, int y, int angle, List<SquareObstacle> obstacles) {
-
-        StdDraw.clear();
-        StdDraw.enableDoubleBuffering();
-
-        StdDraw.setScale(-300, 300);
-        StdDraw.setPenColor(StdDraw.BLACK);
-        StdDraw.rectangle(0,0,256,256);
-
-        // obstacles
-
-        for (SquareObstacle square : obstacles) {
-
-            StdDraw.filledSquare( square.getBottomLeftX()+2.5, square.getBottomLeftY() + 2.5, 2.5);
-        }
-
-        Turtle robot = new Turtle(x, y, angle);
-        
-
-        robot.left(150);
-        robot.forward(5);
-        robot.left(120);
-        robot.forward(5);
-        robot.left(120);
-        robot.forward(5);
-
-
-    }
 
     public void checkStatus(){
         if(this.status == "RELOAD"){
@@ -170,6 +138,22 @@ public class TurtleRobot {
         else if (this.status == "DEAD"){
             System.out.println("Sorry, You are already Dead");
         }
+    }
+
+    public void terminator(int x, int y, int a) {
+
+        StdDraw.setScale(configuration.getWorldSize().getX(), configuration.getWorldSize().getY());
+        StdDraw.setPenColor(StdDraw.BLACK);
+        StdDraw.rectangle(0,0,256,256);
+
+        Turtle robot = new Turtle(x, y, a);
+
+        robot.left(150);
+        robot.forward(5);
+        robot.left(120);
+        robot.forward(5);
+        robot.left(120);
+        robot.forward(5);
     }
 
 

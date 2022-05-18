@@ -9,6 +9,7 @@ import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 public class TurtleRobot {
+
     private Position currentPosition;
     private Robot.Direction currentDirection;
     private int shields;
@@ -27,11 +28,18 @@ public class TurtleRobot {
 
     }
 
-    public void handleReply(JSONObject command){
-        //if(command.getString("result") == "OK"){
+    public void handleReply(JSONObject command, JSONObject request){
+        if(command.getString("result") == "OK"){
             handleStatus(command.getJSONObject("state"));
+            if(request.getString("command") == "forward" || request.getString("command") == "back"){
+                if(command.getJSONObject("data").getString("message") == "Done"){
+                    System.out.println(request.getString("robot") + " > " + "[" + currentPosition.getX() +
+                            " , " + currentPosition.getY() + "] Moved " + request.getString("command") +
+                            " by " + request.getJSONArray("arguments").getInt(0) + " steps.");
+                }
+            }
             System.out.println(command.getJSONObject("data").getString("message"));
-        //}
+        }
 
 
 

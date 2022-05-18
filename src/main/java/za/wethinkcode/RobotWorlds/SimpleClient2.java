@@ -47,7 +47,7 @@ public class SimpleClient2 {
 
                 String messageFromServer = in.readLine();
                 System.out.println(messageFromServer);
-                tRobot.handleReply(new JSONObject(messageFromServer));
+                tRobot.handleReply(new JSONObject(messageFromServer), new JSONObject(obj));
 
 
 

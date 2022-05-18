@@ -1,10 +1,13 @@
 package za.wethinkcode.RobotWorlds.commands;
 
+import org.json.JSONObject;
 import za.wethinkcode.RobotWorlds.Robot;
 
 public class StateCommand extends Command{
     public boolean execute(Robot target){
-        target.setStatus("Shield: " + target.getHealth() + "  Bullets: " + target.getBullets());
+        JSONObject reply = new JSONObject();
+        reply.put("result", "OK");
+        target.setStatus(reply.toString());
         return true;
     }
 

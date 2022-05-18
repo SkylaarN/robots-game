@@ -3,6 +3,7 @@ package za.wethinkcode.RobotWorlds;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.turtle.*;
+import za.wethinkcode.RobotWorlds.configuration.Configuration;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -13,10 +14,11 @@ public class TurtleRobot {
     private int shields;
     private int shots;
     private String status;
+    private final Configuration configuration = new Configuration();
 
     public TurtleRobot(){
         //code for the turtle and the border
-        StdDraw.setScale(-300, 300);
+        StdDraw.setScale(configuration.getWorldSize().getX(), configuration.getWorldSize().getY());
         StdDraw.setPenColor(StdDraw.BLACK);
         StdDraw.rectangle(0,0,256,256);
 

@@ -115,6 +115,20 @@ public class TurtleRobot {
 
     public void drawLook(JSONArray objects){
         //code to draw the obstacles and enemy players
+        for (int i = 0; i < objects.length(); i++) {
+            int x = objects.getJSONObject(i).getJSONArray("position").getInt(0);
+            int y = objects.getJSONObject(i).getJSONArray("position").getInt(1);
+            if(objects.getJSONObject(i).getString("type") == "OBSTACLE"){
+                //set line colour to black
+                //Turtle box drawing code
+            }
+            else if(objects.getJSONObject(i).getString("type") == "ROBOT"){
+                //set line colour to red
+                //Turtle box drawing code
+            }
+
+
+        }
     }
 
 

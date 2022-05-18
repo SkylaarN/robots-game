@@ -2,13 +2,17 @@ package za.wethinkcode.RobotWorlds;
 
 import java.net.*;
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
+
+import org.json.JSONObject;
 import org.turtle.*;
 public class SimpleClient2 {
 
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
+        TurtleRobot tRobot = new TurtleRobot();
         String input = "";
         String name = getInput("Please Enter your robots name.");
         while(!input.equalsIgnoreCase("quit")){
@@ -18,12 +22,34 @@ public class SimpleClient2 {
                     BufferedReader in = new BufferedReader(new InputStreamReader(
                             socket.getInputStream()));
             ) {
+                JSONObject obj = new JSONObject();
+                obj.put("name", name);
+
                 input = getInput(name + " > Please Enter your Message.");
-                out.println(name + " " + input);
+
+                String[] text = input.toLowerCase().trim().split(" ", 2);
+
+                if (text.length == 1) {
+                    obj.put("command", text[0]);
+                    obj.put("arguments",new ArrayList<>());
+
+                } else {
+
+                    obj.put("command", text[0]);
+                    obj.put("arguments", text[1].split(" "));
+
+
+                }
+
+                System.out.println(obj);
+                out.println(obj);
                 out.flush();
 
                 String messageFromServer = in.readLine();
                 System.out.println(messageFromServer);
+                tRobot.handleReply(new JSONObject(messageFromServer));
+
+
 
 
             } catch (IOException e) {

@@ -5,6 +5,7 @@ import org.json.JSONObject;
 import org.turtle.*;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class TurtleRobot {
     private Position currentPosition;
@@ -137,6 +138,32 @@ public class TurtleRobot {
         robot.forward(5);
 
 
+    }
+
+    public void checkStatus(){
+        if(this.status == "RELOAD"){
+            System.out.println("Reloading...");
+            try {
+                TimeUnit.SECONDS.sleep(5);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println("Reloaded");
+            this.status = "NORMAL";
+        }
+        else if(this.status == "REPAIR"){
+            System.out.println("Repairing...");
+            try {
+                TimeUnit.SECONDS.sleep(5);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println("Repaired");
+            this.status = "NORMAL";
+        }
+        else if (this.status == "DEAD"){
+            System.out.println("Sorry, You are already Dead");
+        }
     }
 
 

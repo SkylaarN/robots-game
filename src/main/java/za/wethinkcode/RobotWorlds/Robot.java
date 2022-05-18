@@ -15,6 +15,7 @@ public class Robot {
     private Direction currentDirection;
     public String name;
     private String status;
+    private String statusType = "NORMAL";
 
     public static Random random = new Random();
     int color1 = random.nextInt(255);
@@ -288,6 +289,10 @@ public class Robot {
 
         reply.put("state", state);
         return null;
+    }
+
+    public void setStatusType(String statusType){
+        this.statusType = statusType;
     }
 }
 

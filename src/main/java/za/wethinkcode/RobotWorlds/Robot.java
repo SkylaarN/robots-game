@@ -18,10 +18,6 @@ public class Robot {
     private String statusType = "NORMAL";
     private Configuration configuration = new Configuration();
 
-    public static Random random = new Random();
-//    int color1 = random.nextInt(255);
-//    int color2 = random.nextInt(255);
-//    int color3 = random.nextInt(255);
 
     private int bullets = 8;
 
@@ -172,10 +168,6 @@ public class Robot {
             }
             else{
 
-//                StdDraw.line(0.5 + position.getX()/512.0,
-//                0.5 + position.getY()/512.0,
-//                0.5 + newPosition.getX()/512.0,
-//                0.5 + newPosition.getY()/512.0);
 
                 }
                 this.position = newPosition;
@@ -218,9 +210,6 @@ public class Robot {
 
 
         this.configuration.setHealth(health);
-//        if(health == 0){
-//            System.exit(0);
-//        }
     }
 
     public void fire(){
@@ -267,7 +256,6 @@ public class Robot {
         state.put("status", this.statusType);
 
         reply.put("state", state);
-        System.out.println(reply.toString());
         return reply;
     }
 

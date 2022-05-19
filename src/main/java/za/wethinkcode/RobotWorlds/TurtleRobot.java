@@ -72,6 +72,11 @@ public class TurtleRobot {
 
             }
             else if (request.getString("command").equalsIgnoreCase("look")) {
+                if(command.getJSONObject("data").getJSONArray("objects").getJSONObject(i).getString("type"). equalsIgnoreCase("ROBOT")) {
+                        System.out.println(command.getJSONObject("data").getJSONArray("objects").getJSONObject(i).getString("type")
+                                + "   " + command.getJSONObject("data").getJSONArray("objects").getJSONObject(i).getString("direction")
+                                + "   " + command.getJSONObject("data").getJSONArray("objects").getJSONObject(i).getJSONArray("position"));
+                    }
                 drawLook(command.getJSONObject("data").getJSONArray("objects"));
             }
             //System.out.println(command.getJSONObject("data").getString("message"));

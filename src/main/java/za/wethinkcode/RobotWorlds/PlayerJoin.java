@@ -10,7 +10,7 @@ import org.json.JSONArray;
 import org.turtle.*;
 import org.json.JSONObject;
 
-public class SimpleClient {
+public class PlayerJoin {
 
 
     public static void main(String[] args) {

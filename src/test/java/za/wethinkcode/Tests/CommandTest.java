@@ -81,4 +81,17 @@ class CommandTest{
 
     }
 
+    @Test
+    void TestDump() {
+        Robot robot = new Robot("Killua");
+        DumpCommand dump = new DumpCommand();
+        new ForwardCommand("5").execute(robot);
+        new ForwardCommand("10").execute(robot);
+        dump.execute(robot);
+
+        assertEquals("{\"result\":\"OK\",\"data\":{\"message\":\"Your robot : " +
+                "Killua - At position (0,15), ~All robots: []\"}}", robot.getStatus());
+
+    }
+
 }

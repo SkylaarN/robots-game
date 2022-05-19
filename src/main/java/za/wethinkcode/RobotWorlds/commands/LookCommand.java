@@ -127,6 +127,49 @@ public class LookCommand extends Command{
         }
     }
 
+    //  Checks if there's an edge nearby
+    public ArrayList<String> getEdge(Robot target){
+        ArrayList<String> edgePosition = new ArrayList<>();
+        int x = target.getPosition().getX();
+        int y = target.getPosition().getY();
+        JSONArray positionState = new JSONArray();
+
+        if(x > 75 ){
+            edgePosition.add("EAST");
+            positionState.put(150);
+            positionState.put(y);
+        }
+        if(x < -75){
+            edgePosition.add("WEST");
+            positionState.put(-150);
+            positionState.put(y);
+        }
+        if(y > 75){
+            edgePosition.add("NORTH");
+            positionState.put(x);
+            positionState.put(150);
+        }
+        if(y < -75){
+            edgePosition.add("SOUTH");
+            positionState.put(x);
+            positionState.put(-150);
+        }
+
+        JSONObject obj = new JSONObject();
+
+        for (String edgePos: edgePosition){
+            obj.put("direction", edgePos);
+        }
+        obj.put("type", "ROBOT");
+
+        for(Object positionS: positionState){
+            obj.put("position", positionS);
+        }
+
+        objects.put(obj);
+        return edgePosition;
+    }
+
     public LookCommand(){
         super("look");
     }

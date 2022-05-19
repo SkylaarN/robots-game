@@ -9,7 +9,7 @@ import java.util.Scanner;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.turtle.*;
-public class SimpleClient2 {
+public class PlayerJoin2 {
 
 
     public static void main(String[] args) {

@@ -10,38 +10,38 @@ class CommandTest{
 
     @Test
     void testForward() {
-
         Robot robot = new Robot("Madara");
-        new ForwardCommand("10").execute(robot);
+        String exp = "{\"result\":\"OK\",\"data\":{\"message\":\"Done\"}}";
 
-        assertTrue(robot.getStatus().contains("Moved forward by 10 steps."));
+        assertTrue(new ForwardCommand("5").execute(robot));
+        assertEquals(robot.getStatus(), exp);
     }
 
     @Test
     void testBackward() {
+        Robot robot = new Robot("Madara");
+        String exp = "{\"result\":\"OK\",\"data\":{\"message\":\"Done\"}}";
 
-        Robot robot = new Robot("Terminator");
-        new BackCommand("5").execute(robot);
-
-        assertTrue(robot.getStatus().contains("Moved back by 5 steps."));
+        assertTrue(new BackCommand("5").execute(robot));
+        assertEquals(robot.getStatus(), exp);
     }
 
     @Test
     void testRight() {
-
         Robot robot = new Robot("Rambo");
-        new RightCommand().execute(robot);
+        String exp = "{\"result\":\"OK\",\"data\":{\"message\":\"Done\"}}";
 
-        assertTrue(robot.getStatus().contains("Turned right"));
+        assertTrue(new RightCommand().execute(robot));
+        assertEquals(robot.getStatus(), exp);
     }
 
     @Test
     void TestLeft() {
+        Robot robot = new Robot("Rambo");
+        String exp = "{\"result\":\"OK\",\"data\":{\"message\":\"Done\"}}";
 
-        Robot robot = new Robot("Madara");
-        new LeftCommand().execute(robot);
-
-        assertTrue(robot.getStatus().contains("Turned left"));
+        assertTrue(new LeftCommand().execute(robot));
+        assertEquals(robot.getStatus(), exp);
     }
 
     @Test
@@ -69,7 +69,6 @@ class CommandTest{
                 "ROBOTS - List all robots~SHOOT - Shoot robot~LOOK - See everything in its line of sight~\"}}";
 
         assertEquals(exp, robot.getStatus());
-
     }
 
     @Test
@@ -81,4 +80,5 @@ class CommandTest{
         assertEquals("Shutting down...", robot.getStatus());
 
     }
+
 }

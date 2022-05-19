@@ -9,27 +9,27 @@ import za.wethinkcode.RobotWorlds.SquareObstacle;
 import java.util.ArrayList;
 
 public class DumpCommand extends Command {
-    private int a;
-    private int b;
 
     public boolean execute(Robot target) {
 
         ArrayList<SquareObstacle> obstacles = Obstacles.getObstacles();
         int x = target.getPosition().getX();
         int y = target.getPosition().getY();
+        String obs = "";
 
         for (int i = 0; i < obstacles.size(); i++) {
             SquareObstacle sqrObs = obstacles.get(i);
-            this.a = sqrObs.getBottomLeftX();
-            this.b = sqrObs.getBottomLeftY();
+            obs = obs + "\n[" + sqrObs.getBottomLeftX() + " , " + sqrObs.getBottomLeftY() + "]";
         }
         JSONObject reply = new JSONObject();
         JSONObject data = new JSONObject();
 
         reply.put("result", "OK");
-        data.put("message", "Your robot : " + target.getName() + " - At position " + "(" + x + "," + y + "), " + "~"
-                + "All robots: "
-                + SimpleServer.listRobots);
+        data.put("message", "Your robot : " + target.getName() + " - At position " + "(" + x + "," + y + "), " + "\n"
+                + "All robots: \n"
+                + SimpleServer.listRobots
+                + "All Obstacles: "
+                + obs);
         reply.put("data", data);
         target.setStatus(reply.toString());
 

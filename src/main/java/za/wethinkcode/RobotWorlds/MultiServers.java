@@ -7,9 +7,7 @@ public class MultiServers {
     public static void main(String[] args) throws ClassNotFoundException, IOException {
         ServerSocket s = new ServerSocket( SimpleServer.PORT);
         System.out.println("Server running & waiting for client connections.");
-        Robot.drawBorder();
         Obstacles.generateObstacles();
-        Robot.drawObstacles();
         while(true) {
             try {
                 Socket socket = s.accept();

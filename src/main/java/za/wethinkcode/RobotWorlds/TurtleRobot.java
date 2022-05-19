@@ -171,8 +171,6 @@ public class TurtleRobot {
             else if(objects.getJSONObject(i).getString("type").equalsIgnoreCase("ROBOT")){
                 //set line colour to red
                 //Turtle box drawing code
-                StdDraw.clear();
-                StdDraw.enableDoubleBuffering();
 
                 StdDraw.setPenColor(StdDraw.RED);
                 terminator(this.currentPosition.getX(),this.currentPosition.getY(),this.angle);

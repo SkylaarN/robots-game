@@ -84,6 +84,9 @@ public abstract class Command {
 
             case "repair":
                 return new RepairCommand();
+                
+            case "robots":
+                return new RobotsCommand();
 
             case "quit":
                 return new QuitCommand();

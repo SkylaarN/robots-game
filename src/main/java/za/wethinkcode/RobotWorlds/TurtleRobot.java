@@ -40,52 +40,50 @@ public class TurtleRobot {
                             " , " + currentPosition.getY() + "] Moved " + request.getString("command") +
                             " by " + request.getJSONArray("arguments").getInt(0) + " steps.");
                 }
+                else if(command.getJSONObject("data").getString("message") == "Obstructed"){
+                    System.out.println(request.getString("robot") + " > " + "[" + currentPosition.getX() +
+                            " , " + currentPosition.getY() + "] Sorry, I have encountered an obstacle.");
+                }
+                else if(command.getJSONObject("data").getString("message") == "Border"){
+                    System.out.println(request.getString("robot") + " > " + "[" + currentPosition.getX() +
+                            " , " + currentPosition.getY() + "] Sorry, I cannot go outside my safe zone.");
+                }
+            }
+            else if(request.getString("command") == "left" || request.getString("command") == "right"){
+                if(command.getJSONObject("data").getString("message") == "Done"){
+                    System.out.println(request.getString("robot") + " > " + "[" + currentPosition.getX() +
+                            " , " + currentPosition.getY() + "] Turned " + request.getString("command"));
+                }
+            }
+            else if(request.getString("command") == "repair" || request.getString("command") == "reload"){
+                checkStatus();
+            }
+            else if(request.getString("command") == "state"){
+                System.out.println("Position : [" + currentPosition.getX() +
+                        " , " + currentPosition.getY() + "] Bullets : " + this.shots + " Shield : " + this.shields);
+            }
+            else if(request.getString("command") == "shoot"){
+                if(command.getJSONObject("data").getString("message") == "Hit"){
+                    System.out.println(request.getString("robot") + " > " + "[" + currentPosition.getX() +
+                            " , " + currentPosition.getY() + "] Bullet Hit " +
+                            command.getJSONObject("data").getString("robot"));
+                }
+                else if(command.getJSONObject("data").getString("message") == "Miss"){
+                    System.out.println(request.getString("robot") + " > " + "[" + currentPosition.getX() +
+                            " , " + currentPosition.getY() + "] Bullet Missed");
+                }
+
             }
             System.out.println(command.getJSONObject("data").getString("message"));
         }
-
-        switch(request.get("command").toString()) {
-
-            case "forward":
-
-                System.out.println("forward by 1...");
-
-                break;
-
-            case "back":
-
-                System.out.println("back by 2.");
-
-//
-                break;
-
-            case "right":
-                System.out.println("right..");
-                rightTurn();
-                newDirection();
-
-                break;
-
-            case "left":
-                System.out.println("left..");
-                leftTurn();
-                newDirection();
-
-                break;
-        }
-
-
-
-
-    }
 
     public void handleStatus(JSONObject state){
         int x = state.getJSONArray("position").getInt(0);
         int y = state.getJSONArray("position").getInt(1);
         this.currentPosition = new Position(x, y);
-
+        newPosition(this.currentPosition);
         this.currentDirection = getDirection(state.getString("direction"));
-
+        newDirection(this.currentDirection);
         this.shields = state.getInt("shields");
 
         this.shots = state.getInt("shots");

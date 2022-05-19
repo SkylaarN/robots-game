@@ -43,7 +43,6 @@ public class SimpleServer implements Runnable {
             while (true){
                 String messageFromClient = null;
                 while((messageFromClient = in.readLine()) != null){
-                    System.out.println(messageFromClient);
 
                     JSONObject obj = new JSONObject(messageFromClient);
                     if (!listRobots.contains(obj.getString("robot"))) {

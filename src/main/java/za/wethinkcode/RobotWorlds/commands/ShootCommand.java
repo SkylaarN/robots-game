@@ -19,6 +19,7 @@ public class ShootCommand extends Command{
         if(target.getBullets() > 0){
             target.fire();
             if(hitPlayer(target.getPosition(), fireBullet(30, target), target)){
+                data.put("message", "Hit");
                 reply.put("data", data);
                 target.setStatus(reply.toString());
             }
@@ -72,7 +73,6 @@ public class ShootCommand extends Command{
                     Position contact = pointContact(target.getPosition(), playerRobots.get(i).getPosition());
 
                     if(!Obstacles.blocksPosition(contact) && !Obstacles.blocksPath(a, contact)){
-                        data.put("message", playerRobots.get(i).getName() + " was Hit");
                         data.put("robot", playerRobots.get(i).getName());
                         data.put("distance", getDistance(target.getPosition(), contact));
                         data.put("state", playerRobots.get(i).getStatusType());

@@ -5,10 +5,11 @@ import org.json.JSONObject;
 
 import java.io.*;
 import java.net.*;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class SimpleServer implements Runnable {
-
+    public static ArrayList<String> listRobots = new ArrayList<String>();
     public static final int PORT = 5000;
     private final BufferedReader in;
     private final PrintStream out;
@@ -25,6 +26,10 @@ public class SimpleServer implements Runnable {
         //System.out.println("Waiting for client...");
     }
 
+    public void addRobots(String name) {
+        listRobots.add(name);
+    }
+
     public void run() {
 
         try {
@@ -39,6 +44,10 @@ public class SimpleServer implements Runnable {
                     //String[] args = messageFromClient.trim().split(" ", 2);
                     System.out.println(obj.getString("name") + " ---- " + obj.getString("command") +
                             " " + obj.get("arguments"));
+                            
+                    if (!listRobots.contains(obj.getString("name"))) {
+                        addRobots(obj.getString("name"));
+                    }
 
                     //System.out.println("Message \"" + messageFromClient + "\" from " + clientMachine);
                     String reply = doRobot(obj.getString("name"), obj.getString("command"), obj.getJSONArray("arguments"));

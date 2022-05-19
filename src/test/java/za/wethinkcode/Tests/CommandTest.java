@@ -44,5 +44,15 @@ class CommandTest{
         assertTrue(robot.getStatus().contains("Turned left"));
     }
 
+    @Test
+    void TestLookGetAbsolutePosition() {
+        Robot robot = new Robot("Killua");
+        assertEquals(LookCommand.getAbsolutePosition(robot, 0, 9), "NORTH");
+        assertEquals(LookCommand.getAbsolutePosition(robot, 0, -9), "SOUTH");
+        assertEquals(LookCommand.getAbsolutePosition(robot, 9, 0), "EAST");
+        assertEquals(LookCommand.getAbsolutePosition(robot, -9, 0), "WEST");
+
+    }
+
 
 }

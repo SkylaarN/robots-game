@@ -10,7 +10,7 @@ public class Obstacles {
     public static Random random = new Random();
 
     public static void generateObstacles(){
-        for (int i = 0; i < 1; i++) {
+        for (int i = 0; i < 100; i++) {
             int x = (random.nextInt(60)- 30) * 5;
             int y = (random.nextInt(60)- 30) * 5;
             obstacles.add(new SquareObstacle(x, y));

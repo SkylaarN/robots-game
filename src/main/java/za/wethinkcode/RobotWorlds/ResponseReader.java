@@ -8,7 +8,7 @@ import za.wethinkcode.RobotWorlds.configuration.Configuration;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
-public class TurtleRobot {
+public class ResponseReader {
 
     private Position currentPosition;
     private Position currentRobotPosition;
@@ -21,7 +21,7 @@ public class TurtleRobot {
 
     private int directionIndex = 0;
 
-    public TurtleRobot(){
+    public ResponseReader(){
         //code for the turtle and the border
         this.currentRobotPosition = new Position(0,0);
         this.angle = 90;
@@ -81,7 +81,15 @@ public class TurtleRobot {
                 }
                 drawLook(command.getJSONObject("data").getJSONArray("objects"));
             }
-            //System.out.println(command.getJSONObject("data").getString("message"));
+            else if (request.getString("command").equalsIgnoreCase("dump")) {
+                System.out.println(command.getJSONObject("data").getString("message"));
+            }
+            else if (request.getString("command").equalsIgnoreCase("robots")) {
+                System.out.println(command.getJSONObject("data").getString("message"));
+            }
+            else if (request.getString("command").equalsIgnoreCase("help")) {
+                System.out.println(command.getJSONObject("data").getString("message"));
+            }
         }
     }
 
@@ -295,3 +303,4 @@ public class TurtleRobot {
 
 
 }
+

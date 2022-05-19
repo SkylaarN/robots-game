@@ -98,28 +98,30 @@ public class LookCommand extends Command{
 
     public void getOtherRobotsPosition(Robot target, ArrayList<Robot> robots){
         for(Robot otherRobots: robots){
+            if(target != otherRobots){
+                int x = otherRobots.getPosition().getX();
+                int y = otherRobots.getPosition().getY();
 
-            int x = otherRobots.getPosition().getX();
-            int y = otherRobots.getPosition().getY();
+                if (x <= target.getPosition().getX() && target.getPosition().getX() <= x + 4 ||
+                        y <= target.getPosition().getY() && target.getPosition().getY() <= y + 4){
 
-            if (x <= target.getPosition().getX() && target.getPosition().getX() <= x + 4 ||
-                    y <= target.getPosition().getY() && target.getPosition().getY() <= y + 4){
+                    if ((x - target.getPosition().getX() <= 75)
+                            && (x - target.getPosition().getX() >= -75)
+                            && (y - target.getPosition().getY() <= 75)
+                            && (y - target.getPosition().getY() >= -75)){
 
-                if ((x - target.getPosition().getX() <= 75)
-                        && (x - target.getPosition().getX() >= -75)
-                        && (y - target.getPosition().getY() <= 75)
-                        && (y - target.getPosition().getY() >= -75)){
+                        JSONObject obj = new JSONObject();
+                        obj.put("direction", getAbsolutePosition(target, x, y));
+                        obj.put("type", "ROBOT");
 
-                    JSONObject obj = new JSONObject();
-                    obj.put("direction", getAbsolutePosition(target, x, y));
-                    obj.put("type", "ROBOT");
+                        JSONArray positionState = new JSONArray();
+                        positionState.put(x);
+                        positionState.put(y);
 
-                    JSONArray positionState = new JSONArray();
-                    positionState.put(x);
-                    positionState.put(y);
+                        obj.put("position", positionState);
+                        objects.put(obj);
+                    }
 
-                    obj.put("position", positionState);
-                    objects.put(obj);
                 }
             }
         }

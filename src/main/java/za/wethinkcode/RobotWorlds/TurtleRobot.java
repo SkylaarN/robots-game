@@ -81,10 +81,12 @@ public class TurtleRobot {
     public void handleStatus(JSONObject state){
         int x = state.getJSONArray("position").getInt(0);
         int y = state.getJSONArray("position").getInt(1);
+        this.currentDirection = getDirection(state.getString("direction"));
+        newDirection(this.currentDirection);
+
         this.currentPosition = new Position(x, y);
         newPosition(this.currentPosition);
-        this.currentDirection = getDirection(state.getString("direction"));
-        newDirection();
+
         this.shields = state.getInt("shields");
 
         this.shots = state.getInt("shots");
@@ -120,37 +122,29 @@ public class TurtleRobot {
         StdDraw.enableDoubleBuffering();
 
         // the angle needs to be updated
-        terminator(position.getX(), position.getY(), 90);
+        terminator(position.getX(), position.getY(), this.angle);
 
 
 
     }
 
-    public void newDirection() {
+    public void newDirection(Robot.Direction direction) {
 
-        switch (getDirectionIndex()) {
+        switch (direction) {
 
-            case 0:
-
-                this.currentDirection = Robot.Direction.UP;
+            case UP:
                 this.angle = 90;
                 break;
 
-            case 1:
-
-                this.currentDirection = Robot.Direction.RIGHT;
+            case RIGHT:
                 this.angle = 0;
                 break;
 
-            case 2:
-
-                this.currentDirection = Robot.Direction.DOWN;
+            case DOWN:
                 this.angle = 270;
                 break;
 
-            case 3:
-
-                this.currentDirection = Robot.Direction.LEFT;
+            case LEFT:
                 this.angle = 180;
                 break;
         }

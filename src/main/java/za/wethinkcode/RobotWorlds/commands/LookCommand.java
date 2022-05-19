@@ -36,8 +36,8 @@ public class LookCommand extends Command{
             int x = obs.getBottomLeftX();
             int y = obs.getBottomLeftY();
 
-            if (x <= target.getPosition().getX() && target.getPosition().getX() <= x + 4 ||
-                    y <= target.getPosition().getY() && target.getPosition().getY() <= y + 4){
+            if (x - 10 <= target.getPosition().getX() && target.getPosition().getX() <= x + 10 ||
+                    y - 10 <= target.getPosition().getY() && target.getPosition().getY() <= y + 10){
 
                 if ((x - target.getPosition().getX() <= 75)
                         && (x - target.getPosition().getX() >= -75)

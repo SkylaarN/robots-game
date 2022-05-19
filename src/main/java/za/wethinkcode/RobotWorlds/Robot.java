@@ -29,12 +29,19 @@ public class Robot {
         UP, RIGHT, DOWN, LEFT
     }
 
+    /**
+     * Condition for moving the robot
+     */
     public enum Conditions {
 
         SUCCESS, FAILED_OBSTACLE_DETECTED, FAILED_OUTSIDE_ROBOT_WORLD
     }
 
 
+    /**
+     * set up the robot
+     * @param name is the name given to the robot
+     */
     public Robot(String name){
         this.position = new Position(0, 0);
         this.currentDirection = Direction.UP;
@@ -46,14 +53,27 @@ public class Robot {
 
     }
 
+    /**
+     * sets the status of the robot
+     * @param status is the status of the robot
+     */
     public void setStatus(String status){
         this.status = status;
     }
 
+    /**
+     * gets the status of the robot
+     * @return status of the robot
+     */
     public String getStatus(){
         return this.status;
     }
 
+    /**
+     * handles the commands sent to the robots
+     * @param com instruction sent to the robot
+     * @param args arguments of the command
+     */
     void handleCommand(String com, JSONArray args){
         //StdDraw.setPenColor(color1, color2, color3);
         Command command = Command.createCommand(com, args);
@@ -66,36 +86,47 @@ public class Robot {
         }
     }
 
+    /**
+     * sets the position of the robot
+     * @param pos position of the robot
+     */
     public void setPosition(Position pos){
         this.position = pos;
     }
 
+    /**
+     * returns the position of the robot
+     * @return position of the robot
+     */
     public Position getPosition(){
         return this.position;
     }
 
+    /**
+     * get the current direction of the robot
+     * @return robot direction
+     */
     public Direction getCurrentDirection(){
         return this.currentDirection;
     }
 
-    public void setName(String name){
-        this.name = name;
-    }
-
+    /**
+     * gets the name of the robot
+     * @return name of the robot
+     */
     public String getName(){
         return this.name;
     }
 
-    public Position nextPosition(int xChange, int yChange){
-        return new Position(this.position.getX() + xChange, this.position.getY() + yChange);
-    }
 
+
+    /**Function changes the current direction of the robot depending
+     * on if it is told to move left or right
+     *
+     * @param turnRight boolean containing if the robot turns left or right
+     */
     public void updateDirection(boolean turnRight) {
-        /**Function changes the current direction of the robot depending
-         * on if it is told to move left or right
-         *
-         * @param turnRight boolean containing if the robot turns left or right
-         */
+
 
         switch(this.currentDirection){
             case UP:
@@ -134,15 +165,15 @@ public class Robot {
         }
     }
 
-    //UpdateResponse
+    /**Function gets current direction to check if the new Position is in
+     * an unblocked position and if it is, move to the new position and draw
+     * a line to the next position with the robotTurtle
+     *
+     * @param nrSteps int value of the number of steps to the next Position
+     * @return UpdateResponse of the check to see if it moves or not
+     */
     public Conditions updatePosition(int nrSteps) {
-        /**Function gets current direction to check if the new Position is in
-         * an unblocked position and if it is, move to the new position and draw
-         * a line to the next position with the robotTurtle
-         *
-         * @param nrSteps int value of the number of steps to the next Position
-         * @return UpdateResponse of the check to see if it moves or not
-         */
+
 
         int newX = this.position.getX();
         int newY = this.position.getY();
@@ -184,12 +215,13 @@ public class Robot {
         return Conditions.FAILED_OUTSIDE_ROBOT_WORLD;
     }
 
+    /** Function checks to see if Position isIn the specified area
+     *
+     * @param position the Position of the new position of the robot
+     * @return boolean if the Position is in the area
+     */
     public boolean isNewPositionAllowed(Position position) {
-        /** Function checks to see if Position isIn the specified area
-         *
-         * @param position the Position of the new position of the robot
-         * @return boolean if the Position is in the area
-         */
+
 
         if (position.isIn(new Position(-150, 150),new Position(150, -150))) {
             return true;
@@ -200,7 +232,9 @@ public class Robot {
     }
 
 
-
+    /**
+     * Record the damages dealt to the robot
+     */
     public void damage(){
 
         this.configuration.reduceHealth();
@@ -209,11 +243,19 @@ public class Robot {
         }
     }
 
+    /**
+     * records the health of the robot
+     * @return remaining health of the robot
+     */
     public int getHealth() {
 
         return this.configuration.getHealth();
     }
 
+    /**
+     * sets the health of the robot
+     * @param health health status
+     */
     public void setHealth(int health){
 
 
@@ -223,18 +265,33 @@ public class Robot {
 //        }
     }
 
+    /**
+     * shoot bullets
+     */
     public void fire(){
         this.bullets = this.bullets - 1;
     }
 
+    /**
+     * gets the robot bullets
+     * @return gun bullets
+     */
     public int getBullets(){
         return this.bullets;
     }
 
+    /**
+     * loads the bullets
+     * @param bullets number
+     */
     public void setBullets(int bullets){
         this.bullets = bullets;
     }
 
+    /**
+     * get robot position update
+     * @return Json array
+     */
     public JSONArray getPositionState(){
         JSONArray positionState = new JSONArray();
         positionState.put(getPosition().getX());
@@ -242,6 +299,10 @@ public class Robot {
         return positionState;
     }
 
+    /**
+     * gets the direction of the robot
+     * @return robot direction
+     */
     public String getDirectionString(){
         switch(getCurrentDirection()){
             case UP:
@@ -256,6 +317,10 @@ public class Robot {
         return  null;
     }
 
+    /**
+     * gets the reply from the server
+     * @return reply JSON Object
+     */
     public JSONObject getReply(){
         JSONObject reply = new JSONObject(getStatus());
         JSONObject state = new JSONObject();
@@ -271,10 +336,18 @@ public class Robot {
         return reply;
     }
 
+    /**
+     * sets the status type
+     * @param statusType the status type string
+     */
     public void setStatusType(String statusType){
         this.statusType = statusType;
     }
 
+    /**
+     * report status type
+     * @return status types
+     */
     public String getStatusType(){
         return this.statusType;
     }

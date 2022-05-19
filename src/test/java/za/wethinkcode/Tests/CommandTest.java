@@ -10,38 +10,38 @@ class CommandTest{
 
     @Test
     void testForward() {
-
         Robot robot = new Robot("Madara");
-        new ForwardCommand("10").execute(robot);
+        String exp = "{\"result\":\"OK\",\"data\":{\"message\":\"Done\"}}";
 
-        assertTrue(robot.getStatus().contains("Moved forward by 10 steps."));
+        assertTrue(new ForwardCommand("5").execute(robot));
+        assertEquals(robot.getStatus(), exp);
     }
 
     @Test
     void testBackward() {
+        Robot robot = new Robot("Madara");
+        String exp = "{\"result\":\"OK\",\"data\":{\"message\":\"Done\"}}";
 
-        Robot robot = new Robot("Terminator");
-        new BackCommand("5").execute(robot);
-
-        assertTrue(robot.getStatus().contains("Moved back by 5 steps."));
+        assertTrue(new BackCommand("5").execute(robot));
+        assertEquals(robot.getStatus(), exp);
     }
 
     @Test
     void testRight() {
-
         Robot robot = new Robot("Rambo");
-        new RightCommand().execute(robot);
+        String exp = "{\"result\":\"OK\",\"data\":{\"message\":\"Done\"}}";
 
-        assertTrue(robot.getStatus().contains("Turned right"));
+        assertTrue(new RightCommand().execute(robot));
+        assertEquals(robot.getStatus(), exp);
     }
 
     @Test
     void TestLeft() {
+        Robot robot = new Robot("Rambo");
+        String exp = "{\"result\":\"OK\",\"data\":{\"message\":\"Done\"}}";
 
-        Robot robot = new Robot("Madara");
-        new LeftCommand().execute(robot);
-
-        assertTrue(robot.getStatus().contains("Turned left"));
+        assertTrue(new LeftCommand().execute(robot));
+        assertEquals(robot.getStatus(), exp);
     }
 
     @Test
@@ -61,16 +61,23 @@ class CommandTest{
         HelpCommand help = new HelpCommand();
         help.execute(robot);
 
-        assertEquals(("< Robot Commands >~" +
-                "OFF  - Shut down robot~" +
-                "HELP - provide information about commands~" +
-                "FORWARD - move forward by specified number of steps, e.g. 'forward 10'~" +
+        String exp = "{\"result\":\"OK\",\"data\":{\"message\":\"< Robot Commands >~OFF  - " +
+                "Shut down robot~HELP - provide information about commands~FORWARD - " +
+                "move forward by specified number of steps, e.g. 'forward 10'~" +
                 "BACK - move backward by specific number of steps, e.g. 'back 10'~" +
-                "RIGHT - turn right by 90 degrees~" +
-                "LEFT - turn left by 90 degrees~" +
-                "ROBOTS - List all robots~" +
-                "SHOOT - Shoot robot~" +
-                "LOOK - See everything in its line of sight~"), robot.getStatus());
+                "RIGHT - turn right by 90 degrees~LEFT - turn left by 90 degrees~" +
+                "ROBOTS - List all robots~SHOOT - Shoot robot~LOOK - See everything in its line of sight~\"}}";
+
+        assertEquals(exp, robot.getStatus());
+    }
+
+    @Test
+    void TestQuit() {
+        Robot robot = new Robot("Killua");
+        QuitCommand help = new QuitCommand();
+        help.execute(robot);
+
+        assertEquals("Shutting down...", robot.getStatus());
 
     }
 

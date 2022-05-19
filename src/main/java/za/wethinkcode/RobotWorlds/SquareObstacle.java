@@ -5,46 +5,54 @@ public class SquareObstacle {
     private int x;
     private int y;
 
-
+    /**
+     * sets bottom left coordinates of the obstacle
+     * @param x bottom left x coordinate
+     * @param y bottom left y coordinate
+     */
     public SquareObstacle(int x, int y){
         this.x = x;
         this.y = y;
     }
 
+    /**Function returns bottom left x-value of obstacle
+     *
+     * @return int x-vlaue of bottom left corner
+     */
     public int getBottomLeftX() {
-        /**Function returns bottom left x-value of obstacle
-         *
-         * @return int x-vlaue of bottom left corner
-         */
+
 
         return this.x;
     }
 
+    /**Function returns bottom left y-value of obstacle
+     *
+     * @return int y-vlaue of bottom left corner
+     */
     public int getBottomLeftY() {
-        /**Function returns bottom left y-value of obstacle
-         *
-         * @return int y-vlaue of bottom left corner
-         */
+
 
         return this.y;
     }
 
+    /**Function returns the size of a side of the obstacle
+     *
+     * @return int value of the side
+     */
+
     public int getSize() {
-        /**Function returns the size of a side of the obstacle
-         *
-         * @return int value of the side
-         */
 
         return 5;
     }
 
+    /**Function checks to see if position is within the area of
+     * the SquareObstacle
+     *
+     * @param position the Position value to check
+     * @return boolean for if the Position is in the area
+     */
     public boolean blocksPosition(Position position) {
-        /**Function checks to see if position is within the area of
-         * the SquareObstacle
-         *
-         * @param position the Position value to check
-         * @return boolean for if the Position is in the area
-         */
+
         if(x <= position.getX() && position.getX() <= x + 4 &&
             y <= position.getY() && position.getY() <= y + 4){
             return true;
@@ -54,13 +62,14 @@ public class SquareObstacle {
         }
     }
 
+    /**Function check to see if there is a SquareObstacle between 2 Positions
+     *
+     * @param a the Position object that contains the start
+     * @param b the Position object that contains the end
+     * @return boolean if the path is blocked
+     */
     public boolean blocksPath(Position a, Position b) {
-        /**Function check to see if there is a SquareObstacle between 2 Positions
-         *
-         * @param a the Position object that contains the start
-         * @param b the Position object that contains the end
-         * @return boolean if the path is blocked
-         */
+
         if(passObstacle(a.getX(), b.getX(), x, x + 4) && a.getY() == b.getY() &&
                 a.getY() >= y && a.getY() <= y + 4) {
             return true;
@@ -74,15 +83,16 @@ public class SquareObstacle {
         }
     }
 
+    /**Function checks if one line passes another
+     *
+     * @param startPath Int containing the start of the first line
+     * @param endPath Int containing the end of the first line
+     * @param startObs Int containing the start of the second line
+     * @param endObs Int containing the end of the second line
+     * @return boolean if the line passes the other line
+     */
+
     public boolean passObstacle(int startPath, int endPath, int startObs, int endObs){
-        /**Function checks if one line passes another
-         *
-         * @param startPath Int containing the start of the first line
-         * @param endPath Int containing the end of the first line
-         * @param startObs Int containing the start of the second line
-         * @param endObs Int containing the end of the second line
-         * @return boolean if the line passes the other line
-         */
 
         return (startPath <= startObs && startObs <= endPath ||
                 startPath <= endObs && endObs <= endPath ||

@@ -21,6 +21,9 @@ public class ResponseReader {
 
     private int directionIndex = 0;
 
+    /**
+     * Sets the Graphics and the robot
+     */
     public ResponseReader(){
         //code for the turtle and the border
         this.currentRobotPosition = new Position(0,0);
@@ -31,6 +34,11 @@ public class ResponseReader {
 
     }
 
+    /**
+     * Handle the replay messages from the server
+     * @param command is the command JSON string with the status of requests execution
+     * @param request is the request JSON string with instructions sent to the sever to move the robot
+     */
     public void handleReply(JSONObject command, JSONObject request) {
         if (command.getString("result").equalsIgnoreCase("OK")) {
             handleStatus(command.getJSONObject("state"));
@@ -93,6 +101,10 @@ public class ResponseReader {
         }
     }
 
+    /**
+     * Sets the robots weapons, shields and postion
+     * @param state JSON Object
+     */
     public void handleStatus(JSONObject state){
         int x = state.getJSONArray("position").getInt(0);
         int y = state.getJSONArray("position").getInt(1);
@@ -110,6 +122,11 @@ public class ResponseReader {
 
     }
 
+    /**
+     * returns the orientation of the robot
+     * @param direction the direction in which the robot is facing
+     * @return Robot direction
+     */
     public Robot.Direction getDirection(String direction){
         switch(direction){
 
@@ -143,6 +160,10 @@ public class ResponseReader {
 
     }
 
+    /**
+     * sets the new direction of the robot based on its previous direction
+     * @param direction is the previous direction of the robot
+     */
     public void newDirection(Robot.Direction direction) {
 
         switch (direction) {
@@ -166,6 +187,10 @@ public class ResponseReader {
 
     }
 
+    /**
+     * Draws all obstacles that the robot can see within its visibility range
+     * @param objects JSON array with the position of the obstacles and other robots
+     */
     public void drawLook(JSONArray objects){
         //code to draw the obstacles and enemy players
 
@@ -197,6 +222,9 @@ public class ResponseReader {
     }
 
 
+    /**
+     * checks the status of the robot
+     */
     public void checkStatus(){
         if(Objects.equals(this.status, "RELOAD")){
             System.out.println("Reloading...");
@@ -223,6 +251,12 @@ public class ResponseReader {
         }
     }
 
+    /**
+     * Robot Design
+     * @param x coordinate of the robot
+     * @param y coordinate of the robot
+     * @param a the angle it makes with the horizontal
+     */
     public void terminator(int x, int y, int a) {
 
         StdDraw.setScale(configuration.getWorldSize().getX(), configuration.getWorldSize().getY());
@@ -240,6 +274,9 @@ public class ResponseReader {
         StdDraw.setPenColor(StdDraw.BLACK);
     }
 
+    /**
+     * rotates the robot clock wise at an angle of 90 degrees
+     */
     public void rightTurn() {
 
         this.directionIndex += 1;
@@ -250,6 +287,9 @@ public class ResponseReader {
         }
     }
 
+    /**
+     * rotates the robot Anti-clock wise at an angle of 90 degrees
+     */
     public void leftTurn() {
 
         this.directionIndex -= 1;
@@ -260,20 +300,29 @@ public class ResponseReader {
         }
     }
 
+    /**
+     * returns the direction index
+     * @return direction index
+     */
     int getDirectionIndex() {
 
         return this.directionIndex;
     }
 
-    int getAngle() {
-        return this.angle;
-    }
 
+    /**
+     * get the current direction of the robot
+     * @return the robot direction
+     */
     Robot.Direction getCurrentDirection() {
 
       return this.currentDirection;
     }
 
+    /**
+     * Updates the position of the robot
+     * @param steps the steps to move the robot
+     */
     void updatePosition(int steps) {
 
         int newX = this.currentRobotPosition.getX();
@@ -295,12 +344,6 @@ public class ResponseReader {
         this.currentRobotPosition = new Position(newX, newY);
 
     }
-
-    Position getCurrentRobotPosition() {
-
-        return this.currentRobotPosition;
-    }
-
 
 }
 

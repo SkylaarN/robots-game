@@ -7,14 +7,15 @@ import za.wethinkcode.RobotWorlds.Robot;
 
 public class BackCommand extends Command {
 
+    /**Function moves to robot backwards by calling the updatePosition function with Argument
+     * nrSteps as a negative integer
+     *
+     * @param target The Robot object
+     * @return boolean if the program should continue
+     */
     @Override
     public boolean execute(Robot target) {
-        /**Function moves to robot backwards by calling the updatePosition function with Argument
-         * nrSteps as a negative integer
-         *
-         * @param target The Robot object
-         * @return boolean if the program should continue
-         */
+
         JSONObject reply = new JSONObject();
         JSONObject data = new JSONObject();
         reply.put("result", "OK");

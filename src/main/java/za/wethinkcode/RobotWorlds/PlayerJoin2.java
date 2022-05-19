@@ -12,6 +12,10 @@ import org.turtle.*;
 public class PlayerJoin2 {
 
 
+    /**
+     * Sends request to the server through the established network
+     * @param args a string array with the IP Address of the server
+     */
     public static void main(String[] args) {
         String serverIP;
         if(args.length != 0){
@@ -65,12 +69,13 @@ public class PlayerJoin2 {
         }
     }
 
+    /**Function returns the user input
+     *
+     * @param prompt the String containing question for the user
+     * @return String the answer the user gave to the prompt
+     */
     private static String getInput(String prompt) {
-        /**Function returns the user input
-         *
-         * @param prompt the String containing question for the user
-         * @return String the answer the user gave to the prompt
-         */
+
         Scanner scanner = new Scanner(System.in);
         System.out.println(prompt);
         String input = scanner.nextLine();

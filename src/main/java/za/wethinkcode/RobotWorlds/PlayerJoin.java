@@ -2,30 +2,32 @@ package za.wethinkcode.RobotWorlds;
 
 import java.net.*;
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Random;
 import java.util.Scanner;
-
 import org.json.JSONArray;
-import org.turtle.*;
 import org.json.JSONObject;
 
 public class PlayerJoin {
 
 
+    /**
+     * Sends request to the server through the established network
+     * @param args a string array with the IP Address of the server
+     */
     public static void main(String[] args) {
+
         String serverIP;
-        if(args.length != 0){
+
+        if(args.length != 0) {
             serverIP = args[0];
         }
         else{
             serverIP = "localhost";
         }
 
-
         ResponseReader reader = new ResponseReader();
         String input = "";
         String name = getInput("Please Enter your robots name.");
+
         while(!input.equalsIgnoreCase("quit")){
         try (
                 Socket socket = new Socket(serverIP, 5000);
@@ -67,12 +69,13 @@ public class PlayerJoin {
         }
     }
 
+    /**Function returns the user input
+     *
+     * @param prompt the String containing question for the user
+     * @return String the answer the user gave to the prompt
+     */
     private static String getInput(String prompt) {
-        /**Function returns the user input
-         *
-         * @param prompt the String containing question for the user
-         * @return String the answer the user gave to the prompt
-         */
+
         Scanner scanner = new Scanner(System.in);
         System.out.println(prompt);
         String input = scanner.nextLine();

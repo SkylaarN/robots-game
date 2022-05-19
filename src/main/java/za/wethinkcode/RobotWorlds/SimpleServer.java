@@ -16,7 +16,6 @@ public class SimpleServer implements Runnable {
     private final String clientMachine;
 
 
-
     public SimpleServer(Socket socket) throws IOException {
         clientMachine = socket.getInetAddress().getHostName();
         //System.out.println("Connection from " + clientMachine);
@@ -26,10 +25,17 @@ public class SimpleServer implements Runnable {
         //System.out.println("Waiting for client...");
     }
 
+    /**
+     * Add new loaded robots
+     * @param name name of the robot
+     */
     public void addRobots(String name) {
         listRobots.add(name);
     }
 
+    /**
+     * Initiate the server
+     */
     public void run() {
 
         try {
@@ -56,13 +62,22 @@ public class SimpleServer implements Runnable {
         }
     }
 
+    /**
+     * Shut down the server
+     */
     private void closeQuietly() {
         try { in.close(); out.close();
         } catch(IOException ex) {}
     }
 
 
-
+    /**
+     * Instructs the robot what to do based on the commands given by the player
+     * @param name is the name of the robot
+     * @param instructions instruction from the player
+     * @param arguments arguments of the player commands
+     * @return reply from the server
+     */
     String doRobot(String name, String instructions, JSONArray arguments){
         Robot userRobot = Players.getRobot(name);
         userRobot.handleCommand(instructions, arguments);

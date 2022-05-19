@@ -65,7 +65,7 @@ public class TurtleRobot {
                     System.out.println(request.getString("robot") + " > " + "[" + currentPosition.getX() +
                             " , " + currentPosition.getY() + "] Bullet Hit " +
                             command.getJSONObject("data").getString("robot"));
-                } else if (command.getJSONObject("data").getString("message").equalsIgnoreCase("Miss")) {
+                } else if (command.getJSONObject("data").getString("message").equalsIgnoreCase("Missed")) {
                     System.out.println(request.getString("robot") + " > " + "[" + currentPosition.getX() +
                             " , " + currentPosition.getY() + "] Bullet Missed");
                 }

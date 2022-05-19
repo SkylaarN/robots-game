@@ -54,6 +54,8 @@ public abstract class Command {
         System.out.println();
 
         switch (instruction){
+            case "help":
+                return new HelpCommand();
 
             case "forward":
                 return new ForwardCommand(args.getString(0));

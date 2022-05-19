@@ -153,16 +153,30 @@ public class TurtleRobot {
 
     public void drawLook(JSONArray objects){
         //code to draw the obstacles and enemy players
+
+        StdDraw.clear();
+        StdDraw.enableDoubleBuffering();
+
         for (int i = 0; i < objects.length(); i++) {
             int x = objects.getJSONObject(i).getJSONArray("position").getInt(0);
             int y = objects.getJSONObject(i).getJSONArray("position").getInt(1);
             if(objects.getJSONObject(i).getString("type") == "OBSTACLE"){
                 //set line colour to black
                 //Turtle box drawing code
+
+                StdDraw.setPenColor(StdDraw.BLACK);
+                terminator(this.currentPosition.getX(),this.currentPosition.getY(),this.angle);
+                StdDraw.filledSquare(x + 2.5, y + 2.5, 2.5);
             }
             else if(objects.getJSONObject(i).getString("type") == "ROBOT"){
                 //set line colour to red
                 //Turtle box drawing code
+                StdDraw.clear();
+                StdDraw.enableDoubleBuffering();
+
+                StdDraw.setPenColor(StdDraw.RED);
+                terminator(this.currentPosition.getX(),this.currentPosition.getY(),this.angle);
+                StdDraw.filledSquare(x + 2, y + 2, 2);
             }
 
 

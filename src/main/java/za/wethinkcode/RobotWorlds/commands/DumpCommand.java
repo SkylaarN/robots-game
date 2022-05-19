@@ -5,6 +5,8 @@ import za.wethinkcode.RobotWorlds.Robot;
 import za.wethinkcode.RobotWorlds.SimpleServer;
 import za.wethinkcode.RobotWorlds.SquareObstacle;
 
+import java.util.ArrayList;
+
 public class DumpCommand extends Command {
     private int a;
     private int b;

@@ -13,12 +13,20 @@ public class PlayerJoin2 {
 
 
     public static void main(String[] args) {
+        String serverIP;
+        if(args.length != 0){
+            serverIP = args[0];
+        }
+        else{
+            serverIP = "localhost";
+        }
+
         ResponseReader reader = new ResponseReader();
         String input = "";
         String name = getInput("Please Enter your robots name.");
         while(!input.equalsIgnoreCase("quit")){
             try (
-                    Socket socket = new Socket("localhost", 5000);
+                    Socket socket = new Socket(serverIP, 5000);
                     PrintStream out = new PrintStream(socket.getOutputStream());
                     BufferedReader in = new BufferedReader(new InputStreamReader(
                             socket.getInputStream()));

@@ -3,7 +3,7 @@ package za.wethinkcode.RobotWorlds;
 import java.net.*;
 import java.io.*;
 
-public class MultiServers {
+public class ActivateServer {
     public static void main(String[] args) throws ClassNotFoundException, IOException {
         ServerSocket s = new ServerSocket( SimpleServer.PORT);
         System.out.println("Server running & waiting for client connections.");

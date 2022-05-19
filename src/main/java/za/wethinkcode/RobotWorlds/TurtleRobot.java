@@ -32,46 +32,46 @@ public class TurtleRobot {
     }
 
     public void handleReply(JSONObject command, JSONObject request) {
-        if (command.getString("result") == "OK") {
+        if (command.getString("result").equalsIgnoreCase("OK")) {
             handleStatus(command.getJSONObject("state"));
-            if (request.getString("command") == "forward" || request.getString("command") == "back") {
-                if (command.getJSONObject("data").getString("message") == "Done") {
+            if (request.getString("command").equalsIgnoreCase("forward") || request.getString("command").equalsIgnoreCase("back")) {
+                if (command.getJSONObject("data").getString("message").equalsIgnoreCase("Done")) {
                     System.out.println(request.getString("robot") + " > " + "[" + currentPosition.getX() +
                             " , " + currentPosition.getY() + "] Moved " + request.getString("command") +
                             " by " + request.getJSONArray("arguments").getInt(0) + " steps.");
-                } else if (command.getJSONObject("data").getString("message") == "Obstructed") {
+                } else if (command.getJSONObject("data").getString("message").equalsIgnoreCase("Obstructed")) {
                     System.out.println(request.getString("robot") + " > " + "[" + currentPosition.getX() +
                             " , " + currentPosition.getY() + "] Sorry, I have encountered an obstacle.");
-                } else if (command.getJSONObject("data").getString("message") == "Border") {
+                } else if (command.getJSONObject("data").getString("message").equalsIgnoreCase("Border")) {
                     System.out.println(request.getString("robot") + " > " + "[" + currentPosition.getX() +
                             " , " + currentPosition.getY() + "] Sorry, I cannot go outside my safe zone.");
                 }
             }
-            else if (request.getString("command") == "left" || request.getString("command") == "right") {
-                if (command.getJSONObject("data").getString("message") == "Done") {
+            else if (request.getString("command").equalsIgnoreCase("left") || request.getString("command").equalsIgnoreCase("right")) {
+                if (command.getJSONObject("data").getString("message").equalsIgnoreCase("Done")) {
                     System.out.println(request.getString("robot") + " > " + "[" + currentPosition.getX() +
                             " , " + currentPosition.getY() + "] Turned " + request.getString("command"));
                 }
             }
-            else if (request.getString("command") == "repair" || request.getString("command") == "reload") {
+            else if (request.getString("command").equalsIgnoreCase("repair") || request.getString("command").equalsIgnoreCase("reload")) {
                 checkStatus();
             }
-            else if (request.getString("command") == "state") {
+            else if (request.getString("command").equalsIgnoreCase("state")) {
                 System.out.println("Position : [" + currentPosition.getX() +
                         " , " + currentPosition.getY() + "] Bullets : " + this.shots + " Shield : " + this.shields);
             }
-            else if (request.getString("command") == "shoot") {
-                if (command.getJSONObject("data").getString("message") == "Hit") {
+            else if (request.getString("command").equalsIgnoreCase("shoot")) {
+                if (command.getJSONObject("data").getString("message").equalsIgnoreCase("Hit")) {
                     System.out.println(request.getString("robot") + " > " + "[" + currentPosition.getX() +
                             " , " + currentPosition.getY() + "] Bullet Hit " +
                             command.getJSONObject("data").getString("robot"));
-                } else if (command.getJSONObject("data").getString("message") == "Miss") {
+                } else if (command.getJSONObject("data").getString("message").equalsIgnoreCase("Miss")) {
                     System.out.println(request.getString("robot") + " > " + "[" + currentPosition.getX() +
                             " , " + currentPosition.getY() + "] Bullet Missed");
                 }
 
             }
-            else if (request.getString("command") == "look") {
+            else if (request.getString("command").equalsIgnoreCase("look")) {
                 drawLook(command.getJSONObject("data").getJSONArray("objects"));
             }
             System.out.println(command.getJSONObject("data").getString("message"));

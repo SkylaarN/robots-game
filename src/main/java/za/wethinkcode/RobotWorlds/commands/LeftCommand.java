@@ -20,8 +20,8 @@ public class LeftCommand extends Command{
         JSONObject reply = new JSONObject();
         JSONObject data = new JSONObject();
         reply.put("result", "OK");
-        //data.put("message", "Done");
-        data.put("message", target.getName() + " > " + positionText + " Turned left");
+        data.put("message", "Done");
+        //data.put("message", target.getName() + " > " + positionText + " Turned left");
         reply.put("data", data);
         target.setStatus(reply.toString());
         return true;

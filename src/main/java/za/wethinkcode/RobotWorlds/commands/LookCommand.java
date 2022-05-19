@@ -23,11 +23,13 @@ public class LookCommand extends Command{
 
     public boolean execute(Robot target){
         StringBuilder output = new StringBuilder();
+
         //Array contains the robots
         ArrayList<Robot> robots = Players.getPlayers();
 
         reply.put("result", "OK");
 
+        getOtherRobotsPosition(target, robots);
 
         for(int i = 0; i < Obstacles.getObstacles().size(); i++){
             SquareObstacle obs = Obstacles.getObstacles().get(i);
@@ -37,10 +39,10 @@ public class LookCommand extends Command{
             if (x <= target.getPosition().getX() && target.getPosition().getX() <= x + 4 ||
                     y <= target.getPosition().getY() && target.getPosition().getY() <= y + 4){
 
-                if ((x - target.getPosition().getX() <= 150)
-                        && (x - target.getPosition().getX() >= -150)
-                        && (y - target.getPosition().getY() <= 150)
-                        && (y - target.getPosition().getY() >= -150)){
+                if ((x - target.getPosition().getX() <= 75)
+                        && (x - target.getPosition().getX() >= -75)
+                        && (y - target.getPosition().getY() <= 75)
+                        && (y - target.getPosition().getY() >= -75)){
 
                     JSONObject obj = new JSONObject();
                     obj.put("direction", getAbsolutePosition(target, x, y));
@@ -53,21 +55,17 @@ public class LookCommand extends Command{
                     obj.put("position", positionState);
                     objects.put(obj);
 
-                    //output.append((String.format("There's an obstacle at position %s,%s (to %s,%s), %s",
-                            //x, y, (x+4), (y+4), getAbsolutePosition(target, x, y))) + "\n");
-                    //drawVisibleObstacle(x,y);
                 }
             }
         }
         if(output.length() == 0){
-            //target.setStatus("No obstacles.");
             data.put("objects", objects);
             data.put("message", "Done");
             reply.put("data", data);
             target.setStatus(reply.toString());
         }
         else{
-            //target.setStatus(output.toString().trim());
+
             data.put("objects", objects);
             data.put("message", "Done");
             reply.put("data", data);
@@ -75,6 +73,7 @@ public class LookCommand extends Command{
         }
         return true;
     }
+
 //AbsolutePosition
     public String getAbsolutePosition(Robot target, int x, int y){
 
@@ -97,13 +96,35 @@ public class LookCommand extends Command{
 
     }
 
-//    public void drawVisibleObstacle(int x, int y){
-//        StdDraw.setPenColor(Color.ORANGE);
-//        StdDraw.line(0.5 + x/512.0, 0.5 + y/512.0, 0.5 + (x + 4)/512.0, 0.5 + y/512.0);
-//        StdDraw.line(0.5 + x/512.0, 0.5 + y/512.0, 0.5 + x/512.0, 0.5 + (y + 4)/512.0);
-//        StdDraw.line(0.5 + x/512.0, 0.5 + (y + 4)/512.0, 0.5 + (x + 4)/512.0, 0.5 + (y + 4)/512.0);
-//        StdDraw.line(0.5 + (x + 4)/512.0, 0.5 + y/512.0, 0.5 + (x + 4)/512.0, 0.5 + (y + 4)/512.0);
-//    }
+    public void getOtherRobotsPosition(Robot target, ArrayList<Robot> robots){
+        for(Robot otherRobots: robots){
+
+            int x = otherRobots.getPosition().getX();
+            int y = otherRobots.getPosition().getY();
+
+            if (x <= target.getPosition().getX() && target.getPosition().getX() <= x + 4 ||
+                    y <= target.getPosition().getY() && target.getPosition().getY() <= y + 4){
+
+                if ((x - target.getPosition().getX() <= 75)
+                        && (x - target.getPosition().getX() >= -75)
+                        && (y - target.getPosition().getY() <= 75)
+                        && (y - target.getPosition().getY() >= -75)){
+
+                    JSONObject obj = new JSONObject();
+                    obj.put("direction", getAbsolutePosition(target, x, y));
+                    obj.put("type", "ROBOT");
+
+                    JSONArray positionState = new JSONArray();
+                    positionState.put(x);
+                    positionState.put(y);
+
+                    obj.put("position", positionState);
+                    objects.put(obj);
+                }
+            }
+        }
+    }
+
     public LookCommand(){
         super("look");
     }

@@ -40,18 +40,11 @@ public class SimpleServer implements Runnable {
                     System.out.println(messageFromClient);
 
                     JSONObject obj = new JSONObject(messageFromClient);
-
-                    //String[] args = messageFromClient.trim().split(" ", 2);
-                    System.out.println(obj.getString("robot") + " ---- " + obj.getString("command") +
-                            " " + obj.get("arguments"));
-                            
                     if (!listRobots.contains(obj.getString("robot"))) {
                         addRobots(obj.getString("robot"));
                     }
 
-                    //System.out.println("Message \"" + messageFromClient + "\" from " + clientMachine);
                     String reply = doRobot(obj.getString("robot"), obj.getString("command"), obj.getJSONArray("arguments"));
-                    //out.println("Thanks for this message: " + messageFromClient);
                     out.println(reply);
                 }
 

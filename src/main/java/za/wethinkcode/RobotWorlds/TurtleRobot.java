@@ -74,7 +74,7 @@ public class TurtleRobot {
             else if (request.getString("command").equalsIgnoreCase("look")) {
                 drawLook(command.getJSONObject("data").getJSONArray("objects"));
             }
-            System.out.println(command.getJSONObject("data").getString("message"));
+            //System.out.println(command.getJSONObject("data").getString("message"));
         }
     }
 

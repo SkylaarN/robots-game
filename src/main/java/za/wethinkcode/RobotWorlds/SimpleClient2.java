@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.turtle.*;
 public class SimpleClient2 {
@@ -23,7 +24,7 @@ public class SimpleClient2 {
                             socket.getInputStream()));
             ) {
                 JSONObject obj = new JSONObject();
-                obj.put("name", name);
+                obj.put("robot", name);
 
                 input = getInput(name + " > Please Enter your Message.");
 
@@ -31,12 +32,12 @@ public class SimpleClient2 {
 
                 if (text.length == 1) {
                     obj.put("command", text[0]);
-                    obj.put("arguments",new ArrayList<>());
+                    obj.put("arguments",new JSONArray());
 
                 } else {
 
                     obj.put("command", text[0]);
-                    obj.put("arguments", text[1].split(" "));
+                    obj.put("arguments", new JSONArray(text[1].split(" ")));
 
 
                 }

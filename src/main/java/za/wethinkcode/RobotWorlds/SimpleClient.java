@@ -5,6 +5,8 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
+
+import org.json.JSONArray;
 import org.turtle.*;
 import org.json.JSONObject;
 
@@ -23,7 +25,7 @@ public class SimpleClient {
                         socket.getInputStream()));
         ) {
             JSONObject obj = new JSONObject();
-            obj.put("name", name);
+            obj.put("robot", name);
 
             input = getInput(name + " > Please Enter your Message.");
 
@@ -31,12 +33,12 @@ public class SimpleClient {
 
             if (text.length == 1) {
                 obj.put("command", text[0]);
-                obj.put("arguments",new ArrayList<>());
+                obj.put("arguments",new JSONArray());
 
             } else {
 
                 obj.put("command", text[0]);
-                obj.put("arguments", text[1].split(" "));
+                obj.put("arguments", new JSONArray(text[1].split(" ")));
 
 
             }
@@ -46,14 +48,7 @@ public class SimpleClient {
             out.flush();
 
             String messageFromServer = in.readLine();
-            if (messageFromServer != null && messageFromServer.strip().length() > 100) {
-                for (var c : messageFromServer.split("~")) {
-                    System.out.println(c);
-                }
-            } else {
-                System.out.println(messageFromServer);
-            }
-            // System.out.println(messageFromServer);
+            System.out.println(messageFromServer);
             tRobot.handleReply(new JSONObject(messageFromServer), obj);
 
 

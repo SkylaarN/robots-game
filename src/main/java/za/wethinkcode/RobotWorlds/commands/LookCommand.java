@@ -78,19 +78,15 @@ public class LookCommand extends Command{
     public String getAbsolutePosition(Robot target, int x, int y){
 
         if(target.getPosition().getY() < y){
-//            return AbsolutePosition.NORTH;
             return "NORTH";
         }
         else if (target.getPosition().getY() > y){
-//            return AbsolutePosition.SOUTH;
             return "SOUTH";
         }
         else if(target.getPosition().getX() < x){
-//            return AbsolutePosition.EAST;
             return "EAST";
         }
         else{
-//            return AbsolutePosition.WEST;
             return "WEST";
         }
 

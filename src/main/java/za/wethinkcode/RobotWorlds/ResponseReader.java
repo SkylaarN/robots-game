@@ -274,76 +274,7 @@ public class ResponseReader {
         StdDraw.setPenColor(StdDraw.BLACK);
     }
 
-    /**
-     * rotates the robot clock wise at an angle of 90 degrees
-     */
-    public void rightTurn() {
 
-        this.directionIndex += 1;
-
-        if (directionIndex > 3) {
-
-            this.directionIndex = 0;
-        }
-    }
-
-    /**
-     * rotates the robot Anti-clock wise at an angle of 90 degrees
-     */
-    public void leftTurn() {
-
-        this.directionIndex -= 1;
-
-        if (this.directionIndex < 0) {
-
-            this.directionIndex = 3;
-        }
-    }
-
-    /**
-     * returns the direction index
-     * @return direction index
-     */
-    int getDirectionIndex() {
-
-        return this.directionIndex;
-    }
-
-
-    /**
-     * get the current direction of the robot
-     * @return the robot direction
-     */
-    Robot.Direction getCurrentDirection() {
-
-      return this.currentDirection;
-    }
-
-    /**
-     * Updates the position of the robot
-     * @param steps the steps to move the robot
-     */
-    void updatePosition(int steps) {
-
-        int newX = this.currentRobotPosition.getX();
-        int newY = this.currentRobotPosition.getY();
-
-        if (Robot.Direction.UP.equals(getCurrentDirection())) {
-            newY = newY + steps;
-        }
-        else if (Robot.Direction.DOWN.equals(getCurrentDirection())){
-            newY = newY - steps;
-        }
-        else if (Robot.Direction.RIGHT.equals(getCurrentDirection())){
-            newX = newX + steps;
-        }
-        else if (Robot.Direction.LEFT.equals(getCurrentDirection())){
-            newX = newX - steps;
-        }
-
-        this.currentRobotPosition = new Position(newX, newY);
-
-    }
 
 }
 

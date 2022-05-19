@@ -160,7 +160,7 @@ public class TurtleRobot {
         for (int i = 0; i < objects.length(); i++) {
             int x = objects.getJSONObject(i).getJSONArray("position").getInt(0);
             int y = objects.getJSONObject(i).getJSONArray("position").getInt(1);
-            if(objects.getJSONObject(i).getString("type") == "OBSTACLE"){
+            if(objects.getJSONObject(i).getString("type").equalsIgnoreCase("OBSTACLE")){
                 //set line colour to black
                 //Turtle box drawing code
 
@@ -168,7 +168,7 @@ public class TurtleRobot {
                 terminator(this.currentPosition.getX(),this.currentPosition.getY(),this.angle);
                 StdDraw.filledSquare(x + 2.5, y + 2.5, 2.5);
             }
-            else if(objects.getJSONObject(i).getString("type") == "ROBOT"){
+            else if(objects.getJSONObject(i).getString("type").equalsIgnoreCase("ROBOT")){
                 //set line colour to red
                 //Turtle box drawing code
                 StdDraw.clear();
@@ -176,7 +176,7 @@ public class TurtleRobot {
 
                 StdDraw.setPenColor(StdDraw.RED);
                 terminator(this.currentPosition.getX(),this.currentPosition.getY(),this.angle);
-                StdDraw.filledSquare(x + 2, y + 2, 2);
+                StdDraw.filledSquare(x , y, 2);
             }
 
 

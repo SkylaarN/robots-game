@@ -11,6 +11,7 @@ import java.util.concurrent.TimeUnit;
 public class TurtleRobot {
 
     private Position currentPosition;
+    private Position currentRobotPosition;
     private Robot.Direction currentDirection;
     private int shields;
     private int shots;
@@ -22,7 +23,9 @@ public class TurtleRobot {
 
     public TurtleRobot(){
         //code for the turtle and the border
-        terminator(0,0,90);
+        this.currentRobotPosition = new Position(0,0);
+        this.angle = 90;
+        terminator(currentRobotPosition.getX(),currentRobotPosition.getY(),angle);
 
 
 
@@ -39,6 +42,36 @@ public class TurtleRobot {
                 }
             }
             System.out.println(command.getJSONObject("data").getString("message"));
+        }
+
+        switch(request.get("command").toString()) {
+
+            case "forward":
+
+                System.out.println("forward by 1...");
+
+                break;
+
+            case "back":
+
+                System.out.println("back by 2.");
+
+//
+                break;
+
+            case "right":
+                System.out.println("right..");
+                rightTurn();
+                newDirection();
+
+                break;
+
+            case "left":
+                System.out.println("left..");
+                leftTurn();
+                newDirection();
+
+                break;
         }
 
 
@@ -96,26 +129,30 @@ public class TurtleRobot {
 
     public void newDirection() {
 
-        switch (this.directionIndex) {
+        switch (getDirectionIndex()) {
 
             case 0:
 
                 this.currentDirection = Robot.Direction.UP;
+                this.angle = 90;
                 break;
 
             case 1:
 
                 this.currentDirection = Robot.Direction.RIGHT;
+                this.angle = 0;
                 break;
 
             case 2:
 
                 this.currentDirection = Robot.Direction.DOWN;
+                this.angle = 270;
                 break;
 
             case 3:
 
                 this.currentDirection = Robot.Direction.LEFT;
+                this.angle = 180;
                 break;
         }
 
@@ -200,6 +237,47 @@ public class TurtleRobot {
 
             this.directionIndex = 3;
         }
+    }
+
+    int getDirectionIndex() {
+
+        return this.directionIndex;
+    }
+
+    int getAngle() {
+        return this.angle;
+    }
+
+    Robot.Direction getCurrentDirection() {
+
+      return this.currentDirection;
+    }
+
+    void updatePosition(int steps) {
+
+        int newX = this.currentRobotPosition.getX();
+        int newY = this.currentRobotPosition.getY();
+
+        if (Robot.Direction.UP.equals(getCurrentDirection())) {
+            newY = newY + steps;
+        }
+        else if (Robot.Direction.DOWN.equals(getCurrentDirection())){
+            newY = newY - steps;
+        }
+        else if (Robot.Direction.RIGHT.equals(getCurrentDirection())){
+            newX = newX + steps;
+        }
+        else if (Robot.Direction.LEFT.equals(getCurrentDirection())){
+            newX = newX - steps;
+        }
+
+        this.currentRobotPosition = new Position(newX, newY);
+
+    }
+
+    Position getCurrentRobotPosition() {
+
+        return this.currentRobotPosition;
     }
 
 

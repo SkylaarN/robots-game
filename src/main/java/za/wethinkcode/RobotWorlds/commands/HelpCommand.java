@@ -1,5 +1,6 @@
 package za.wethinkcode.RobotWorlds.commands;
 
+import org.json.JSONObject;
 import za.wethinkcode.RobotWorlds.Robot;
 
 public class HelpCommand extends Command {
@@ -10,7 +11,11 @@ public class HelpCommand extends Command {
 
     @Override
     public boolean execute(Robot target) {
-        target.setStatus("< Robot Commands >~" +
+        JSONObject reply = new JSONObject();
+        JSONObject data = new JSONObject();
+
+        reply.put("result", "OK");
+        data.put("message", "< Robot Commands >~" +
                 "OFF  - Shut down robot~" +
                 "HELP - provide information about commands~" +
                 "FORWARD - move forward by specified number of steps, e.g. 'forward 10'~" +
@@ -20,6 +25,8 @@ public class HelpCommand extends Command {
                 "ROBOTS - List all robots~" +
                 "SHOOT - Shoot robot~" +
                 "LOOK - See everything in its line of sight~");
+        reply.put("data", data);
+        target.setStatus(reply.toString());
         return true;
     }
 }

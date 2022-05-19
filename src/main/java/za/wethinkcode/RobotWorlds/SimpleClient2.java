@@ -13,7 +13,7 @@ public class SimpleClient2 {
 
 
     public static void main(String[] args) {
-        TurtleRobot tRobot = new TurtleRobot();
+        ResponseReader reader = new ResponseReader();
         String input = "";
         String name = getInput("Please Enter your robots name.");
         while(!input.equalsIgnoreCase("quit")){
@@ -42,13 +42,11 @@ public class SimpleClient2 {
 
                 }
 
-                System.out.println(obj);
                 out.println(obj);
                 out.flush();
 
                 String messageFromServer = in.readLine();
-                System.out.println(messageFromServer);
-                tRobot.handleReply(new JSONObject(messageFromServer), obj);
+                reader.handleReply(new JSONObject(messageFromServer), obj);
 
 
 

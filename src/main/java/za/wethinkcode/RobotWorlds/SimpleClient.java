@@ -46,7 +46,14 @@ public class SimpleClient {
             out.flush();
 
             String messageFromServer = in.readLine();
-            System.out.println(messageFromServer);
+            if (messageFromServer != null && messageFromServer.strip().length() > 100) {
+                for (var c : messageFromServer.split("~")) {
+                    System.out.println(c);
+                }
+            } else {
+                System.out.println(messageFromServer);
+            }
+            // System.out.println(messageFromServer);
             tRobot.handleReply(new JSONObject(messageFromServer), obj);
 
 

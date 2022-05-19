@@ -215,13 +215,14 @@ public class TurtleRobot {
         StdDraw.rectangle(0,0,256,256);
 
         Turtle robot = new Turtle(x, y, a);
-
+        StdDraw.setPenColor(StdDraw.BLUE);
         robot.left(150);
         robot.forward(5);
         robot.left(120);
         robot.forward(5);
         robot.left(120);
         robot.forward(5);
+        StdDraw.setPenColor(StdDraw.BLACK);
     }
 
     public void rightTurn() {

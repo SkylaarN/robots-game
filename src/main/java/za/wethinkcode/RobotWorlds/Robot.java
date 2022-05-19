@@ -199,39 +199,14 @@ public class Robot {
         }
     }
 
-    public static void drawBorder(){
-//        StdDraw.setPenRadius(0.003);
-//        StdDraw.setPenColor(StdDraw.MAGENTA);
-//        StdDraw.line(0.2, 0.2, 0.8, 0.2);
-//        StdDraw.line(0.2, 0.8, 0.8, 0.8);
-//        StdDraw.line(0.2, 0.2, 0.2, 0.8);
-//        StdDraw.line(0.8, 0.2, 0.8, 0.8);
-        //new TurtleRobot();
-    }
 
-    public static void drawObstacles(){
-        ArrayList<SquareObstacle> obstacles = Obstacles.getObstacles();
-        //StdDraw.setPenColor(Color.RED);
-        for (int i = 0; i < obstacles.size(); i++) {
-            SquareObstacle sqrObs = obstacles.get(i);
-            int x = sqrObs.getBottomLeftX();
-            int y = sqrObs.getBottomLeftY();
-//            StdDraw.line(0.5 + x/512.0, 0.5 + y/512.0, 0.5 + (x + 4)/512.0, 0.5 + y/512.0);
-//            StdDraw.line(0.5 + x/512.0, 0.5 + y/512.0, 0.5 + x/512.0, 0.5 + (y + 4)/512.0);
-//            StdDraw.line(0.5 + x/512.0, 0.5 + (y + 4)/512.0, 0.5 + (x + 4)/512.0, 0.5 + (y + 4)/512.0);
-//            StdDraw.line(0.5 + (x + 4)/512.0, 0.5 + y/512.0, 0.5 + (x + 4)/512.0, 0.5 + (y + 4)/512.0);
-            //StdDraw.filledSquare(x +2.5, y + 2.5, 2.5);
-
-        }
-
-    }
 
     public void damage(){
 
         this.configuration.reduceHealth();
-//        if(this.health == 0){
-//            System.exit(0);
-//        }
+        if(getHealth() == 0){
+            setStatusType("DEAD");
+        }
     }
 
     public int getHealth() {
@@ -299,5 +274,10 @@ public class Robot {
     public void setStatusType(String statusType){
         this.statusType = statusType;
     }
+
+    public String getStatusType(){
+        return this.statusType;
+    }
 }
+
 

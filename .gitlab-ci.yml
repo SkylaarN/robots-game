@@ -26,4 +26,4 @@ test:
 deploy:
   stage: deploy
   script:
-    - echo "Deploy step - Implement your deployment logic here"
+    - echo "Deploy step to completed later once the project runs to some degree"

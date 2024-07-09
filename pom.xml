@@ -66,7 +66,23 @@
             <version>20220320</version>
         </dependency>
 
+        <!-- Jackson dependency for JSON processing -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.2.2</version>
+        </dependency>
+
+        <!-- Mockito dependency for mocking -->
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>2.2.2</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
+
 
     <build>
         <plugins>

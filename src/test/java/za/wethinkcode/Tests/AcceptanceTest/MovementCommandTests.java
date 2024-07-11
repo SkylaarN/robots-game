@@ -87,6 +87,31 @@ public class MovementCommandTests {
 
     }
 
+    void ValidbackCommand() {
+        // Given that I am connected to a running Robot Worlds server
+        // And the world is of size 1x1 (The world is configured or hardcoded to this size)
+        assertTrue(serverClient.isConnected());
+
+        // When I send a valid launch request to the server
+        String requestLaunch = "{" +
+                "  \"robot\": \"HAL\"," +
+                "  \"command\": \"launch\"," +
+                "  \"arguments\": [\"shooter\",\"5\",\"5\"]" +
+                "}";
+        JsonNode responseLaunch = serverClient.sendRequest(requestLaunch);
+//        request for back command
+        String request = "{" +
+                "  \"robot\": \"HAL\"," +
+                "  \"command\": \"back\"," +
+                "  \"arguments\": [0]" +
+                "}";
+        JsonNode response = serverClient.sendRequest(request);
+
+        // response from the server for vaild commmand
+        assertNotNull(response.get("result"));
+        assertEquals("OK", response.get("result").asText());
+    }
+
 
 
 

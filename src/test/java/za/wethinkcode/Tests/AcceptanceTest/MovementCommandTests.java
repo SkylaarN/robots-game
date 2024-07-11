@@ -60,5 +60,34 @@ public class MovementCommandTests {
 
     }
 
+    @Test
+    void InvaildForwardCommand(){
+//            checks if connection is made
+            assertTrue(serverClient.isConnected());
+//            launching robot
+        String requestLaunch = "{" +
+                "  \"robot\": \"HAL\"," +
+                "  \"command\": \"forward\"," +
+                "  \"arguments\": [0]" +
+                "}";
+//        get response from server after launching
+        JsonNode response = serverClient.sendRequest(requestLaunch);
+
+//        place invalid forward command
+        String request = "{" +
+                "  \"robot\": \"HAL\"," +
+                "  \"command\": \"forward 10\"," +
+                "  \"arguments\": [0]" +
+                "}";
+        JsonNode response_forward = serverClient.sendRequest(request);
+
+//        running error for a invaild forward command returns "ERROR"
+        assertNotNull(response_forward.get("result").asText());
+        assertEquals("ERROR",response_forward.get("result").asText());
+
+    }
+
+
+
 
 }

@@ -86,7 +86,7 @@ public class MovementCommandTests {
         assertEquals("ERROR",response_forward.get("result").asText());
 
     }
-
+    @Test
     void ValidbackCommand() {
         // Given that I am connected to a running Robot Worlds server
         // And the world is of size 1x1 (The world is configured or hardcoded to this size)
@@ -110,6 +110,33 @@ public class MovementCommandTests {
         // response from the server for vaild commmand
         assertNotNull(response.get("result"));
         assertEquals("OK", response.get("result").asText());
+    }
+
+    @Test
+    void InvaildBackCommand(){
+//            checks if connection is made
+        assertTrue(serverClient.isConnected());
+//            launching robot
+        String requestLaunch = "{" +
+                "  \"robot\": \"HAL\"," +
+                "  \"command\": \"forward\"," +
+                "  \"arguments\": [0]" +
+                "}";
+//        get response from server after launching
+        JsonNode response = serverClient.sendRequest(requestLaunch);
+
+//        place invalid back command
+        String request = "{" +
+                "  \"robot\": \"HAL\"," +
+                "  \"command\": \"back 10\"," +
+                "  \"arguments\": [0]" +
+                "}";
+        JsonNode response_forward = serverClient.sendRequest(request);
+
+//        running error for a invaild forward command returns "ERROR"
+        assertNotNull(response_forward.get("result").asText());
+        assertEquals("ERROR",response_forward.get("result").asText());
+
     }
 
 

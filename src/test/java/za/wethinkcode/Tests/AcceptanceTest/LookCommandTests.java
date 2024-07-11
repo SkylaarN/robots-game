@@ -8,12 +8,7 @@ import za.wethinkcode.RobotWorlds.RobotWorldClient;
 import za.wethinkcode.RobotWorlds.RobotWorldJsonClient;
 
 class LookCommandTests {
-    /**
 
-     * I want to launch my robot in the online robot world
-     * Then look around my world
-
-     */
 
     private final static int DEFAULT_PORT = 5000;
     private final static String DEFAULT_IP = "localhost";

@@ -80,15 +80,6 @@ class CommandTest{
         help.execute(robot);
 
         assertEquals("Shutting down...", robot.getStatus());
-    @Test
-    void Teststae() {
-            class LaunchRobotTests {
-                private final static int DEFAULT_PORT = 5000;
-                private final static String DEFAULT_IP = "localhost";
-                private final RobotWorldClient serverClient = new RobotWorldJsonClient();
-
-            }
-
     }
 
 

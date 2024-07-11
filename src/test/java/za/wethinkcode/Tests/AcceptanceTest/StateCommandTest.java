@@ -1,5 +1,6 @@
 package za.wethinkcode.Tests.AcceptanceTest;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import org.json.JSONObject;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -33,12 +34,12 @@ public class StateCommandTest {
                 "  \"command\": \"state\"," +
                 "  \"arguments\": []" +
                 "}";
-        JSONObject response = new JSONObject(serverClient.sendRequest(request));
+        JsonNode response = serverClient.sendRequest(request);
 
         // Then I should get a valid response from the server
         assertNotNull(response.get("result"));
-        assertEquals("OK", response.getString("result"));
-        assertEquals("UP", response.getJSONObject("state").getString("direction"));
+        assertEquals("OK", response.get("result").asText());
+        assertEquals("NORTH", response.get("state").get("direction").asText());
     }
 
     void Launch() {

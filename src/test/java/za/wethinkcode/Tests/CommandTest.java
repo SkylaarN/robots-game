@@ -1,6 +1,8 @@
 package za.wethinkcode.Tests;
 
 import za.wethinkcode.RobotWorlds.Robot;
+import za.wethinkcode.RobotWorlds.RobotWorldClient;
+import za.wethinkcode.RobotWorlds.RobotWorldJsonClient;
 import za.wethinkcode.RobotWorlds.commands.*;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -78,6 +80,14 @@ class CommandTest{
         help.execute(robot);
 
         assertEquals("Shutting down...", robot.getStatus());
+    @Test
+    void Teststae() {
+            class LaunchRobotTests {
+                private final static int DEFAULT_PORT = 5000;
+                private final static String DEFAULT_IP = "localhost";
+                private final RobotWorldClient serverClient = new RobotWorldJsonClient();
+
+            }
 
     }
 

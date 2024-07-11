@@ -78,7 +78,7 @@ class LookCommandTests {
                 "}";
         JsonNode invalidLookResponse = serverClient.sendRequest(invalidLookRequest);
 
-        // Then the response should be "ERROR"
+        //the response should be "ERROR"
         assertEquals("ERROR", invalidLookResponse.get("result").asText());
 
         // And the message should be "Unsupported command"

@@ -1,23 +1,20 @@
 stages:
   - build
   - test
-  - deploy
+  - deploy  
 
-build-job:
+build-test-job:  # Combined build and test jobs
   stage: build
-  image: maven:latest  # Use maven:latest image
+  image: maven:latest
   script:
-    - echo "Compiling the code..."
-    - mvn clean compile
+    - echo "Compiling the code and running unit tests..."
+    - mvn clean install -Dreference.server.url=$REFERENCE_SERVER_URL
 
-unit-test-job:
-  stage: test
-  image: maven:latest  # Use maven:latest image
+deploy-job:  # Added deploy job
+  stage: deploy
+  image: # Define image based on deployment method
   script:
-    - echo "Starting reference server..."
-    - java -jar libs/reference-server-0.1.0.jar &  # Start reference server in background
-    - export REFERENCE_SERVER_URL=http://localhost:8080  # Set reference server URL (replace port if needed)
-    - echo "Running unit tests against reference server..."
-    - mvn test  # Run tests using Maven
-
+    - echo "Deploying the application..."
+    # Add deployment commands here
+  # Add error handling here (optional)
 

@@ -8,7 +8,7 @@ build-test-job:  # Combined build and test jobs
   image: maven:latest
   script:
     - echo "Compiling the code and running unit tests..."
-    - mvn clean install -e Dreference.server.url=$REFERENCE_SERVER_URL
+    - mvn clean install -e -Dreference.server.url=$REFERENCE_SERVER_URL
 
 deploy-job:  # Added deploy job
   stage: deploy

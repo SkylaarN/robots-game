@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: za.wethinkcode.Tests.ResponseReaderTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 11.52 s -- in za.wethinkcode.Tests.ResponseReaderTest

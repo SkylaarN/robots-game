@@ -38,6 +38,7 @@ public class MovementCommandTests {
         // Given that I am connected to a running Robot Worlds server
         // And the world is of size 1x1 (The world is configured or hardcoded to this size)
         assertTrue(serverClient.isConnected());
+        System.out.println(serverClient.isConnected());
 
         // When I send a valid launch request to the server
         String requestLaunch = "{" +

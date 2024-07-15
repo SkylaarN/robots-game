@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: za.wethinkcode.Tests.AcceptanceTest.OrientationCommandTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.083 s <<< FAILURE! - in za.wethinkcode.Tests.AcceptanceTest.OrientationCommandTest
-validOrientationShouldSucceed  Time elapsed: 0.083 s  <<< FAILURE!
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.088 s <<< FAILURE! - in za.wethinkcode.Tests.AcceptanceTest.OrientationCommandTest
+validOrientationShouldSucceed  Time elapsed: 0.088 s  <<< FAILURE!
 org.opentest4j.AssertionFailedError: expected: <OK> but was: <ERROR>
 	at za.wethinkcode.Tests.AcceptanceTest.OrientationCommandTest.validOrientationShouldSucceed(OrientationCommandTest.java:50)
 

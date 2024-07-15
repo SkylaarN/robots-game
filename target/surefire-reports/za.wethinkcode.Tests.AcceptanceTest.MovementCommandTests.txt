@@ -1,16 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: za.wethinkcode.Tests.AcceptanceTest.MovementCommandTests
 -------------------------------------------------------------------------------
-Tests run: 8, Failures: 3, Errors: 0, Skipped: 0, Time elapsed: 0.702 s <<< FAILURE! - in za.wethinkcode.Tests.AcceptanceTest.MovementCommandTests
-ValidRightCommand  Time elapsed: 0.095 s  <<< FAILURE!
-org.opentest4j.AssertionFailedError: expected: <OK> but was: <ERROR>
-	at za.wethinkcode.Tests.AcceptanceTest.MovementCommandTests.ValidRightCommand(MovementCommandTests.java:244)
-
-ValidBackCommand  Time elapsed: 0.086 s  <<< FAILURE!
-org.opentest4j.AssertionFailedError: expected: <OK> but was: <ERROR>
-	at za.wethinkcode.Tests.AcceptanceTest.MovementCommandTests.ValidBackCommand(MovementCommandTests.java:113)
-
-ValidLeftCommand  Time elapsed: 0.089 s  <<< FAILURE!
-org.opentest4j.AssertionFailedError: expected: <OK> but was: <ERROR>
-	at za.wethinkcode.Tests.AcceptanceTest.MovementCommandTests.ValidLeftCommand(MovementCommandTests.java:192)
-
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.16 s - in za.wethinkcode.Tests.AcceptanceTest.MovementCommandTests

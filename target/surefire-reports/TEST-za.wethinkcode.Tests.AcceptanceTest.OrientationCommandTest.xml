@@ -1,137 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="za.wethinkcode.Tests.AcceptanceTest.OrientationCommandTest" time="0.675" tests="1" errors="1" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="za.wethinkcode.Tests.AcceptanceTest.OrientationCommandTest" time="0.083" tests="1" errors="0" skipped="0" failures="1">
   <properties>
-    <property name="java.specification.version" value="17"/>
+    <property name="sun.desktop" value="gnome"/>
+    <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
+    <property name="java.specification.version" value="11"/>
+    <property name="sun.cpu.isalist" value=""/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
-    <property name="sun.awt.enableExtraMouseButtons" value="true"/>
-    <property name="java.class.path" value="/Users/macbookpro/Documents/projects/WETHINKCODE/cjc1_brownfields_2024/target/test-classes:/Users/macbookpro/Documents/projects/WETHINKCODE/cjc1_brownfields_2024/target/classes:/Users/macbookpro/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.6.3/junit-jupiter-engine-5.6.3.jar:/Users/macbookpro/.m2/repository/org/apiguardian/apiguardian-api/1.1.0/apiguardian-api-1.1.0.jar:/Users/macbookpro/.m2/repository/org/junit/platform/junit-platform-engine/1.6.3/junit-platform-engine-1.6.3.jar:/Users/macbookpro/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/Users/macbookpro/.m2/repository/org/junit/platform/junit-platform-commons/1.6.3/junit-platform-commons-1.6.3.jar:/Users/macbookpro/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.6.3/junit-jupiter-api-5.6.3.jar:/Users/macbookpro/.m2/repository/org/junit/platform/junit-platform-launcher/1.6.3/junit-platform-launcher-1.6.3.jar:/Users/macbookpro/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.7.0/junit-jupiter-params-5.7.0.jar:/Users/macbookpro/.m2/repository/org/mockito/mockito-junit-jupiter/3.6.28/mockito-junit-jupiter-3.6.28.jar:/Users/macbookpro/.m2/repository/org/turtle/java-turtle/1.0/java-turtle-1.0.jar:/Users/macbookpro/.m2/repository/org/hexworks/zircon/zircon.core-jvm/2020.2.0-RELEASE/zircon.core-jvm-2020.2.0-RELEASE.jar:/Users/macbookpro/.m2/repository/org/jetbrains/kotlin/kotlin-reflect/1.4.10/kotlin-reflect-1.4.10.jar:/Users/macbookpro/.m2/repository/org/jetbrains/kotlin/kotlin-stdlib/1.4.10/kotlin-stdlib-1.4.10.jar:/Users/macbookpro/.m2/repository/org/jetbrains/annotations/13.0/annotations-13.0.jar:/Users/macbookpro/.m2/repository/com/github/ben-manes/caffeine/caffeine/2.5.4/caffeine-2.5.4.jar:/Users/macbookpro/.m2/repository/org/yaml/snakeyaml/1.18/snakeyaml-1.18.jar:/Users/macbookpro/.m2/repository/org/slf4j/slf4j-api/1.7.25/slf4j-api-1.7.25.jar:/Users/macbookpro/.m2/repository/org/jetbrains/kotlin/kotlin-stdlib-jdk8/1.4.10/kotlin-stdlib-jdk8-1.4.10.jar:/Users/macbookpro/.m2/repository/org/jetbrains/kotlin/kotlin-stdlib-jdk7/1.4.10/kotlin-stdlib-jdk7-1.4.10.jar:/Users/macbookpro/.m2/repository/org/jetbrains/kotlinx/kotlinx-coroutines-core-jvm/1.3.9/kotlinx-coroutines-core-jvm-1.3.9.jar:/Users/macbookpro/.m2/repository/org/jetbrains/kotlin/kotlin-stdlib-common/1.4.0/kotlin-stdlib-common-1.4.0.jar:/Users/macbookpro/.m2/repository/org/jetbrains/kotlinx/kotlinx-collections-immutable-jvm/0.3.3/kotlinx-collections-immutable-jvm-0.3.3.jar:/Users/macbookpro/.m2/repository/org/hexworks/cobalt/cobalt.core-jvm/2020.0.19-PREVIEW/cobalt.core-jvm-2020.0.19-PREVIEW.jar:/Users/macbookpro/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar:/Users/macbookpro/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar:/Users/macbookpro/.m2/repository/com/benasher44/uuid-jvm/0.2.2/uuid-jvm-0.2.2.jar:/Users/macbookpro/.m2/repository/org/hexworks/zircon/zircon.jvm.swing/2020.2.0-RELEASE/zircon.jvm.swing-2020.2.0-RELEASE.jar:/Users/macbookpro/.m2/repository/com/jhlabs/filters/2.0.235-1/filters-2.0.235-1.jar:/Users/macbookpro/.m2/repository/org/json/json/20220320/json-20220320.jar:/Users/macbookpro/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.2.2/jackson-databind-2.2.2.jar:/Users/macbookpro/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.2.2/jackson-annotations-2.2.2.jar:/Users/macbookpro/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.2.2/jackson-core-2.2.2.jar:/Users/macbookpro/.m2/repository/org/mockito/mockito-core/2.2.2/mockito-core-2.2.2.jar:/Users/macbookpro/.m2/repository/net/bytebuddy/byte-buddy/1.4.26/byte-buddy-1.4.26.jar:/Users/macbookpro/.m2/repository/net/bytebuddy/byte-buddy-agent/1.4.26/byte-buddy-agent-1.4.26.jar:/Users/macbookpro/.m2/repository/org/objenesis/objenesis/2.4/objenesis-2.4.jar:"/>
-    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="java.class.path" value="/home/wethinkcode/MrBrown/cjc1_brownfields_2024/target/test-classes:/home/wethinkcode/MrBrown/cjc1_brownfields_2024/target/classes:/home/wethinkcode/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.6.3/junit-jupiter-engine-5.6.3.jar:/home/wethinkcode/.m2/repository/org/apiguardian/apiguardian-api/1.1.0/apiguardian-api-1.1.0.jar:/home/wethinkcode/.m2/repository/org/junit/platform/junit-platform-engine/1.6.3/junit-platform-engine-1.6.3.jar:/home/wethinkcode/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/home/wethinkcode/.m2/repository/org/junit/platform/junit-platform-commons/1.6.3/junit-platform-commons-1.6.3.jar:/home/wethinkcode/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.6.3/junit-jupiter-api-5.6.3.jar:/home/wethinkcode/.m2/repository/org/junit/platform/junit-platform-launcher/1.6.3/junit-platform-launcher-1.6.3.jar:/home/wethinkcode/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.7.0/junit-jupiter-params-5.7.0.jar:/home/wethinkcode/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.14.0/jackson-databind-2.14.0.jar:/home/wethinkcode/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.14.0/jackson-annotations-2.14.0.jar:/home/wethinkcode/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.14.0/jackson-core-2.14.0.jar:/home/wethinkcode/.m2/repository/org/mockito/mockito-junit-jupiter/3.6.28/mockito-junit-jupiter-3.6.28.jar:/home/wethinkcode/.m2/repository/org/mockito/mockito-core/3.6.28/mockito-core-3.6.28.jar:/home/wethinkcode/.m2/repository/net/bytebuddy/byte-buddy/1.10.18/byte-buddy-1.10.18.jar:/home/wethinkcode/.m2/repository/net/bytebuddy/byte-buddy-agent/1.10.18/byte-buddy-agent-1.10.18.jar:/home/wethinkcode/.m2/repository/org/objenesis/objenesis/3.1/objenesis-3.1.jar:/home/wethinkcode/.m2/repository/org/turtle/java-turtle/1.0/java-turtle-1.0.jar:/home/wethinkcode/.m2/repository/org/hexworks/zircon/zircon.core-jvm/2020.2.0-RELEASE/zircon.core-jvm-2020.2.0-RELEASE.jar:/home/wethinkcode/.m2/repository/org/jetbrains/kotlin/kotlin-reflect/1.4.10/kotlin-reflect-1.4.10.jar:/home/wethinkcode/.m2/repository/org/jetbrains/kotlin/kotlin-stdlib/1.4.10/kotlin-stdlib-1.4.10.jar:/home/wethinkcode/.m2/repository/org/jetbrains/annotations/13.0/annotations-13.0.jar:/home/wethinkcode/.m2/repository/com/github/ben-manes/caffeine/caffeine/2.5.4/caffeine-2.5.4.jar:/home/wethinkcode/.m2/repository/org/yaml/snakeyaml/1.18/snakeyaml-1.18.jar:/home/wethinkcode/.m2/repository/org/slf4j/slf4j-api/1.7.25/slf4j-api-1.7.25.jar:/home/wethinkcode/.m2/repository/org/jetbrains/kotlin/kotlin-stdlib-jdk8/1.4.10/kotlin-stdlib-jdk8-1.4.10.jar:/home/wethinkcode/.m2/repository/org/jetbrains/kotlin/kotlin-stdlib-jdk7/1.4.10/kotlin-stdlib-jdk7-1.4.10.jar:/home/wethinkcode/.m2/repository/org/jetbrains/kotlinx/kotlinx-coroutines-core-jvm/1.3.9/kotlinx-coroutines-core-jvm-1.3.9.jar:/home/wethinkcode/.m2/repository/org/jetbrains/kotlin/kotlin-stdlib-common/1.4.0/kotlin-stdlib-common-1.4.0.jar:/home/wethinkcode/.m2/repository/org/jetbrains/kotlinx/kotlinx-collections-immutable-jvm/0.3.3/kotlinx-collections-immutable-jvm-0.3.3.jar:/home/wethinkcode/.m2/repository/org/hexworks/cobalt/cobalt.core-jvm/2020.0.19-PREVIEW/cobalt.core-jvm-2020.0.19-PREVIEW.jar:/home/wethinkcode/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar:/home/wethinkcode/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar:/home/wethinkcode/.m2/repository/com/benasher44/uuid-jvm/0.2.2/uuid-jvm-0.2.2.jar:/home/wethinkcode/.m2/repository/org/hexworks/zircon/zircon.jvm.swing/2020.2.0-RELEASE/zircon.jvm.swing-2020.2.0-RELEASE.jar:/home/wethinkcode/.m2/repository/com/jhlabs/filters/2.0.235-1/filters-2.0.235-1.jar:/home/wethinkcode/.m2/repository/org/json/json/20220320/json-20220320.jar:/home/wethinkcode/.m2/repository/org/junit/jupiter/junit-jupiter/5.8.1/junit-jupiter-5.8.1.jar:"/>
+    <property name="java.vm.vendor" value="Ubuntu"/>
     <property name="sun.arch.data.model" value="64"/>
-    <property name="sun.font.fontmanager" value="sun.font.CFontManager"/>
-    <property name="java.vendor.url" value="https://java.oracle.com/"/>
-    <property name="user.timezone" value="Africa/Johannesburg"/>
-    <property name="os.name" value="Mac OS X"/>
-    <property name="java.vm.specification.version" value="17"/>
+    <property name="java.vendor.url" value="https://ubuntu.com/"/>
+    <property name="user.timezone" value=""/>
+    <property name="java.vm.specification.version" value="11"/>
+    <property name="os.name" value="Linux"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="ZA"/>
-    <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk-17.jdk/Contents/Home/lib"/>
-    <property name="sun.java.command" value="/Users/macbookpro/Documents/projects/WETHINKCODE/cjc1_brownfields_2024/target/surefire/surefirebooter-20240715113209498_3.jar /Users/macbookpro/Documents/projects/WETHINKCODE/cjc1_brownfields_2024/target/surefire 2024-07-15T11-32-09_152-jvmRun1 surefire-20240715113209498_1tmp surefire_0-20240715113209498_2tmp"/>
-    <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="sun.boot.library.path" value="/usr/lib/jvm/java-11-openjdk-amd64/lib"/>
+    <property name="sun.java.command" value="/home/wethinkcode/MrBrown/cjc1_brownfields_2024/target/surefire/surefirebooter13153153022596252591.jar /home/wethinkcode/MrBrown/cjc1_brownfields_2024/target/surefire 2024-07-15T12-42-57_884-jvmRun1 surefire11228211636396574401tmp surefire_0354061610766492873tmp"/>
     <property name="jdk.debug" value="release"/>
-    <property name="surefire.test.class.path" value="/Users/macbookpro/Documents/projects/WETHINKCODE/cjc1_brownfields_2024/target/test-classes:/Users/macbookpro/Documents/projects/WETHINKCODE/cjc1_brownfields_2024/target/classes:/Users/macbookpro/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.6.3/junit-jupiter-engine-5.6.3.jar:/Users/macbookpro/.m2/repository/org/apiguardian/apiguardian-api/1.1.0/apiguardian-api-1.1.0.jar:/Users/macbookpro/.m2/repository/org/junit/platform/junit-platform-engine/1.6.3/junit-platform-engine-1.6.3.jar:/Users/macbookpro/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/Users/macbookpro/.m2/repository/org/junit/platform/junit-platform-commons/1.6.3/junit-platform-commons-1.6.3.jar:/Users/macbookpro/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.6.3/junit-jupiter-api-5.6.3.jar:/Users/macbookpro/.m2/repository/org/junit/platform/junit-platform-launcher/1.6.3/junit-platform-launcher-1.6.3.jar:/Users/macbookpro/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.7.0/junit-jupiter-params-5.7.0.jar:/Users/macbookpro/.m2/repository/org/mockito/mockito-junit-jupiter/3.6.28/mockito-junit-jupiter-3.6.28.jar:/Users/macbookpro/.m2/repository/org/turtle/java-turtle/1.0/java-turtle-1.0.jar:/Users/macbookpro/.m2/repository/org/hexworks/zircon/zircon.core-jvm/2020.2.0-RELEASE/zircon.core-jvm-2020.2.0-RELEASE.jar:/Users/macbookpro/.m2/repository/org/jetbrains/kotlin/kotlin-reflect/1.4.10/kotlin-reflect-1.4.10.jar:/Users/macbookpro/.m2/repository/org/jetbrains/kotlin/kotlin-stdlib/1.4.10/kotlin-stdlib-1.4.10.jar:/Users/macbookpro/.m2/repository/org/jetbrains/annotations/13.0/annotations-13.0.jar:/Users/macbookpro/.m2/repository/com/github/ben-manes/caffeine/caffeine/2.5.4/caffeine-2.5.4.jar:/Users/macbookpro/.m2/repository/org/yaml/snakeyaml/1.18/snakeyaml-1.18.jar:/Users/macbookpro/.m2/repository/org/slf4j/slf4j-api/1.7.25/slf4j-api-1.7.25.jar:/Users/macbookpro/.m2/repository/org/jetbrains/kotlin/kotlin-stdlib-jdk8/1.4.10/kotlin-stdlib-jdk8-1.4.10.jar:/Users/macbookpro/.m2/repository/org/jetbrains/kotlin/kotlin-stdlib-jdk7/1.4.10/kotlin-stdlib-jdk7-1.4.10.jar:/Users/macbookpro/.m2/repository/org/jetbrains/kotlinx/kotlinx-coroutines-core-jvm/1.3.9/kotlinx-coroutines-core-jvm-1.3.9.jar:/Users/macbookpro/.m2/repository/org/jetbrains/kotlin/kotlin-stdlib-common/1.4.0/kotlin-stdlib-common-1.4.0.jar:/Users/macbookpro/.m2/repository/org/jetbrains/kotlinx/kotlinx-collections-immutable-jvm/0.3.3/kotlinx-collections-immutable-jvm-0.3.3.jar:/Users/macbookpro/.m2/repository/org/hexworks/cobalt/cobalt.core-jvm/2020.0.19-PREVIEW/cobalt.core-jvm-2020.0.19-PREVIEW.jar:/Users/macbookpro/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar:/Users/macbookpro/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar:/Users/macbookpro/.m2/repository/com/benasher44/uuid-jvm/0.2.2/uuid-jvm-0.2.2.jar:/Users/macbookpro/.m2/repository/org/hexworks/zircon/zircon.jvm.swing/2020.2.0-RELEASE/zircon.jvm.swing-2020.2.0-RELEASE.jar:/Users/macbookpro/.m2/repository/com/jhlabs/filters/2.0.235-1/filters-2.0.235-1.jar:/Users/macbookpro/.m2/repository/org/json/json/20220320/json-20220320.jar:/Users/macbookpro/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.2.2/jackson-databind-2.2.2.jar:/Users/macbookpro/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.2.2/jackson-annotations-2.2.2.jar:/Users/macbookpro/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.2.2/jackson-core-2.2.2.jar:/Users/macbookpro/.m2/repository/org/mockito/mockito-core/2.2.2/mockito-core-2.2.2.jar:/Users/macbookpro/.m2/repository/net/bytebuddy/byte-buddy/1.4.26/byte-buddy-1.4.26.jar:/Users/macbookpro/.m2/repository/net/bytebuddy/byte-buddy-agent/1.4.26/byte-buddy-agent-1.4.26.jar:/Users/macbookpro/.m2/repository/org/objenesis/objenesis/2.4/objenesis-2.4.jar:"/>
+    <property name="surefire.test.class.path" value="/home/wethinkcode/MrBrown/cjc1_brownfields_2024/target/test-classes:/home/wethinkcode/MrBrown/cjc1_brownfields_2024/target/classes:/home/wethinkcode/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.6.3/junit-jupiter-engine-5.6.3.jar:/home/wethinkcode/.m2/repository/org/apiguardian/apiguardian-api/1.1.0/apiguardian-api-1.1.0.jar:/home/wethinkcode/.m2/repository/org/junit/platform/junit-platform-engine/1.6.3/junit-platform-engine-1.6.3.jar:/home/wethinkcode/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/home/wethinkcode/.m2/repository/org/junit/platform/junit-platform-commons/1.6.3/junit-platform-commons-1.6.3.jar:/home/wethinkcode/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.6.3/junit-jupiter-api-5.6.3.jar:/home/wethinkcode/.m2/repository/org/junit/platform/junit-platform-launcher/1.6.3/junit-platform-launcher-1.6.3.jar:/home/wethinkcode/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.7.0/junit-jupiter-params-5.7.0.jar:/home/wethinkcode/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.14.0/jackson-databind-2.14.0.jar:/home/wethinkcode/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.14.0/jackson-annotations-2.14.0.jar:/home/wethinkcode/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.14.0/jackson-core-2.14.0.jar:/home/wethinkcode/.m2/repository/org/mockito/mockito-junit-jupiter/3.6.28/mockito-junit-jupiter-3.6.28.jar:/home/wethinkcode/.m2/repository/org/mockito/mockito-core/3.6.28/mockito-core-3.6.28.jar:/home/wethinkcode/.m2/repository/net/bytebuddy/byte-buddy/1.10.18/byte-buddy-1.10.18.jar:/home/wethinkcode/.m2/repository/net/bytebuddy/byte-buddy-agent/1.10.18/byte-buddy-agent-1.10.18.jar:/home/wethinkcode/.m2/repository/org/objenesis/objenesis/3.1/objenesis-3.1.jar:/home/wethinkcode/.m2/repository/org/turtle/java-turtle/1.0/java-turtle-1.0.jar:/home/wethinkcode/.m2/repository/org/hexworks/zircon/zircon.core-jvm/2020.2.0-RELEASE/zircon.core-jvm-2020.2.0-RELEASE.jar:/home/wethinkcode/.m2/repository/org/jetbrains/kotlin/kotlin-reflect/1.4.10/kotlin-reflect-1.4.10.jar:/home/wethinkcode/.m2/repository/org/jetbrains/kotlin/kotlin-stdlib/1.4.10/kotlin-stdlib-1.4.10.jar:/home/wethinkcode/.m2/repository/org/jetbrains/annotations/13.0/annotations-13.0.jar:/home/wethinkcode/.m2/repository/com/github/ben-manes/caffeine/caffeine/2.5.4/caffeine-2.5.4.jar:/home/wethinkcode/.m2/repository/org/yaml/snakeyaml/1.18/snakeyaml-1.18.jar:/home/wethinkcode/.m2/repository/org/slf4j/slf4j-api/1.7.25/slf4j-api-1.7.25.jar:/home/wethinkcode/.m2/repository/org/jetbrains/kotlin/kotlin-stdlib-jdk8/1.4.10/kotlin-stdlib-jdk8-1.4.10.jar:/home/wethinkcode/.m2/repository/org/jetbrains/kotlin/kotlin-stdlib-jdk7/1.4.10/kotlin-stdlib-jdk7-1.4.10.jar:/home/wethinkcode/.m2/repository/org/jetbrains/kotlinx/kotlinx-coroutines-core-jvm/1.3.9/kotlinx-coroutines-core-jvm-1.3.9.jar:/home/wethinkcode/.m2/repository/org/jetbrains/kotlin/kotlin-stdlib-common/1.4.0/kotlin-stdlib-common-1.4.0.jar:/home/wethinkcode/.m2/repository/org/jetbrains/kotlinx/kotlinx-collections-immutable-jvm/0.3.3/kotlinx-collections-immutable-jvm-0.3.3.jar:/home/wethinkcode/.m2/repository/org/hexworks/cobalt/cobalt.core-jvm/2020.0.19-PREVIEW/cobalt.core-jvm-2020.0.19-PREVIEW.jar:/home/wethinkcode/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar:/home/wethinkcode/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar:/home/wethinkcode/.m2/repository/com/benasher44/uuid-jvm/0.2.2/uuid-jvm-0.2.2.jar:/home/wethinkcode/.m2/repository/org/hexworks/zircon/zircon.jvm.swing/2020.2.0-RELEASE/zircon.jvm.swing-2020.2.0-RELEASE.jar:/home/wethinkcode/.m2/repository/com/jhlabs/filters/2.0.235-1/filters-2.0.235-1.jar:/home/wethinkcode/.m2/repository/org/json/json/20220320/json-20220320.jar:/home/wethinkcode/.m2/repository/org/junit/jupiter/junit-jupiter/5.8.1/junit-jupiter-5.8.1.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
-    <property name="user.home" value="/Users/macbookpro"/>
+    <property name="user.home" value="/home/wethinkcode"/>
     <property name="user.language" value="en"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="java.version.date" value="2024-04-16"/>
-    <property name="java.home" value="/Library/Java/JavaVirtualMachines/jdk-17.jdk/Contents/Home"/>
+    <property name="java.home" value="/usr/lib/jvm/java-11-openjdk-amd64"/>
     <property name="file.separator" value="/"/>
-    <property name="basedir" value="/Users/macbookpro/Documents/projects/WETHINKCODE/cjc1_brownfields_2024"/>
+    <property name="basedir" value="/home/wethinkcode/MrBrown/cjc1_brownfields_2024"/>
     <property name="java.vm.compressedOopsMode" value="Zero based"/>
     <property name="line.separator" value="&#10;"/>
-    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="/Users/macbookpro/Documents/projects/WETHINKCODE/cjc1_brownfields_2024/target/surefire/surefirebooter-20240715113209498_3.jar"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment"/>
+    <property name="surefire.real.class.path" value="/home/wethinkcode/MrBrown/cjc1_brownfields_2024/target/surefire/surefirebooter13153153022596252591.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
-    <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
-    <property name="java.runtime.version" value="17.0.11+7-LTS-207"/>
-    <property name="user.name" value="macbookpro"/>
+    <property name="java.runtime.version" value="11.0.23+9-post-Ubuntu-1ubuntu122.04.1"/>
+    <property name="user.name" value="wethinkcode"/>
     <property name="path.separator" value=":"/>
-    <property name="os.version" value="10.15.5"/>
-    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="os.version" value="6.9.3-76060903-generic"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="file.encoding" value="UTF-8"/>
-    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
-    <property name="localRepository" value="/Users/macbookpro/.m2/repository"/>
-    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
-    <property name="java.io.tmpdir" value="/var/folders/rn/72hss5ks40g7l810y0_8ht4r0000gn/T/"/>
-    <property name="java.version" value="17.0.11"/>
-    <property name="user.dir" value="/Users/macbookpro/Documents/projects/WETHINKCODE/cjc1_brownfields_2024"/>
-    <property name="os.arch" value="x86_64"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="localRepository" value="/home/wethinkcode/.m2/repository"/>
+    <property name="java.vendor.url.bug" value="https://bugs.launchpad.net/ubuntu/+source/openjdk-lts"/>
+    <property name="java.io.tmpdir" value="/tmp"/>
+    <property name="java.version" value="11.0.23"/>
+    <property name="user.dir" value="/home/wethinkcode/MrBrown/cjc1_brownfields_2024"/>
+    <property name="os.arch" value="amd64"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="native.encoding" value="UTF-8"/>
-    <property name="java.library.path" value="/Users/macbookpro/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/>
+    <property name="java.awt.printerjob" value="sun.print.PSPrinterJob"/>
+    <property name="sun.os.patch.level" value="unknown"/>
+    <property name="java.library.path" value="/usr/java/packages/lib:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib"/>
     <property name="java.vm.info" value="mixed mode, sharing"/>
-    <property name="java.vendor" value="Oracle Corporation"/>
-    <property name="java.vm.version" value="17.0.11+7-LTS-207"/>
-    <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
-    <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
-    <property name="java.class.version" value="61.0"/>
+    <property name="java.vendor" value="Ubuntu"/>
+    <property name="java.vm.version" value="11.0.23+9-post-Ubuntu-1ubuntu122.04.1"/>
+    <property name="java.specification.maintenance.version" value="2"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="55.0"/>
   </properties>
-  <testcase name="validOrientationShouldSucceed" classname="za.wethinkcode.Tests.AcceptanceTest.OrientationCommandTest" time="0.336">
-    <error message="Cannot invoke &quot;String.length()&quot; because &quot;s&quot; is null" type="java.lang.NullPointerException"><![CDATA[java.lang.NullPointerException: Cannot invoke "String.length()" because "s" is null
-	at java.base/java.io.StringReader.<init>(StringReader.java:51)
-	at com.fasterxml.jackson.core.JsonFactory.createParser(JsonFactory.java:796)
-	at com.fasterxml.jackson.databind.ObjectMapper.readTree(ObjectMapper.java:1750)
-	at za.wethinkcode.RobotWorlds.RobotWorldJsonClient.sendRequest(RobotWorldJsonClient.java:55)
-	at za.wethinkcode.Tests.AcceptanceTest.OrientationCommandTest.Launch(OrientationCommandTest.java:64)
-	at za.wethinkcode.Tests.AcceptanceTest.OrientationCommandTest.validOrientationShouldSucceed(OrientationCommandTest.java:40)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:686)
-	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
-	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
-	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:149)
-	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:140)
-	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:84)
-	at org.junit.jupiter.engine.execution.ExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(ExecutableInvoker.java:115)
-	at org.junit.jupiter.engine.execution.ExecutableInvoker.lambda$invoke$0(ExecutableInvoker.java:105)
-	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
-	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
-	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
-	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
-	at org.junit.jupiter.engine.execution.ExecutableInvoker.invoke(ExecutableInvoker.java:104)
-	at org.junit.jupiter.engine.execution.ExecutableInvoker.invoke(ExecutableInvoker.java:98)
-	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$6(TestMethodTestDescriptor.java:212)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
-	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:208)
-	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:137)
-	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:71)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:135)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:125)
-	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:135)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:123)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:122)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:80)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:139)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:125)
-	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:135)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:123)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:122)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:80)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:139)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:125)
-	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:135)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:123)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:122)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:80)
-	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:32)
-	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
-	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:51)
-	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:248)
-	at org.junit.platform.launcher.core.DefaultLauncher.lambda$execute$5(DefaultLauncher.java:211)
-	at org.junit.platform.launcher.core.DefaultLauncher.withInterceptedStreams(DefaultLauncher.java:226)
-	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:199)
-	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:132)
-	at org.apache.maven.surefire.junitplatform.LazyLauncher.execute(LazyLauncher.java:56)
-	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.execute(JUnitPlatformProvider.java:184)
-	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invokeAllTests(JUnitPlatformProvider.java:148)
-	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invoke(JUnitPlatformProvider.java:122)
-	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
-	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
-	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
-	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
-]]></error>
+  <testcase name="validOrientationShouldSucceed" classname="za.wethinkcode.Tests.AcceptanceTest.OrientationCommandTest" time="0.083">
+    <failure message="expected: &lt;OK&gt; but was: &lt;ERROR&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <OK> but was: <ERROR>
+	at za.wethinkcode.Tests.AcceptanceTest.OrientationCommandTest.validOrientationShouldSucceed(OrientationCommandTest.java:50)
+]]></failure>
   </testcase>
 </testsuite>

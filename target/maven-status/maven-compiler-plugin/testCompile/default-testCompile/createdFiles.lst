@@ -2,8 +2,8 @@ za/wethinkcode/Tests/RobotWorldsTest.class
 za/wethinkcode/Tests/SquareObstaclesTest.class
 za/wethinkcode/Tests/AcceptanceTest/MovementCommandTests.class
 za/wethinkcode/Tests/AcceptanceTest/LaunchRobotTests.class
-za/wethinkcode/Tests/AcceptanceTest/LookCommandTests.class
 za/wethinkcode/Tests/PositionTest.class
-za/wethinkcode/Tests/AcceptanceTest/StateCommandTest.class
+za/wethinkcode/Tests/AcceptanceTest/LookCommandTests.class
 za/wethinkcode/Tests/ResponseReaderTest.class
+za/wethinkcode/Tests/AcceptanceTest/StateCommandTest.class
 za/wethinkcode/Tests/CommandTest.class

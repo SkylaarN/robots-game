@@ -51,9 +51,10 @@ public class MovementCommandTests {
         String request = "{" +
                 "  \"robot\": \"HAL\"," +
                 "  \"command\": \"forward\"," +
-                "  \"arguments\": [0]" +
+                "  \"arguments\": [20]" +
                 "}";
         JsonNode response = serverClient.sendRequest(request);
+        System.out.println(response);
 
         // response from the server for vaild commmand
         assertNotNull(response.get("result"));

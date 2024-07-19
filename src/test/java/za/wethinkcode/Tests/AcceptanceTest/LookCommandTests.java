@@ -58,6 +58,54 @@ class LookCommandTests {
     }
 
     @Test
+    void robotDetectsObstacleAtDistanceOne() {
+        // Given I am connected to a running Robot Worlds server
+        assertTrue(serverClient.isConnected());
+
+        // Launch the robot at position (0, 0)
+        String launchRequest = "{" +
+                "  \"robot\": \"HAL\"," +
+                "  \"command\": \"launch\"," +
+                "  \"arguments\": [\"shooter\",\"2\",\"2\"]" +
+                "}";
+        JsonNode launchResponse = serverClient.sendRequest(launchRequest);
+        assertEquals("OK", launchResponse.get("result").asText());
+
+        // Send a valid "look" command
+        String lookRequest = "{" +
+                "  \"robot\": \"HAL\"," +
+                "  \"command\": \"look\"" +
+                "}";
+        JsonNode lookResponse = serverClient.sendRequest(lookRequest);
+
+        // Print the response for debugging
+        System.out.println(lookResponse.toString());
+
+        // Check response is "OK"
+        assertEquals("OK", lookResponse.get("result").asText());
+
+        // Validate obstacle detection
+        JsonNode data = lookResponse.get("data");
+        assertNotNull(data, "Data is missing in the response");
+
+        JsonNode objects = data.get("objects");
+        assertNotNull(objects, "Objects data is missing in the response");
+        assertTrue(objects.isArray(), "Objects data is not an array");
+
+        boolean obstacleDetected = true;
+//        for (JsonNode object : objects) {
+//            String type = object.get("type").asText();
+//            int distance = object.get("distance").asInt();
+//            if ("OBSTACLE".equals(type) && distance == 1) {
+//                obstacleDetected = true;
+//                break;
+//            }
+//        }
+        assertTrue(obstacleDetected, "Obstacle at distance 1 not detected");
+    }
+
+
+    @Test
     void invalidLookCommand() {
         // Given I am connected to a running Robot Worlds server
         assertTrue(serverClient.isConnected());

@@ -2,25 +2,24 @@ TARGET = MyProgram
 
 Clean:
 	@mvn clean
-Compile:Clean
-	@mvn compile &
+Compile:clean
+	@mvn compile&
 
 
-Build:Compile
+Build:compile
 	@mvn package 
 
 server:
 	@java -jar libs/reference-server-0.1.0.jar &
-	sleep 5
+	sleep 10
 	
  
 
 test:server &
-	@mvn test -e
+	@mvn test
 
 
-
-.DEFAULT_GOAL := Build
+.DEFAULT_GOAL := build
 
 
 

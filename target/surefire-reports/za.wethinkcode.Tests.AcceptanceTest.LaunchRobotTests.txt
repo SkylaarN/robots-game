@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: za.wethinkcode.Tests.AcceptanceTest.LaunchRobotTests
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 0.009 s <<< FAILURE! - in za.wethinkcode.Tests.AcceptanceTest.LaunchRobotTests
-validLaunchShouldSucceed  Time elapsed: 0.004 s  <<< ERROR!
+Tests run: 2, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 0.016 s <<< FAILURE! - in za.wethinkcode.Tests.AcceptanceTest.LaunchRobotTests
+validLaunchShouldSucceed  Time elapsed: 0.005 s  <<< ERROR!
 java.lang.RuntimeException: Error connecting to Robot Worlds server.
 	at za.wethinkcode.Tests.AcceptanceTest.LaunchRobotTests.connectToServer(LaunchRobotTests.java:24)
 Caused by: java.net.ConnectException: Connection refused

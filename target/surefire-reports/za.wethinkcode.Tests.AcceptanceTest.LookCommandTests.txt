@@ -1,0 +1,22 @@
+-------------------------------------------------------------------------------
+Test set: za.wethinkcode.Tests.AcceptanceTest.LookCommandTests
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 0, Errors: 3, Skipped: 0, Time elapsed: 0.018 s <<< FAILURE! - in za.wethinkcode.Tests.AcceptanceTest.LookCommandTests
+invalidLookCommand  Time elapsed: 0.007 s  <<< ERROR!
+java.lang.RuntimeException: Error connecting to Robot Worlds server.
+	at za.wethinkcode.Tests.AcceptanceTest.LookCommandTests.connectToServer(LookCommandTests.java:19)
+Caused by: java.net.ConnectException: Connection refused
+	at za.wethinkcode.Tests.AcceptanceTest.LookCommandTests.connectToServer(LookCommandTests.java:19)
+
+worldIsEmpty  Time elapsed: 0.003 s  <<< ERROR!
+java.lang.RuntimeException: Error connecting to Robot Worlds server.
+	at za.wethinkcode.Tests.AcceptanceTest.LookCommandTests.connectToServer(LookCommandTests.java:19)
+Caused by: java.net.ConnectException: Connection refused
+	at za.wethinkcode.Tests.AcceptanceTest.LookCommandTests.connectToServer(LookCommandTests.java:19)
+
+robotDetectsObstacleAtDistanceOne  Time elapsed: 0.003 s  <<< ERROR!
+java.lang.RuntimeException: Error connecting to Robot Worlds server.
+	at za.wethinkcode.Tests.AcceptanceTest.LookCommandTests.connectToServer(LookCommandTests.java:19)
+Caused by: java.net.ConnectException: Connection refused
+	at za.wethinkcode.Tests.AcceptanceTest.LookCommandTests.connectToServer(LookCommandTests.java:19)
+

@@ -13,18 +13,17 @@ server:
 
 test:
 	@mvn test
-Versioning:
-	@echo "1.1.1" >version.txt
-Version := $(shell cat version.txt)
+# Versioning:
+# 	@echo "1.1.1" >version.txt
+# Version := $(shell cat version.txt)
 
-all:
-	echo "current version: $(Version)"
+# all:
+# 	echo "current version: $(Version)"
 
 .DEFAULT_GOAL := compile
 .DEFAULT_GOAL := server
 .DEFAULT_GOAL := test
-.DEFAULT_GOAL := Versioning
-.DEFAULT_GOAL := Versioning
-.DEFAULT_GOAL := all
+# .DEFAULT_GOAL := Versioning
+# .DEFAULT_GOAL := all
 
 

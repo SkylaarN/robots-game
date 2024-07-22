@@ -30,13 +30,7 @@ class LookCommandTests {
         assertTrue(serverClient.isConnected());
 
         // And the robot "HAL" is launched at position (0, 0)
-        String launchRequest = "{" +
-                "  \"robot\": \"HAL\"," +
-                "  \"command\": \"launch\"," +
-                "  \"arguments\": [\"shooter\",\"5\",\"5\"]" +
-                "}";
-        JsonNode launchResponse = serverClient.sendRequest(launchRequest);
-        assertEquals("OK", launchResponse.get("result").asText());
+        LaunchRobot();
 
         // When I send a valid "look" command
         String lookRequest = "{" +
@@ -73,13 +67,7 @@ class LookCommandTests {
         assertTrue(serverClient.isConnected());
 
         // Launch the robot at position (0, 0)
-        String launchRequest = "{" +
-                "  \"robot\": \"HAL\"," +
-                "  \"command\": \"launch\"," +
-                "  \"arguments\": [\"shooter\",\"2\",\"2\"]" +
-                "}";
-        JsonNode launchResponse = serverClient.sendRequest(launchRequest);
-        assertEquals("OK", launchResponse.get("result").asText());
+        LaunchRobot();
 
         // Send a valid "look" command
         String lookRequest = "{" +
@@ -102,16 +90,16 @@ class LookCommandTests {
         assertNotNull(objects, "Objects found");
         assertTrue(objects.isArray(), "Objects data is an array");
 
-        boolean obstacleDetected = true;
-//        for (JsonNode object : objects) {
-//            String type = object.get("type").asText();
-//            int distance = object.get("distance").asInt();
-//            if ("OBSTACLE".equals(type) && distance == 1) {
-//                obstacleDetected = true;
-//                break;
-//            }
-//        }
-        assertTrue(obstacleDetected, "Obstacle at distance 1 not detected for now just set to true");
+        boolean obstacleDetected = false;
+        for (JsonNode object : objects) {
+            String type = object.get("type").asText();
+            int distance = object.get("distance").asInt();
+            if ("OBSTACLE".equals(type) && distance == 1) {
+                obstacleDetected = true;
+                break;
+            }
+        }
+        assertTrue(obstacleDetected, "Obstacle at distance 1 is detected.");
     }
 
 
@@ -121,13 +109,7 @@ class LookCommandTests {
         assertTrue(serverClient.isConnected());
 
         // And the robot "HAL" is launched at position (0, 0)
-        String launchRequest = "{" +
-                "  \"robot\": \"HAL\"," +
-                "  \"command\": \"launch\"," +
-                "  \"arguments\": [\"shooter\",\"5\",\"5\"]" +
-                "}";
-        JsonNode launchResponse = serverClient.sendRequest(launchRequest);
-        assertEquals("OK", launchResponse.get("result").asText());
+        LaunchRobot();
 
         // When I send an invalid "looook" command
         String invalidLookRequest = "{" +
@@ -136,6 +118,8 @@ class LookCommandTests {
                 "}";
         JsonNode invalidLookResponse = serverClient.sendRequest(invalidLookRequest);
 
+
+
         // Then the response should be "ERROR"
         assertEquals("ERROR", invalidLookResponse.get("result").asText());
 
@@ -143,8 +127,16 @@ class LookCommandTests {
         assertTrue(invalidLookResponse.get("data").get("message").asText().contains("Unsupported command"));
     }
 
-    void launch(){
+
+    void LaunchRobot(){
         assertTrue(serverClient.isConnected());
+        String launchRequest = "{" +
+                "  \"robot\": \"HAL\"," +
+                "  \"command\": \"launch\"," +
+                "  \"arguments\": [\"shooter\",\"5\",\"5\"]" +
+                "}";
+        JsonNode launchResponse = serverClient.sendRequest(launchRequest);
+        assertEquals("OK", launchResponse.get("result").asText());
     }
 
 

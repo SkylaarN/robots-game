@@ -1,16 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: za.wethinkcode.Tests.AcceptanceTest.MovementCommandTests
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 0.012 s <<< FAILURE! - in za.wethinkcode.Tests.AcceptanceTest.MovementCommandTests
-ValidForwardCommand  Time elapsed: 0.004 s  <<< ERROR!
-java.lang.RuntimeException: Error connecting to Robot Worlds server.
-	at za.wethinkcode.Tests.AcceptanceTest.MovementCommandTests.connectToServer(MovementCommandTests.java:28)
-Caused by: java.net.ConnectException: Connection refused
-	at za.wethinkcode.Tests.AcceptanceTest.MovementCommandTests.connectToServer(MovementCommandTests.java:28)
-
-InvaildForwardCommand  Time elapsed: 0.003 s  <<< ERROR!
-java.lang.RuntimeException: Error connecting to Robot Worlds server.
-	at za.wethinkcode.Tests.AcceptanceTest.MovementCommandTests.connectToServer(MovementCommandTests.java:28)
-Caused by: java.net.ConnectException: Connection refused
-	at za.wethinkcode.Tests.AcceptanceTest.MovementCommandTests.connectToServer(MovementCommandTests.java:28)
-
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.006 s - in za.wethinkcode.Tests.AcceptanceTest.MovementCommandTests

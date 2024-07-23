@@ -1,20 +1,44 @@
+# Define stages for the pipeline
 stages:
   - build
   - test
-  - deploy  
+  - package
+  - acceptance-test
 
-build-test-job:  # Combined build and test jobs
+# Jobs for each stage
+compile:
   stage: build
-  image: maven:latest
   script:
-    - echo "Compiling the code and running unit tests..."
-    - mvn clean install -e -Dreference.server.url=$REFERENCE_SERVER_URL
+    - mvn clean compile
 
-deploy-job:  # Added deploy job
-  stage: deploy
-  image: # Define image based on deployment method
+
+acceptance-test:
+  stage: acceptance-test
   script:
-    - echo "Deploying the application..."
-    # Add deployment commands here
-  # Add error handling here (optional)
+    - java -jar libs/reference-server-0.1.0.jar
+      &  # Start your server
+    - sleep 5  # Wait for server to start
+    - mvn verify  # Run acceptance tests against the server
+    - # Stop the server here if needed
 
+unit-test:
+  stage: test
+  script:
+    - mvn test
+
+
+package-server:
+  stage: package
+  script:
+    - mvn package
+  artifacts:
+    paths:
+      - target/*.jar
+
+release:
+  stage: package
+  script:
+    - mvn clean package -P release  # Example: profile for release build
+  artifacts:
+    paths:
+      - target/*.jar

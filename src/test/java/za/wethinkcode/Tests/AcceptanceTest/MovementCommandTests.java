@@ -36,7 +36,7 @@ public class MovementCommandTests {
         // Given that I am connected to a running Robot Worlds server
         // And the world is of size 1x1 (The world is configured or hardcoded to this size)
         assertTrue(serverClient.isConnected());
-        System.out.println(serverClient.isConnected());
+        //System.out.println(serverClient.isConnected());
 
         // When I send a valid launch request to the server
         String requestLaunch = "{" +
@@ -51,12 +51,18 @@ public class MovementCommandTests {
                 "  \"command\": \"forward\"," +
                 "  \"arguments\": [20]" +
                 "}";
-        JsonNode response = serverClient.sendRequest(request);
-        System.out.println(response);
+        JsonNode response_forward = serverClient.sendRequest(request);
+        //System.out.println(response_forward);
 
         // response from the server for vaild commmand
-        assertNotNull(response.get("result"));
-        assertEquals("OK", response.get("result").asText());
+        assertNotNull(response_forward.get("result"));
+        assertEquals("OK", response_forward.get("result").asText());
+        //assertEquals("OK", response_forward.get("At the NORTH edge").asText());
+
+        assertNotNull(response_forward.get("data"));
+        assertNotNull(response_forward.get("data").get("position"));
+        assertEquals(0, response_forward.get("data").get("position").get(0).asInt());
+        assertEquals(0, response_forward.get("data").get("position").get(1).asInt());
 
     }
 

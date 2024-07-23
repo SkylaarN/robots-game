@@ -15,8 +15,7 @@ compile:
 acceptance-test:
   stage: acceptance-test
   script:
-    - java -jar libs/reference-server-0.1.0.jar
-      &  # Start your server
+    - java -jar libs/reference-server-0.1.0.jar &  # Start your server
     - sleep 5  # Wait for server to start
     - mvn verify  # Run acceptance tests against the server
     - # Stop the server here if needed

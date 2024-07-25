@@ -1,6 +1,8 @@
 package za.wethinkcode.RobotWorlds.player;
 
 
+import org.json.JSONObject;
+
 import java.io.*;
 import java.net.Socket;
 import java.util.Scanner;
@@ -94,6 +96,7 @@ public class Client {
                         "  \"command\": \""+command+"\"," +
                         "  \"arguments\": ["+arguments+"]" +
                         "}";
+                JSONObject fly = new JSONObject(request);
                 bufferedWriter.write(request);
                 bufferedWriter.newLine();
                 bufferedWriter.flush();

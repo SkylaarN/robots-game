@@ -311,6 +311,8 @@ public class Robot {
      * @return reply JSON Object
      */
     public JSONObject getReply(){
+        System.out.println("llllllllllllllllll");
+
         JSONObject reply = new JSONObject(getStatus());
         JSONObject state = new JSONObject();
 
@@ -321,6 +323,7 @@ public class Robot {
         state.put("status", this.statusType);
 
         reply.put("state", state);
+        System.out.println(reply.get("state"));
         return reply;
     }
 

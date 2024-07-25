@@ -1,8 +1,5 @@
 package za.wethinkcode.Tests;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import za.wethinkcode.RobotWorlds.ResponseReader;
 import za.wethinkcode.RobotWorlds.Robot;
 import org.junit.jupiter.api.Test;
 

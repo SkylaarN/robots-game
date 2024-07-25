@@ -36,6 +36,7 @@ public class SimpleServer implements Runnable {
     /**
      * Initiate the server
      */
+    Robot robot = new Robot("nathi");
     public void run() {
 
         try {

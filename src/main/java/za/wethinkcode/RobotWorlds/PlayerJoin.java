@@ -24,7 +24,7 @@ public class PlayerJoin {
             serverIP = "localhost";
         }
 
-        ResponseReader reader = new ResponseReader();
+//        ResponseReader reader = new ResponseReader();
         String input = "";
         String name = getInput("Please Enter your robots name.");
 
@@ -58,7 +58,7 @@ public class PlayerJoin {
             out.flush();
 
             String messageFromServer = in.readLine();
-            reader.handleReply(new JSONObject(messageFromServer), obj);
+//            reader.handleReply(new JSONObject(messageFromServer), obj);
 
 
 

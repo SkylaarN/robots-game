@@ -3,6 +3,7 @@ package za.wethinkcode.RobotWorlds;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import javax.swing.*;
 import java.io.*;
 import java.net.*;
 import java.util.ArrayList;
@@ -45,13 +46,27 @@ public class SimpleServer implements Runnable {
                 String messageFromClient = null;
                 while((messageFromClient = in.readLine()) != null){
 
+                    //to create a method
                     JSONObject obj = new JSONObject(messageFromClient);
+
+                    JSONArray arguments = obj.optJSONArray("arguments");
+
+//
+                    String name = obj.getString("robot");
+                    String command = obj.getString("command");
+//
+//
                     if (!listRobots.contains(obj.getString("robot"))) {
                         addRobots(obj.getString("robot"));
                     }
 
-                    String reply = doRobot(obj.getString("robot"), obj.getString("command"), obj.getJSONArray("arguments"));
+
+//                    System.out.println(obj.getJSONArray("arguments"));
+                    System.out.println(arguments);
+                    String reply = doRobot(name, command, arguments);
+
                     out.println(reply);
+
                 }
 
             }
@@ -70,6 +85,10 @@ public class SimpleServer implements Runnable {
         } catch(IOException ex) {}
     }
 
+    //Helper methhods
+    void Json(){
+
+    }
 
     /**
      * Instructs the robot what to do based on the commands given by the player

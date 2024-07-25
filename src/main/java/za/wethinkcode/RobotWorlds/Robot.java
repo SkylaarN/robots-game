@@ -200,10 +200,10 @@ public class Robot {
             else{
 
 
-                }
-                this.position = newPosition;
-                return Conditions.SUCCESS;
             }
+            this.position = newPosition;
+            return Conditions.SUCCESS;
+        }
         return Conditions.FAILED_OUTSIDE_ROBOT_WORLD;
     }
 

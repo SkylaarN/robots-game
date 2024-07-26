@@ -3,7 +3,7 @@ package za.wethinkcode.Tests;
 import org.junit.jupiter.api.Test;
 import za.wethinkcode.RobotWorlds.Position;
 import za.wethinkcode.RobotWorlds.Robot;
-import za.wethinkcode.RobotWorlds.commands.ForwardCommand;
+import za.wethinkcode.RobotWorlds.commands.LaunchCommand;
 import za.wethinkcode.RobotWorlds.commands.LeftCommand;
 import za.wethinkcode.RobotWorlds.commands.RightCommand;
 
@@ -40,7 +40,7 @@ class PositionTest {
 
         Robot robot = new Robot("North");
 
-        new ForwardCommand("10").execute(robot);
+        new LaunchCommand("10").execute(robot);
 
         assertEquals(0, robot.getPosition().getX());
         assertEquals(10, robot.getPosition().getY());
@@ -52,7 +52,7 @@ class PositionTest {
         Robot robot = new Robot("East");
 
         new RightCommand().execute(robot);
-        new ForwardCommand("3").execute(robot);
+        new LaunchCommand("3").execute(robot);
 
         assertEquals(3, robot.getPosition().getX());
         assertEquals(0, robot.getPosition().getY());
@@ -66,7 +66,7 @@ class PositionTest {
 
         new RightCommand().execute(robot);
         new RightCommand().execute(robot);
-        new ForwardCommand("5").execute(robot);
+        new LaunchCommand("5").execute(robot);
 
         assertEquals(0, robot.getPosition().getX());
         assertEquals(-5, robot.getPosition().getY());
@@ -78,7 +78,7 @@ class PositionTest {
         Robot robot = new Robot("West");
 
         new LeftCommand().execute(robot);
-        new ForwardCommand("10").execute(robot);
+        new LaunchCommand("10").execute(robot);
 
         assertEquals(-10, robot.getPosition().getX());
         assertEquals(0, robot.getPosition().getY());

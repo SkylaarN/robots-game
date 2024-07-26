@@ -15,7 +15,7 @@ public class LaunchRobotTests {
      * So that I can break the record for the most robot kills
      */
 
-        private final static int DEFAULT_PORT = 5000;
+        private final static int DEFAULT_PORT = 8000;
         private final static String DEFAULT_IP = "localhost";
         private final RobotWorldClient serverClient = new RobotWorldJsonClient();
 
@@ -39,7 +39,7 @@ public class LaunchRobotTests {
             String request = "{" +
                     "  \"robot\": \"HAL\"," +
                     "  \"command\": \"launch\"," +
-                    "  \"arguments\": [\"shooter\",\"5\",\"5\"]" +
+                    "  \"arguments\": [\"shooter\"]" +
                     "}";
             JsonNode response = serverClient.sendRequest(request);
 

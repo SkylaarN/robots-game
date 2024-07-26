@@ -55,8 +55,11 @@ public abstract class Command {
             case "help":
                 return new HelpCommand();
 
+            case "launch":
+                return new LaunchCommand(args.getString(0));
+
             case "forward":
-                return new ForwardCommand(args.getString(0));
+                return new LaunchCommand(args.getString(0));
 
             case "back":
                 return new BackCommand(args.getString(0));

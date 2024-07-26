@@ -5,6 +5,9 @@ import org.turtle.*;
 import za.wethinkcode.RobotWorlds.Position;
 import za.wethinkcode.RobotWorlds.Robot;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ForwardCommand extends Command {
 
     @Override
@@ -21,7 +24,16 @@ public class ForwardCommand extends Command {
 
         int nrSteps = Integer.parseInt(getArgument());
         if (target.updatePosition(nrSteps) == Robot.Conditions.SUCCESS){
+            List pos = new ArrayList<>();
+            pos.add(target.getPosition().getX());
+            pos.add(target.getPosition().getY());
+
+            reply.put("result", "OK");
             data.put("message", "Done");
+            data.put("visibility", 9);
+            data.put("position", pos);
+            data.put("objects", new ArrayList<>());
+            reply.put("data", data);
         }
         else if (target.updatePosition(nrSteps) == Robot.Conditions.FAILED_OBSTACLE_DETECTED){
             data.put("message", "Obstructed");

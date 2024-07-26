@@ -51,8 +51,8 @@ public abstract class Command {
          */
 
 
-        System.out.println();
-        System.out.println(instruction);
+//        System.out.println();
+//        System.out.println(instruction);
 
         switch (instruction){
             case "help":

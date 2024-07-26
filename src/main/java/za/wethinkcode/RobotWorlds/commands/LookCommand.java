@@ -10,6 +10,7 @@ import za.wethinkcode.RobotWorlds.SquareObstacle;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class LookCommand extends Command{
 
@@ -59,8 +60,14 @@ public class LookCommand extends Command{
             }
         }
         if(output.length() == 0){
+
+            List pos = new ArrayList<>();
+            pos.add(target.getPosition().getX());
+            pos.add(target.getPosition().getY());
+
+            data.put("visibility", 9);
+            data.put("position", pos);
             data.put("objects", objects);
-            data.put("message", "Done");
             reply.put("data", data);
             target.setStatus(reply.toString());
         }

@@ -11,7 +11,7 @@ import java.util.HashMap;
 
 public class SimpleServer implements Runnable {
     public static ArrayList<String> listRobots = new ArrayList<String>();
-    public static final int PORT = 5000;
+    public static final int PORT = 8000;
     private final BufferedReader in;
     private final PrintStream out;
     private final String clientMachine;
@@ -62,7 +62,7 @@ public class SimpleServer implements Runnable {
 
 
 //                    System.out.println(obj.getJSONArray("arguments"));
-                    System.out.println(arguments);
+//                    System.out.println(arguments);
                     String reply = doRobot(name, command, arguments);
 
                     out.println(reply);

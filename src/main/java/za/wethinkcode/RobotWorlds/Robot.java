@@ -7,6 +7,9 @@ import za.wethinkcode.RobotWorlds.configuration.Configuration;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 public class Robot {
@@ -311,19 +314,29 @@ public class Robot {
      * @return reply JSON Object
      */
     public JSONObject getReply(){
-        System.out.println("llllllllllllllllll");
-
         JSONObject reply = new JSONObject(getStatus());
         JSONObject state = new JSONObject();
 
-        state.put("position", getPositionState());
+        position = new Position(7,9);
+
+
+        Map<String, List> result = new HashMap<>();
+        List num = new ArrayList<>();
+        num.add(position.getX());
+        num.add(position.getY());
+
+        state.put("position", num);
         state.put("direction", getDirectionString());
         state.put("shields", getHealth());
         state.put("shots", getBullets());
         state.put("status", this.statusType);
 
+        //########################
+
+        result.put("position", num);
         reply.put("state", state);
-        System.out.println(reply.get("state"));
+//        System.out.println(reply.get("state"));
+//        System.out.println(result.get("position").get(0));
         return reply;
     }
 

@@ -1,8 +1,6 @@
 package za.wethinkcode.RobotWorlds.player;
 
 
-import org.json.JSONObject;
-
 import java.io.*;
 import java.net.Socket;
 import java.util.Scanner;
@@ -48,11 +46,11 @@ public class Client {
         new Thread(() -> {
             String msg;
             try {
-//                while (socket.isConnected()) {
-                msg = bufferedReader.readLine();
+                while (socket.isConnected()) {
+                    msg = bufferedReader.readLine();
 
-                System.out.println(ANSI_CYAN + msg + ANSI_RESET);
-//                }
+                    System.out.println(ANSI_CYAN + msg + ANSI_RESET);
+                }
             } catch (IOException e) {
                 System.out.println(ANSI_RED + "Error while trying to get message from server: " + e.getMessage() + ANSI_RESET);
             }
@@ -96,7 +94,6 @@ public class Client {
                         "  \"command\": \""+command+"\"," +
                         "  \"arguments\": ["+arguments+"]" +
                         "}";
-                JSONObject fly = new JSONObject(request);
                 bufferedWriter.write(request);
                 bufferedWriter.newLine();
                 bufferedWriter.flush();

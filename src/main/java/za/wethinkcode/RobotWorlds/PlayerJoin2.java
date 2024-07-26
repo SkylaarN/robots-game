@@ -35,7 +35,7 @@ public class PlayerJoin2 {
         String name = getInput("Please Enter your robots name.");
         while(!input.equalsIgnoreCase("quit")){
             try (
-                    Socket socket = new Socket(serverIP, 5000);
+                    Socket socket = new Socket(serverIP, 8000);
                     PrintStream out = new PrintStream(socket.getOutputStream());
                     BufferedReader in = new BufferedReader(new InputStreamReader(
                             socket.getInputStream()));
@@ -78,10 +78,11 @@ public class PlayerJoin2 {
 
 //                robot.handleCommand(command, arguments);
                 String messageFromServer = in.readLine();
-                System.out.println(obj);
+//                System.out.println(obj);
 
 
 
+                System.out.println(messageFromServer);
 //                reader.handleReply(new JSONObject(messageFromServer), obj);
 
 

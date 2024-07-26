@@ -59,7 +59,7 @@ public abstract class Command {
                 return new LaunchCommand(args.getString(0));
 
             case "forward":
-                return new LaunchCommand(args.getString(0));
+                return new ForwardCommand(args.getString(0));
 
             case "back":
                 return new BackCommand(args.getString(0));
@@ -99,6 +99,7 @@ public abstract class Command {
                 break;
         }
         return null;
+        //will error handle here
     }
 }
 

@@ -317,9 +317,6 @@ public class Robot {
         JSONObject reply = new JSONObject(getStatus());
         JSONObject state = new JSONObject();
 
-        position = new Position(7,9);
-
-
         Map<String, List> result = new HashMap<>();
         List num = new ArrayList<>();
         num.add(position.getX());
@@ -335,8 +332,6 @@ public class Robot {
 
         result.put("position", num);
         reply.put("state", state);
-//        System.out.println(reply.get("state"));
-//        System.out.println(result.get("position").get(0));
         return reply;
     }
 

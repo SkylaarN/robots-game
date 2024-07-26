@@ -19,11 +19,9 @@ public class SimpleServer implements Runnable {
 
     public SimpleServer(Socket socket) throws IOException {
         clientMachine = socket.getInetAddress().getHostName();
-        //System.out.println("Connection from " + clientMachine);
         out = new PrintStream(socket.getOutputStream());
         in = new BufferedReader(new InputStreamReader(
                 socket.getInputStream()));
-        //System.out.println("Waiting for client...");
     }
 
     /**
@@ -46,23 +44,17 @@ public class SimpleServer implements Runnable {
                 String messageFromClient = null;
                 while((messageFromClient = in.readLine()) != null){
 
-                    //to create a method
                     JSONObject obj = new JSONObject(messageFromClient);
 
                     JSONArray arguments = obj.optJSONArray("arguments");
 
-//
                     String name = obj.getString("robot");
                     String command = obj.getString("command");
-//
-//
+
                     if (!listRobots.contains(obj.getString("robot"))) {
                         addRobots(obj.getString("robot"));
                     }
 
-
-//                    System.out.println(obj.getJSONArray("arguments"));
-//                    System.out.println(arguments);
                     String reply = doRobot(name, command, arguments);
 
                     out.println(reply);
@@ -85,10 +77,6 @@ public class SimpleServer implements Runnable {
         } catch(IOException ex) {}
     }
 
-    //Helper methhods
-    void Json(){
-
-    }
 
     /**
      * Instructs the robot what to do based on the commands given by the player

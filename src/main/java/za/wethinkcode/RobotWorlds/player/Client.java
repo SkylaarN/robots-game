@@ -81,7 +81,7 @@ public class Client {
                         break;
                     case 2:
                         command = msg[0];
-                        arguments = msg[1];
+                        arguments = "\""+msg[1]+"\"";
                         break;
                     default:
                         command = msgToSend;
@@ -125,7 +125,7 @@ public class Client {
 
         System.out.println(ANSI_BOLD + ANSI_PURPLE + "Type 'Launch' to place your robot in the world." + ANSI_RESET);
 
-        Socket socket1 = new Socket("localhost", 5000);
+        Socket socket1 = new Socket("localhost", 8000);
         Client client = new Client(socket1);
         if (socket1.isConnected()) {
             client.listenForMsg();

@@ -51,9 +51,6 @@ public abstract class Command {
          */
 
 
-//        System.out.println();
-//        System.out.println(instruction);
-
         switch (instruction){
             case "help":
                 return new HelpCommand();
@@ -62,7 +59,7 @@ public abstract class Command {
                 return new ForwardCommand(args.getString(0));
 
             case "back":
-                return new BackCommand(args.getString(1));
+                return new BackCommand(args.getString(0));
 
             case "right":
                 return new RightCommand();

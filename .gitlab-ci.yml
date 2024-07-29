@@ -1,5 +1,21 @@
-# Define the image to use for the CI/CD pipeline
-image: maven:3.8.6-openjdk-17
+# Use an OpenJDK image
+image: openjdk:21-jdk
+
+services:
+  - docker:dind
+
+variables:
+  MAVEN_VERSION: 3.8.6
+
+before_script:
+  # Install Maven
+  - apt-get update
+  - apt-get install -y wget tar
+  - wget https://apache.mirrors.lucidnetworks.net/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz
+  - tar xzf apache-maven-${MAVEN_VERSION}-bin.tar.gz
+  - mv apache-maven-${MAVEN_VERSION} /opt/maven
+  - ln -s /opt/maven/bin/mvn /usr/bin/mvn
+  - mvn --version  # Verify Maven installation
 
 # Define stages for the pipeline
 stages:

@@ -30,4 +30,4 @@ acceptance-test:
     - make start-server &  # Start your server using a Makefile target
     - sleep 5  # Wait for the server to start
     - make acceptance-test  # Run acceptance tests using a Makefile target
-    - make stop-server  
+    - make stop-server  # Optionally stop the server if needed

@@ -31,7 +31,6 @@ test:
     - mvn test -e
     - mvn package
   dependencies:
-    - build
     - start_server
 
 # Job to build the project

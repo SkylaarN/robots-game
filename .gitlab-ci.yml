@@ -1,5 +1,5 @@
 # Define the image to use for the CI/CD pipeline
-image: maven:3.8.5-openjdk-11
+image: maven:3.8.6-openjdk-21
 
 # Define stages for the pipeline
 stages:

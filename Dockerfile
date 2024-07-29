@@ -1,5 +1,5 @@
 # Use an official OpenJDK 22 runtime as a parent image
-FROM openjdk:21-oracle
+FROM openjdk:17-oracle
 
 # Create and set the working directory
 WORKDIR /srv

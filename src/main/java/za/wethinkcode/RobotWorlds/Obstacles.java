@@ -9,7 +9,8 @@ public class Obstacles {
     public static ArrayList<SquareObstacle> obstacles = new ArrayList<>();
     public static Random random = new Random();
 
-    //trying
+    //hope
+    
     public static void generateObstacles(){
         for (int i = 0; i < 100; i++) {
             int x = (random.nextInt(60)- 30) * 5;

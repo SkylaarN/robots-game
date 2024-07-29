@@ -1,23 +1,33 @@
-name: CI Pipeline
+# Define stages for the pipeline
+stages:
+  - build
+  - test
+  - package
+  - acceptance-test
 
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+# Jobs for each stage
+compile:
+  stage: build
+  script:
+    - make compile  # Replace with the appropriate Makefile target
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
+unit-test:
+  stage: test
+  script:
+    - make test  # Replace with the appropriate Makefile target
 
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+package:
+  stage: package
+  script:
+    - make package  # Replace with the appropriate Makefile target
+  artifacts:
+    paths:
+      - path/to/your/artifacts  # Adjust this path to where your artifacts are stored
 
-      - name: Set up Make
-        run: sudo apt-get install -y make
-
-      - name: Run Makefile
-        run: make
+acceptance-test:
+  stage: acceptance-test
+  script:
+    - make start-server &  # Start your server using a Makefile target
+    - sleep 5  # Wait for the server to start
+    - make acceptance-test  # Run acceptance tests using a Makefile target
+    - make stop-server  

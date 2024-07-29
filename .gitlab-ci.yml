@@ -9,20 +9,17 @@ stages:
 compile:
   stage: build
   script:
-    - make compile  # Replace with the appropriate Makefile target
+    - make  # Runs the default target in your Makefile
 
 unit-test:
   stage: test
   script:
-    - make test  # Replace with the appropriate Makefile target
+    - make test  # Replace with the specific Makefile target for unit tests
 
 package:
   stage: package
   script:
-    - make package  # Replace with the appropriate Makefile target
-  artifacts:
-    paths:
-      - path/to/your/artifacts  # Adjust this path to where your artifacts are stored
+    - make package  # Replace with the specific Makefile target for packaging
 
 acceptance-test:
   stage: acceptance-test

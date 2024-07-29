@@ -3,6 +3,8 @@
 /home/wethinkcode/Documents/projects/wethinkcode/cjc1_brownfields_2024/src/main/java/za/wethinkcode/RobotWorlds/commands/BackCommand.java
 /home/wethinkcode/Documents/projects/wethinkcode/cjc1_brownfields_2024/src/main/java/za/wethinkcode/RobotWorlds/commands/RobotsCommand.java
 /home/wethinkcode/Documents/projects/wethinkcode/cjc1_brownfields_2024/src/main/java/za/wethinkcode/RobotWorlds/commands/RepairCommand.java
+/home/wethinkcode/Documents/projects/wethinkcode/cjc1_brownfields_2024/src/main/java/za/wethinkcode/RobotWorlds/world/World.java
+/home/wethinkcode/Documents/projects/wethinkcode/cjc1_brownfields_2024/src/main/java/za/wethinkcode/RobotWorlds/player/Client.java
 /home/wethinkcode/Documents/projects/wethinkcode/cjc1_brownfields_2024/src/main/java/za/wethinkcode/RobotWorlds/commands/LeftCommand.java
 /home/wethinkcode/Documents/projects/wethinkcode/cjc1_brownfields_2024/src/main/java/za/wethinkcode/RobotWorlds/Position.java
 /home/wethinkcode/Documents/projects/wethinkcode/cjc1_brownfields_2024/src/main/java/za/wethinkcode/RobotWorlds/Players.java
@@ -19,9 +21,11 @@
 /home/wethinkcode/Documents/projects/wethinkcode/cjc1_brownfields_2024/src/main/java/za/wethinkcode/RobotWorlds/PlayerJoin2.java
 /home/wethinkcode/Documents/projects/wethinkcode/cjc1_brownfields_2024/src/main/java/za/wethinkcode/RobotWorlds/configuration/Configuration.java
 /home/wethinkcode/Documents/projects/wethinkcode/cjc1_brownfields_2024/src/main/java/za/wethinkcode/RobotWorlds/commands/Command.java
-/home/wethinkcode/Documents/projects/wethinkcode/cjc1_brownfields_2024/src/main/java/za/wethinkcode/RobotWorlds/ResponseReader.java
 /home/wethinkcode/Documents/projects/wethinkcode/cjc1_brownfields_2024/src/main/java/za/wethinkcode/RobotWorlds/commands/DumpCommand.java
+/home/wethinkcode/Documents/projects/wethinkcode/cjc1_brownfields_2024/src/main/java/za/wethinkcode/RobotWorlds/commands/LaunchCommand.java
+/home/wethinkcode/Documents/projects/wethinkcode/cjc1_brownfields_2024/src/main/java/za/wethinkcode/RobotWorlds/commands/Make.java
 /home/wethinkcode/Documents/projects/wethinkcode/cjc1_brownfields_2024/src/main/java/za/wethinkcode/RobotWorlds/commands/RightCommand.java
 /home/wethinkcode/Documents/projects/wethinkcode/cjc1_brownfields_2024/src/main/java/za/wethinkcode/RobotWorlds/commands/ShootCommand.java
 /home/wethinkcode/Documents/projects/wethinkcode/cjc1_brownfields_2024/src/main/java/za/wethinkcode/RobotWorlds/commands/HelpCommand.java
 /home/wethinkcode/Documents/projects/wethinkcode/cjc1_brownfields_2024/src/main/java/za/wethinkcode/RobotWorlds/RobotWorldClient.java
+/home/wethinkcode/Documents/projects/wethinkcode/cjc1_brownfields_2024/src/main/java/za/wethinkcode/RobotWorlds/commands/ErrorHandling.java

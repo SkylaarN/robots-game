@@ -14,14 +14,12 @@ za/wethinkcode/RobotWorlds/commands/ReloadCommand.class
 za/wethinkcode/RobotWorlds/SimpleServer.class
 za/wethinkcode/RobotWorlds/commands/LeftCommand.class
 za/wethinkcode/RobotWorlds/Robot.class
-za/wethinkcode/RobotWorlds/ResponseReader$1.class
 za/wethinkcode/RobotWorlds/commands/StateCommand.class
 za/wethinkcode/RobotWorlds/PlayerJoin.class
 za/wethinkcode/RobotWorlds/Robot$Conditions.class
 za/wethinkcode/RobotWorlds/commands/LookCommand.class
 za/wethinkcode/RobotWorlds/commands/HelpCommand.class
 za/wethinkcode/RobotWorlds/commands/Command.class
-za/wethinkcode/RobotWorlds/ResponseReader.class
 za/wethinkcode/RobotWorlds/Robot$Direction.class
 za/wethinkcode/RobotWorlds/commands/RobotsCommand.class
 za/wethinkcode/RobotWorlds/commands/RightCommand.class

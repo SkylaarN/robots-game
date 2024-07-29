@@ -5,26 +5,33 @@ stages:
   - package
   - acceptance-test
 
-# Jobs for each stage
-compile:
+# Job for building the project
+build:
   stage: build
+  image: maven:3.8.6-openjdk-11  # Use an appropriate Maven image
   script:
-    - make  # Runs the default target in your Makefile
+    - mvn clean compile
 
+# Job for running unit tests
 unit-test:
   stage: test
+  image: maven:3.8.6-openjdk-11  # Use an appropriate Maven image
   script:
-    - make test  # Replace with the specific Makefile target for unit tests
+    - mvn test
 
+# Job for packaging the application
 package:
   stage: package
+  image: maven:3.8.6-openjdk-11  # Use an appropriate Maven image
   script:
-    - make package  # Replace with the specific Makefile target for packaging
+    - mvn package
+  artifacts:
+    paths:
+      - target/*.jar  # Adjust path if necessary to where your artifacts are stored
 
+# Job for running acceptance tests
 acceptance-test:
   stage: acceptance-test
+  image: maven:3.8.6-openjdk-11  # Use an appropriate Maven image
   script:
-    - make start-server &  # Start your server using a Makefile target
-    - sleep 5  # Wait for the server to start
-    - make acceptance-test  # Run acceptance tests using a Makefile target
-    - make stop-server  # Optionally stop the server if needed
+    - mvn verify  # Or any other command to run your acceptance tests

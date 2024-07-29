@@ -1,37 +1,54 @@
+# Define the image to use for the CI/CD pipeline
+image: maven:3.8.5-openjdk-11
+
 # Define stages for the pipeline
 stages:
+  - clean
+  - compile
   - build
   - test
-  - package
-  - acceptance-test
 
-# Job for building the project
+# Job to clean the project
+clean:
+  stage: clean
+  script:
+    - mvn clean
+
+# Job to compile the project
+compile:
+  stage: compile
+  script:
+    - mvn compile
+  dependencies:
+    - clean
+
+# Job to build the project
 build:
   stage: build
-  image: maven:3.8.6-openjdk-11  # Use an appropriate Maven image
-  script:
-    - mvn clean compile
-
-# Job for running unit tests
-unit-test:
-  stage: test
-  image: maven:3.8.6-openjdk-11  # Use an appropriate Maven image
-  script:
-    - mvn test
-
-# Job for packaging the application
-package:
-  stage: package
-  image: maven:3.8.6-openjdk-11  # Use an appropriate Maven image
   script:
     - mvn package
-  artifacts:
-    paths:
-      - target/*.jar  # Adjust path if necessary to where your artifacts are stored
+  dependencies:
+    - compile
 
-# Job for running acceptance tests
-acceptance-test:
-  stage: acceptance-test
-  image: maven:3.8.6-openjdk-11  # Use an appropriate Maven image
+# Job to start the server
+start_server:
+  stage: test
   script:
-    - mvn verify  # Or any other command to run your acceptance tests
+    - java -jar libs/reference-server-0.1.0.jar &
+    - sleep 5
+
+# Job to run tests
+test:
+  stage: test
+  script:
+    - mvn test -e
+    - mvn package
+  dependencies:
+    - build
+    - start_server
+
+# Define the default job
+default:
+  stage: compile
+  script:
+    - mvn compile

@@ -21,7 +21,7 @@ test: server
 	@mvn package
 
 
-
+.DEFAULT_GOAL := Compile
 .DEFAULT_GOAL := test
 
 

@@ -28,13 +28,13 @@ stages:
 clean:
   stage: clean
   script:
-    - mvn --version
+    - java --version
 
 # Job to compile the project
 compile:
   stage: compile
   script:
-    - mvn --version
+    - java --version
 #  dependencies:
 #    - clean
 
@@ -49,8 +49,8 @@ start_server:
 test:
   stage: test
   script:
-    - mvn --version
-    - mvn --version
+    - java --version
+
 #  dependencies:
 #    - start_server
 
@@ -58,6 +58,6 @@ test:
 package:
   stage: package
   script:
-    - mvn --version
+    - java --version
 #  dependencies:
 #    - compile

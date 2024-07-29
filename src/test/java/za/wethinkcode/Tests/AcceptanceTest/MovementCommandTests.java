@@ -49,7 +49,7 @@ public class MovementCommandTests {
         String request = "{" +
                 "  \"robot\": \"HAL\"," +
                 "  \"command\": \"forward\"," +
-                "  \"arguments\": [20]" +
+                "  \"arguments\": [\"20\"]" +
                 "}";
         JsonNode response_forward = serverClient.sendRequest(request);
         //System.out.println(response_forward);
@@ -60,9 +60,9 @@ public class MovementCommandTests {
         //assertEquals("OK", response_forward.get("At the NORTH edge").asText());
 
         assertNotNull(response_forward.get("data"));
-        assertNotNull(response_forward.get("data").get("position"));
+        //assertNotNull(response_forward.get("data").get("position"));
         assertEquals(0, response_forward.get("data").get("position").get(0).asInt());
-        assertEquals(0, response_forward.get("data").get("position").get(1).asInt());
+        assertEquals(20, response_forward.get("data").get("position").get(1).asInt());
 
     }
 

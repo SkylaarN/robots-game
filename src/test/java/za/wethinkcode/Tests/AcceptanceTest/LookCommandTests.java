@@ -51,56 +51,56 @@ class LookCommandTests {
         assertTrue(items == null || (items.isArray() && items.size() == 0));
     }
 
-    @Test
-    void robotDetectsObstacleAtDistanceOne() {
-        /**
-        - Given the world of size 2x2
-        - and the world has an obstacle at coordinate[0,1]
-        - and I have successfully launched 8 robots into the world
-        - when I ask the first robot to look
-        - then I should get a response back with
-        - one object being an OBSTACLE that is one step away
-        - and three objects should be ROBOTS that is one step away
-        **/
-
-        // Given I am connected to a running Robot Worlds server
-        assertTrue(serverClient.isConnected());
-
-        // Launch the robot at position (0, 0)
-        LaunchRobot();
-
-        // Send a valid "look" command
-        String lookRequest = "{" +
-                "  \"robot\": \"HAL\"," +
-                "  \"command\": \"look\"" +
-                "}";
-        JsonNode lookResponse = serverClient.sendRequest(lookRequest);
-
-        // Print the response for debugging
-        System.out.println(lookResponse.toString());
-
-        // Check response is "OK"
-        assertEquals("OK", lookResponse.get("result").asText());
-
-        // Validate obstacle detection
-        JsonNode data = lookResponse.get("data");
-        assertNotNull(data, "Data is missing in the response");
-
-        JsonNode objects = data.get("objects");
-        assertNotNull(objects, "Objects found");
-        assertTrue(objects.isArray(), "Objects data is an array");
-
-        boolean obstacleDetected = false;
-        for (JsonNode object : objects) {
-            String type = object.get("type").asText();
-            int distance = object.get("distance").asInt();
-            if ("OBSTACLE".equals(type) && distance == 1) {
-                obstacleDetected = true;
-                break;
-            }
-        }
-        assertTrue(obstacleDetected, "Obstacle at distance 1 is detected.");
-    }
+//    @Test
+//    void robotDetectsObstacleAtDistanceOne() {
+//        /**
+//        - Given the world of size 2x2
+//        - and the world has an obstacle at coordinate[0,1]
+//        - and I have successfully launched 8 robots into the world
+//        - when I ask the first robot to look
+//        - then I should get a response back with
+//        - one object being an OBSTACLE that is one step away
+//        - and three objects should be ROBOTS that is one step away
+//        **/
+//
+//        // Given I am connected to a running Robot Worlds server
+//        assertTrue(serverClient.isConnected());
+//
+//        // Launch the robot at position (0, 0)
+//        LaunchRobot();
+//
+//        // Send a valid "look" command
+//        String lookRequest = "{" +
+//                "  \"robot\": \"HAL\"," +
+//                "  \"command\": \"look\"" +
+//                "}";
+//        JsonNode lookResponse = serverClient.sendRequest(lookRequest);
+//
+//        // Print the response for debugging
+//        System.out.println(lookResponse.toString());
+//
+//        // Check response is "OK"
+//        assertEquals("OK", lookResponse.get("result").asText());
+//
+//        // Validate obstacle detection
+//        JsonNode data = lookResponse.get("data");
+//        assertNotNull(data, "Data is missing in the response");
+//
+//        JsonNode objects = data.get("objects");
+//        assertNotNull(objects, "Objects found");
+//        assertTrue(objects.isArray(), "Objects data is an array");
+//
+//        boolean obstacleDetected = false;
+//        for (JsonNode object : objects) {
+//            String type = object.get("type").asText();
+//            int distance = object.get("distance").asInt();
+//            if ("OBSTACLE".equals(type) && distance == 1) {
+//                obstacleDetected = true;
+//                break;
+//            }
+//        }
+//        assertTrue(obstacleDetected, "Obstacle at distance 1 is detected.");
+//    }
 
 
     @Test

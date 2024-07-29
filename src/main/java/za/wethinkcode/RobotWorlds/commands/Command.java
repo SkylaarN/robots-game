@@ -1,9 +1,10 @@
 package za.wethinkcode.RobotWorlds.commands;
 
 import org.json.JSONArray;
-import za.wethinkcode.RobotWorlds.Robot;;
+import za.wethinkcode.RobotWorlds.Robot;;import java.util.UnknownFormatConversionException;
 
 public abstract class Command {
+    private static Exception UnknownFormatConversionException;
     private final String name;
     private String argument;
 
@@ -96,10 +97,14 @@ public abstract class Command {
 
             default:
                 System.out.println("Unsupported command: " + instruction);
-                break;
+
+                return new ErrorHandling(instruction);
+//                break;
         }
-        return null;
+
         //will error handle here
     }
 }
+
+
 

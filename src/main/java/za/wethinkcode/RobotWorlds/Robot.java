@@ -298,9 +298,9 @@ public class Robot {
     public String getDirectionString(){
         switch(getCurrentDirection()){
             case UP:
-                return "UP";
+                return "NORTH";
             case DOWN:
-                return "DOWN";
+                return "SOUTH";
             case RIGHT:
                 return "RIGHT";
             case LEFT:
@@ -322,7 +322,7 @@ public class Robot {
         num.add(position.getX());
         num.add(position.getY());
 
-        state.put("position", num);
+        state.put("position", num.toString());
         state.put("direction", getDirectionString());
         state.put("shields", getHealth());
         state.put("shots", getBullets());

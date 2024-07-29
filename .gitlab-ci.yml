@@ -3,16 +3,12 @@ image: maven:3.8.5-openjdk-11
 
 # Define stages for the pipeline
 stages:
-  - clean
-  - compile
-  - build
-  - test
 
-# Job to clean the project
-clean:
-  stage: clean
-  script:
-    - mvn clean
+  - compile
+  - test
+  - -package
+
+
 
 # Job to compile the project
 compile:
@@ -21,14 +17,6 @@ compile:
     - mvn compile
   dependencies:
     - clean
-
-# Job to build the project
-build:
-  stage: build
-  script:
-    - mvn package
-  dependencies:
-    - compile
 
 # Job to start the server
 start_server:
@@ -47,8 +35,11 @@ test:
     - build
     - start_server
 
-# Define the default job
-default:
-  stage: compile
+# Job to build the project
+package:
+  stage: build
   script:
-    - mvn compile
+    - mvn package
+  dependencies:
+    - compile
+

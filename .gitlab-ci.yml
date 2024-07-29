@@ -1,43 +1,23 @@
-# Define stages for the pipeline
-stages:
-  - build
-  - test
-  - package
-  - acceptance-test
+name: CI Pipeline
 
-# Jobs for each stage
-compile:
-  stage: build
-  script:
-    - mvn clean compile
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
+jobs:
+  build:
+    runs-on: ubuntu-latest
 
-acceptance-test:
-  stage: acceptance-test
-  script:
-    - java -jar libs/reference-server-0.1.0.jar &  # Start your server
-    - sleep 5  # Wait for server to start
-    - mvn verify  # Run acceptance tests against the server
-    - # Stop the server here if needed
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-unit-test:
-  stage: test
-  script:
-    - mvn test
+      - name: Set up Make
+        run: sudo apt-get install -y make
 
-
-package-server:
-  stage: package
-  script:
-    - mvn package
-  artifacts:
-    paths:
-      - target/*.jar
-
-release:
-  stage: package
-  script:
-    - mvn clean package -P release  # Example: profile for release build
-  artifacts:
-    paths:
-      - target/*.jar
+      - name: Run Makefile
+        run: make

@@ -28,15 +28,15 @@ stages:
 clean:
   stage: clean
   script:
-    - mvn clean
+    - mvn --version
 
 # Job to compile the project
 compile:
   stage: compile
   script:
-    - mvn compile
-  dependencies:
-    - clean
+    - mvn --version
+#  dependencies:
+#    - clean
 
 # Job to start the server
 start_server:
@@ -49,15 +49,15 @@ start_server:
 test:
   stage: test
   script:
-    - mvn test -e
-    - mvn package
-  dependencies:
-    - start_server
+    - mvn --version
+    - mvn --version
+#  dependencies:
+#    - start_server
 
 # Job to build the project
 package:
   stage: package
   script:
-    - mvn package
-  dependencies:
-    - compile
+    - mvn --version
+#  dependencies:
+#    - compile

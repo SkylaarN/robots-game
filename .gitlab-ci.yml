@@ -6,7 +6,7 @@ stages:
 
   - compile
   - test
-  - -package
+  - package
 
 
 
@@ -15,8 +15,7 @@ compile:
   stage: compile
   script:
     - mvn compile
-  dependencies:
-    - clean
+
 
 # Job to start the server
 start_server:

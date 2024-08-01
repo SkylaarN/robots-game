@@ -1,6 +1,6 @@
 package za.wethinkcode.Tests;
 
-import za.wethinkcode.RobotWorlds.Robot;
+import za.wethinkcode.RobotWorlds.worldLogic.Robot;
 import za.wethinkcode.RobotWorlds.commands.*;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;

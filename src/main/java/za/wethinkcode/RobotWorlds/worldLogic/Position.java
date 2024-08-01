@@ -1,4 +1,4 @@
-package za.wethinkcode.RobotWorlds;
+package za.wethinkcode.RobotWorlds.worldLogic;
 
 public class Position {
     private final int x;

@@ -1,4 +1,6 @@
-package za.wethinkcode.RobotWorlds;
+package za.wethinkcode.RobotWorlds.worldLogic;
+
+import za.wethinkcode.RobotWorlds.worldLogic.Position;
 
 public class SquareObstacle {
 

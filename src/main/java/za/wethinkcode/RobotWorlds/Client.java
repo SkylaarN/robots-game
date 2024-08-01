@@ -1,4 +1,4 @@
-package za.wethinkcode.RobotWorlds.player;
+package za.wethinkcode.RobotWorlds;
 
 
 import java.io.*;

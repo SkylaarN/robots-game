@@ -1,4 +1,4 @@
-package za.wethinkcode.RobotWorlds;
+package za.wethinkcode.RobotWorlds.worldLogic;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -1,8 +1,6 @@
 package za.wethinkcode.RobotWorlds.commands;
 import org.json.JSONObject;
-import org.turtle.*;
-import za.wethinkcode.RobotWorlds.Position;
-import za.wethinkcode.RobotWorlds.Robot;
+import za.wethinkcode.RobotWorlds.worldLogic.Robot;
 
 import java.util.ArrayList;
 import java.util.List;

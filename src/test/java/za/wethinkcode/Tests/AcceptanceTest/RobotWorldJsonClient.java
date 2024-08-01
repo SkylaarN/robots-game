@@ -1,4 +1,4 @@
-package za.wethinkcode.RobotWorlds;
+package za.wethinkcode.Tests.AcceptanceTest;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;

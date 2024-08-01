@@ -1,7 +1,7 @@
 package za.wethinkcode.RobotWorlds.commands;
 
 import org.json.JSONObject;
-import za.wethinkcode.RobotWorlds.Robot;
+import za.wethinkcode.RobotWorlds.worldLogic.Robot;
 
 public class StateCommand extends Command{
     public boolean execute(Robot target){

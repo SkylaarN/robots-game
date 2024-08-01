@@ -4,8 +4,6 @@ package za.wethinkcode.Tests.AcceptanceTest;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.*;
 import com.fasterxml.jackson.databind.JsonNode;
-import za.wethinkcode.RobotWorlds.RobotWorldClient;
-import za.wethinkcode.RobotWorlds.RobotWorldJsonClient;
 
 class LookCommandTests {
 

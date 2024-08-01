@@ -1,8 +1,8 @@
 package za.wethinkcode.Tests;
 
 import org.junit.jupiter.api.Test;
-import za.wethinkcode.RobotWorlds.Position;
-import za.wethinkcode.RobotWorlds.Robot;
+import za.wethinkcode.RobotWorlds.worldLogic.Position;
+import za.wethinkcode.RobotWorlds.worldLogic.Robot;
 import za.wethinkcode.RobotWorlds.commands.LaunchCommand;
 import za.wethinkcode.RobotWorlds.commands.LeftCommand;
 import za.wethinkcode.RobotWorlds.commands.RightCommand;

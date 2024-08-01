@@ -1,8 +1,8 @@
 package za.wethinkcode.RobotWorlds.commands;
 
 import org.json.JSONObject;
-import za.wethinkcode.RobotWorlds.Robot;
-import za.wethinkcode.RobotWorlds.SimpleServer;
+import za.wethinkcode.RobotWorlds.worldLogic.Robot;
+import za.wethinkcode.RobotWorlds.worldLogic.SimpleServer;
 
 public class RobotsCommand extends Command{
     public boolean execute(Robot target) {

@@ -1,6 +1,4 @@
-package za.wethinkcode.RobotWorlds;
-
-import org.turtle.*;
+package za.wethinkcode.RobotWorlds.worldLogic;
 
 import java.util.ArrayList;
 import java.util.Random;

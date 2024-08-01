@@ -3,9 +3,7 @@ package za.wethinkcode.Tests;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import za.wethinkcode.RobotWorlds.commands.LaunchCommand;
-import za.wethinkcode.RobotWorlds.Robot;
-
-import static org.junit.jupiter.api.Assertions.*;
+import za.wethinkcode.RobotWorlds.worldLogic.Robot;
 
 class ForwardCommandTest {
     private Robot robot;

@@ -1,6 +1,6 @@
 package za.wethinkcode.RobotWorlds.commands;
 
-import za.wethinkcode.RobotWorlds.Robot;
+import za.wethinkcode.RobotWorlds.worldLogic.Robot;
 
 public class QuitCommand extends Command{
 

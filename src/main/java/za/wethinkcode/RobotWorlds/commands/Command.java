@@ -1,7 +1,7 @@
 package za.wethinkcode.RobotWorlds.commands;
 
 import org.json.JSONArray;
-import za.wethinkcode.RobotWorlds.Robot;;import java.util.UnknownFormatConversionException;
+import za.wethinkcode.RobotWorlds.worldLogic.Robot;
 
 public abstract class Command {
     private static Exception UnknownFormatConversionException;

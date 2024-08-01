@@ -3,7 +3,7 @@ package za.wethinkcode.Tests;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import za.wethinkcode.RobotWorlds.commands.LeftCommand;
-import za.wethinkcode.RobotWorlds.Robot;
+import za.wethinkcode.RobotWorlds.worldLogic.Robot;
 
 import static org.junit.jupiter.api.Assertions.*;
 

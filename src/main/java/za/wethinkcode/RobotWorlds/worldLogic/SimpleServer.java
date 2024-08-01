@@ -1,13 +1,11 @@
-package za.wethinkcode.RobotWorlds;
+package za.wethinkcode.RobotWorlds.worldLogic;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import javax.swing.*;
 import java.io.*;
 import java.net.*;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class SimpleServer implements Runnable {
     public static ArrayList<String> listRobots = new ArrayList<String>();

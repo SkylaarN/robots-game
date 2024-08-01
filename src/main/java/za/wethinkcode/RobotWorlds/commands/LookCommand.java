@@ -2,13 +2,11 @@ package za.wethinkcode.RobotWorlds.commands;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.turtle.StdDraw;
-import za.wethinkcode.RobotWorlds.Obstacles;
-import za.wethinkcode.RobotWorlds.Players;
-import za.wethinkcode.RobotWorlds.Robot;
-import za.wethinkcode.RobotWorlds.SquareObstacle;
+import za.wethinkcode.RobotWorlds.worldLogic.Obstacles;
+import za.wethinkcode.RobotWorlds.worldLogic.Players;
+import za.wethinkcode.RobotWorlds.worldLogic.Robot;
+import za.wethinkcode.RobotWorlds.worldLogic.SquareObstacle;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 

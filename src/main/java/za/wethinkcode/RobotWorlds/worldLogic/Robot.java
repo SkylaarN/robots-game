@@ -1,16 +1,15 @@
-package za.wethinkcode.RobotWorlds;
+package za.wethinkcode.RobotWorlds.worldLogic;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.turtle.*;
 import za.wethinkcode.RobotWorlds.commands.*;
 import za.wethinkcode.RobotWorlds.configuration.Configuration;
+import za.wethinkcode.RobotWorlds.worldLogic.Obstacles;
+import za.wethinkcode.RobotWorlds.worldLogic.Position;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
 
 public class Robot {
 

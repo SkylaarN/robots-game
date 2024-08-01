@@ -1,7 +1,7 @@
 package za.wethinkcode.RobotWorlds.commands;
 
 
-import za.wethinkcode.RobotWorlds.Robot;
+import za.wethinkcode.RobotWorlds.worldLogic.Robot;
 
 /**
  * The Make class represents the creation of a specific type of robot.

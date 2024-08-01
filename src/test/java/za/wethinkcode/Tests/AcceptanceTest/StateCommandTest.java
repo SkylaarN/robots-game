@@ -1,13 +1,9 @@
 package za.wethinkcode.Tests.AcceptanceTest;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import org.json.JSONObject;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import za.wethinkcode.RobotWorlds.Robot;
-import za.wethinkcode.RobotWorlds.RobotWorldClient;
-import za.wethinkcode.RobotWorlds.RobotWorldJsonClient;
 
 import static org.junit.jupiter.api.Assertions.*;
 

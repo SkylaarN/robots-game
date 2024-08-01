@@ -1,6 +1,6 @@
 package za.wethinkcode.RobotWorlds.configuration;
 
-import za.wethinkcode.RobotWorlds.Position;
+import za.wethinkcode.RobotWorlds.worldLogic.Position;
 
 public class Configuration {
 

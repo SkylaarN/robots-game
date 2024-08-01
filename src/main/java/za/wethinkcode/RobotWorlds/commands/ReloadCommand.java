@@ -1,9 +1,7 @@
 package za.wethinkcode.RobotWorlds.commands;
 
 import org.json.JSONObject;
-import za.wethinkcode.RobotWorlds.Robot;
-
-import java.util.concurrent.TimeUnit;
+import za.wethinkcode.RobotWorlds.worldLogic.Robot;
 
 public class ReloadCommand extends Command{
 

@@ -1,10 +1,10 @@
 package za.wethinkcode.RobotWorlds.commands;
 
 import org.json.JSONObject;
-import za.wethinkcode.RobotWorlds.Obstacles;
-import za.wethinkcode.RobotWorlds.Robot;
-import za.wethinkcode.RobotWorlds.SimpleServer;
-import za.wethinkcode.RobotWorlds.SquareObstacle;
+import za.wethinkcode.RobotWorlds.worldLogic.Obstacles;
+import za.wethinkcode.RobotWorlds.worldLogic.Robot;
+import za.wethinkcode.RobotWorlds.worldLogic.SimpleServer;
+import za.wethinkcode.RobotWorlds.worldLogic.SquareObstacle;
 
 import java.util.ArrayList;
 

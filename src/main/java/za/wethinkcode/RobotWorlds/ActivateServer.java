@@ -1,5 +1,8 @@
 package za.wethinkcode.RobotWorlds;
 
+import za.wethinkcode.RobotWorlds.worldLogic.Obstacles;
+import za.wethinkcode.RobotWorlds.worldLogic.SimpleServer;
+
 import java.net.*;
 import java.io.*;
 

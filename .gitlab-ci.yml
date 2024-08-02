@@ -9,7 +9,7 @@ stages:
   - clean
   - compile
   - package
-  - server
+  - start_server
   - test
 
 
@@ -45,6 +45,4 @@ test:
   stage: test
   script:
     - mvn test
-  dependencies:
-    - server
 

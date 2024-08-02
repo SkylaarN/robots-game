@@ -63,7 +63,7 @@ public class LookCommand extends Command{
             pos.add(target.getPosition().getX());
             pos.add(target.getPosition().getY());
 
-            data.put("visibility", 9);
+            data.put("visibility", target.getVisibility());
             data.put("position", pos);
             data.put("objects", objects);
             reply.put("data", data);

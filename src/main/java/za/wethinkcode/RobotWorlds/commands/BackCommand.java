@@ -30,7 +30,7 @@ public class BackCommand extends Command {
 
             reply.put("result", "OK");
             data.put("message", "Done");
-            data.put("visibility", 9);
+            data.put("visibility", target.getVisibility());
             data.put("position", pos);
             data.put("objects", new ArrayList<>());
             reply.put("data", data);

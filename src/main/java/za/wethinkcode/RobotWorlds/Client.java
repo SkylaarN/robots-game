@@ -116,10 +116,12 @@ public class Client {
         Scanner scanner = new Scanner(System.in);
         System.out.println(ANSI_BOLD + ANSI_PURPLE + "***** WELCOME TO ROBOT WORLDS! *****" + ANSI_RESET);
         System.out.println(ANSI_BOLD + ANSI_PURPLE + "Here is a list of our robots make:\n" +
-                "1. Cowboy\n" +
+                "1. Commando\n" +
                 "2. Sniper\n" +
-                "3. Assassin\n" +
-                "4. Priest\n" + ANSI_RESET);
+                "3. Shooter\n" +
+                "3. Tank\n" +
+                "4. Operative\n" +
+                ANSI_RESET);
 
         System.out.println(ANSI_BOLD + ANSI_PURPLE + "Enter make from above and your desired username (eg. 'Sniper Hal'): " + ANSI_RESET);
 

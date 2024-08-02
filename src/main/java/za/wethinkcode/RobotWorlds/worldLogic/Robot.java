@@ -22,6 +22,15 @@ public class Robot {
 
 
     private int bullets = 8;
+    private int visibility = 8;
+
+    public int getVisibility() {
+        return visibility;
+    }
+
+    public void setVisibility(int visibility) {
+        this.visibility = visibility;
+    }
 
     public enum Direction{
         UP, RIGHT, DOWN, LEFT

@@ -1,63 +1,50 @@
 # Use an OpenJDK image
-image: openjdk:21-jdk
-
+#image: openjdk:21-jdk
+image: maven:latest
 services:
   - docker:dind
-
-#variables:
-#  MAVEN_VERSION: 3.8.6
-#
-#before_script:
-#  # Install Maven
-#  - apt-get update
-#  - apt-get install -y wget tar
-#  - wget https://apache.mirrors.lucidnetworks.net/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz
-#  - tar xzf apache-maven-${MAVEN_VERSION}-bin.tar.gz
-#  - mv apache-maven-${MAVEN_VERSION} /opt/maven
-#  - ln -s /opt/maven/bin/mvn /usr/bin/mvn
-#  - mvn --version  # Verify Maven installation
 
 # Define stages for the pipeline
 stages:
   - clean
   - compile
-  - test
   - package
+  - run-server
+  - test
+
 
 # Job to clean the project
 clean:
   stage: clean
   script:
-    - java --version
+    - mvn clean
 
 # Job to compile the project
 compile:
   stage: compile
   script:
-    - java --version
-#  dependencies:
-#    - clean
+    - mvn compile
+  dependencies:
+    - clean
 
+package:
+  stage: package
+  script:
+    - mvn package
 # Job to start the server
 start_server:
-  stage: test
+  stage: run-server
   script:
-    - java --version
-
+    - java -jar target/toyrobot-1.0-SNAPSHOT-jar-with-dependencies.jar
+    - sleep 5
+  dependencies:
+    - package
 
 # Job to run tests
 test:
   stage: test
   script:
-    - java --version
+    - mvn test
+  dependencies:
+    - run-server
 
-#  dependencies:
-#    - start_server
-
-# Job to build the project
-package:
-  stage: package
-  script:
-    - java --version
-#  dependencies:
-#    - compile

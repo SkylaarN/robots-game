@@ -24,8 +24,7 @@ compile:
   stage: compile
   script:
     - mvn compile
-  dependencies:
-    - clean
+
 
 package:
   stage: package
@@ -37,8 +36,7 @@ start_server:
   script:
     - java -jar target/toyrobot-1.0-SNAPSHOT-jar-with-dependencies.jar
     - sleep 5
-  dependencies:
-    - package
+
 
 # Job to run tests
 test:

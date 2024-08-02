@@ -28,7 +28,7 @@ public class LeftCommand extends Command{
 
 
         reply.put("result", "OK");
-        data.put("visibility", 9);
+        data.put("visibility", target.getVisibility());
         data.put("position", pos);
         data.put("objects", new ArrayList<>());
         reply.put("data", data);

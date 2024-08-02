@@ -33,17 +33,17 @@ public class Make {
             case "sniper":
                 sniper();
                 break;
-//            case "operative":
-//                operative();
-//                break;
-//            case "tank":
-//                tank();
-//                break;
-//            case "defender":
-//                defender();
-//                break;
+            case "operative":
+                operative();
+                break;
+            case "tank":
+                tank();
+                break;
+            case "shooter":
+                defender();
+                break;
             default:
-//                commando();
+                commando();
                 break;
         }
     }
@@ -54,48 +54,48 @@ public class Make {
     public void sniper() {
         this.player.setHealth(1);
         this.player.setBullets(5);
-//        this.player.setRange(5);
+        this.player.setVisibility(5);
 //        this.player.setRobotType("Sniper");
 
     }
 
     /**
-     * Creates an assassin robot.
-//     */
-//    public void operative() {
-//        this.player.setHealth(2);
-//        this.player.setBullets(4);
-//        this.player.setRange(4);
+     * Creates an operative robot.
+     //     */
+    public void operative() {
+        this.player.setHealth(2);
+        this.player.setBullets(4);
+        this.player.setVisibility(4);
 //        this.player.setRobotType("Operative");
-//    }
-//
-//    /**
-//     * Creates a Ranger robot.
-//     */
-//    public void commando() {
-//        this.player.setHealth(3);
-//        this.player.setBullets(3);
-//        this.player.setRange(3);
+    }
+
+    /**
+     * Creates a commando robot.
+     */
+    public void commando() {
+        this.player.setHealth(3);
+        this.player.setBullets(3);
+        this.player.setVisibility(3);
 //        this.player.setRobotType("Commando");
-//    }
-//
-//    /**
-//     * Creates a cowboy robot.
-//     */
-//    public void tank() {
-//        this.player.setHealth(4);
-//        this.player.setBullets(2);
-//        this.player.setRange(2);
+    }
+
+    /**
+     * Creates a tank robot.
+     */
+    public void tank() {
+        this.player.setHealth(4);
+        this.player.setBullets(2);
+        this.player.setVisibility(2);
 //        this.player.setRobotType("Tank");
-//    }
-//
-//    /**
-//     * Creates a priest robot.
-//     */
-//    public void defender() {
-//        this.player.setHealth(5);
-//        this.player.setBullets(1);
-//        this.player.setRange(1);
+    }
+
+    /**
+     * Creates a defender robot.
+     */
+    public void defender() {
+        this.player.setHealth(5);
+        this.player.setBullets(1);
+        this.player.setVisibility(1);
 //        this.player.setRobotType("Defender");
-//    }
+    }
 }

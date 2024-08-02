@@ -9,7 +9,7 @@ stages:
   - clean
   - compile
   - package
-  - run-server
+  - server
   - test
 
 
@@ -33,7 +33,7 @@ package:
     - mvn package
 # Job to start the server
 start_server:
-  stage: run-server
+  stage: server
   script:
     - java -jar target/toyrobot-1.0-SNAPSHOT-jar-with-dependencies.jar
     - sleep 5
@@ -46,5 +46,5 @@ test:
   script:
     - mvn test
   dependencies:
-    - run-server
+    - server
 

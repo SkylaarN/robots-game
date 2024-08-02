@@ -33,7 +33,7 @@ package:
     - mvn package
 # Job to start the server
 start_server:
-  stage: server
+  stage: start_server
   script:
     - java -jar target/toyrobot-1.0-SNAPSHOT-jar-with-dependencies.jar
     - sleep 5

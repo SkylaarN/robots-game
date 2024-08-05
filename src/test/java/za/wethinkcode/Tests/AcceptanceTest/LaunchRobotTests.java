@@ -134,36 +134,34 @@ public class LaunchRobotTests {
         assertEquals("ERROR", launchResponse.get("result").asText());
         System.out.println(launchResponse.get("data").get("message").asText());
         assertEquals("Too many of you in this world", launchResponse.get("data").get("message").asText());
-
-
     }
 
-//    @Test
-//    void launchBotInWorldWithObstacle() {
-//        // Given that I am connected to a running Robot Worlds server
-//
-//        // When I send a valid launch request to the server
-//        String request = "{" +
-//                "  \"robot\": \"HAL\"," +
-//                "  \"command\": \"launch\"," +
-//                "  \"arguments\": [\"shooter\"]" +
-//                "}";
-//        JsonNode response = serverClient.sendRequest(request);
-//
-//        // Then I should get a valid response from the server
-//        assertNotNull(response.get("result"));
-//        assertEquals("OK", response.get("result").asText());
-//
-//        // And the position should be (x:0, y:0)
-//        assertNotNull(response.get("data"));
-//        assertNotNull(response.get("data").get("position"));
-//        assertEquals(0, response.get("data").get("position").get(0).asInt());
-//        // Uncomment if needed
-//        // assertEquals(0, response.get("data").get("position").get(1).asInt());
-//
-//        // And I should also get the state of the robot
-//        assertNotNull(response.get("state"));
-//    }
+    @Test
+    void launchBotInWorldWithObstacle() {
+        // Given that I am connected to a running Robot Worlds server
+
+        // When I send a valid launch request to the server
+        String request = "{" +
+                "  \"robot\": \"HAL\"," +
+                "  \"command\": \"launch\"," +
+                "  \"arguments\": [\"shooter\"]" +
+                "}";
+        JsonNode response = serverClient.sendRequest(request);
+
+        // Then I should get a valid response from the server
+        assertNotNull(response.get("result"));
+        assertEquals("OK", response.get("result").asText());
+
+        // And the position should be (x:0, y:0)
+        assertNotNull(response.get("data"));
+        assertNotNull(response.get("data").get("position"));
+        assertEquals(0, response.get("data").get("position").get(0).asInt());
+        // Uncomment if needed
+        // assertEquals(0, response.get("data").get("position").get(1).asInt());
+
+        // And I should also get the state of the robot
+        assertNotNull(response.get("state"));
+    }
 
         @Test
         void invalidLaunchShouldFail(){

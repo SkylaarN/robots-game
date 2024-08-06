@@ -1,8 +1,7 @@
 # Use an OpenJDK image
 #image: openjdk:21-jdk
 image: maven:latest
-services:
-  - docker:dind
+
 
 # Define stages for the pipeline
 stages:
@@ -17,30 +16,29 @@ stages:
 clean:
   stage: clean
   script:
-    - mvn clean
+    - make clean
 
 # Job to compile the project
 compile:
   stage: compile
   script:
-    - mvn compile
+    - make clean
 
 
 package:
   stage: package
   script:
-    - mvn package
+    - make package
 # Job to start the server
 start_server:
   stage: start_server
   script:
-    - java -jar target/toyrobot-1.0-SNAPSHOT-jar-with-dependencies.jar
-    - sleep 5
+    - make server
 
 
 # Job to run tests
 test:
   stage: test
   script:
-    - mvn test
+    - make test
 

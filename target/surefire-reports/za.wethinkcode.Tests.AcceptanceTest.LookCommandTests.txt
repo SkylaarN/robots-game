@@ -1,8 +1,0 @@
--------------------------------------------------------------------------------
-Test set: za.wethinkcode.Tests.AcceptanceTest.LookCommandTests
--------------------------------------------------------------------------------
-Tests run: 2, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.02 s <<< FAILURE! - in za.wethinkcode.Tests.AcceptanceTest.LookCommandTests
-LookObstacle  Time elapsed: 0.016 s  <<< FAILURE!
-org.opentest4j.AssertionFailedError: expected: <OBSTACLE> but was: <EDGE>
-	at za.wethinkcode.Tests.AcceptanceTest.LookCommandTests.LookObstacle(LookCommandTests.java:101)
-

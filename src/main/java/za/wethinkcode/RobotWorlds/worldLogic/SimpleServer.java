@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class SimpleServer implements Runnable {
     public static ArrayList<String> listRobots = new ArrayList<String>();
-    public static final int PORT = 5000;
+    public static int PORT = 5000;
     private final BufferedReader in;
     private final PrintStream out;
     private final String clientMachine;

@@ -4,7 +4,7 @@ import za.wethinkcode.RobotWorlds.worldLogic.Position;
 
 public class Configuration {
 
-    private final Position worldSize = new Position(-350, 350);
+    private Position worldSize = new Position(-350, 350);
     private int health = 5;
 
     /**
@@ -15,6 +15,10 @@ public class Configuration {
 
         return worldSize;
     }
+    public void setWorldSize(int x, int y) {
+        worldSize = new Position(x, y);
+    }
+
 
     /**
      * reduce health

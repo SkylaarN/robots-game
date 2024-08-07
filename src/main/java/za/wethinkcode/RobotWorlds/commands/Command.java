@@ -95,6 +95,13 @@ public abstract class Command {
             case "quit":
                 return new QuitCommand();
 
+            //For database
+            case "save":
+                return new SaveCommand(args.getString(0));
+
+            case "restore":
+                return new RestoreCommand(args.getString(0));
+
             default:
                 System.out.println("Unsupported command: " + instruction);
 

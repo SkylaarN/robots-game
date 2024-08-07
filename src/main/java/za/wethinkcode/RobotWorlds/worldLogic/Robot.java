@@ -32,6 +32,41 @@ public class Robot {
         this.visibility = visibility;
     }
 
+
+    /**
+     * Restore the world with data saved on a database
+     * @param worldDataJson
+     */
+    public void setWorldData(String worldDataJson) {
+        // Restore the robot's world state from a JSON string
+        JSONObject worldData = new JSONObject(worldDataJson);
+        JSONArray position = worldData.getJSONArray("position");
+        setPosition(new Position(position.getInt(0), position.getInt(1)));
+        setCurrentDirection(Direction.valueOf(worldData.getString("direction").toUpperCase()));
+        setHealth(worldData.getInt("shields"));
+        setBullets(worldData.getInt("shots"));
+        // Restore other relevant state information
+    }
+
+    private void setCurrentDirection(Direction direction) {
+            this.currentDirection = direction;
+    }
+
+    /**
+     * This method gets the world's data or state
+     * And formats it properly for database.
+     * @return
+     */
+    public String getWorldData() {
+        // Convert the robot's world state to a JSON string
+        JSONObject worldData = new JSONObject();
+        worldData.put("position", getPositionState());
+        worldData.put("direction", getDirectionString());
+        worldData.put("shields", getHealth());
+        worldData.put("shots", getBullets());
+        return worldData.toString();
+    }
+
     public enum Direction{
         UP, RIGHT, DOWN, LEFT
     }

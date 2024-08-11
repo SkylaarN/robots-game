@@ -1,44 +1,49 @@
-# Use an OpenJDK image
-#image: openjdk:21-jdk
-image: maven:latest
+image: eclipse-temurin:21-jdk
 
-
-# Define stages for the pipeline
 stages:
-  - clean
-  - compile
-  - package
-  - start_server
+  - build
   - test
+  - package
 
+variables:
 
-# Job to clean the project
-clean:
-  stage: clean
+  MAVEN_OPTS: "-Dmaven.repo.local=$CI_PROJECT_DIR/.m2/repository -Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.allowall=true"
+
+before_script:
+  - apt-get update && apt-get install -y maven
+  - export JAVA_HOME="/opt/java/openjdk"
+  - echo "Using Java version:"
+  - java -version
+  - mvn --version
+
+cache:
+  paths:
+    - .m2/repository
+
+build:
+  stage: build
   script:
-    - make clean
+    - mvn clean compile
+  artifacts:
+    paths:
+      - target/
 
-# Job to compile the project
-compile:
-  stage: compile
+test:
+  stage: test
   script:
-    - make clean
-
+    - java -jar libs/reference-server-0.1.0.jar
+    - sleep 5
+    - mvn test
+  artifacts:
+    reports:
+      junit: target/surefire-reports/*.xml
 
 package:
   stage: package
   script:
-    - make package
-# Job to start the server
-start_server:
-  stage: start_server
-  script:
-    - make server
-
-
-# Job to run tests
-test:
-  stage: test
-  script:
-    - make test
-
+    - mvn package
+  artifacts:
+    paths:
+      - target/*.jar
+    expire_in: 1 week
+  timeout: 30m

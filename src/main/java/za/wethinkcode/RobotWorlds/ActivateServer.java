@@ -6,32 +6,71 @@ import za.wethinkcode.RobotWorlds.worldLogic.Obstacles;
 import za.wethinkcode.RobotWorlds.worldLogic.SimpleServer;
 import za.wethinkcode.RobotWorlds.worldLogic.SquareObstacle;
 
-import java.net.*;
-import java.io.*;
+import org.apache.commons.cli.Options;
+import za.wethinkcode.RobotWorlds.commands.RestoreCommand;
+import za.wethinkcode.RobotWorlds.commands.SaveCommand;
+import za.wethinkcode.RobotWorlds.worldLogic.Obstacles;
+import za.wethinkcode.RobotWorlds.worldLogic.Players;
+import za.wethinkcode.RobotWorlds.worldLogic.Robot;
+import za.wethinkcode.RobotWorlds.worldLogic.SimpleServer;
+
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.Scanner;
 
 import static za.wethinkcode.RobotWorlds.worldLogic.Obstacles.obstacles;
 
 public class ActivateServer {
     public static void main(String[] args) throws ClassNotFoundException, IOException {
 
-        ActivateServer activateServer = new ActivateServer();
-        activateServer.cmdArgs(args);
-
-        ServerSocket s = new ServerSocket( SimpleServer.PORT);
+        ServerSocket serverSocket = new ServerSocket(SimpleServer.PORT);
         System.out.println("\u001B[1m\u001B[34m***** WELCOME TO ROBOT WORLDS! *****\u001B[0m");
 
-        Obstacles.generateObstacles();
-        while(true) {
-            try {
-                Socket socket = s.accept();
-                System.out.println("Connection: " + socket);
+        // Start a thread to handle client connections
+        new Thread(() -> {
+            Obstacles.generateObstacles();
+            while (true) {
+                try {
+                    Socket socket = serverSocket.accept();
+                    System.out.println("Connection: " + socket);
+                    Runnable r = new SimpleServer(socket);
+                    Thread task = new Thread(r);
+                    task.start();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        }).start();
 
-                Runnable r = new SimpleServer(socket);
-                Thread task = new Thread(r);
-                task.start();
+        // Listen for console input in the main thread
+        Scanner scanner = new Scanner(System.in);
+        while (true) {
+            System.out.print("Enter command: ");
+            String command = scanner.nextLine();
 
-            } catch (IOException ex) {
-                ex.printStackTrace();
+            if (command.equalsIgnoreCase("save")) {
+                // Execute SaveCommand when "save" is entered
+                System.out.print("Enter world name to save: ");
+                String worldName = scanner.nextLine();
+
+                // Assuming you have a default Robot to save the world data
+                Robot robot = getRobotToSave();
+
+                SaveCommand saveCommand = new SaveCommand(worldName);
+                saveCommand.execute(robot);
+
+                System.out.println(robot.getStatus());
+            }else if (command.equalsIgnoreCase("restore")) {
+                System.out.print("Enter world name to restore: ");
+                String worldName = scanner.nextLine();
+
+                Robot robot = getRobotToRestore(" ");
+
+                RestoreCommand restoreCommand = new RestoreCommand(worldName);
+                restoreCommand.execute(robot);
+
+                System.out.println(robot.getStatus());
             }
         }
     }
@@ -82,5 +121,14 @@ public class ActivateServer {
             obstacles.add(new SquareObstacle(x, y));
 
         }
+    }
+
+    private static Robot getRobotToSave() {
+        // Retrieve or create the Robot whose world state you want to save
+        return Players.getRobot("robot1");  // Replace with the actual robot name or retrieval logic
+    }
+
+    private static Robot getRobotToRestore(String robotName) {
+        return new Robot(robotName);
     }
 }

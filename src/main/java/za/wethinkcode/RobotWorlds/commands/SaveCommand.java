@@ -23,7 +23,7 @@ public class SaveCommand extends Command {
     @Override
     public boolean execute(Robot target) {
         String worldDataJson = target.getWorldData(); // Convert the robot's world state to a JSON string
-        
+
 
 //        DbConnect dbConnect = null;
         try {

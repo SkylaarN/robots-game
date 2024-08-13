@@ -1,17 +1,8 @@
 package za.wethinkcode.RobotWorlds;
 
-import org.apache.commons.cli.*;
 import za.wethinkcode.RobotWorlds.configuration.Configuration;
 import za.wethinkcode.RobotWorlds.worldLogic.Obstacles;
-import za.wethinkcode.RobotWorlds.worldLogic.SimpleServer;
-import za.wethinkcode.RobotWorlds.worldLogic.SquareObstacle;
-
-import org.apache.commons.cli.Options;
-import za.wethinkcode.RobotWorlds.commands.RestoreCommand;
-import za.wethinkcode.RobotWorlds.commands.SaveCommand;
-import za.wethinkcode.RobotWorlds.worldLogic.Obstacles;
-import za.wethinkcode.RobotWorlds.worldLogic.Players;
-import za.wethinkcode.RobotWorlds.worldLogic.Robot;
+import za.wethinkcode.RobotWorlds.worldLogic.Position;
 import za.wethinkcode.RobotWorlds.worldLogic.SimpleServer;
 
 import java.io.IOException;
@@ -19,12 +10,35 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Scanner;
 
-import static za.wethinkcode.RobotWorlds.worldLogic.Obstacles.obstacles;
-
 public class ActivateServer {
     public static void main(String[] args) throws ClassNotFoundException, IOException {
+        // Default port and configuration
+        int port = SimpleServer.PORT;
+        Configuration config = new Configuration();
 
-        ServerSocket serverSocket = new ServerSocket(SimpleServer.PORT);
+        // Parse command line arguments
+        for (int i = 0; i < args.length; i++) {
+            switch (args[i]) {
+                case "-p":
+                    port = Integer.parseInt(args[++i]);
+                    break;
+                case "-s":
+                    int size = Integer.parseInt(args[++i]);
+                    config.setWorldSize(size, size);
+                    break;
+                case "-o":
+                    String[] coordinates = args[++i].split(",");
+                    int x = Integer.parseInt(coordinates[0]);
+                    int y = Integer.parseInt(coordinates[1]);
+                    config.addObstacle(new Position(x, y));
+                    break;
+                default:
+                    System.out.println("Unknown argument: " + args[i]);
+            }
+        }
+
+        // Start the server on the specified port
+        ServerSocket serverSocket = new ServerSocket(port);
         System.out.println("\u001B[1m\u001B[34m***** WELCOME TO ROBOT WORLDS! *****\u001B[0m");
 
         // Start a thread to handle client connections
@@ -49,86 +63,12 @@ public class ActivateServer {
             System.out.print("Enter command: ");
             String command = scanner.nextLine();
 
-            if (command.equalsIgnoreCase("save")) {
-                // Execute SaveCommand when "save" is entered
-                System.out.print("Enter world name to save: ");
-                String worldName = scanner.nextLine();
-
-                // Assuming you have a default Robot to save the world data
-                Robot robot = getRobotToSave();
-
-                SaveCommand saveCommand = new SaveCommand(worldName);
-                saveCommand.execute(robot);
-
-                System.out.println(robot.getStatus());
-            }else if (command.equalsIgnoreCase("restore")) {
-                System.out.print("Enter world name to restore: ");
-                String worldName = scanner.nextLine();
-
-                Robot robot = getRobotToRestore(" ");
-
-                RestoreCommand restoreCommand = new RestoreCommand(worldName);
-                restoreCommand.execute(robot);
-
-                System.out.println(robot.getStatus());
+            if (command.equalsIgnoreCase("quit")) {
+                System.out.println("Shutting down server...");
+                serverSocket.close();
+                break;
             }
+            // Add additional console commands handling here
         }
-    }
-
-    public void cmdArgs(String[] args) throws IOException {
-        Options options = new Options();
-
-        Option port = new Option("p", "port", true, "port number");
-        port.setRequired(false);
-        options.addOption(port);
-
-        Option size = new Option("s", "size", true, "size of the world");
-        size.setRequired(false);
-        options.addOption(size);
-
-        Option obstacle = new Option("o", "obstacle", true, "obstacle");
-        obstacle.setRequired(false);
-        options.addOption(obstacle);
-
-        CommandLineParser parser = new DefaultParser();
-        CommandLine cmd;
-
-        try {
-            cmd = parser.parse(options, args);
-        } catch (ParseException e) {
-            System.out.println(e.getMessage());
-            System.exit(1);
-            return;
-        }
-
-        // Get the port if specified
-        if (cmd.hasOption("port")) {
-            String port1 = cmd.getOptionValue("port");
-            SimpleServer.PORT = Integer.parseInt(port1);
-        }
-        if (cmd.hasOption("size")) {
-            String worldSize = cmd.getOptionValue("size");
-            int widthHeight = Integer.parseInt(worldSize);
-            Configuration config = new Configuration();
-            config.setWorldSize(widthHeight,widthHeight);
-
-        }
-        if (cmd.hasOption("obstacle")) {
-            String obstacleSize = cmd.getOptionValue("obstacle");
-            String[] obstacleSizeArray = obstacleSize.split(",");
-            int x = Integer.parseInt(obstacleSizeArray[0]);
-            int y = Integer.parseInt(obstacleSizeArray[1]);
-            obstacles.add(new SquareObstacle(x, y));
-
-        }
-    }
-
-    private static Robot getRobotToSave() {
-        // Retrieve or create the Robot whose world state you want to save
-        return Players.getRobot("robot1");  // Replace with the actual robot name or retrieval logic
-    }
-
-    private static Robot getRobotToRestore(String robotName) {
-        return new Robot(robotName);
     }
 }

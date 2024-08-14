@@ -70,7 +70,6 @@ public class LookCommand extends Command{
             target.setStatus(reply.toString());
         }
         else{
-
             data.put("objects", objects);
             data.put("message", "Done");
             reply.put("data", data);

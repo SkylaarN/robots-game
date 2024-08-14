@@ -6,15 +6,17 @@ import za.wethinkcode.RobotWorlds.Database.DbConnect;
 import za.wethinkcode.RobotWorlds.worldLogic.SquareObstacle;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public class SaveCommand extends Command {
 
     private final String worldName;
 
-    public SaveCommand(){
+    public SaveCommand() {
         super("save");
         this.worldName = "Default";
     }
+
     public SaveCommand(String worldName) {
         super("save");
         this.worldName = worldName;
@@ -22,18 +24,28 @@ public class SaveCommand extends Command {
 
     @Override
     public boolean execute(Robot target) {
-        String worldDataJson = target.getWorldData(); // Convert the robot's world state to a JSON string
-        
+        // Get the list of obstacles from the world
+        List<SquareObstacle> obstacles = Obstacles.getObstacles();
 
-//        DbConnect dbConnect = null;
+        // Convert world data to JSON or other format if needed
+        String worldData = ""; // Placeholder, adjust as necessary for your use case
+
         try {
+            // Create a new DbConnect instance
             DbConnect dbConnect = new DbConnect();
-            dbConnect.saveWorld(worldName, worldDataJson);
-            target.setStatus("World '" + worldName + "' saved successfully.");
-            System.out.println("World saved as: " + worldName);
-            return false;
+            dbConnect.createTables();
+
+            // Save the world name and its obstacles
+            dbConnect.saveWorld(worldName, worldData, obstacles); // Ensure correct method signature
+
+            // Set status and indicate success
+            target.setStatus("World '" + worldName + "' and obstacles saved successfully.");
+            System.out.println("World and obstacles saved as: " + worldName);
+
+            return true;
+
         } catch (SQLException e) {
-            System.out.println("Tooslki");
+            // Handle SQL exceptions
             target.setStatus("Failed to save world: " + e.getMessage());
             System.err.println("Error saving world: " + e.getMessage());
             return false;

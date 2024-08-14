@@ -30,6 +30,7 @@ public class ActivateServer {
         // Start a thread to handle client connections
         new Thread(() -> {
             Obstacles.generateObstacles();
+//            System.out.println(Obstacles.getObstacles().toString());
             while (true) {
                 try {
                     Socket socket = serverSocket.accept();

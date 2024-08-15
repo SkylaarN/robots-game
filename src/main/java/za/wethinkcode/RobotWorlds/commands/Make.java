@@ -10,7 +10,7 @@ import za.wethinkcode.RobotWorlds.worldLogic.Robot;
 public class Make {
 
     private final Robot player;
-    private final String robotType;
+    private final String robotMake;
 
     /**
      * Constructs a Make object with the specified robot type and player.
@@ -19,7 +19,7 @@ public class Make {
      * @param player The player for whom the robot is being created.
      */
     public Make(String make, Robot player) {
-        this.robotType = make;
+        this.robotMake = make;
         this.player = player;
         launchRobot();
     }
@@ -29,7 +29,7 @@ public class Make {
      */
     public void launchRobot() {
         this.player.setStatusType("NORMAL");
-        switch (this.robotType) {
+        switch (this.robotMake) {
             case "sniper":
                 sniper();
                 break;
@@ -55,7 +55,7 @@ public class Make {
         this.player.setHealth(1);
         this.player.setBullets(5);
         this.player.setVisibility(5);
-//        this.player.setRobotType("Sniper");
+//        this.player.setRobotMake("Sniper");
 
     }
 

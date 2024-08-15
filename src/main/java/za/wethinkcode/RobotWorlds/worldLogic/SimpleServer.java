@@ -88,6 +88,8 @@ public class SimpleServer implements Runnable {
         Robot userRobot = Players.getRobot(name);
         System.out.println("userRobot: "+userRobot.getName());
         userRobot.handleCommand(instructions, arguments);
+
+        System.out.println("reply: "+userRobot.getReply().toString());
         return userRobot.getReply().toString();
     }
 

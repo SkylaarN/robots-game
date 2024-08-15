@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class SimpleServer implements Runnable {
     public static ArrayList<String> listRobots = new ArrayList<String>();
-    public static int PORT = 8000;
+    public static int PORT = 5000;
     private final BufferedReader in;
     private final PrintStream out;
     private final String clientMachine;
@@ -54,6 +54,7 @@ public class SimpleServer implements Runnable {
                     }
 
                     String reply = doRobot(name, command, arguments);
+                    System.out.println(reply);
 
                     out.println(reply);
 
@@ -85,6 +86,7 @@ public class SimpleServer implements Runnable {
      */
     String doRobot(String name, String instructions, JSONArray arguments){
         Robot userRobot = Players.getRobot(name);
+        System.out.println("userRobot: "+userRobot.getName());
         userRobot.handleCommand(instructions, arguments);
         return userRobot.getReply().toString();
     }

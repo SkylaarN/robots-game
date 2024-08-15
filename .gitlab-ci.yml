@@ -8,19 +8,16 @@ stages:
   - package
   - publish
 
-# Define Maven options
 variables:
   MAVEN_OPTS: "-Dmaven.repo.local=$CI_PROJECT_DIR/.m2/repository -Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.allowall=true"
   DOCKER_REGISTRY: registry.gitlab.wethinkco.de
   IMAGE_NAME: $DOCKER_REGISTRY/nsilima023b/cjc1_brownfields_2024
   TAG: latest
 
-# Cache Maven dependencies
 cache:
   paths:
     - .m2/repository
 
-# Before script to set up environment
 before_script:
   - apt-get update && apt-get install -y maven
   - export JAVA_HOME="/opt/java/openjdk"
@@ -28,7 +25,6 @@ before_script:
   - java -version
   - mvn --version
 
-# Build stage
 build:
   stage: build
   script:
@@ -38,9 +34,9 @@ build:
       - target/
   timeout: 30m
 
-# Test stage
 test:
   stage: test
+  timeout: 30m
   script:
     - java -jar libs/reference-server-0.1.0.jar &
     - sleep 5
@@ -49,7 +45,6 @@ test:
     reports:
       junit: target/surefire-reports/*.xml
 
-# Package stage
 package:
   stage: package
   script:
@@ -59,8 +54,6 @@ package:
       - target/*.jar
     expire_in: 1 week
 
-
-# Publish Docker image stage
 publish:
   stage: publish
   image: docker:latest

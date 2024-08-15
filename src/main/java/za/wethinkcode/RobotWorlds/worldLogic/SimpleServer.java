@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class SimpleServer implements Runnable {
     public static ArrayList<String> listRobots = new ArrayList<String>();
-    public static int PORT = 5000;
+    public static int PORT = 8000;
     private final BufferedReader in;
     private final PrintStream out;
     private final String clientMachine;
@@ -52,11 +52,14 @@ public class SimpleServer implements Runnable {
                     if (!listRobots.contains(obj.getString("robot"))) {
                         addRobots(obj.getString("robot"));
                     }
+                    if (!name.equalsIgnoreCase("")) {
+                        String reply = doRobot(name, command, arguments);
 
-                    String reply = doRobot(name, command, arguments);
-                    System.out.println(reply);
-
-                    out.println(reply);
+                        out.println(reply);
+                        out.println("\u001B[34mWhat should I do next?\u001B[0m");
+                    }else {
+                        out.println("\u001B[31mPlease launch the robot\u001B[0m");
+                    }
 
                 }
 
@@ -86,7 +89,6 @@ public class SimpleServer implements Runnable {
      */
     String doRobot(String name, String instructions, JSONArray arguments){
         Robot userRobot = Players.getRobot(name);
-        System.out.println("userRobot: "+userRobot.getName());
         userRobot.handleCommand(instructions, arguments);
         return userRobot.getReply().toString();
     }

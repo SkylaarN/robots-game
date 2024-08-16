@@ -48,7 +48,12 @@ public class Client {
             try {
                 while (socket.isConnected()) {
                     msg = bufferedReader.readLine();
-
+                    if (msg == null){
+                        bufferedReader.close();
+                        bufferedWriter.close();
+                        socket.close();
+                        break;
+                    }
                     System.out.println(ANSI_CYAN + msg + ANSI_RESET);
                 }
             } catch (IOException e) {

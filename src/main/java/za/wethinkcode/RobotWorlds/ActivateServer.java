@@ -17,24 +17,31 @@ import za.wethinkcode.RobotWorlds.worldLogic.SimpleServer;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 import static za.wethinkcode.RobotWorlds.worldLogic.Obstacles.obstacles;
 
 public class ActivateServer {
+
+    public static ArrayList<Socket> listRobotsSockets = new ArrayList<Socket>();
+
     public static void main(String[] args) throws ClassNotFoundException, IOException {
 
         ServerSocket serverSocket = new ServerSocket(SimpleServer.PORT);
         System.out.println("\u001B[1m\u001B[34m***** WELCOME TO ROBOT WORLDS! *****\u001B[0m");
-
+        ActivateServer activateServer = new ActivateServer();
+        activateServer.cmdArgs(args);
         // Start a thread to handle client connections
         new Thread(() -> {
-            Obstacles.generateObstacles();
+//            Obstacles.generateObstacles();
 //            System.out.println(Obstacles.getObstacles().toString());
-            while (true) {
+            while (!serverSocket.isClosed()) {
                 try {
                     Socket socket = serverSocket.accept();
                     System.out.println("Connection: " + socket);
+                    listRobotsSockets.add(socket);
                     Runnable r = new SimpleServer(socket);
                     Thread task = new Thread(r);
                     task.start();
@@ -50,6 +57,16 @@ public class ActivateServer {
             System.out.print("Enter command: ");
             String command = scanner.nextLine();
 
+            if (command.equalsIgnoreCase("quit")){
+//                ArrayList<Robot> robots = Players.;
+//                System.out.println();
+//                robots.clear();
+                for (Socket socket : listRobotsSockets){
+                    socket.close();
+                }
+                serverSocket.close();
+                break;
+            }
             if (command.equalsIgnoreCase("save")) {
                 // Execute SaveCommand when "save" is entered
                 System.out.print("Enter world name to save: ");
@@ -111,7 +128,9 @@ public class ActivateServer {
             String worldSize = cmd.getOptionValue("size");
             int widthHeight = Integer.parseInt(worldSize);
             Configuration config = new Configuration();
+            System.out.println(config.getWorldSize().getX()+";"+config.getWorldSize().getY());
             config.setWorldSize(widthHeight,widthHeight);
+            System.out.println(config.getWorldSize().getX()+";"+config.getWorldSize().getY() + "new size");
 
         }
         if (cmd.hasOption("obstacle")) {

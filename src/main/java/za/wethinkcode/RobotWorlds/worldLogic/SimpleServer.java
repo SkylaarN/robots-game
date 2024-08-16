@@ -28,6 +28,8 @@ public class SimpleServer implements Runnable {
      */
     public void addRobots(String name) {
         listRobots.add(name);
+        System.out.println(listRobots);
+
     }
 
     /**
@@ -50,12 +52,17 @@ public class SimpleServer implements Runnable {
                     String command = obj.getString("command");
 
                     if (!listRobots.contains(obj.getString("robot"))) {
+                        System.out.println(obj.getString("robot"));
                         addRobots(obj.getString("robot"));
                     }
+                    if (!name.equalsIgnoreCase("")) {
+                        String reply = doRobot(name, command, arguments);
 
-                    String reply = doRobot(name, command, arguments);
-
-                    out.println(reply);
+                        out.println(reply);
+                        out.println("\u001B[34mWhat should I do next?\u001B[0m");
+                    }else {
+                        out.println("\u001B[31mPlease launch the robot\u001B[0m");
+                    }
 
                 }
 
@@ -85,7 +92,10 @@ public class SimpleServer implements Runnable {
      */
     String doRobot(String name, String instructions, JSONArray arguments){
         Robot userRobot = Players.getRobot(name);
+
         userRobot.handleCommand(instructions, arguments);
+
+        System.out.println("reply: "+userRobot.getReply().toString());
         return userRobot.getReply().toString();
     }
 

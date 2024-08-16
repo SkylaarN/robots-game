@@ -123,9 +123,7 @@ public class Client {
                 "4. Operative\n" +
                 ANSI_RESET);
 
-        System.out.println(ANSI_BOLD + ANSI_PURPLE + "Enter make from above and your desired username (eg. 'Sniper Hal'): " + ANSI_RESET);
-
-        System.out.println(ANSI_BOLD + ANSI_PURPLE + "Type 'Launch' to place your robot in the world." + ANSI_RESET);
+        System.out.println(ANSI_BOLD + ANSI_PURPLE + "Enter make from above and your desired username (eg. 'Thando launch sniper'): " + ANSI_RESET);
 
         Socket socket1 = new Socket("localhost", 8000);
         Client client = new Client(socket1);

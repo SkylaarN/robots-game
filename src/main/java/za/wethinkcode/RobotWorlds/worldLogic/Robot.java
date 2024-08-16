@@ -20,7 +20,7 @@ public class Robot {
     private String statusType = "NORMAL";
     private Configuration configuration = new Configuration();
 
-
+    public static ArrayList<Integer> listpos =new ArrayList<>(0);
     private int bullets = 8;
     private int visibility = 8;
 
@@ -85,7 +85,28 @@ public class Robot {
      * @param name is the name given to the robot
      */
     public Robot(String name){
-        this.position = new Position(0, 0);
+        Position pos =  new Position(150,150);
+        int x = pos.getX();
+
+
+        int random_x = (int)(Math.random() * pos.getX()+1);
+        listpos.add(random_x);
+        System.out.println("list: "+listpos);
+
+        System.out.println("x: "+random_x);
+        System.out.println("first: "+listpos.getFirst());
+
+        if(random_x==listpos.getFirst()){
+            if(random_x+5> pos.getX())
+                random_x-=5;
+            else{
+                random_x+=5;
+            }
+        }
+        int random_y = (int)(Math.random() * pos.getY()+1);
+
+
+        this.position = new Position(random_x, random_y);
         this.currentDirection = Direction.UP;
         this.name = name;
 
@@ -262,6 +283,8 @@ public class Robot {
 
 
         if (position.isIn(new Position(-150, 150),new Position(150, -150))) {
+            System.out.println(position.getY());
+            System.out.println(position.getX());
             return true;
         }
         else{

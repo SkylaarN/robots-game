@@ -18,8 +18,8 @@ za/wethinkcode/RobotWorlds/commands/BackCommand.class
 za/wethinkcode/RobotWorlds/commands/ReloadCommand.class
 za/wethinkcode/RobotWorlds/worldLogic/Robot$Direction.class
 za/wethinkcode/RobotWorlds/commands/LeftCommand.class
-za/wethinkcode/RobotWorlds/commands/StateCommand.class
 za/wethinkcode/RobotWorlds/commands/RestoreCommand.class
+za/wethinkcode/RobotWorlds/commands/StateCommand.class
 za/wethinkcode/RobotWorlds/worldLogic/Robot.class
 za/wethinkcode/RobotWorlds/Client.class
 za/wethinkcode/RobotWorlds/commands/LookCommand.class
@@ -29,5 +29,5 @@ za/wethinkcode/RobotWorlds/worldLogic/SquareObstacle.class
 za/wethinkcode/RobotWorlds/commands/RobotsCommand.class
 za/wethinkcode/RobotWorlds/commands/RightCommand.class
 za/wethinkcode/RobotWorlds/worldLogic/Position.class
-za/wethinkcode/RobotWorlds/commands/QuitCommand.class
 za/wethinkcode/RobotWorlds/commands/ForwardCommand.class
+za/wethinkcode/RobotWorlds/commands/QuitCommand.class

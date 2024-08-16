@@ -3,6 +3,7 @@ package za.wethinkcode.RobotWorlds.Database;
 import za.wethinkcode.RobotWorlds.worldLogic.SquareObstacle;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class DbConnect {
@@ -63,6 +64,25 @@ public class DbConnect {
             }
         }
     }
+
+    public List<SquareObstacle> restoreObstacles(String worldName) throws SQLException {
+        List<SquareObstacle> obstacles = new ArrayList<>();
+        String query = "SELECT position_x, position_y, size FROM Obstacles WHERE world_name = ?";
+
+        try (PreparedStatement pstmt = conn.prepareStatement(query)) {
+            pstmt.setString(1, worldName);
+            try (ResultSet rs = pstmt.executeQuery()) {
+                while (rs.next()) {
+                    int x = rs.getInt("position_x");
+                    int y = rs.getInt("position_y");
+                    int size = rs.getInt("size");
+                    obstacles.add(new SquareObstacle(x, y)); // Assuming size is always the same
+                }
+            }
+        }
+        return obstacles;
+    }
+
 
     public String restoreWorld(String worldName) {
         String query = "SELECT world_data FROM RobotWorlds WHERE world_name = ?";

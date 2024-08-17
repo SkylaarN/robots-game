@@ -12,13 +12,8 @@ public class SaveCommand extends Command {
 
     private final String worldName;
 
-    public SaveCommand() {
-        super("save");
-        this.worldName = "Default";
-    }
-
     public SaveCommand(String worldName) {
-        super("save");
+        super();
         this.worldName = worldName;
     }
 

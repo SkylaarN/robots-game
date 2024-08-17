@@ -6,14 +6,12 @@ import za.wethinkcode.RobotWorlds.worldLogic.Robot;
 public class ErrorHandling extends Command {
 
     public ErrorHandling(String command){
-        super("Unsupported command :", command);
+        super(command);
     }
 
 
     @Override
     public boolean execute(Robot target) {
-        //If i type an invalid command
-        //I should get ERROR
 
 
         JSONObject reply = new JSONObject();

@@ -42,6 +42,6 @@ public class RepairCommand extends Command{
 
 
     public RepairCommand() {
-        super("repair");
+        super();
     }
 }

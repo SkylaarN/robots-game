@@ -55,7 +55,6 @@ public class Make {
         this.player.setHealth(1);
         this.player.setBullets(5);
         this.player.setVisibility(5);
-//        this.player.setRobotMake("Sniper");
 
     }
 
@@ -66,7 +65,6 @@ public class Make {
         this.player.setHealth(2);
         this.player.setBullets(4);
         this.player.setVisibility(4);
-//        this.player.setRobotType("Operative");
     }
 
     /**
@@ -76,7 +74,6 @@ public class Make {
         this.player.setHealth(3);
         this.player.setBullets(3);
         this.player.setVisibility(3);
-//        this.player.setRobotType("Commando");
     }
 
     /**
@@ -86,7 +83,6 @@ public class Make {
         this.player.setHealth(4);
         this.player.setBullets(2);
         this.player.setVisibility(2);
-//        this.player.setRobotType("Tank");
     }
 
     /**
@@ -96,6 +92,5 @@ public class Make {
         this.player.setHealth(5);
         this.player.setBullets(1);
         this.player.setVisibility(1);
-//        this.player.setRobotType("Defender");
     }
 }

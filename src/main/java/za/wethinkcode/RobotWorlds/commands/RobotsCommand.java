@@ -21,6 +21,6 @@ public class RobotsCommand extends Command{
 
 
     public RobotsCommand() {
-        super("robots");
+        super();
     }
 }

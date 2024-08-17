@@ -15,11 +15,10 @@ public class DumpCommand extends Command {
         ArrayList<SquareObstacle> obstacles = Obstacles.getObstacles();
         int x = target.getPosition().getX();
         int y = target.getPosition().getY();
-        String obs = "";
+        StringBuilder obs = new StringBuilder();
 
-        for (int i = 0; i < obstacles.size(); i++) {
-            SquareObstacle sqrObs = obstacles.get(i);
-            obs = obs + "\n[" + sqrObs.getBottomLeftX() + " , " + sqrObs.getBottomLeftY() + "]";
+        for (SquareObstacle sqrObs : obstacles) {
+            obs.append("\n[").append(sqrObs.getBottomLeftX()).append(" , ").append(sqrObs.getBottomLeftY()).append("]");
         }
         JSONObject reply = new JSONObject();
         JSONObject data = new JSONObject();
@@ -31,12 +30,11 @@ public class DumpCommand extends Command {
                 + "All Obstacles: "
                 + obs);
         reply.put("data", data);
-        target.setStatus(reply.toString());
         System.out.println(reply);
         return true;
     }
 
     public DumpCommand() {
-        super("dump");
+        super();
     }
 }

@@ -10,10 +10,10 @@ public class RightCommand extends Command{
 
     @Override
     public boolean execute(Robot target){
-        /**Function is used to turn the robot right by calling the updateDirection with the
-         * turnRight parameter as true
-         *
-         * @param target The Robot object
+        /*Function is used to turn the robot right by calling the updateDirection with the
+          turnRight parameter as true
+
+          @param target The Robot object
          * @return boolean if the program should continue
          */
 
@@ -21,7 +21,7 @@ public class RightCommand extends Command{
         JSONObject reply = new JSONObject();
         JSONObject data = new JSONObject();
 
-        List pos = new ArrayList<>();
+        List<Object> pos = new ArrayList<>();
         pos.add(target.getPosition().getX());
         pos.add(target.getPosition().getY());
 
@@ -39,6 +39,6 @@ public class RightCommand extends Command{
 
 
     public RightCommand() {
-        super("right");
+        super();
     }
 }

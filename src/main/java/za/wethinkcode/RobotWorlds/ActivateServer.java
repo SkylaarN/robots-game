@@ -17,15 +17,16 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 import static za.wethinkcode.RobotWorlds.worldLogic.Obstacles.obstacles;
 
 public class ActivateServer {
 
-    public static ArrayList<Socket> listRobotsSockets = new ArrayList<Socket>();
+    public static ArrayList<Socket> listRobotsSockets = new ArrayList<>();
 
-    public static void main(String[] args) throws ClassNotFoundException, IOException {
+    public static void main(String[] args) throws IOException {
 
         ServerSocket serverSocket = new ServerSocket(SimpleServer.PORT);
         System.out.println("\u001B[1m\u001B[34m***** WELCOME TO ROBOT WORLDS! *****\u001B[0m");
@@ -54,7 +55,7 @@ public class ActivateServer {
             System.out.print("Enter command: ");
             String command = scanner.nextLine();
 
-            switch (command.toLowerCase()){
+            switch (command.split(" ")[0].toLowerCase()){
                 case "quit":
                     for (Socket socket : listRobotsSockets){
                         socket.close();
@@ -94,6 +95,18 @@ public class ActivateServer {
                     robot = getRobotToSave();
                     RobotsCommand robotsCommand = new RobotsCommand();
                     robotsCommand.execute(robot);
+                    break;
+                case "purge":
+                    if (command.split(" ").length == 2){
+                        String purgedRobot = command.split(" ")[1];
+                        System.out.println("purging" + " " + purgedRobot);
+                        Robot vito = Players.getRobot(purgedRobot);
+                        Players.getPlayers().remove(vito);
+                        SimpleServer.listRobots.remove(purgedRobot);
+                    }
+                    else {
+                        System.out.println("Enter purge and the name of the robot you want to purge.\n eg.(purge Jabu)");
+                    }
                     break;
             }
         }

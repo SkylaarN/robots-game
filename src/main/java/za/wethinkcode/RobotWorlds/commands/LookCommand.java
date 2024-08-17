@@ -12,13 +12,9 @@ import java.util.List;
 
 public class LookCommand extends Command{
 
-    public enum AbsolutePosition{
-        NORTH, EAST, SOUTH, WEST
-    }
-
-    private JSONObject reply = new JSONObject();
-    private JSONObject data = new JSONObject();
-    private JSONArray objects = new JSONArray();
+    private final JSONObject reply = new JSONObject();
+    private final JSONObject data = new JSONObject();
+    private final JSONArray objects = new JSONArray();
 
     public boolean execute(Robot target){
         StringBuilder output = new StringBuilder();
@@ -57,24 +53,22 @@ public class LookCommand extends Command{
                 }
             }
         }
-        if(output.length() == 0){
+        if(output.isEmpty()){
 
-            List pos = new ArrayList<>();
+            List<Object> pos = new ArrayList<>();
             pos.add(target.getPosition().getX());
             pos.add(target.getPosition().getY());
 
             data.put("visibility", target.getVisibility());
             data.put("position", pos);
             data.put("objects", objects);
-            reply.put("data", data);
-            target.setStatus(reply.toString());
         }
         else{
             data.put("objects", objects);
             data.put("message", "Done");
-            reply.put("data", data);
-            target.setStatus(reply.toString());
         }
+        reply.put("data", data);
+        target.setStatus(reply.toString());
         return true;
     }
 
@@ -171,6 +165,6 @@ public class LookCommand extends Command{
     }
 
     public LookCommand(){
-        super("look");
+        super();
     }
 }

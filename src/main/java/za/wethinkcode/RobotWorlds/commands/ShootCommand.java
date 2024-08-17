@@ -9,8 +9,8 @@ import za.wethinkcode.RobotWorlds.worldLogic.Robot;
 import java.util.ArrayList;
 
 public class ShootCommand extends Command{
-    private JSONObject reply = new JSONObject();
-    private JSONObject data = new JSONObject();
+    private final JSONObject reply = new JSONObject();
+    private final JSONObject data = new JSONObject();
 
     public boolean execute(Robot target){
 
@@ -19,20 +19,16 @@ public class ShootCommand extends Command{
             target.fire();
             if(hitPlayer(target.getPosition(), fireBullet(30, target), target)){
                 data.put("message", "Hit");
-                reply.put("data", data);
-                target.setStatus(reply.toString());
             }
             else{
                 data.put("message", "Missed");
-                reply.put("data", data);
-                target.setStatus(reply.toString());
             }
         }
         else{
             data.put("message", "No Bullets");
-            reply.put("data", data);
-            target.setStatus(reply.toString());
         }
+        reply.put("data", data);
+        target.setStatus(reply.toString());
         return true;
     }
 
@@ -53,29 +49,26 @@ public class ShootCommand extends Command{
             newX = newX - range;
         }
 
-        Position newPosition = new Position(newX, newY);
-
-        return newPosition;
+        return new Position(newX, newY);
     }
 
     public boolean hitPlayer(Position a, Position b, Robot target){
         ArrayList<Robot> playerRobots = Players.getPlayers();
-        System.out.println(playerRobots);
-        for (int i = 0; i < playerRobots.size(); i++) {
+        for (Robot playerRobot : playerRobots) {
 
-            int x = playerRobots.get(i).getPosition().getX();
-            int y = playerRobots.get(i).getPosition().getY();
+            int x = playerRobot.getPosition().getX();
+            int y = playerRobot.getPosition().getY();
 
 
-            if(target != playerRobots.get(i)){
-                if(onPlayer(b, x, y) || throughPlayer(a, b, x, y)){
-                    Position contact = pointContact(target.getPosition(), playerRobots.get(i).getPosition());
+            if (target != playerRobot) {
+                if (onPlayer(b, x, y) || throughPlayer(a, b, x, y)) {
+                    Position contact = pointContact(target.getPosition(), playerRobot.getPosition());
 
-                    if(!Obstacles.blocksPosition(contact) && !Obstacles.blocksPath(a, contact)){
-                        data.put("robot", playerRobots.get(i).getName());
+                    if (!Obstacles.blocksPosition(contact) && !Obstacles.blocksPath(a, contact)) {
+                        data.put("robot", playerRobot.getName());
                         data.put("distance", getDistance(target.getPosition(), contact));
-                        data.put("state", playerRobots.get(i).getStatusType());
-                        playerRobots.get(i).damage();
+                        data.put("state", playerRobot.getStatusType());
+                        playerRobot.damage();
                         return true;
                     }
 
@@ -86,25 +79,18 @@ public class ShootCommand extends Command{
     }
 
     public boolean onPlayer(Position b, int x, int y){
-        if(x - 2 <= b.getX() && b.getX() <= x + 2 &&
-                y - 2 <= b.getY() && b.getY() <= y + 2){
-            return true;
-        }
-        else{
-            return false;
-        }
+        return x - 2 <= b.getX() && b.getX() <= x + 2 &&
+                y - 2 <= b.getY() && b.getY() <= y + 2;
     }
 
     public boolean throughPlayer(Position a, Position b, int x, int y){
         if(passPlayer(a.getX(), b.getX(), x + 2, x - 2) && a.getY() == b.getY() &&
                 a.getY() >= y - 2 && a.getY() <= y + 2) {
-            System.out.println("Through x");
             return true;
 
         }
         else if(passPlayer(a.getY(), b.getY(), y + 2, y - 2) && a.getX() == b.getX() &&
                 a.getX() >= x - 2 && a.getX() <= x + 2){
-            System.out.println("Through y");
             return true;
         }
         else{
@@ -150,6 +136,6 @@ public class ShootCommand extends Command{
 
 
     public ShootCommand() {
-        super("shoot");
+        super();
     }
 }

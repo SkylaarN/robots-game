@@ -15,6 +15,6 @@ public class StateCommand extends Command{
 
 
     public StateCommand() {
-        super("state");
+        super();
     }
 }

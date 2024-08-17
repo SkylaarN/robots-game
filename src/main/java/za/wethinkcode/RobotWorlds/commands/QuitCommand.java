@@ -5,7 +5,7 @@ import za.wethinkcode.RobotWorlds.worldLogic.Robot;
 public class QuitCommand extends Command{
 
     public QuitCommand() {
-        super("quit");
+        super();
     }
 
     public boolean execute(Robot target) {

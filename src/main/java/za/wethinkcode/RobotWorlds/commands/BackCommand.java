@@ -23,7 +23,7 @@ public class BackCommand extends Command {
 
         int nrSteps = Integer.parseInt(getArgument());
         if (target.updatePosition(-1 * nrSteps) == Robot.Conditions.SUCCESS){
-            List pos = new ArrayList<>();
+            List<Object> pos = new ArrayList<>();
             pos.add(target.getPosition().getX());
             pos.add(target.getPosition().getY());
 
@@ -49,6 +49,6 @@ public class BackCommand extends Command {
 
 
     public BackCommand(String argument) {
-        super("back", argument);
+        super(argument);
     }
 }

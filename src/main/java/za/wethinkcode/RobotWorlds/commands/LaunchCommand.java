@@ -10,10 +10,10 @@ public class LaunchCommand extends Command {
 
     @Override
     public boolean execute(Robot target) {
-        /**Function moves to robot forward by calling the updatePosition function with Argument
-         * nrSteps as a positive integer
-         *
-         * @param target The Robot object
+        /*Function moves to robot forward by calling the updatePosition function with Argument
+          nrSteps as a positive integer
+
+          @param target The Robot object
          * @return boolean if the program should continue
          */
         JSONObject reply = new JSONObject();
@@ -22,7 +22,7 @@ public class LaunchCommand extends Command {
 
         new Make(getArgument(), target);
 
-        List pos = new ArrayList<>();
+        List<Object> pos = new ArrayList<>();
         pos.add(target.getPosition().getX());
         pos.add(target.getPosition().getY());
 
@@ -41,7 +41,7 @@ public class LaunchCommand extends Command {
 
 
     public LaunchCommand(String argument) {
-        super("forward", argument);
+        super(argument);
     }
 }
 

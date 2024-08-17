@@ -1,10 +1,9 @@
 package za.wethinkcode.RobotWorlds.worldLogic;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
-import za.wethinkcode.RobotWorlds.commands.*;
+import za.wethinkcode.RobotWorlds.commands.Command;
 import za.wethinkcode.RobotWorlds.configuration.Configuration;
-import za.wethinkcode.RobotWorlds.worldLogic.Obstacles;
-import za.wethinkcode.RobotWorlds.worldLogic.Position;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,7 +17,7 @@ public class Robot {
     public String name;
     private String status;
     private String statusType = "NORMAL";
-    private Configuration configuration = new Configuration();
+    private final Configuration configuration = new Configuration();
 
     public static ArrayList<Integer> listpos =new ArrayList<>(0);
     private int bullets = 8;
@@ -35,7 +34,6 @@ public class Robot {
 
     /**
      * Restore the world with data saved on a database
-     * @param worldDataJson
      */
     public void setWorldData(String worldDataJson) {
         // Restore the robot's world state from a JSON string
@@ -55,7 +53,6 @@ public class Robot {
     /**
      * This method gets the world's data or state
      * And formats it properly for database.
-     * @return
      */
     public String getWorldData() {
         // Convert the robot's world state to a JSON string
@@ -91,10 +88,6 @@ public class Robot {
 
         int random_x = (int)(Math.random() * pos.getX()+1);
         listpos.add(random_x);
-        System.out.println("list: "+listpos);
-
-        System.out.println("x: "+random_x);
-        System.out.println("first: "+listpos.getFirst());
 
         if(random_x==listpos.getFirst()){
             if(random_x+5> pos.getX())
@@ -141,12 +134,7 @@ public class Robot {
         //StdDraw.setPenColor(color1, color2, color3);
         Command command = Command.createCommand(com, args);
 
-        if (command == null){
-            setStatus("Sorry, I did not understand '" + com + "'.");
-        }
-        else{
-            command.execute(this);
-        }
+        command.execute(this);
     }
 
     /**
@@ -283,8 +271,6 @@ public class Robot {
 
 
         if (position.isIn(new Position(-150, 150),new Position(150, -150))) {
-            System.out.println(position.getY());
-            System.out.println(position.getX());
             return true;
         }
         else{
@@ -383,8 +369,8 @@ public class Robot {
         JSONObject reply = new JSONObject(getStatus());
         JSONObject state = new JSONObject();
 
-        Map<String, List> result = new HashMap<>();
-        List num = new ArrayList<>();
+        Map<String, List<Object>> result = new HashMap<>();
+        List<Object> num = new ArrayList<>();
         num.add(position.getX());
         num.add(position.getY());
 
@@ -393,8 +379,6 @@ public class Robot {
         state.put("shields", getHealth());
         state.put("shots", getBullets());
         state.put("status", this.statusType);
-
-        //########################
 
         result.put("position", num);
         reply.put("state", state);

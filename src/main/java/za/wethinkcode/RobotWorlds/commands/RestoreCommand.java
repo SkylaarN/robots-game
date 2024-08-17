@@ -13,7 +13,7 @@ public class RestoreCommand extends Command {
     private final String worldName;
 
     public RestoreCommand(String worldName) {
-        super("restore");
+        super();
         this.worldName = worldName;
     }
 

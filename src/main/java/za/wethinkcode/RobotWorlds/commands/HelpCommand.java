@@ -6,7 +6,7 @@ import za.wethinkcode.RobotWorlds.worldLogic.Robot;
 public class HelpCommand extends Command {
 
     public HelpCommand() {
-        super("help");
+        super();
     }
 
     @Override

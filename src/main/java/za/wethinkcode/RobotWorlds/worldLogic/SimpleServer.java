@@ -8,15 +8,14 @@ import java.net.*;
 import java.util.ArrayList;
 
 public class SimpleServer implements Runnable {
-    public static ArrayList<String> listRobots = new ArrayList<String>();
+    public static ArrayList<String> listRobots = new ArrayList<>();
     public static int PORT = 8000;
     private final BufferedReader in;
     private final PrintStream out;
-    private final String clientMachine;
 
 
     public SimpleServer(Socket socket) throws IOException {
-        clientMachine = socket.getInetAddress().getHostName();
+        String clientMachine = socket.getInetAddress().getHostName();
         out = new PrintStream(socket.getOutputStream());
         in = new BufferedReader(new InputStreamReader(
                 socket.getInputStream()));
@@ -28,8 +27,6 @@ public class SimpleServer implements Runnable {
      */
     public void addRobots(String name) {
         listRobots.add(name);
-        System.out.println(listRobots);
-
     }
 
     /**
@@ -40,7 +37,7 @@ public class SimpleServer implements Runnable {
         try {
 
             while (true){
-                String messageFromClient = null;
+                String messageFromClient;
                 while((messageFromClient = in.readLine()) != null){
 
                     JSONObject obj = new JSONObject(messageFromClient);
@@ -50,13 +47,13 @@ public class SimpleServer implements Runnable {
                     String name = obj.getString("robot");
                     String command = obj.getString("command");
 
-                    if (!listRobots.contains(obj.getString("robot"))) {
-                        System.out.println(obj.getString("robot"));
+                    if (!listRobots.contains(obj.getString("robot")) & command.equalsIgnoreCase("launch")) {
                         addRobots(obj.getString("robot"));
-                    }
-                    if (!name.equalsIgnoreCase("")) {
                         String reply = doRobot(name, command, arguments);
-
+                        out.println(reply);
+                        out.println("\u001B[34mWhat should I do next?\u001B[0m");
+                    }else if (listRobots.contains(name)) {
+                        String reply = doRobot(name, command, arguments);
                         out.println(reply);
                         out.println("\u001B[34mWhat should I do next?\u001B[0m");
                     }else {
@@ -91,10 +88,7 @@ public class SimpleServer implements Runnable {
      */
     String doRobot(String name, String instructions, JSONArray arguments){
         Robot userRobot = Players.getRobot(name);
-
         userRobot.handleCommand(instructions, arguments);
-
-        System.out.println("reply: "+userRobot.getReply().toString());
         return userRobot.getReply().toString();
     }
 

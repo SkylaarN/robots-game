@@ -77,9 +77,6 @@ public abstract class Command {
             case "look":
                 return new LookCommand();
 
-            case "dump":
-                return new DumpCommand();
-
             case "shoot":
                 return new ShootCommand();
 
@@ -89,13 +86,9 @@ public abstract class Command {
             case "repair":
                 return new RepairCommand();
 
-            case "robots":
-                return new RobotsCommand();
-
             case "quit":
                 return new QuitCommand();
 
-            //For database
             case "save":
                 return new SaveCommand(args.getString(0));
 
@@ -106,10 +99,7 @@ public abstract class Command {
                 System.out.println("Unsupported command: " + instruction);
 
                 return new ErrorHandling(instruction);
-//                break;
         }
-
-        //will error handle here
     }
 }
 

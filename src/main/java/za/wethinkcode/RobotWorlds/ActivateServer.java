@@ -1,24 +1,22 @@
 package za.wethinkcode.RobotWorlds;
 
 import org.apache.commons.cli.*;
+import za.wethinkcode.RobotWorlds.commands.DumpCommand;
+import za.wethinkcode.RobotWorlds.commands.RobotsCommand;
 import za.wethinkcode.RobotWorlds.configuration.Configuration;
 import za.wethinkcode.RobotWorlds.worldLogic.Obstacles;
 import za.wethinkcode.RobotWorlds.worldLogic.SimpleServer;
 import za.wethinkcode.RobotWorlds.worldLogic.SquareObstacle;
 
-import org.apache.commons.cli.Options;
 import za.wethinkcode.RobotWorlds.commands.RestoreCommand;
 import za.wethinkcode.RobotWorlds.commands.SaveCommand;
-import za.wethinkcode.RobotWorlds.worldLogic.Obstacles;
 import za.wethinkcode.RobotWorlds.worldLogic.Players;
 import za.wethinkcode.RobotWorlds.worldLogic.Robot;
-import za.wethinkcode.RobotWorlds.worldLogic.SimpleServer;
 
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Scanner;
 
 import static za.wethinkcode.RobotWorlds.worldLogic.Obstacles.obstacles;
@@ -35,8 +33,7 @@ public class ActivateServer {
         activateServer.cmdArgs(args);
         // Start a thread to handle client connections
         new Thread(() -> {
-//            Obstacles.generateObstacles();
-//            System.out.println(Obstacles.getObstacles().toString());
+            Obstacles.generateObstacles();
             while (!serverSocket.isClosed()) {
                 try {
                     Socket socket = serverSocket.accept();
@@ -53,42 +50,51 @@ public class ActivateServer {
 
         // Listen for console input in the main thread
         Scanner scanner = new Scanner(System.in);
-        while (true) {
+        while (!serverSocket.isClosed()) {
             System.out.print("Enter command: ");
             String command = scanner.nextLine();
 
-            if (command.equalsIgnoreCase("quit")){
-//                ArrayList<Robot> robots = Players.;
-//                System.out.println();
-//                robots.clear();
-                for (Socket socket : listRobotsSockets){
-                    socket.close();
-                }
-                serverSocket.close();
-                break;
-            }
-            if (command.equalsIgnoreCase("save")) {
-                // Execute SaveCommand when "save" is entered
-                System.out.print("Enter world name to save: ");
-                String worldName = scanner.nextLine();
+            switch (command.toLowerCase()){
+                case "quit":
+                    for (Socket socket : listRobotsSockets){
+                        socket.close();
+                    }
+                    serverSocket.close();
+                    break;
+                case "save":
+                    // Execute SaveCommand when "save" is entered
+                    System.out.print("Enter world name to save: ");
+                    String worldName = scanner.nextLine();
 
-                // Assuming you have a default Robot to save the world data
-                Robot robot = getRobotToSave();
+                    // Assuming you have a default Robot to save the world data
+                    Robot robot = getRobotToSave();
 
-                SaveCommand saveCommand = new SaveCommand(worldName);
-                saveCommand.execute(robot);
+                    SaveCommand saveCommand = new SaveCommand(worldName);
+                    saveCommand.execute(robot);
 
-                System.out.println(robot.getStatus());
-            }else if (command.equalsIgnoreCase("restore")) {
-                System.out.print("Enter world name to restore: ");
-                String worldName = scanner.nextLine();
+                    System.out.println(robot.getStatus());
+                    break;
+                case "restore":
+                    System.out.print("Enter world name to restore: ");
+                    worldName = scanner.nextLine();
 
-                Robot robot = getRobotToRestore(" ");
+                    robot = getRobotToRestore(" ");
 
-                RestoreCommand restoreCommand = new RestoreCommand(worldName);
-                restoreCommand.execute(robot);
+                    RestoreCommand restoreCommand = new RestoreCommand(worldName);
+                    restoreCommand.execute(robot);
 
-                System.out.println(robot.getStatus());
+                    System.out.println(robot.getStatus());
+                    break;
+                case "dump":
+                    robot = getRobotToSave();
+                    DumpCommand dumpCommand = new DumpCommand();
+                    dumpCommand.execute(robot);
+                    break;
+                case "robots":
+                    robot = getRobotToSave();
+                    RobotsCommand robotsCommand = new RobotsCommand();
+                    robotsCommand.execute(robot);
+                    break;
             }
         }
     }

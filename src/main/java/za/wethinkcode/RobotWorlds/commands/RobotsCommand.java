@@ -14,6 +14,7 @@ public class RobotsCommand extends Command{
         reply.put("data", data);
 
         target.setStatus(reply.toString());
+        System.out.println(reply);
         return true;
     }
 

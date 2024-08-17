@@ -32,7 +32,7 @@ public class DumpCommand extends Command {
                 + obs);
         reply.put("data", data);
         target.setStatus(reply.toString());
-
+        System.out.println(reply);
         return true;
     }
 

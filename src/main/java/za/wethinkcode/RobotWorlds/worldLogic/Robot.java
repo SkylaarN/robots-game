@@ -82,7 +82,7 @@ public class Robot {
      * @param name is the name given to the robot
      */
     public Robot(String name){
-        Position pos =  new Position(150,150);
+        Position pos =  new Position(15,15);
         int x = pos.getX();
 
 
@@ -282,11 +282,13 @@ public class Robot {
     /**
      * Record the damages dealt to the robot
      */
-    public void damage(){
+    public void damage(Robot playerRobot){
 
         this.configuration.reduceHealth();
         if(getHealth() == 0){
             setStatusType("DEAD");
+            Players.getPlayers().remove(playerRobot);
+            SimpleServer.listRobots.remove(playerRobot.getName());
         }
     }
 

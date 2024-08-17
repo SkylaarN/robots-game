@@ -68,7 +68,7 @@ public class ShootCommand extends Command{
                         data.put("robot", playerRobot.getName());
                         data.put("distance", getDistance(target.getPosition(), contact));
                         data.put("state", playerRobot.getStatusType());
-                        playerRobot.damage();
+                        playerRobot.damage(playerRobot);
                         return true;
                     }
 

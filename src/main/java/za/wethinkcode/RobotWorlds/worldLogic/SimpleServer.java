@@ -12,10 +12,11 @@ public class SimpleServer implements Runnable {
     public static int PORT = 8000;
     private final BufferedReader in;
     private final PrintStream out;
-
+    private Socket clientSocket;
 
     public SimpleServer(Socket socket) throws IOException {
         String clientMachine = socket.getInetAddress().getHostName();
+        clientSocket = socket;
         out = new PrintStream(socket.getOutputStream());
         in = new BufferedReader(new InputStreamReader(
                 socket.getInputStream()));
@@ -50,6 +51,7 @@ public class SimpleServer implements Runnable {
                     if (!listRobots.contains(obj.getString("robot")) & command.equalsIgnoreCase("launch")) {
                         addRobots(obj.getString("robot"));
                         String reply = doRobot(name, command, arguments);
+                        Players.robotsSSSS.put(name, clientSocket);
                         out.println(reply);
                         out.println("\u001B[34mWhat should I do next?\u001B[0m");
                     }else if (listRobots.contains(name)) {

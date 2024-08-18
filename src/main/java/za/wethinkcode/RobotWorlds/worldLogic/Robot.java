@@ -5,6 +5,7 @@ import org.json.JSONObject;
 import za.wethinkcode.RobotWorlds.commands.Command;
 import za.wethinkcode.RobotWorlds.configuration.Configuration;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -289,6 +290,11 @@ public class Robot {
             setStatusType("DEAD");
             Players.getPlayers().remove(playerRobot);
             SimpleServer.listRobots.remove(playerRobot.getName());
+            try {
+                Players.robotsSSSS.get(playerRobot.getName()).close();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 

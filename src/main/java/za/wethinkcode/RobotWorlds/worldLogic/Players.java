@@ -6,7 +6,7 @@ import java.util.HashMap;
 
 public class Players {
     private static HashMap<String, Robot> robots = new HashMap<String, Robot>();
-    private static ArrayList<Robot> playerRobots = new ArrayList<>();
+    public static ArrayList<Robot> playerRobots = new ArrayList<>();
     public static HashMap<String, Socket> robotsSSSS = new HashMap<String, Socket>();
 
 

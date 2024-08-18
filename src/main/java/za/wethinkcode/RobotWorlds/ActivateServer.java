@@ -103,6 +103,8 @@ public class ActivateServer {
                         Robot vito = Players.getRobot(purgedRobot);
                         Players.getPlayers().remove(vito);
                         SimpleServer.listRobots.remove(purgedRobot);
+                        Players.robotsSSSS.get(purgedRobot).close();
+
                     }
                     else {
                         System.out.println("Enter purge and the name of the robot you want to purge.\n eg.(purge Jabu)");

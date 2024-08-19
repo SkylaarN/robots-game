@@ -29,8 +29,8 @@ public class Obstacles {
     }
 
     public static boolean blocksPosition(Position a){
-        for (int i = 0; i < obstacles.size(); i++) {
-            if(obstacles.get(i).blocksPosition(a) == true){
+        for (SquareObstacle obstacle : obstacles) {
+            if (obstacle.blocksPosition(a)) {
                 return true;
             }
         }
@@ -38,8 +38,8 @@ public class Obstacles {
     }
 
     public static boolean blocksPath(Position a, Position b){
-        for (int i = 0; i < obstacles.size(); i++) {
-            if(obstacles.get(i).blocksPath(a, b) == true){
+        for (SquareObstacle obstacle : obstacles) {
+            if (obstacle.blocksPath(a, b)) {
                 return true;
             }
         }

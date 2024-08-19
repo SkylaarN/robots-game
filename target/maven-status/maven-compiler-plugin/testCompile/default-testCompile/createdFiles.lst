@@ -1,8 +1,12 @@
 za/wethinkcode/Tests/RightCommandTest.class
 za/wethinkcode/Tests/AcceptanceTest/RobotWorldJsonClient.class
 za/wethinkcode/Tests/SquareObstaclesTest.class
+za/wethinkcode/Tests/AcceptanceTest/MovementCommandTests.class
 za/wethinkcode/Tests/LookCommandTest.class
+za/wethinkcode/Tests/AcceptanceTest/LaunchRobotTests.class
 za/wethinkcode/Tests/ForwardCommandTest.class
 za/wethinkcode/Tests/AcceptanceTest/RobotWorldClient.class
+za/wethinkcode/Tests/PositionTest.class
 za/wethinkcode/Tests/BackCommandTest.class
 za/wethinkcode/Tests/LeftCommandTest.class
+za/wethinkcode/Tests/CommandTest.class

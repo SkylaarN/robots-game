@@ -2,22 +2,16 @@ package za.wethinkcode.RobotWorlds;
 
 import org.apache.commons.cli.*;
 import za.wethinkcode.RobotWorlds.commands.DumpCommand;
-import za.wethinkcode.RobotWorlds.commands.RobotsCommand;
-import za.wethinkcode.RobotWorlds.configuration.Configuration;
-import za.wethinkcode.RobotWorlds.worldLogic.Obstacles;
-import za.wethinkcode.RobotWorlds.worldLogic.SimpleServer;
-import za.wethinkcode.RobotWorlds.worldLogic.SquareObstacle;
-
 import za.wethinkcode.RobotWorlds.commands.RestoreCommand;
+import za.wethinkcode.RobotWorlds.commands.RobotsCommand;
 import za.wethinkcode.RobotWorlds.commands.SaveCommand;
-import za.wethinkcode.RobotWorlds.worldLogic.Players;
-import za.wethinkcode.RobotWorlds.worldLogic.Robot;
+import za.wethinkcode.RobotWorlds.configuration.Configuration;
+import za.wethinkcode.RobotWorlds.worldLogic.*;
 
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Scanner;
 
 import static za.wethinkcode.RobotWorlds.worldLogic.Obstacles.obstacles;
@@ -107,14 +101,14 @@ public class ActivateServer {
 
                     }
                     else {
-                        System.out.println("Enter purge and the name of the robot you want to purge.\n eg.(purge Jabu)");
+                        System.out.println("Enter purge and the name of the robot you want to purge.\n eg.(purge John)");
                     }
                     break;
             }
         }
     }
 
-    public void cmdArgs(String[] args) throws IOException {
+    public void cmdArgs(String[] args) {
         Options options = new Options();
 
         Option port = new Option("p", "port", true, "port number");

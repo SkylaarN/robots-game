@@ -12,10 +12,9 @@ public class SimpleServer implements Runnable {
     public static int PORT = 8000;
     private final BufferedReader in;
     private final PrintStream out;
-    private Socket clientSocket;
+    private final Socket clientSocket;
 
     public SimpleServer(Socket socket) throws IOException {
-        String clientMachine = socket.getInetAddress().getHostName();
         clientSocket = socket;
         out = new PrintStream(socket.getOutputStream());
         in = new BufferedReader(new InputStreamReader(
@@ -53,11 +52,9 @@ public class SimpleServer implements Runnable {
                         String reply = doRobot(name, command, arguments);
                         Players.robotsSSSS.put(name, clientSocket);
                         out.println(reply);
-                        out.println("\u001B[34mWhat should I do next?\u001B[0m");
                     }else if (listRobots.contains(name)) {
                         String reply = doRobot(name, command, arguments);
                         out.println(reply);
-                        out.println("\u001B[34mWhat should I do next?\u001B[0m");
                     }else {
                         out.println("\u001B[31mPlease launch the robot\u001B[0m");
                     }
@@ -77,7 +74,9 @@ public class SimpleServer implements Runnable {
      */
     private void closeQuietly() {
         try { in.close(); out.close();
-        } catch(IOException ex) {}
+        } catch(IOException ex) {
+            System.out.println("Error trying to close the server");
+        }
     }
 
 

@@ -13,8 +13,6 @@ public class Client {
     private Socket socket;
     private BufferedWriter bufferedWriter;
     private BufferedReader bufferedReader;
-    private String clientName;
-    private String make;
 
     // ANSI color constants
     public static final String ANSI_RESET = "\u001B[0m";
@@ -55,6 +53,7 @@ public class Client {
                         break;
                     }
                     System.out.println(ANSI_CYAN + msg + ANSI_RESET);
+                    System.out.println(ANSI_PURPLE + "What must I do next" + ANSI_RESET);
                 }
             } catch (IOException e) {
                 System.out.println(ANSI_RED + "Error while trying to get message from server: " + e.getMessage() + ANSI_RESET);
@@ -70,7 +69,7 @@ public class Client {
         try {
             Scanner scanner = new Scanner(System.in);
 
-            String name="", command="", arguments = "";
+            String name="", command, arguments;
 
 
             while (!socket.isClosed()) {
@@ -118,7 +117,6 @@ public class Client {
      * @throws IOException If an I/O error occurs when creating the socket.
      */
     public static void main(String[] args) throws IOException {
-        Scanner scanner = new Scanner(System.in);
         System.out.println(ANSI_BOLD + ANSI_PURPLE + "***** WELCOME TO ROBOT WORLDS! *****" + ANSI_RESET);
         System.out.println(ANSI_BOLD + ANSI_PURPLE + "Here is a list of our robots make:\n" +
                 "1. Commando\n" +
@@ -128,7 +126,7 @@ public class Client {
                 "4. Operative\n" +
                 ANSI_RESET);
 
-        System.out.println(ANSI_BOLD + ANSI_PURPLE + "Enter make from above and your desired username (eg. 'Thando launch sniper'): " + ANSI_RESET);
+        System.out.println(ANSI_BOLD + ANSI_PURPLE + "Enter make from above and your desired username (eg. 'Lucy launch sniper'): " + ANSI_RESET);
 
         Socket socket1 = new Socket("localhost", 8000);
         Client client = new Client(socket1);

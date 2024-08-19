@@ -23,7 +23,7 @@
 //     */
 //
 //
-//    private final static int DEFAULT_PORT = 5000;
+//    private final static int DEFAULT_PORT = 8000;
 //    private final static String DEFAULT_IP = "localhost";
 //    private final RobotWorldClient serverClient = new RobotWorldJsonClient();
 //
@@ -49,6 +49,7 @@
 //        String lookRequest = "{" +
 //                "  \"robot\": \"HAL\"," +
 //                "  \"command\": \"look\"" +
+//                "  \"arguments\": ["+"]" +
 //                "}";
 //        JsonNode lookResponse = serverClient.sendRequest(lookRequest);
 //
@@ -108,28 +109,28 @@
 //    }
 //
 //
-////    @Test
-////    void LookObstacleBot() throws IOException {
-////        // Given I am connected to a running Robot Worlds server
-////        assertTrue(serverClient.isConnected());
-////
-////        // And the robot "HAL" is launched at position (0, 0)
-////        LaunchRobot();
-////
-////        // When I send a valid "look" command
-////        String lookRequest = "{" +
-////                "  \"robot\": \"HAL\"," +
-////                "  \"command\": \"look\"" +
-////                "}";
-////        JsonNode lookResponse = serverClient.sendRequest(lookRequest);
-////
-////        // Then the response should be "OK"
-////        assertEquals("OK", lookResponse.get("result").asText());
-////
-////        // And there should be no obstacles
-////        JsonNode obstacles = lookResponse.get("data").get("objects");
-////        System.out.println(obstacles.getClass().getName());
-////    }
+//    @Test
+//    void LookObstacleBot() throws IOException {
+//        // Given I am connected to a running Robot Worlds server
+//        assertTrue(serverClient.isConnected());
+//
+//        // And the robot "HAL" is launched at position (0, 0)
+//        LaunchRobot();
+//
+//        // When I send a valid "look" command
+//        String lookRequest = "{" +
+//                "  \"robot\": \"HAL\"," +
+//                "  \"command\": \"look\"" +
+//                "}";
+//        JsonNode lookResponse = serverClient.sendRequest(lookRequest);
+//
+//        // Then the response should be "OK"
+//        assertEquals("OK", lookResponse.get("result").asText());
+//
+//        // And there should be no obstacles
+//        JsonNode obstacles = lookResponse.get("data").get("objects");
+//        System.out.println(obstacles.getClass().getName());
+//    }
 //
 //
 //        void LaunchRobot () {

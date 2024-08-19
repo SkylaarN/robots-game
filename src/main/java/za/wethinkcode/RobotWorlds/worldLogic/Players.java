@@ -5,9 +5,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Players {
-    private static HashMap<String, Robot> robots = new HashMap<String, Robot>();
+    private static final HashMap<String, Robot> robots = new HashMap<>();
     public static ArrayList<Robot> playerRobots = new ArrayList<>();
-    public static HashMap<String, Socket> robotsSSSS = new HashMap<String, Socket>();
+    public static HashMap<String, Socket> robotsSSSS = new HashMap<>();
 
 
 
@@ -25,7 +25,7 @@ public class Players {
 
 
     /**
-     * returns the intsance of the robot specified by the string parameter
+     * returns the instance of the robot specified by the string parameter
      *
      * @param name s the name of the robot
      * @return instance of the Robot

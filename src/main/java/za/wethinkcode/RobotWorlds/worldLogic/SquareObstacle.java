@@ -1,11 +1,9 @@
 package za.wethinkcode.RobotWorlds.worldLogic;
 
-import za.wethinkcode.RobotWorlds.worldLogic.Position;
-
 public class SquareObstacle {
 
-    private int x;
-    private int y;
+    private final int x;
+    private final int y;
 
     /**
      * sets bottom left coordinates of the obstacle
@@ -19,7 +17,7 @@ public class SquareObstacle {
 
     /**Function returns bottom left x-value of obstacle
      *
-     * @return int x-vlaue of bottom left corner
+     * @return int x-value of bottom left corner
      */
     public int getBottomLeftX() {
 
@@ -29,7 +27,7 @@ public class SquareObstacle {
 
     /**Function returns bottom left y-value of obstacle
      *
-     * @return int y-vlaue of bottom left corner
+     * @return int y-value of bottom left corner
      */
     public int getBottomLeftY() {
 
@@ -55,13 +53,8 @@ public class SquareObstacle {
      */
     public boolean blocksPosition(Position position) {
 
-        if(x <= position.getX() && position.getX() <= x + 4 &&
-            y <= position.getY() && position.getY() <= y + 4){
-            return true;
-        }
-        else{
-            return false;
-        }
+        return x <= position.getX() && position.getX() <= x + 4 &&
+                y <= position.getY() && position.getY() <= y + 4;
     }
 
     /**Function check to see if there is a SquareObstacle between 2 Positions
@@ -76,13 +69,8 @@ public class SquareObstacle {
                 a.getY() >= y && a.getY() <= y + 4) {
             return true;
         }
-        else if(passObstacle(a.getY(), b.getY(), y, y + 4) && a.getX() == b.getX() &&
-                a.getX() >= x && a.getX() <= x + 4){
-            return true;
-        }
-        else{
-            return false;
-        }
+        else return passObstacle(a.getY(), b.getY(), y, y + 4) && a.getX() == b.getX() &&
+                a.getX() >= x && a.getX() <= x + 4;
     }
 
     /**Function checks if one line passes another

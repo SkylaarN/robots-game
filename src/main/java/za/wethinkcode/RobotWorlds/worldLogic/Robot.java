@@ -253,10 +253,7 @@ public class Robot {
             else if (Obstacles.blocksPath(this.position, newPosition)){
                 return Conditions.FAILED_OBSTACLE_DETECTED;
             }
-            else{
 
-
-            }
             this.position = newPosition;
             return Conditions.SUCCESS;
         }
@@ -377,7 +374,6 @@ public class Robot {
         JSONObject reply = new JSONObject(getStatus());
         JSONObject state = new JSONObject();
 
-        Map<String, List<Object>> result = new HashMap<>();
         List<Object> num = new ArrayList<>();
         num.add(position.getX());
         num.add(position.getY());
@@ -388,6 +384,8 @@ public class Robot {
         state.put("shots", getBullets());
         state.put("status", this.statusType);
 
+        Map<String, List<Object>> result;
+        result = new HashMap<>();
         result.put("position", num);
         reply.put("state", state);
         return reply;

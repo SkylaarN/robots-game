@@ -22,6 +22,11 @@ public class ActivateServer {
 
     public static void main(String[] args) throws IOException {
 
+        Api api = new Api("kat");
+
+        api.start();
+
+
         ServerSocket serverSocket = new ServerSocket(SimpleServer.PORT);
         System.out.println("\u001B[1m\u001B[34m***** WELCOME TO ROBOT WORLDS! *****\u001B[0m");
         ActivateServer activateServer = new ActivateServer();
@@ -163,7 +168,7 @@ public class ActivateServer {
         return Players.getRobot("robot1");  // Replace with the actual robot name or retrieval logic
     }
 
-    private static Robot getRobotToRestore(String robotName) {
+    static Robot getRobotToRestore(String robotName) {
         return new Robot(robotName);
     }
 }

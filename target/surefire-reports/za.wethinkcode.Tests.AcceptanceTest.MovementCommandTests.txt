@@ -1,0 +1,12 @@
+-------------------------------------------------------------------------------
+Test set: za.wethinkcode.Tests.AcceptanceTest.MovementCommandTests
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 0.169 s <<< FAILURE! - in za.wethinkcode.Tests.AcceptanceTest.MovementCommandTests
+ValidForwardCommand  Time elapsed: 0.154 s  <<< ERROR!
+java.lang.IllegalArgumentException: argument "content" is null
+	at za.wethinkcode.Tests.AcceptanceTest.MovementCommandTests.ValidForwardCommand(MovementCommandTests.java:45)
+
+InvaildForwardCommand  Time elapsed: 0.005 s  <<< ERROR!
+java.lang.IllegalArgumentException: argument "content" is null
+	at za.wethinkcode.Tests.AcceptanceTest.MovementCommandTests.InvaildForwardCommand(MovementCommandTests.java:78)
+

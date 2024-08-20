@@ -54,7 +54,22 @@ public class SimpleServer implements Runnable {
                 System.out.println("sx");
                 String messageFromClient;
              /*   System.out.println(messageFromClient);*/
-                while((messageFromClient = in.readLine()) != null){
+                System.out.println("before messageFromClient (SimpleServer)");
+
+                System.out.println("-------------------------------readin");
+//                System.out.println("readin message--"+in.readLine());
+//                messageFromClient = in.readLine();
+                System.out.println(messageFromClient=in.readLine());
+                System.out.println("this null");
+                System.out.println(messageFromClient+"theeeeee");
+
+
+                while(messageFromClient != null){
+
+                    System.out.println("Received: " + messageFromClient);
+                    System.out.println("messageFromClient");
+                    System.out.println("-----inside run()-------\n"+messageFromClient+"\n");
+                    System.out.println("-----inside run()-------");
 
                     JSONObject obj = new JSONObject(messageFromClient);
 
@@ -74,14 +89,21 @@ public class SimpleServer implements Runnable {
                         System.out.println("5");
                         System.out.println("---------SENDING-------------SENDING---------SENT");
                         out.println(reply);
+
                     }else if (listRobots.contains(name)) {
                         String reply = doRobot(name, command, arguments);
                         out.println(reply);
                     }else {
                         out.println("\u001B[31mPlease launch the robot\u001B[0m");
                     }
+                    messageFromClient = in.readLine();
 
                 }
+                break;
+//                if(messageFromClient==null){
+//                    messageFromClient="no message";
+//                }
+
 
             }
         } catch(IOException ex) {

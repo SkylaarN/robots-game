@@ -6,7 +6,7 @@ import za.wethinkcode.RobotWorlds.commands.RestoreCommand;
 import za.wethinkcode.RobotWorlds.worldLogic.Robot;
 import za.wethinkcode.RobotWorlds.worldLogic.SimpleServer;
 import za.wethinkcode.RobotWorlds.worldLogic.SquareObstacle;
-import za.wethinkcode.RobotWorlds.worldLogic.SimpleServer;
+
 
 import java.io.*;
 import java.net.Socket;
@@ -24,6 +24,7 @@ public class Api {
 
     private final Javalin server;
     private BufferedWriter bufferedWriter;
+    private BufferedReader bufferedReader;
     private String s = "test";
 
 //    public Api() {
@@ -82,6 +83,7 @@ public class Api {
 
             BufferedReader bufferedReader ;
             String msgToSend = msg;
+
 //            System.out.println("here is the message"+msgToSend);
             while (socket1.isConnected()) {
 
@@ -92,23 +94,38 @@ public class Api {
 
                     break;
                 }
+                String arguments = robortType;
                 String request = "{" +
                         "  \"robot\": \""+robotName+"\"," +
                         "  \"command\": \""+command+"\"," +
-                        "  \"arguments\": ["+0+"]" +
+                        "  \"arguments\": ["+arguments+"]" +
                         "}";
 
-                bufferedWriter = new BufferedWriter(new OutputStreamWriter(socket1.getOutputStream()));
+                this.bufferedWriter =new BufferedWriter(new OutputStreamWriter(socket1.getOutputStream()));
 
-                bufferedReader = new BufferedReader(new InputStreamReader(socket1.getInputStream()));
+                this.bufferedReader = new BufferedReader(new InputStreamReader(socket1.getInputStream()));
 
                 System.out.println("ex");
-                bufferedWriter.write(request);
+
+                System.out.println("before");
+
+                System.out.println(request);
+                System.out.println("before after");
+
+//                bufferedWriter.newLine();
+                bufferedWriter.write(request + "\n");
+                bufferedWriter.flush();
+
+                System.out.println("ex1");
+
+
                 System.out.println("ex1");
 
 
 
-                String msgTorev = bufferedReader.readLine();
+                String msgTorev = this.bufferedReader.readLine();
+
+
                 System.out.println("ex2");
 
                 context.result("Endpoint works\n" +  msgTorev + "\n");
@@ -129,7 +146,7 @@ public class Api {
 //                client.sendMessage(msg);
 
 
-                context.result("Endpoint works\n" +  msgToSend + "\n");
+//                context.result("Endpoint works\n" +  msgToSend + "\n");
 //                client.listenForMsg(null);
                 System.out.println("end---------------------------------------------------------------------");
 

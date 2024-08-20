@@ -51,7 +51,7 @@ public class Client {
             String msg;
             try {
                 while (socket.isConnected()) {
-                    System.out.println("recieve inside");
+
                     this.msgToSend = bufferedReader.readLine();
                     if (this.msgToSend == null){
                         bufferedReader.close();
@@ -59,12 +59,15 @@ public class Client {
                         socket.close();
                         break;
                     }
+                    System.out.println("----------Messages recieved----------");
                     System.out.println(ANSI_CYAN + this.msgToSend + ANSI_RESET);
-                    this.list.add(msgToSend);
+                    System.out.println("----------After Messages recieved----------");
+
+//                    this.list.add(msgToSend);
 
 //                    this.msgToSend=null;
                     System.out.println(ANSI_PURPLE + "What must I do next" + ANSI_RESET);
-                    System.out.println(list.getFirst());
+//                    System.out.println(list.getFirst());
                 }
             } catch (IOException e) {
                 System.out.println(ANSI_RED + "Error while trying to get message from server: " + e.getMessage() + ANSI_RESET);
@@ -98,7 +101,6 @@ public class Client {
                     }
 
                     System.out.println(ANSI_CYAN + msgToSend + ANSI_RESET);
-
 
 //                    this.msgToSend=null;
                     System.out.println(ANSI_PURPLE + "What must I do next" + ANSI_RESET);
@@ -138,7 +140,7 @@ public class Client {
 
 
             while (!socket.isClosed()) {
-                System.out.println("send inside");
+                System.out.println("send inside sendMessage (sendMessage (Client) )");
                 this.msgToSend = scanner.nextLine();
 
 
@@ -165,10 +167,11 @@ public class Client {
                         "  \"command\": \""+command+"\"," +
                         "  \"arguments\": ["+arguments+"]" +
                         "}";
+                System.out.println("Before message request (client)");
                 bufferedWriter.write(request);
                 bufferedWriter.newLine();
                 bufferedWriter.flush();
-                System.out.println("message sent");
+                System.out.println("After message request (client)");
 
             }
         } catch (IOException e) {
@@ -210,9 +213,12 @@ public class Client {
                         "  \"command\": \""+command+"\"," +
                         "  \"arguments\": ["+arguments+"]" +
                         "}";
+
+                System.out.println("Before request Api(client)");
                 bufferedWriter.write(request);
                 bufferedWriter.newLine();
                 bufferedWriter.flush();
+                System.out.println("After request Api(client)");
 
 //                socket.close();
 

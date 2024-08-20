@@ -21,6 +21,7 @@ public class Client {
     private static final String ANSI_CYAN = "\u001B[36m";
     public static final String ANSI_PURPLE = "\u001B[35m";
 
+    public String msgToSend;
     /**
      * Constructs a new Client with the given socket.
      *
@@ -60,6 +61,26 @@ public class Client {
             }
         }).start();
     }
+    public void listenForMsg(String message) {
+        new Thread(() -> {
+            String msg;
+            try {
+                while (socket.isConnected()) {
+                    msg = this.msgToSend;
+                    if (msg == null){
+                        bufferedReader.close();
+                        bufferedWriter.close();
+                        socket.close();
+                        break;
+                    }
+                    System.out.println(ANSI_CYAN + msg + ANSI_RESET);
+                    System.out.println(ANSI_PURPLE + "What must I do next" + ANSI_RESET);
+                }
+            } catch (IOException e) {
+                System.out.println(ANSI_RED + "Error while trying to get message from server: " + e.getMessage() + ANSI_RESET);
+            }
+        }).start();
+    }
 
     /**
      * Sends messages to the server. Continuously reads input from the console and sends it
@@ -73,7 +94,7 @@ public class Client {
 
 
             while (!socket.isClosed()) {
-                String msgToSend = scanner.nextLine();
+                this.msgToSend = scanner.nextLine();
 
                 String[] msg = msgToSend.split(" ");
 
@@ -107,6 +128,50 @@ public class Client {
         }
     }
 
+    public void  sendMessage(String msgToSend) {
+        try {
+
+
+            String name="", command, arguments;
+
+
+            while (!socket.isClosed()) {
+                this.msgToSend = msgToSend;
+
+                String[] msg = msgToSend.split(" ");
+
+                switch (msg.length){
+                    case 3:
+                        name = msg[0];
+                        command = msg[1];
+                        arguments = "\""+msg[2]+"\"";
+                        break;
+                    case 2:
+                        command = msg[0];
+                        arguments = "\""+msg[1]+"\"";
+                        break;
+                    default:
+                        command = msgToSend;
+                        arguments = "";
+                        break;
+                }
+
+                String request = "{" +
+                        "  \"robot\": \""+name+"\"," +
+                        "  \"command\": \""+command+"\"," +
+                        "  \"arguments\": ["+arguments+"]" +
+                        "}";
+                bufferedWriter.write(request);
+                bufferedWriter.newLine();
+                bufferedWriter.flush();
+
+//                socket.close();
+            }
+        } catch (IOException e) {
+            System.out.println(ANSI_RED + "Error sending message to server: " + e.getMessage() + ANSI_RESET);
+        }
+    }
+
 
 
     /**
@@ -128,14 +193,19 @@ public class Client {
 
         System.out.println(ANSI_BOLD + ANSI_PURPLE + "Enter make from above and your desired username (eg. 'Lucy launch sniper'): " + ANSI_RESET);
 
-        Socket socket1 = new Socket("localhost", 8000);
-        Client client = new Client(socket1);
-        if (socket1.isConnected()) {
-            client.listenForMsg();
-            client.sendMessage();
-        } else {
-            System.out.println(ANSI_RED + "Failed to connect to server." + ANSI_RESET);
-        }
+        Api api = new Api();
+        api.start(4000);
+        api.Launch_robot();
+
+//        Socket socket1 = new Socket("localhost", 8000);
+//        Client client = new Client(socket1);
+//
+//        if (socket1.isConnected()) {
+//            client.listenForMsg();
+//            client.sendMessage();
+//        } else {
+//            System.out.println(ANSI_RED + "Failed to connect to server." + ANSI_RESET);
+//        }
 
     }
 

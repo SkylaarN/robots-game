@@ -22,9 +22,11 @@ public class ActivateServer {
 
     public static void main(String[] args) throws IOException {
 
-        Api api = new Api("kat");
+        Api api = new Api("start");
 
-        api.start();
+        api.start(3000);
+
+
 
 
         ServerSocket serverSocket = new ServerSocket(SimpleServer.PORT);

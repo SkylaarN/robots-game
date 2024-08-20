@@ -4,12 +4,16 @@ import io.javalin.Javalin;
 import za.wethinkcode.RobotWorlds.Database.DbConnect;
 import za.wethinkcode.RobotWorlds.commands.RestoreCommand;
 import za.wethinkcode.RobotWorlds.worldLogic.Robot;
+import za.wethinkcode.RobotWorlds.worldLogic.SimpleServer;
 import za.wethinkcode.RobotWorlds.worldLogic.SquareObstacle;
+import za.wethinkcode.RobotWorlds.worldLogic.SimpleServer;
 
+import java.io.*;
 import java.net.Socket;
 import java.util.List;
 
 import static za.wethinkcode.RobotWorlds.ActivateServer.getRobotToRestore;
+import static za.wethinkcode.RobotWorlds.Client.*;
 
 public class Api {
 
@@ -19,17 +23,20 @@ public class Api {
     }
 
     private final Javalin server;
+    private BufferedWriter bufferedWriter;
     private String s = "test";
 
-    public Api() {
-        server = Javalin.create();
-
-        this.Launch_robot();
-    }
+//    public Api() {
+//        server = Javalin.create();
+//
+//        this.Launch_robot();
+//    }
     public Api(String start_server) {
-        server = Javalin.create();
 
-        this.restore_world(this.server);
+        server = Javalin.create();
+        this.Launch_robot("");
+
+//        this.restore_world(this.server);
 
     }
 
@@ -58,8 +65,10 @@ public class Api {
         });
     }
 
-    public void Launch_robot() {
+    public void Launch_robot(String mss) {
+        System.out.println("ye ye ye");
         server.post("/{robot_name}/launch/{robot_type}", context -> {
+            System.out.println("ye ye ye1");
 
             String robotName = context.pathParam("robot_name");
             String command = "launch";
@@ -68,27 +77,94 @@ public class Api {
             String msg = robotName+" "+command+" "+robortType;
 
 
-
-
             Socket socket1 = new Socket("localhost", 8000);
             Client client = new Client(socket1);
 
-            String received ;
-            if (socket1.isConnected()) {
+            BufferedReader bufferedReader ;
+            String msgToSend = msg;
+//            System.out.println("here is the message"+msgToSend);
+            while (socket1.isConnected()) {
+
+                if (msgToSend == null){
+//                    bufferedReader.close();
+//                    bufferedWriter.close();
+                    socket1.close();
+
+                    break;
+                }
+                String request = "{" +
+                        "  \"robot\": \""+robotName+"\"," +
+                        "  \"command\": \""+command+"\"," +
+                        "  \"arguments\": ["+0+"]" +
+                        "}";
+
+                bufferedWriter = new BufferedWriter(new OutputStreamWriter(socket1.getOutputStream()));
+
+                bufferedReader = new BufferedReader(new InputStreamReader(socket1.getInputStream()));
+
+                System.out.println("ex");
+                bufferedWriter.write(request);
+                System.out.println("ex1");
+
+
+
+                String msgTorev = bufferedReader.readLine();
+                System.out.println("ex2");
+
+                context.result("Endpoint works\n" +  msgTorev + "\n");
+                System.out.println("-----------------------"+msgTorev);
+                msgToSend=null;
+
+//                System.out.println( msgToSend );
+
+
+
+
+//                if (socket1.isConnected()) {
+//                System.out.println("yeah");
+//                client.listenForMsg(command);
+////                String response =
+//                System.out.println("111111111111111111111");
+////                System.out.println(response);
 //                client.sendMessage(msg);
-                client.listenForMsg();
-                client.sendMessage(msg);
+
+
+                context.result("Endpoint works\n" +  msgToSend + "\n");
+//                client.listenForMsg(null);
+                System.out.println("end---------------------------------------------------------------------");
 
             }
+//            String msgToSend1 = client.msgToSend;
+//            System.out.println("here"+msgToSend1);
 
-            Robot robot = new Robot(robotName);
+//            String out = client.list.getFirst();
+//            String out = SimpleServer.reply;
 
-            context.result(("endpoint works\n"+robot.getStatus()));
+//
+//            context.result(("endpoint works\n"+out+"\n"));
 
 
         });
-
+//
     }
+
+//    public void Launch_robot(){
+//        server.post("/{robot_name}/launch/{robot_type}", context -> {
+//            String robotName = context.pathParam("robot_name");
+//                String command = "launch";
+//                String robortType = context.pathParam("robot_type");
+//
+//                String msg = robotName+" "+command+" "+robortType;
+//
+//            Socket socket1 = new Socket("localhost", 8000);
+//            Client client = new Client(socket1);
+//
+//            client.sendMessage(msg);
+//            client.sendMessage();
+//
+//        });
+//    }
+
 
     public Javalin start(int port) {
         System.out.println("starting...");

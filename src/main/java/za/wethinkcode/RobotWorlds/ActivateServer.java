@@ -24,6 +24,7 @@ public class ActivateServer {
 
         Api api = new Api("start");
 
+
         api.start(3000);
 
 
@@ -37,9 +38,10 @@ public class ActivateServer {
         new Thread(() -> {
             Obstacles.generateObstacles();
             while (!serverSocket.isClosed()) {
+
                 try {
                     Socket socket = serverSocket.accept();
-                    System.out.println("Connection: " + socket);
+//                    System.out.println("Connection: " + socket);
                     listRobotsSockets.add(socket);
                     Runnable r = new SimpleServer(socket);
                     Thread task = new Thread(r);

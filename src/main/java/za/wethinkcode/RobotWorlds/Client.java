@@ -1,8 +1,11 @@
 package za.wethinkcode.RobotWorlds;
 
 
+import io.javalin.Javalin;
+
 import java.io.*;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -22,6 +25,8 @@ public class Client {
     public static final String ANSI_PURPLE = "\u001B[35m";
 
     public String msgToSend;
+
+    public ArrayList<String> list= new ArrayList();
     /**
      * Constructs a new Client with the given socket.
      *
@@ -46,40 +51,78 @@ public class Client {
             String msg;
             try {
                 while (socket.isConnected()) {
-                    msg = bufferedReader.readLine();
-                    if (msg == null){
+                    System.out.println("recieve inside");
+                    this.msgToSend = bufferedReader.readLine();
+                    if (this.msgToSend == null){
                         bufferedReader.close();
                         bufferedWriter.close();
                         socket.close();
                         break;
                     }
-                    System.out.println(ANSI_CYAN + msg + ANSI_RESET);
+                    System.out.println(ANSI_CYAN + this.msgToSend + ANSI_RESET);
+                    this.list.add(msgToSend);
+
+//                    this.msgToSend=null;
                     System.out.println(ANSI_PURPLE + "What must I do next" + ANSI_RESET);
+                    System.out.println(list.getFirst());
                 }
             } catch (IOException e) {
                 System.out.println(ANSI_RED + "Error while trying to get message from server: " + e.getMessage() + ANSI_RESET);
             }
         }).start();
     }
+
+    public String getMsgtosend(){
+        return this.msgToSend;
+    }
+    public void setMsgtosend(String mss){
+        this.msgToSend = mss;
+    }
+
+
     public void listenForMsg(String message) {
+
+
         new Thread(() -> {
             String msg;
             try {
+                this.msgToSend = bufferedReader.readLine();
+                System.out.println("here is the message"+msgToSend);
                 while (socket.isConnected()) {
-                    msg = this.msgToSend;
-                    if (msg == null){
+
+                    if (this.msgToSend == null){
                         bufferedReader.close();
                         bufferedWriter.close();
                         socket.close();
                         break;
                     }
-                    System.out.println(ANSI_CYAN + msg + ANSI_RESET);
+
+                    System.out.println(ANSI_CYAN + msgToSend + ANSI_RESET);
+
+
+//                    this.msgToSend=null;
                     System.out.println(ANSI_PURPLE + "What must I do next" + ANSI_RESET);
+
+                    System.out.println("Enter meassege to send:\n");
+
+                    setMsgtosend(msgToSend);
+
+//                    msgToSend=null;
+
+//                    Socket socket1 = new Socket("localhost", 8000);
+//                    Client client = new Client(socket1);
+
+//                    this.sendMessage();
+//                    this.listenForMsg();
                 }
+//                Socket socket1 = new Socket("localhost", 8000);
+//                Client client = new Client(socket1);
             } catch (IOException e) {
                 System.out.println(ANSI_RED + "Error while trying to get message from server: " + e.getMessage() + ANSI_RESET);
             }
         }).start();
+
+
     }
 
     /**
@@ -91,12 +134,15 @@ public class Client {
             Scanner scanner = new Scanner(System.in);
 
             String name="", command, arguments;
+//            System.out.println(scanner.nextLine());
 
 
             while (!socket.isClosed()) {
+                System.out.println("send inside");
                 this.msgToSend = scanner.nextLine();
 
-                String[] msg = msgToSend.split(" ");
+
+                String[] msg = this.msgToSend.split(" ");
 
                 switch (msg.length){
                     case 3:
@@ -122,6 +168,8 @@ public class Client {
                 bufferedWriter.write(request);
                 bufferedWriter.newLine();
                 bufferedWriter.flush();
+                System.out.println("message sent");
+
             }
         } catch (IOException e) {
             System.out.println(ANSI_RED + "Error sending message to server: " + e.getMessage() + ANSI_RESET);
@@ -129,13 +177,14 @@ public class Client {
     }
 
     public void  sendMessage(String msgToSend) {
+        Scanner scanner = new Scanner(System.in);
         try {
 
 
             String name="", command, arguments;
 
 
-            while (!socket.isClosed()) {
+
                 this.msgToSend = msgToSend;
 
                 String[] msg = msgToSend.split(" ");
@@ -166,7 +215,7 @@ public class Client {
                 bufferedWriter.flush();
 
 //                socket.close();
-            }
+
         } catch (IOException e) {
             System.out.println(ANSI_RED + "Error sending message to server: " + e.getMessage() + ANSI_RESET);
         }
@@ -193,19 +242,23 @@ public class Client {
 
         System.out.println(ANSI_BOLD + ANSI_PURPLE + "Enter make from above and your desired username (eg. 'Lucy launch sniper'): " + ANSI_RESET);
 
-        Api api = new Api();
-        api.start(4000);
-        api.Launch_robot();
+//        Api api = new Api();
+//        api.start(4000);
+//        api.Launch_robot();
 
-//        Socket socket1 = new Socket("localhost", 8000);
-//        Client client = new Client(socket1);
-//
-//        if (socket1.isConnected()) {
-//            client.listenForMsg();
-//            client.sendMessage();
-//        } else {
-//            System.out.println(ANSI_RED + "Failed to connect to server." + ANSI_RESET);
-//        }
+        Socket socket1 = new Socket("localhost", 8000);
+        Client client = new Client(socket1);
+
+        if (socket1.isConnected()) {
+
+            client.listenForMsg();
+
+            client.sendMessage();
+
+
+        } else {
+            System.out.println(ANSI_RED + "Failed to connect to server." + ANSI_RESET);
+        }
 
     }
 

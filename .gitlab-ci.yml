@@ -61,13 +61,14 @@ package:
 
 publish:
   stage: publish
+  timeout: 30m
   image: docker:latest
   services:
     - docker:dind
   variables:
     DOCKER_DRIVER: overlay2
   before_script:
-    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $DOCKER_REGISTRY
+    - docker login gitlab.wethinkco.de:5050 -u "$CI_REGISTRY_USER" -p "T2tEPQVZoGaNeRuSpZzB"
   script:
     - docker build -t $IMAGE_NAME:$TAG .
-    - docker push $IMAGE_NAME:$TAG
+    - docker push $IMAGE_NAME:$v1.0.0

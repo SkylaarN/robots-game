@@ -6,5 +6,5 @@ za/wethinkcode/Tests/ForwardCommandTest.class
 za/wethinkcode/Tests/AcceptanceTest/RobotWorldClient.class
 za/wethinkcode/Tests/PositionTest.class
 za/wethinkcode/Tests/BackCommandTest.class
-za/wethinkcode/Tests/LeftCommandTest.class
 za/wethinkcode/Tests/CommandTest.class
+za/wethinkcode/Tests/LeftCommandTest.class

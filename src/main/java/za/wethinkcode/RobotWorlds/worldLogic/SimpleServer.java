@@ -2,23 +2,31 @@ package za.wethinkcode.RobotWorlds.worldLogic;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import za.wethinkcode.RobotWorlds.Api;
 
 import java.io.*;
 import java.net.*;
 import java.util.ArrayList;
 
 public class SimpleServer implements Runnable {
+    public static String reply;
     public static ArrayList<String> listRobots = new ArrayList<>();
     public static int PORT = 8000;
     private final BufferedReader in;
     private final PrintStream out;
     private final Socket clientSocket;
 
+
+
     public SimpleServer(Socket socket) throws IOException {
         clientSocket = socket;
+
         out = new PrintStream(socket.getOutputStream());
+
         in = new BufferedReader(new InputStreamReader(
                 socket.getInputStream()));
+
+//        new BufferedWriter(new BufferedWriter("hi"));
     }
 
     /**
@@ -33,11 +41,19 @@ public class SimpleServer implements Runnable {
      * Initiate the server
      */
     public void run() {
+        System.out.println("simple server");
+//        Api api = new Api("start");
+//
+//
+//        api.start(3000);
+
 
         try {
 
             while (true){
+                System.out.println("sx");
                 String messageFromClient;
+             /*   System.out.println(messageFromClient);*/
                 while((messageFromClient = in.readLine()) != null){
 
                     JSONObject obj = new JSONObject(messageFromClient);
@@ -49,8 +65,14 @@ public class SimpleServer implements Runnable {
 
                     if (!listRobots.contains(obj.getString("robot")) & command.equalsIgnoreCase("launch")) {
                         addRobots(obj.getString("robot"));
-                        String reply = doRobot(name, command, arguments);
+                        this.reply = doRobot(name, command, arguments);
                         Players.robotsSSSS.put(name, clientSocket);
+
+//                        api.Launch_robot(reply);
+
+                        System.out.println(reply);
+                        System.out.println("5");
+                        System.out.println("---------SENDING-------------SENDING---------SENT");
                         out.println(reply);
                     }else if (listRobots.contains(name)) {
                         String reply = doRobot(name, command, arguments);

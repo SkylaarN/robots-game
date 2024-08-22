@@ -152,7 +152,7 @@
                             <archive>
                                 <manifest>
                                     <mainClass>
-                                        za.wethinkcode.RobotWorlds.ActivateServer
+                                        za.wethinkcode.RobotWorlds.server.ActivateServer
                                     </mainClass>
                                 </manifest>
                             </archive>

@@ -1,0 +1,50 @@
+package za.wethinkcode.RobotWorlds.domain.serverCommands;
+
+import za.wethinkcode.RobotWorlds.domain.ClientCommands.Command;
+import za.wethinkcode.RobotWorlds.domain.world.Obstacles;
+import za.wethinkcode.RobotWorlds.domain.world.Robot;
+import za.wethinkcode.RobotWorlds.domain.world.SquareObstacle;
+import za.wethinkcode.RobotWorlds.Database.DbConnect;
+
+import java.sql.SQLException;
+import java.util.List;
+
+public class SaveCommand extends Command {
+
+    private final String worldName;
+
+    public SaveCommand(String worldName) {
+        super();
+        this.worldName = worldName;
+    }
+
+    @Override
+    public boolean execute(Robot target) {
+        // Get the list of obstacles from the world
+        List<SquareObstacle> obstacles = Obstacles.getObstacles();
+
+        // Convert world data to JSON or other format if needed
+        String worldData = ""; // Placeholder, adjust as necessary for your use case
+
+        try {
+            // Create a new DbConnect instance
+            DbConnect dbConnect = new DbConnect();
+            dbConnect.createTables();
+
+            // Save the world name and its obstacles
+            dbConnect.saveWorld(worldName, worldData, obstacles); // Ensure correct method signature
+
+            // Set status and indicate success
+            target.setStatus("World '" + worldName + "' and obstacles saved successfully.");
+            System.out.println("World and obstacles saved as: " + worldName);
+
+            return true;
+
+        } catch (SQLException e) {
+            // Handle SQL exceptions
+            target.setStatus("Failed to save world: " + e.getMessage());
+            System.err.println("Error saving world: " + e.getMessage());
+            return false;
+        }
+    }
+}

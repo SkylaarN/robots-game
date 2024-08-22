@@ -2,8 +2,8 @@ package za.wethinkcode.Tests;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import za.wethinkcode.RobotWorlds.commands.RightCommand;
-import za.wethinkcode.RobotWorlds.worldLogic.Robot;
+import za.wethinkcode.RobotWorlds.domain.ClientCommands.RightCommand;
+import za.wethinkcode.RobotWorlds.domain.world.Robot;
 
 import static org.junit.jupiter.api.Assertions.*;
 

@@ -1,8 +1,8 @@
 package za.wethinkcode.Tests;
 
 import org.junit.jupiter.api.Test;
-import za.wethinkcode.RobotWorlds.worldLogic.Position;
-import za.wethinkcode.RobotWorlds.worldLogic.SquareObstacle;
+import za.wethinkcode.RobotWorlds.domain.world.Position;
+import za.wethinkcode.RobotWorlds.domain.world.SquareObstacle;
 
 import static org.junit.jupiter.api.Assertions.*;
 

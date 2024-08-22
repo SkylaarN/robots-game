@@ -1,0 +1,26 @@
+package za.wethinkcode.RobotWorlds.domain.ClientCommands;
+
+import org.json.JSONObject;
+import za.wethinkcode.RobotWorlds.domain.world.Robot;
+
+public class ErrorHandling extends Command {
+
+    public ErrorHandling(String command){
+        super(command);
+    }
+
+
+    @Override
+    public boolean execute(Robot target) {
+
+
+        JSONObject reply = new JSONObject();
+        JSONObject data = new JSONObject();
+
+        reply.put("result","ERROR");
+        data.put("message", "Unsupported command");
+        reply.put("data",data);
+        target.setStatus(reply.toString());
+        return true;
+    }
+}

@@ -1,6 +1,6 @@
 package za.wethinkcode.RobotWorlds.Database;
 
-import za.wethinkcode.RobotWorlds.worldLogic.SquareObstacle;
+import za.wethinkcode.RobotWorlds.domain.world.SquareObstacle;
 
 import java.sql.*;
 import java.util.ArrayList;

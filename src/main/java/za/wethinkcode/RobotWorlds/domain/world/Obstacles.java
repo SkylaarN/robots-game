@@ -6,21 +6,27 @@ import java.util.List;
 
 
 public class Obstacles {
+
+
     public static ArrayList<SquareObstacle> obstacles = new ArrayList<>();
     public static Random random = new Random();
+
 
     //hope
     // Set the restored obstacles
     public static void setObstacles(List<SquareObstacle> restoredObstacles) {
+//        System.out.println("used obstacle setobstacle");
         obstacles.clear();
         obstacles.addAll(restoredObstacles);
     }
 
     public static void generateObstacles(){
+//        System.out.println("used obstacle generateobstacle");
         for (int i = 0; i < 10; i++) {
             int x = (random.nextInt(60)- 30) * 5;
             int y = (random.nextInt(60)- 30) * 5;
             obstacles.add(new SquareObstacle(x, y));
+
         }
     }
 
@@ -29,6 +35,7 @@ public class Obstacles {
     }
 
     public static boolean blocksPosition(Position a){
+//        System.out.println("used obstacle");
         for (SquareObstacle obstacle : obstacles) {
             if (obstacle.blocksPosition(a)) {
                 return true;

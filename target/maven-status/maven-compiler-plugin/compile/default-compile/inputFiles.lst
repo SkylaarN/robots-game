@@ -17,6 +17,7 @@
 /home/wethinkcode/Documents/projects/wethinkcode/cjc1_brownfields_2024/src/main/java/za/wethinkcode/RobotWorlds/domain/serverCommands/RestoreCommand.java
 /home/wethinkcode/Documents/projects/wethinkcode/cjc1_brownfields_2024/src/main/java/za/wethinkcode/RobotWorlds/domain/ClientCommands/ErrorHandling.java
 /home/wethinkcode/Documents/projects/wethinkcode/cjc1_brownfields_2024/src/main/java/za/wethinkcode/RobotWorlds/client/Client.java
+/home/wethinkcode/Documents/projects/wethinkcode/cjc1_brownfields_2024/src/main/java/za/wethinkcode/RobotWorlds/api/ApiHandler.java
 /home/wethinkcode/Documents/projects/wethinkcode/cjc1_brownfields_2024/src/main/java/za/wethinkcode/RobotWorlds/server/SimpleServer.java
 /home/wethinkcode/Documents/projects/wethinkcode/cjc1_brownfields_2024/src/main/java/za/wethinkcode/RobotWorlds/domain/world/Position.java
 /home/wethinkcode/Documents/projects/wethinkcode/cjc1_brownfields_2024/src/main/java/za/wethinkcode/RobotWorlds/domain/ClientCommands/ShootCommand.java

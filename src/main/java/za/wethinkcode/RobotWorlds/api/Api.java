@@ -26,23 +26,19 @@ public class Api {
     private BufferedReader bufferedReader;
     private String s = "test";
 
-//    public Api() {
-//        server = Javalin.create();
-//
-//        this.Launch_robot();
-//    }
-    public Api(String start_server) {
+    public Api() {
 
         server = Javalin.create();
         this.Launch_robot("");
+        this.restore_world();
 
-//        this.restore_world(this.server);
+
 
     }
 
-    public void restore_world(Javalin server){
+    public void restore_world(){
         server.get("/worlds/{world_name}", context -> {
-            // Retrieve the world_name from the path parameter
+
             try {
                 String worldName = context.pathParam("world_name");
 
@@ -52,12 +48,10 @@ public class Api {
                 System.out.println("objects in world "+worldName+":\n");
 
                 context.json(restoredObstacles+"\n");
-                Robot robot = new Robot("nathi");
+
 
                 RestoreCommand restoreCommand = new RestoreCommand(worldName);
-                restoreCommand.execute(robot);
 
-                System.out.println(robot.getStatus());
             } catch (Exception e) {
                 e.printStackTrace();  // Logs the exception to the server console
                 context.status(500).result("Server Error: " + e.getMessage());
@@ -66,9 +60,9 @@ public class Api {
     }
 
     public void Launch_robot(String mss) {
-        System.out.println("ye ye ye");
+
         server.post("/{robot_name}/launch/{robot_type}", context -> {
-            System.out.println("ye ye ye1");
+
 
             String robotName = context.pathParam("robot_name");
             String command = "launch";
@@ -83,12 +77,12 @@ public class Api {
             BufferedReader bufferedReader ;
             String msgToSend = msg;
 
-//            System.out.println("here is the message"+msgToSend);
+
             while (socket1.isConnected()) {
 
                 if (msgToSend == null){
-//                    bufferedReader.close();
-//                    bufferedWriter.close();
+                    this.bufferedReader.close();
+                    bufferedWriter.close();
                     socket1.close();
 
                     break;

@@ -1,7 +1,7 @@
 package za.wethinkcode.Tests;
 
 import za.wethinkcode.RobotWorlds.domain.world.Robot;
-import za.wethinkcode.RobotWorlds.commands.*;
+
 import org.junit.jupiter.api.Test;
 import za.wethinkcode.RobotWorlds.domain.ClientCommands.*;
 

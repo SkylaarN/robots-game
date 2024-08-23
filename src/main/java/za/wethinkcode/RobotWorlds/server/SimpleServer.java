@@ -35,11 +35,11 @@ public class SimpleServer implements Runnable {
      * Initiate the server
      */
     public void run() {
-        System.out.println("simple server");
-        Api api = new Api("start");
-
-
-        api.start(3000);
+//        System.out.println("simple server");
+//        Api api = new Api("start");
+//
+//
+//        api.start(3000);
 
 
         try {
@@ -61,7 +61,7 @@ public class SimpleServer implements Runnable {
                         addRobots(obj.getString("robot"));
                         reply = Controller.executeClientCommand(name, command, arguments);
 
-                        api.Launch_robot(reply);
+//                        api.Launch_robot(reply);
                         out.println(reply);
 
                     }else if (listRobots.contains(name)) {

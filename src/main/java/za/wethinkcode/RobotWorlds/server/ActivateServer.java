@@ -1,4 +1,5 @@
 package za.wethinkcode.RobotWorlds.server;
+import za.wethinkcode.RobotWorlds.api.Api;
 import za.wethinkcode.RobotWorlds.domain.Controller;
 import za.wethinkcode.RobotWorlds.domain.world.Obstacles;
 
@@ -16,7 +17,11 @@ public class ActivateServer {
 
         ServerSocket serverSocket = new ServerSocket(SimpleServer.PORT);
         System.out.println("\u001B[1m\u001B[34m***** WELCOME TO ROBOT WORLDS! *****\u001B[0m");
+        System.out.println("simple server");
+        Api api = new Api();
 
+
+        api.start(3000);
         new Thread(() -> {
             Obstacles.generateObstacles();
             while (!serverSocket.isClosed()) {

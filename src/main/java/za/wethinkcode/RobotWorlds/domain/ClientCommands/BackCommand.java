@@ -32,12 +32,7 @@ public class BackCommand extends Command {
             pos.add(target.getPosition().getY());
 
 
-            reply.put("result", "OK");
-            data.put("message", "Done");
-            data.put("visibility", target.getVisibility());
-            data.put("position", pos);
-            data.put("objects", new ArrayList<>());
-            reply.put("data", data);
+            Command.Putdata(target,pos);
         }
         else if (target.updatePosition(nrSteps) == Robot.Conditions.FAILED_OBSTACLE_DETECTED){
             data.put("message", "Obstructed");
@@ -113,6 +108,8 @@ public class BackCommand extends Command {
         }
         return false;
     }
+
+
 
 
     public BackCommand(String argument) {

@@ -15,7 +15,7 @@
 //     * Then move my robot
 //     */
 //
-//    private final static int DEFAULT_PORT = 9000;
+//    private final static int DEFAULT_PORT = 6000;
 //    private final static String DEFAULT_IP = "localhost";
 //    private final RobotWorldClient serverClient = new RobotWorldJsonClient();
 //

@@ -1,9 +1,13 @@
 package za.wethinkcode.RobotWorlds.domain.ClientCommands;
 
 import org.json.JSONArray;
+import org.json.JSONObject;
 import za.wethinkcode.RobotWorlds.domain.serverCommands.RestoreCommand;
 import za.wethinkcode.RobotWorlds.domain.serverCommands.SaveCommand;
 import za.wethinkcode.RobotWorlds.domain.world.Robot;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class Command {
     private final String argument;
@@ -24,6 +28,19 @@ public abstract class Command {
     public String getArgument() {
 
         return this.argument;
+    }
+
+    public static void Putdata(Robot target, List<Object> pos){
+
+        JSONObject reply = new JSONObject();
+        JSONObject data = new JSONObject();
+
+        reply.put("result", "OK");
+        data.put("message", "Done");
+        data.put("visibility", target.getVisibility());
+        data.put("position", pos);
+        data.put("objects", new ArrayList<>());
+        reply.put("data", data);
     }
 
 

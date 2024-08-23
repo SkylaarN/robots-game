@@ -49,8 +49,6 @@ public class ActivateServer {
             System.out.print("Enter command: ");
             String command = scanner.nextLine();
             Controller.executeServerCommand(command, serverSocket);
-
-
         }
     }
 

@@ -14,7 +14,7 @@ import java.util.List;
 
 //import static za.wethinkcode.RobotWorlds.server.ActivateServer.getRobotToRestore;
 
-public class Api {
+public class Api implements ApiHandler{
 
 
     public Javalin getServer() {
@@ -29,13 +29,13 @@ public class Api {
     public Api() {
 
         server = Javalin.create();
-        this.Launch_robot("");
+        this.Launch_robot();
         this.restore_world();
 
 
 
     }
-
+    @Override
     public void restore_world(){
         server.get("/worlds/{world_name}", context -> {
 
@@ -60,7 +60,8 @@ public class Api {
         });
     }
 
-    public void Launch_robot(String mss) {
+    @Override
+    public void Launch_robot() {
 
         server.post("/{robot_name}/launch/{robot_type}", context -> {
 
@@ -117,13 +118,13 @@ public class Api {
     }
 
 
-
+    @Override
     public Javalin start(int port) {
         System.out.println("starting...");
         return this.server.start(port);
     }
 
-
+    @Override
     public Javalin stop() {
         System.out.println("stopping...");
         return this.server.stop();

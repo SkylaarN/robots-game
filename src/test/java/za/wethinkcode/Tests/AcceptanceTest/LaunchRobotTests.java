@@ -26,7 +26,10 @@
 //
 //        @BeforeEach
 //        void connectToServer(){
+//            System.out.println("-------------------");
 //            serverClient.connect(DEFAULT_IP, DEFAULT_PORT);
+//            System.out.println(serverClient.isConnected());
+//            System.out.println("-------------------");
 //        }
 //
 //        @AfterEach
@@ -48,6 +51,9 @@
 //
 //    @Test
 //        void validLaunchShouldSucceed(){
+//        serverClient.connect(DEFAULT_IP, DEFAULT_PORT);
+//
+//
 //            // Given that I am connected to a running Robot Worlds server
 //            // And the world is of size 1x1 (The world is configured or hardcoded to this size)
 //

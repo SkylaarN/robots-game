@@ -55,6 +55,7 @@ public class Api {
             } catch (Exception e) {
                 e.printStackTrace();  // Logs the exception to the server console
                 context.status(500).result("Server Error: " + e.getMessage());
+                System.out.print("Enter command: ");
             }
         });
     }
@@ -98,34 +99,18 @@ public class Api {
 
                 this.bufferedReader = new BufferedReader(new InputStreamReader(socket1.getInputStream()));
 
-                System.out.println("ex");
-
-                System.out.println("before");
-
                 System.out.println(request);
-                System.out.println("before after");
 
 //                bufferedWriter.newLine();
                 bufferedWriter.write(request + "\n");
                 bufferedWriter.flush();
 
-                System.out.println("ex1");
-
-
-                System.out.println("ex1");
-
-
-
                 String msgTorev = this.bufferedReader.readLine();
 
-
-                System.out.println("ex2");
-
                 context.result("Endpoint works\n" +  msgTorev + "\n");
-                System.out.println("-----------------------"+msgTorev);
+                System.out.println(msgTorev);
                 msgToSend=null;
-
-
+                System.out.print("Enter command: ");
 
             }
         });

@@ -80,7 +80,7 @@ public class Client {
 
 
             while (!socket.isClosed()) {
-                System.out.println("send inside sendMessage (sendMessage (Client) )");
+                System.out.println("send inside sendMessage");
                 this.msgToSend = scanner.nextLine();
 
 
@@ -107,11 +107,11 @@ public class Client {
                         "  \"command\": \""+command+"\"," +
                         "  \"arguments\": ["+arguments+"]" +
                         "}";
-                System.out.println("Before message request (client)");
+
                 bufferedWriter.write(request);
                 bufferedWriter.newLine();
                 bufferedWriter.flush();
-                System.out.println("After message request (client)");
+
 
             }
         } catch (IOException e) {

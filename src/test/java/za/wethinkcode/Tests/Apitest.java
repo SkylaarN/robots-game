@@ -42,20 +42,20 @@ public class Apitest {
         assertTrue(!responseBody.isEmpty());
     }
 
-//    @Test
-//    public void testLaunchRobot() {
-//
-//        HttpResponse<String> response = Unirest.post("http://localhost:7000/HAL/launch/tank")
-//                .asString();
-//
-//
-//        assertEquals(200, response.getStatus());
-//
-//
-//        String responseBody = response.getBody();
-//        System.out.println("Launch Robot Response: " + responseBody);
-//
-//    }
+    @Test
+    public void testLaunchRobot() {
+
+        HttpResponse<String> response = Unirest.post("http://localhost:7000/HAL/launch/tank")
+                .asString();
+
+
+        assertEquals(200, response.getStatus());
+
+
+        String responseBody = response.getBody();
+        System.out.println("Launch Robot Response: " + responseBody);
+
+    }
 }
 
 

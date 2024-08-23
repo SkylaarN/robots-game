@@ -35,13 +35,6 @@ public class SimpleServer implements Runnable {
      * Initiate the server
      */
     public void run() {
-//        System.out.println("simple server");
-//        Api api = new Api("start");
-//
-//
-//        api.start(3000);
-
-
         try {
 
             while (clientSocket.isConnected()){

@@ -9,15 +9,21 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import org.slf4j.LoggerFactory;
+import ch.qos.logback.classic.Logger;
+import ch.qos.logback.classic.Level;
+
 public class ActivateServer {
 
     public static ArrayList<Socket> listRobotsSockets = new ArrayList<>();
 
     public static void main(String[] args) throws IOException {
+        ((Logger) LoggerFactory.getLogger("org.eclipse.jetty")).setLevel(Level.WARN);
+        ((Logger) LoggerFactory.getLogger("io.javalin")).setLevel(Level.WARN);
 
         ServerSocket serverSocket = new ServerSocket(SimpleServer.PORT);
         System.out.println("\u001B[1m\u001B[34m***** WELCOME TO ROBOT WORLDS! *****\u001B[0m");
-        System.out.println("simple server");
+
         Api api = new Api();
 
 

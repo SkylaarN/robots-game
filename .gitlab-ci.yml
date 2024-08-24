@@ -24,6 +24,7 @@ before_script:
   - echo "Using Java version:"
   - java -version
   - mvn --version
+  - echo "$DOCKER_PASSWORD" | docker login gitlab.wethinkco.de:5050 -u "$DOCKER_USERNAME" --password-stdin
 
 build:
   stage: build

@@ -76,4 +76,4 @@ publish:
     - echo "$CI_REGISTRY_PASSWORD" | docker login gitlab.wethinkco.de:5050 -u "$CI_REGISTRY_USER" --password-stdin
   script:
     - docker build -t $IMAGE_NAME:$TAG .
-    - docker push $IMAGE_NAME:$v1.0.0
+    - docker push $IMAGE_NAME:$TAG

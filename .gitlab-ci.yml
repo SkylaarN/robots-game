@@ -41,10 +41,10 @@ test:
 
   script:
     - java -jar libs/reference-server-0.1.0.jar &
-    - SERVER_PID=$!
+#    - SERVER_PID=$!
     - sleep 5
     - mvn test
-    - kill $SERVER_PID
+#    - kill $SERVER_PID
   artifacts:
     reports:
       junit: target/surefire-reports/*.xml
@@ -55,9 +55,9 @@ package:
 
   script:
     - mvn package
-    - java -jar target/toyrobot-1.0-SNAPSHOT-jar-with-dependencies.jar
-    - sleep 5
-    - mvn test
+#    - java -jar target/toyrobot-1.0-SNAPSHOT-jar-with-dependencies.jar
+#    - sleep 5
+#    - mvn test
   artifacts:
     paths:
       - target/*.jar

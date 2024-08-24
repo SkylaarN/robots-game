@@ -10,8 +10,8 @@ stages:
 
 variables:
   MAVEN_OPTS: "-Dmaven.repo.local=$CI_PROJECT_DIR/.m2/repository -Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.allowall=true"
-  DOCKER_REGISTRY: registry.gitlab.wethinkco.de
-  IMAGE_NAME: $DOCKER_REGISTRY/nsilima023b/cjc1_brownfields_2024
+  DOCKER_REGISTRY: gitlab.wethinkco.de
+  IMAGE_NAME: nsilima023b/cjc1_brownfields_2024
   TAG: latest
 
 cache:

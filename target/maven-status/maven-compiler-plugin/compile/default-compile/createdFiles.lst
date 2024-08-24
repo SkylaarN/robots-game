@@ -4,8 +4,8 @@ za/wethinkcode/RobotWorlds/domain/ClientCommands/LaunchCommand.class
 za/wethinkcode/RobotWorlds/domain/ClientCommands/Command.class
 za/wethinkcode/RobotWorlds/domain/ClientCommands/Make.class
 za/wethinkcode/RobotWorlds/server/CommandLineArgs.class
-za/wethinkcode/RobotWorlds/domain/ClientCommands/ErrorHandling.class
 za/wethinkcode/RobotWorlds/Database/Controller.class
+za/wethinkcode/RobotWorlds/domain/ClientCommands/ErrorHandling.class
 za/wethinkcode/RobotWorlds/domain/serverCommands/SaveCommand.class
 za/wethinkcode/RobotWorlds/domain/serverCommands/RestoreCommand.class
 za/wethinkcode/RobotWorlds/domain/ClientCommands/ReloadCommand.class
@@ -15,8 +15,8 @@ za/wethinkcode/RobotWorlds/Database/DbConnect.class
 za/wethinkcode/RobotWorlds/domain/ClientCommands/StateCommand.class
 za/wethinkcode/RobotWorlds/domain/ClientCommands/LookCommand.class
 za/wethinkcode/RobotWorlds/domain/world/configuration/Configuration.class
-za/wethinkcode/RobotWorlds/domain/world/Obstacles.class
 za/wethinkcode/RobotWorlds/domain/world/Robot$Direction.class
+za/wethinkcode/RobotWorlds/domain/world/Obstacles.class
 za/wethinkcode/RobotWorlds/domain/world/world.class
 za/wethinkcode/RobotWorlds/domain/world/Robot$Conditions.class
 za/wethinkcode/RobotWorlds/server/ActivateServer.class
@@ -34,5 +34,5 @@ za/wethinkcode/RobotWorlds/domain/ClientCommands/QuitCommand.class
 za/wethinkcode/RobotWorlds/domain/serverCommands/DumpCommand.class
 za/wethinkcode/RobotWorlds/domain/world/SquareObstacle.class
 za/wethinkcode/RobotWorlds/domain/world/Robot.class
-za/wethinkcode/RobotWorlds/domain/ClientCommands/RobotsCommand.class
 za/wethinkcode/RobotWorlds/domain/Controller.class
+za/wethinkcode/RobotWorlds/domain/ClientCommands/RobotsCommand.class

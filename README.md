@@ -50,9 +50,12 @@
 >>>> // specifies the size of the world
 >>>> // Default value is 1
 
->>>> <visibility>
->>>>// Specifies the visibility of the world
->>>>// Default value is 5 
+[//]: # ()
+[//]: # (>>>> <visibility>)
+
+[//]: # (>>>>// Specifies the visibility of the world)
+
+[//]: # (>>>>// Default value is 5)
 
 >>>> -rp <repair-time> in seconds
 >>>>// Specifies the time it takes to repair the robot shields

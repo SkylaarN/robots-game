@@ -74,7 +74,7 @@ publish:
     DOCKER_DRIVER: overlay2
   before_script:
 #    - docker pull eclipse-temurin:21-jdk
-    - export CI_REGISTRY_PASSWORD="WZkQovs4TaA1aUy59zLe"
+    - export CI_REGISTRY_PASSWORD="Vewpzk_mjBWKLCHmg1tf"
     - docker login gitlab.wethinkco.de:5050 -u "nsilima023b" -p "CI_REGISTRY_PASSWORD2"
   script:
     - docker build -t $IMAGE_NAME:$TAG .

@@ -73,7 +73,7 @@ publish:
   variables:
     DOCKER_DRIVER: overlay2
   before_script:
-    - echo "$CI_REGISTRY_PASSWORD" | docker login gitlab.wethinkco.de:5050 -u "$CI_REGISTRY_USER" --password-stdin
+    - echo "dckr_pat_buTdhkVx85_r4pwmLUjA78TgLVo" | docker login gitlab.wethinkco.de:5050 -u "cjc5" --password-stdin
   script:
     - docker build -t $IMAGE_NAME:$TAG .
     - docker push $IMAGE_NAME:$TAG

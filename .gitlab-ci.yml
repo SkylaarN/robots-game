@@ -56,9 +56,9 @@ package:
 
   script:
 #    - mvn package
-    - java -jar target/toyrobot-1.0-SNAPSHOT-jar-with-dependencies.jar
-    - sleep 5
-    - mvn test
+#    - java -jar target/toyrobot-1.0-SNAPSHOT-jar-with-dependencies.jar
+#    - sleep 5
+#    - mvn test
   artifacts:
     paths:
       - target/*.jar

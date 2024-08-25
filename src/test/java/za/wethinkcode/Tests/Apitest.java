@@ -34,7 +34,7 @@ public class Apitest {
         api = new Api();
         ((Logger) LoggerFactory.getLogger("org.eclipse.jetty")).setLevel(Level.WARN);
         ((Logger) LoggerFactory.getLogger("io.javalin")).setLevel(Level.WARN);
-        api.start(3000);
+        api.start(4000);
 
     }
 
@@ -49,7 +49,7 @@ public class Apitest {
     public void testRestoreWorld() {
 //        System.out.println("-----------------1");
 
-        HttpResponse<String> response = Unirest.get("http://localhost:3000/world/nathi")
+        HttpResponse<String> response = Unirest.get("http://localhost:4000/world/nathi")
                 .asString();
 //        System.out.println("status "+response.getStatus());
 
@@ -68,7 +68,7 @@ public class Apitest {
 
 //        System.out.println("-----------------2");
 
-        HttpResponse<String> response = Unirest.get("http://localhost:3000/world/NotInDatabase")
+        HttpResponse<String> response = Unirest.get("http://localhost:4000/world/NotInDatabase")
                 .asString();
 
         assertEquals(200, response.getStatus());
@@ -91,7 +91,7 @@ public class Apitest {
     @Test
     public void testCurrentWorld() throws IOException {
 //        System.out.println("-----------------3");
-        HttpResponse<String> response = Unirest.get("http://localhost:3000/world")
+        HttpResponse<String> response = Unirest.get("http://localhost:4000/world")
                 .asString();
 
         Obstacles.generateObstacles();
@@ -128,7 +128,7 @@ public class Apitest {
             }
         }).start();
 
-        HttpResponse<String> response = Unirest.post("http://localhost:3000/hal/launch/tank")
+        HttpResponse<String> response = Unirest.post("http://localhost:4000/hal/launch/tank")
                 .asString();
 //        System.out.println(response.getStatus());
 

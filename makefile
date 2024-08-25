@@ -10,8 +10,8 @@ Compile:Clean
 # 	@mvn package
 
 server:
-	@nohup java -jar target/toyrobot-1.0-SNAPSHOT-jar-with-dependencies.jar > server.log 2>&1 &
-	@sleep 5
+	@java -jar libs/reference-server-0.1.0.jar  &
+	@sleep 10
 	@echo "Server is running on the background"
 
 	

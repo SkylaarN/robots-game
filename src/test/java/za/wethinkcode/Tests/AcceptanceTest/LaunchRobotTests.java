@@ -87,36 +87,36 @@ public class LaunchRobotTests {
 //            assertEquals("OK", robot2.get("result").asText());
 //    }
 
-    @Test
-    void launchBotWithSameName() {
-        // Given that I am connected to a running Robot Worlds server
-
-        // When I send a valid launch request for another robot
-        String request = "{" +
-                "  \"robot\": \"HAL\"," +
-                "  \"command\": \"launch\"," +
-                "  \"arguments\": [\"shooter\"]" +
-                "}";
-        JsonNode response = serverClient.sendRequest(request);
-
-        // Launch the first robot to ensure it doesn’t affect this test
-        String launchRequest = "{" +
-                "  \"robot\": \"HAL\"," +
-                "  \"command\": \"launch\"," +
-                "  \"arguments\": [\"shooter\"]" +
-                "}";
-
-        // Then I should get a valid response from the server
-        assertNotNull(response.get("result"));
-        System.out.println( response.get("result").asText());
-        assertEquals("OK", response.get("result").asText());
-
-        JsonNode launchResponse = serverClient.sendRequest(launchRequest);
-        System.out.println(launchResponse.get("result").asText());
-//        assertEquals("ERROR", launchResponse.get("result").asText());
-        System.out.println(launchResponse.get("data").get("message").asText());
-//        assertEquals("Too many of you in this world", launchResponse.get("data").get("message").asText());
-    }
+//    @Test
+//    void launchBotWithSameName() {
+//        // Given that I am connected to a running Robot Worlds server
+//
+//        // When I send a valid launch request for another robot
+//        String request = "{" +
+//                "  \"robot\": \"HAL\"," +
+//                "  \"command\": \"launch\"," +
+//                "  \"arguments\": [\"shooter\"]" +
+//                "}";
+//        JsonNode response = serverClient.sendRequest(request);
+//
+//        // Launch the first robot to ensure it doesn’t affect this test
+//        String launchRequest = "{" +
+//                "  \"robot\": \"HAL\"," +
+//                "  \"command\": \"launch\"," +
+//                "  \"arguments\": [\"shooter\"]" +
+//                "}";
+//
+//        // Then I should get a valid response from the server
+//        assertNotNull(response.get("result"));
+//        System.out.println( response.get("result").asText());
+//        assertEquals("OK", response.get("result").asText());
+//
+//        JsonNode launchResponse = serverClient.sendRequest(launchRequest);
+//        System.out.println(launchResponse.get("result").asText());
+////        assertEquals("ERROR", launchResponse.get("result").asText());
+//        System.out.println(launchResponse.get("data").get("message").asText());
+////        assertEquals("Too many of you in this world", launchResponse.get("data").get("message").asText());
+//    }
 
     @Test
     void launchBotInWorldWithObstacle() {

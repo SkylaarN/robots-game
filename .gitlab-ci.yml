@@ -42,7 +42,8 @@ test:
   script:
     - java -jar libs/reference-server-0.1.0.jar &
 #    - SERVER_PID=$!
-    - sleep 5
+    - sleep 10
+    - @echo "Server is running on the background"
     - mvn test
 #    - kill $SERVER_PID
   artifacts:

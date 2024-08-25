@@ -67,7 +67,7 @@ publish:
   timeout: 60m
   stage: publish
 
-  image: $IMAGE_NAME:$TAG
+  image: docker:latest
   services:
     - docker:dind
   variables:
@@ -77,5 +77,5 @@ publish:
     - export CI_REGISTRY_PASSWORD3="Vewpzk_mjBWKLCHmg1tf"
     - echo "$CI_REGISTRY_PASSWORD3" | docker login gitlab.wethinkco.de:5050 -u "nsilima023b" --password-stdin
   script:
-    - docker build -t $IMAGE_NAME:$TAG .
-    - docker push $IMAGE_NAME:$TAG
+    - docker build -t gitlab.wethinkco.de:5050/nsilima023b/cjc1_brownfields_2024 .
+    - docker push gitlab.wethinkco.de:5050/nsilima023b/cjc1_brownfields_2024

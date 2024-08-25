@@ -6,6 +6,7 @@ import za.wethinkcode.RobotWorlds.domain.ClientCommands.Command;
 import za.wethinkcode.RobotWorlds.domain.world.configuration.Configuration;
 import za.wethinkcode.RobotWorlds.server.Players;
 import za.wethinkcode.RobotWorlds.server.SimpleServer;
+import za.wethinkcode.RobotWorlds.domain.world.configuration.Configuration;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -86,6 +87,9 @@ public class Robot {
      */
     public Robot(String name){
         Position pos =  new Position(15,15);
+        pos = configuration.getWorldSize();
+
+        System.out.println("this the pos"+pos);
         int x = pos.getX();
 
 

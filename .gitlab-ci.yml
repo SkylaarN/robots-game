@@ -64,7 +64,7 @@ package:
     expire_in: 1 week
 
 publish:
-  timeout: 30m
+  timeout: 60m
   stage: publish
 
   image: docker:latest

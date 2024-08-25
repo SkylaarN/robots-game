@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class SimpleServer implements Runnable {
     public static String reply;
     public static ArrayList<String> listRobots = new ArrayList<>();
-    public static int PORT = 8000;
+    public static int PORT = 5000;
     private final BufferedReader in;
     private final PrintStream out;
     private final Socket clientSocket;

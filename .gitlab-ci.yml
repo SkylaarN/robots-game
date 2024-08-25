@@ -4,7 +4,7 @@ image: eclipse-temurin:21-jdk
 # Define pipeline stages
 stages:
   - build
-  - test package
+  - test
   - publish
 
 variables:
@@ -34,7 +34,7 @@ build:
       - target/
 
 
-test package:
+test:
   timeout: 30m
   stage: test
 

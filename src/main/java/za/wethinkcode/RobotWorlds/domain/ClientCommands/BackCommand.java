@@ -3,6 +3,7 @@ import org.json.JSONObject;
 import za.wethinkcode.RobotWorlds.domain.world.Position;
 import za.wethinkcode.RobotWorlds.domain.world.Robot;
 import za.wethinkcode.RobotWorlds.server.Players;
+import za.wethinkcode.RobotWorlds.server.SimpleServer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +34,10 @@ public class BackCommand extends Command {
 
 
             Command.Putdata(target,pos);
+        } else if (target.updatePosition(nrSteps) == Robot.Conditions.FATAL_PIT_DETECTED){
+            data.put("message", "You fell into a pit.");
+            Players.getPlayers().remove(target);
+            SimpleServer.listRobots.remove(target.getName());
         }
         else if (target.updatePosition(nrSteps) == Robot.Conditions.FAILED_OBSTACLE_DETECTED){
             data.put("message", "Obstructed");

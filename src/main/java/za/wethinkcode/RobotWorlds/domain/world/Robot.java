@@ -77,7 +77,7 @@ public class Robot {
      */
     public enum Conditions {
 
-        SUCCESS, FAILED_OBSTACLE_DETECTED, FAILED_OUTSIDE_ROBOT_WORLD
+        SUCCESS, FAILED_OBSTACLE_DETECTED, FAILED_OUTSIDE_ROBOT_WORLD, FATAL_PIT_DETECTED
     }
 
 
@@ -253,6 +253,18 @@ public class Robot {
 
         if (isNewPositionAllowed(newPosition)){
 
+            if (Obstacles.pitPosition(newPosition)){
+                return Conditions.FATAL_PIT_DETECTED;
+            }
+            else if (Obstacles.pitPath(this.position, newPosition)){
+                return Conditions.FATAL_PIT_DETECTED;
+            } else
+            if (Obstacles.blocksPosition(newPosition)){
+                return Conditions.FAILED_OBSTACLE_DETECTED;
+            }
+            else if (Obstacles.blocksPath(this.position, newPosition)){
+                return Conditions.FAILED_OBSTACLE_DETECTED;
+            }
             if (Obstacles.blocksPosition(newPosition)){
                 return Conditions.FAILED_OBSTACLE_DETECTED;
             }

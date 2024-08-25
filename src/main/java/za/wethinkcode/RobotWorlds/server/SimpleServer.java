@@ -61,7 +61,7 @@ public class SimpleServer implements Runnable {
                         String reply = Controller.executeClientCommand(name, command, arguments);
                         out.println(reply);
                     }else {
-                        String reply = Controller.executeClientCommand("error", "error", arguments);
+                        String reply = Controller.executeClientCommand("error", "robot not launched", arguments);
                         out.println(reply);
                     }
                     messageFromClient = in.readLine();

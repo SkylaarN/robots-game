@@ -24,7 +24,6 @@ public class LookCommand extends Command{
 
         reply.put("result", "OK");
 
-        getOtherRobotsPosition(target, robots);
 
         for(int i = 0; i < Obstacles.getObstacles().size(); i++){
             SquareObstacle obs = Obstacles.getObstacles().get(i);
@@ -53,8 +52,13 @@ public class LookCommand extends Command{
                 }
             }
         }
-        if(output.isEmpty()){
 
+        getOtherRobotsPosition(target, robots);
+        getEdge(target);
+
+        gatherPits(target);
+
+        if(output.isEmpty()){
             List<Object> pos = new ArrayList<>();
             pos.add(target.getPosition().getX());
             pos.add(target.getPosition().getY());
@@ -64,9 +68,10 @@ public class LookCommand extends Command{
             data.put("objects", objects);
         }
         else{
-            data.put("objects", objects);
             data.put("message", "Done");
         }
+        data.put("objects", objects);
+
         reply.put("data", data);
         target.setStatus(reply.toString());
         return true;
@@ -115,6 +120,36 @@ public class LookCommand extends Command{
                         obj.put("position", positionState);
                         objects.put(obj);
                     }
+
+                }
+            }
+        }
+    }
+
+    public void gatherPits(Robot target){
+        for(int i = 0; i < Obstacles.getObstacles().size(); i++){
+            SquareObstacle obs = Obstacles.getObstacles().get(i);
+            int x = obs.getBottomLeftX();
+            int y = obs.getBottomLeftY();
+
+            if (x - 10 <= target.getPosition().getX() && target.getPosition().getX() <= x + 10 ||
+                    y - 10 <= target.getPosition().getY() && target.getPosition().getY() <= y + 10){
+
+                if ((x - target.getPosition().getX() <= 75)
+                        && (x - target.getPosition().getX() >= -75)
+                        && (y - target.getPosition().getY() <= 75)
+                        && (y - target.getPosition().getY() >= -75)){
+
+                    JSONObject obj = new JSONObject();
+                    obj.put("direction", getAbsolutePosition(target, x, y));
+                    obj.put("type", "PIT");
+
+                    JSONArray positionState = new JSONArray();
+                    positionState.put(obs.getBottomLeftX());
+                    positionState.put(obs.getBottomLeftY());
+
+                    obj.put("position", positionState);
+                    objects.put(obj);
 
                 }
             }

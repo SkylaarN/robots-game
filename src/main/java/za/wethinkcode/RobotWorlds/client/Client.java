@@ -58,6 +58,7 @@ public class Client {
                         break;
                     }
                     System.out.println(ANSI_CYAN + this.msgToSend + ANSI_RESET);
+                    Ui.display(this.msgToSend);
 
                     System.out.println(ANSI_PURPLE + "What must I do next" + ANSI_RESET);
                 }
@@ -80,7 +81,6 @@ public class Client {
 
 
             while (!socket.isClosed()) {
-                System.out.println("send inside sendMessage");
                 this.msgToSend = scanner.nextLine();
 
 

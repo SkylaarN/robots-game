@@ -21,6 +21,7 @@ public class ActivateServer {
         ((Logger) LoggerFactory.getLogger("org.eclipse.jetty")).setLevel(Level.WARN);
         ((Logger) LoggerFactory.getLogger("io.javalin")).setLevel(Level.WARN);
 
+        CommandLineArgs.cmdArgs(args);
         ServerSocket serverSocket = new ServerSocket(SimpleServer.PORT);
         System.out.println("\u001B[1m\u001B[34m***** WELCOME TO ROBOT WORLDS! *****\u001B[0m");
 
@@ -39,6 +40,7 @@ public class ActivateServer {
                     Thread task = new Thread(r);
                     task.start();
                 } catch (IOException ex) {
+                    System.out.println("kkkkkkkkkkkkkkkk");
                     ex.printStackTrace();
                 }
             }

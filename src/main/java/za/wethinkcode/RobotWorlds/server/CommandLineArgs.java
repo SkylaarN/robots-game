@@ -10,7 +10,7 @@ public class CommandLineArgs {
     public CommandLineArgs(String[] args){
         cmdArgs(args);
     }
-    public void cmdArgs(String[] args) {
+    public static void cmdArgs(String[] args) {
         Options options = new Options();
 
         Option port = new Option("p", "port", true, "port number");
@@ -45,10 +45,7 @@ public class CommandLineArgs {
             String worldSize = cmd.getOptionValue("size");
             int widthHeight = Integer.parseInt(worldSize);
             Configuration config = new Configuration();
-            System.out.println(config.getWorldSize().getX()+";"+config.getWorldSize().getY());
             config.setWorldSize(widthHeight,widthHeight);
-            System.out.println(config.getWorldSize().getX()+";"+config.getWorldSize().getY() + "new size");
-
         }
         if (cmd.hasOption("obstacle")) {
             String obstacleSize = cmd.getOptionValue("obstacle");

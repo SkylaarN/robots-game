@@ -4,8 +4,7 @@ image: eclipse-temurin:21-jdk
 # Define pipeline stages
 stages:
   - build
-  - test
-  - package
+  - test & package
   - publish
 
 variables:
@@ -35,7 +34,7 @@ build:
       - target/
 
 
-test:
+test & package:
   timeout: 30m
   stage: test
 
@@ -50,19 +49,19 @@ test:
     reports:
       junit: target/surefire-reports/*.xml
 
-package:
-  timeout: 30m
-  stage: package
-
-  script:
-#    - mvn package
-    - java -jar target/toyrobot-1.0-SNAPSHOT-jar-with-dependencies.jar
-#    - sleep 5
-#    - mvn test
-  artifacts:
-    paths:
-      - target/*.jar
-    expire_in: 1 week
+#package:
+#  timeout: 30m
+#  stage: package
+#
+#  script:
+##    - mvn package
+#    - java -jar target/toyrobot-1.0-SNAPSHOT-jar-with-dependencies.jar
+##    - sleep 5
+##    - mvn test
+#  artifacts:
+#    paths:
+#      - target/*.jar
+#    expire_in: 1 week
 
 publish:
   timeout: 60m
@@ -74,7 +73,7 @@ publish:
   variables:
     DOCKER_DRIVER: overlay2
   before_script:
-    - docker pull eclipse-temurin:21-jdk
+#    - docker pull eclipse-temurin:21-jdk
     - docker login gitlab.wethinkco.de:5050 -u "$CI_REGISTRY_USER2" -p "CI_REGISTRY_PASSWORD2"
   script:
     - docker build -t $IMAGE_NAME:$TAG .

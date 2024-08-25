@@ -67,7 +67,7 @@ publish:
   timeout: 60m
   stage: publish
 
-  image: docker:latest
+  image: $IMAGE_NAME:$TAG
   services:
     - docker:dind
   variables:

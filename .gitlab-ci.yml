@@ -44,6 +44,7 @@ test:
 #    - SERVER_PID=$!
     - sleep 10
     - mvn test
+    - mvn package
 #    - kill $SERVER_PID
   artifacts:
     reports:
@@ -54,10 +55,10 @@ package:
   stage: package
 
   script:
-    - mvn package
-#    - java -jar target/toyrobot-1.0-SNAPSHOT-jar-with-dependencies.jar
-#    - sleep 5
-#    - mvn test
+#    - mvn package
+    - java -jar target/toyrobot-1.0-SNAPSHOT-jar-with-dependencies.jar
+    - sleep 5
+    - mvn test
   artifacts:
     paths:
       - target/*.jar

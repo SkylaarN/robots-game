@@ -1,4 +1,10 @@
 -------------------------------------------------------------------------------
 Test set: za.wethinkcode.Tests.AcceptanceTest.StateCommandTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.501 s - in za.wethinkcode.Tests.AcceptanceTest.StateCommandTest
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.552 s <<< FAILURE! - in za.wethinkcode.Tests.AcceptanceTest.StateCommandTest
+validStateShouldSucceed  Time elapsed: 0.163 s  <<< ERROR!
+java.lang.RuntimeException: Error connecting to Robot Worlds server.
+	at za.wethinkcode.Tests.AcceptanceTest.StateCommandTest.connectToServer(StateCommandTest.java:19)
+Caused by: java.net.ConnectException: Connection refused
+	at za.wethinkcode.Tests.AcceptanceTest.StateCommandTest.connectToServer(StateCommandTest.java:19)
+

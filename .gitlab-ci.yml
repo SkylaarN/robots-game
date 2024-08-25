@@ -71,7 +71,7 @@ publish:
   timeout: 60m
   stage: publish
 
-  image: docker:V.1.1.0
+  image: docker:latest
   services:
     - docker:dind
   variables:

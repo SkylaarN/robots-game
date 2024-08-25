@@ -89,7 +89,7 @@ public class Robot {
         Position pos =  new Position(15,15);
         pos = configuration.getWorldSize();
 
-        System.out.println("this the pos"+pos);
+//        System.out.println("this the pos "+pos.getX());
         int x = pos.getX();
 
 

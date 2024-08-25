@@ -104,7 +104,7 @@ public class Api implements ApiHandler {
                 String msg = robotName + " " + command + " " + robortType;
 
 
-                Socket socket1 = new Socket("localhost", 8000);
+                Socket socket1 = new Socket("localhost", 5000);
                 Client client = new Client(socket1);
 
                 BufferedReader bufferedReader;

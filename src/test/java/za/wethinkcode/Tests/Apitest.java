@@ -107,36 +107,14 @@ public class Apitest {
 
 
 
-//    @Test
-//    public void testLaunchRobot() throws IOException {
-////        System.out.println("-----------------4");
-////        ServerSocket serverSocket = new ServerSocket(SimpleServer.PORT);
-////        ArrayList<Socket> listRobotsSockets = new ArrayList<>();
-////        new Thread(() -> {
-////            Obstacles.generateObstacles();
-////            while (!serverSocket.isClosed()) {
-////
-////                try {
-////                    Socket socket = serverSocket.accept();
-////                    listRobotsSockets.add(socket);
-////                    Runnable r = new SimpleServer(socket);
-////                    Thread task = new Thread(r);
-////                    task.start();
-////                } catch (IOException ex) {
-////                    ex.printStackTrace();
-////                }
-////            }
-////        }).start();
-//
-//        HttpResponse<String> response = Unirest.post("http://localhost:3000/hal/launch/tank")
-//                .asString();
-////        System.out.println(response.getStatus());
-//
-//        assertEquals(200, response.getStatus());
-////        serverSocket.close();
-//
-//
-//    }
+    @Test
+    public void testLaunchRobot() throws IOException {
+
+        HttpResponse<String> response = Unirest.post("http://localhost:4000/hal/launch/tank")
+                .asString();
+
+        assertEquals(200, response.getStatus());
+    }
 }
 
 

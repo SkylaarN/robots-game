@@ -44,6 +44,10 @@ test:
     - sleep 10
     - mvn test
     - mvn package
+    - java -jar target/toyrobot-1.0-SNAPSHOT-jar-with-dependencies.jar &
+    - sleep 10
+    - echo "Server is running on the background"
+    - mvn test
 #    - kill $SERVER_PID
   artifacts:
     reports:

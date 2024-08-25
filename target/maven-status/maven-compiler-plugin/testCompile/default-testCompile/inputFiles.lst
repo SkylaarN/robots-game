@@ -1,6 +1,7 @@
 /Users/macbookpro/Documents/projects/WETHINKCODE/cjc1_brownfields_2024/src/test/java/za/wethinkcode/Tests/AcceptanceTest/LaunchRobotTests.java
 /Users/macbookpro/Documents/projects/WETHINKCODE/cjc1_brownfields_2024/src/test/java/za/wethinkcode/Tests/AcceptanceTest/LookCommandTests.java
 /Users/macbookpro/Documents/projects/WETHINKCODE/cjc1_brownfields_2024/src/test/java/za/wethinkcode/Tests/AcceptanceTest/MovementCommandTests.java
+/Users/macbookpro/Documents/projects/WETHINKCODE/cjc1_brownfields_2024/src/test/java/za/wethinkcode/Tests/AcceptanceTest/OrientationCommandTest.java
 /Users/macbookpro/Documents/projects/WETHINKCODE/cjc1_brownfields_2024/src/test/java/za/wethinkcode/Tests/AcceptanceTest/RestoreCommandTest.java
 /Users/macbookpro/Documents/projects/WETHINKCODE/cjc1_brownfields_2024/src/test/java/za/wethinkcode/Tests/AcceptanceTest/RobotWorldClient.java
 /Users/macbookpro/Documents/projects/WETHINKCODE/cjc1_brownfields_2024/src/test/java/za/wethinkcode/Tests/AcceptanceTest/RobotWorldJsonClient.java
